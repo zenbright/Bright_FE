@@ -1,8 +1,13 @@
 import { useState } from 'react'
 import './App.css'
+import ButtonText from './components/general/buttonText'
 
 function App() {
   const [count, setCount] = useState(0)
+  const handleButtonClick = () => {
+    setCount((count) => count + 1)
+    alert('Button Clicked!');
+  };
 
   return (
     <>
@@ -21,6 +26,17 @@ function App() {
       <h1 className="text-3xl font-bold underline">
         Hello world!
       </h1>
+      <ButtonText
+        title="Mân Đàn"
+        shape="rounded"
+        width={150}
+        height={40}
+        backgroundColor="blue"
+        textColor="white"
+        leftIconPath=""
+        rightIconPath=""
+        onClick={handleButtonClick}
+      />
     </>
   )
 }
