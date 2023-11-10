@@ -1,28 +1,23 @@
-import { useState } from 'react'
-import './App.css'
+import { FaFacebook } from "react-icons/fa";
+
+import ButtonIcon from "./components/general/buttonIcon";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const handleButtonClick = () => {
+        console.log('Button clicked!');
+    };
 
-  return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="text-3xl font-bold underline">
-        Click on the Vite and React logos to learn more
-      </p>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
-  )
+    return (
+        <div>
+            <ButtonIcon size="130px"
+                background="blue-500"
+                action={handleButtonClick}
+                borderRadius="rounded-3xl"
+                shape="rounded-rectangle">
+                <FaFacebook size={110} className=""/>
+            </ButtonIcon>
+        </div>
+    );
 }
 
 export default App
