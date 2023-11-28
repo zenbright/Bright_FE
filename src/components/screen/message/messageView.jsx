@@ -67,7 +67,7 @@ export const MessageView = () => {
                     <input
                         type="text"
                         placeholder="Search..."
-                        className="bg-gray-200 h-10 rounded-tl rounded-tr rounded-bl rounded-br py-2 px-4 outline-none w-full mx-2 mb-1"
+                        className="bg-gray-200 h-10 rounded-lg py-2 px-4 outline-none w-full mx-2 mb-1"
                         onChange={handleSearchInputChange}
                     />
                 </div>
