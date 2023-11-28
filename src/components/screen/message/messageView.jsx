@@ -36,7 +36,7 @@ export const MessageView = () => {
                 profileImage={image}
                 message={'Helloooooooooooooooooooooooooooooooooo'}
             />
-        )).filter(message => searchPhrase === "" || isContain(message.props.userName.toLowerCase(), searchPhrase.toLowerCase()));
+        )).filter(message => searchPhrase === "" || isContain(message.props.userName, searchPhrase));
 
         if (filteredList.length === 0) {
             return (
