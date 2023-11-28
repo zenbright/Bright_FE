@@ -1,4 +1,4 @@
-import { Message } from "./message";
+import { MessageTag } from "./messageTag";
 import image from '../../../assets/images/rmitlogo.png';
 import { useState } from "react";
 import { MessageContent } from "./messageContent";
@@ -6,12 +6,47 @@ import messageNew from '../../../assets/images/writing.png';
 
 export const MessageView = () => {
     const [selectedMessage, setSelectedMessage] = useState(-1);
+    const [searchPhrase, setSearchPhrase] = useState("");
+
+    const isContain = (str, search) => {
+        const normalizedStr = str.toLowerCase();
+        const normalizedSearch = search.toLowerCase();
+
+        for (const char of normalizedSearch) {
+            if (normalizedStr.indexOf(char) === -1) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    const handleSearchInputChange = (event) => {
+        const value = event.target.value;
+        setSearchPhrase(value);
+    };
 
     const MessageList = () => {
-        const list = Array.from({ length: 10 }, (_, i) => (
-            <Message key={i} onClick={() => setSelectedMessage(i)} isSelected={selectedMessage === i} sentTime={'12:00 PM'} userName={`Mudoker + ${i}`} profileImage={image} message={'Helloooooooooooooooooooooooooooooooooo'} />
-        ));
-        return list;
+        const filteredList = Array.from({ length: 10 }, (_, i) => (
+            <MessageTag
+                key={i}
+                onClick={() => setSelectedMessage(i)}
+                isSelected={selectedMessage === i}
+                sentTime={'12:00 PM'}
+                userName={`Mudoker ${i}`}
+                profileImage={image}
+                message={'Helloooooooooooooooooooooooooooooooooo'}
+            />
+        )).filter(message => searchPhrase === "" || isContain(message.props.userName.toLowerCase(), searchPhrase.toLowerCase()));
+
+        if (filteredList.length === 0) {
+            return (
+                <div className="flex items-center justify-center" style={{ width: '324px' }}>
+                    <p className="text-center p-5 font-medium opacity-60">No results found</p>
+                </div>
+
+            );
+        }
+        return filteredList;
     };
 
     return (
@@ -28,8 +63,17 @@ export const MessageView = () => {
                     </button>
                 </div>
 
+                <div className="relative flex items-center">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        className="bg-gray-200 h-10 rounded-tl rounded-tr rounded-bl rounded-br py-2 px-4 outline-none w-full mx-2 mb-1"
+                        onChange={handleSearchInputChange}
+                    />
+                </div>
+
                 {/* Make the message list scrollable */}
-                <div className="overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200" style={{ maxHeight: 'calc(100vh - 80px)' }}>
+                <div className="overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200" style={{ maxHeight: 'calc(100vh - 124px)' }}>
                     <MessageList />
                 </div>
             </div>
