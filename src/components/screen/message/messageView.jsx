@@ -3,9 +3,11 @@ import image from '../../../assets/images/rmitlogo.png';
 import { useState } from "react";
 import { MessageContent } from "./messageContent";
 import messageNew from '../../../assets/images/writing.png';
+import { MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH } from '../../../constants/size.global';
 
 export const MessageView = () => {
     const [selectedMessage, setSelectedMessage] = useState(-1);
+    const [selectedUserMessage, setSelectedUserMessage] = useState('');
     const [searchPhrase, setSearchPhrase] = useState("");
 
     const isContain = (str, search) => {
@@ -29,7 +31,7 @@ export const MessageView = () => {
         const filteredList = Array.from({ length: 10 }, (_, i) => (
             <MessageTag
                 key={i}
-                onClick={() => setSelectedMessage(i)}
+                onClick={() => { setSelectedMessage(i); setSelectedUserMessage(`Mudoker ${i}`) }}
                 isSelected={selectedMessage === i}
                 sentTime={'12:00 PM'}
                 userName={`Mudoker ${i}`}
@@ -40,7 +42,7 @@ export const MessageView = () => {
 
         if (filteredList.length === 0) {
             return (
-                <div className="flex items-center justify-center" style={{ width: '324px' }}>
+                <div className="flex items-center justify-center">
                     <p className="text-center p-5 font-medium opacity-60">No results found</p>
                 </div>
 
@@ -50,12 +52,12 @@ export const MessageView = () => {
     };
 
     return (
-        <div className="flex h-screen">
+        <div className="flex h-screen w-screen">
             {/* Nav bar */}
-            <div className="w-1/12 h-screen bg-black" />
+            <div className="h-screen bg-black" style={{ width: `${NAV_BAR_WIDTH}` }} />
 
             {/* Message section */}
-            <div className="flex-col border-r h-screen">
+            <div className="flex-col border-r h-screen" style={{ width: `${MESSAGE_TAB_WIDTH}` }}>
                 <div className="text-3xl font-medium p-4 flex items-center justify-between h-20">
                     <h1>Message</h1>
                     <button type="button" className="w-6 h-6">
@@ -79,8 +81,8 @@ export const MessageView = () => {
             </div>
 
             {/* Message Content */}
-            <div className="flex w-screen items-center justify-center">
-                <MessageContent selectedMessage={selectedMessage} />
+            <div style={{ width: '72vw' }}>
+                <MessageContent selectedMessage={selectedMessage} onlineStatus={true} userName={selectedUserMessage}/>
             </div>
         </div>
     );
