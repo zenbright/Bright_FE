@@ -1,7 +1,7 @@
-import { MessageTag } from "./messageTag";
+import { MessagePreview } from "./preview";
 import image from '../../../assets/images/rmitlogo.png';
 import { useState } from "react";
-import { MessageContent } from "./messageContent";
+import { MessageContent } from "./content";
 import messageNew from '../../../assets/images/writing.png';
 import { MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH } from '../../../constants/size.global';
 
@@ -29,7 +29,7 @@ export const MessageView = () => {
 
     const MessageList = () => {
         const filteredList = Array.from({ length: 10 }, (_, i) => (
-            <MessageTag
+            <MessagePreview
                 key={i}
                 onClick={() => { setSelectedMessage(i); setSelectedUserMessage(`Mudoker ${i}`) }}
                 isSelected={selectedMessage === i}
@@ -82,7 +82,7 @@ export const MessageView = () => {
 
             {/* Message Content */}
             <div style={{ width: '72vw' }}>
-                <MessageContent selectedMessage={selectedMessage} onlineStatus={true} userName={selectedUserMessage}/>
+                <MessageContent selectedMessage={selectedMessage} onlineStatus={false} userName={selectedUserMessage}/>
             </div>
         </div>
     );

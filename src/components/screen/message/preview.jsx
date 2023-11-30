@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const MessageTag = ({ profileImage, userName, message, sentTime, isSelected, onClick }) => {
+export const MessagePreview = ({ profileImage, userName, message, sentTime, isSelected, onClick }) => {
     return (
         <div className={`flex items-start p-4 ${isSelected ? 'bg-gray-500 bg-opacity-20' : ''}`} onClick={onClick}>
             {/* User Avatar */}
@@ -27,7 +27,7 @@ export const MessageTag = ({ profileImage, userName, message, sentTime, isSelect
     );
 };
 
-MessageTag.propTypes = {
+MessagePreview.propTypes = {
     profileImage: PropTypes.string,
     isSelected: PropTypes.bool,
     userName: PropTypes.string,

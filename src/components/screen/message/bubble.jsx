@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const MessageBlock = ({ content = '' }) => {
+export const MessageBubble = ({ content = '' }) => {
     return (
         <span className='rounded-lg bg-blue-500 p-3 text-white' style={{ maxWidth: 200 }}>
             {content}
@@ -8,6 +8,6 @@ export const MessageBlock = ({ content = '' }) => {
     );
 };
 
-MessageBlock.propTypes = {
+MessageBubble.propTypes = {
     content: PropTypes.string.isRequired
 };
