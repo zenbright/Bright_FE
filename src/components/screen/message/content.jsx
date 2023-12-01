@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import messageBubbleIcon from '../../../assets/images/speech-bubble.png';
-import phoneIcon from '../../../assets/images/phone.png';
+import phoneIcon from '../../../assets/images/phone-solid.svg';
 import rmitIcon from '../../../assets/images/rmitlogo.png';
-import videoCallIcon from '../../../assets/images/videocall.png';
-import informationIcon from '../../../assets/images/3dots.png';
+import videoCallIcon from '../../../assets/images/video-solid.svg';
+import informationIcon from '../../../assets/images/circle-info-solid.svg';
 import { MESSAGE_CONTENT_WIDTH } from '../../../constants/size.global';
 
 export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User 1' }) => {
@@ -31,15 +31,15 @@ export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User
                     </div>
 
                     <div className='ml-auto'>
-                        <button className='w-7 h-7 mr-6'>
+                        <button className='w-6 h-6 mr-8'>
                             <img src={phoneIcon} alt="user avatar" />
                         </button>
 
-                        <button className='w-7 h-7 mr-6'>
+                        <button className='w-6 h-6 mr-8'>
                             <img src={videoCallIcon} alt="user avatar" />
                         </button>
 
-                        <button className='w-7 h-7 mr-2'>
+                        <button className='w-6 h-6 mr-2'>
                             <img src={informationIcon} alt="user avatar" />
                         </button>
                     </div>
