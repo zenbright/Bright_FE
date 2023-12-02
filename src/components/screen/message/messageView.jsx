@@ -1,10 +1,9 @@
-import { MessagePreview } from "./preview";
+import { MessagePreview } from "./messagePreview";
 import image from '../../../assets/images/rmitlogo.png';
 import { useState } from "react";
-import { MessageContent } from "./content";
+import { MessageContent } from "./messageContent";
 import messageNew from '../../../assets/images/writing.png';
 import { MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH } from '../../../constants/size.global';
-// import { SAMPLE_MESSAGE } from '../../../constants/datas.sample';
 
 export const MessageView = () => {
     const [selectedMessage, setSelectedMessage] = useState(-1);

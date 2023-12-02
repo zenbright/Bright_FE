@@ -10,11 +10,10 @@ import plusIcon from '../../../assets/images/plus.png';
 import uploadImageIcon from '../../../assets/images/photo.png';
 import micIcon from '../../../assets/images/microphone.png'
 import sendIcon from '../../../assets/images/send.png'
-
 import smileIcon from '../../../assets/images/smile.png';
 
 import { MESSAGE_CONTENT_WIDTH } from '../../../constants/size.global';
-import { MessageBubble } from './bubble';
+import { MessageBubble } from './messageBubble';
 import { Message } from "./message.class";
 import { MESSAGE_HEADER_HEIGHT } from '../../../constants/size.global';
 import { SAMPLE_MESSAGE } from '../../../constants/datas.sample';
@@ -57,7 +56,7 @@ export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User
 
     const MessageList = () => {
         return (
-            <div style={{display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {userMessage.map((message, index) => (
                     <MessageBubble
                         key={index}
@@ -115,7 +114,7 @@ export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User
                 </div>
 
                 {/* Control Bar */}
-                <div className='flex items-center justify-start mb-2 mt-2 ml-4'>
+                <div className='flex items-center justify-start mb-3 mt-2 ml-4'>
                     <button className='flex items-center'>
                         <img src={plusIcon} className='w-5 h-5' />
                     </button>
@@ -134,11 +133,11 @@ export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User
                         placeholder="Aa..."
                         value={userMessageInput}
                         onChange={(e) => setUserMessageInput(e.target.value)}
-                        className="bg-gray-200 h-9 rounded-lg py-2 px-4 outline-none w-4/5 ml-4"
+                        className="bg-gray-200 bg-opacity-70 h-9 rounded-lg py-2 px-4 outline-none w-4/5 ml-4"
                     />
 
                     <button className='flex items-center ml-6' onClick={onHandleSendMessage}>
-                        <img src={sendIcon} className='w-5 h-5' />
+                        <img src={sendIcon} className='w-6 h-6' />
                     </button>
                 </div>
 
