@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import messageBubbleIcon from '../../../assets/images/speech-bubble.png';
 import phoneIcon from '../../../assets/images/phone-solid.svg';
@@ -17,10 +17,35 @@ import { MESSAGE_CONTENT_WIDTH } from '../../../constants/size.global';
 import { MessageBubble } from './bubble';
 import { Message } from "./message.class";
 import { MESSAGE_HEADER_HEIGHT } from '../../../constants/size.global';
+import { SAMPLE_MESSAGE } from '../../../constants/datas.sample';
 
-export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User 1', messageList }) => {
+export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User 1' }) => {
     const [userMessageInput, setUserMessageInput] = useState('');
-    const [userMessage, setMessageList] = useState(messageList);
+    const [userMessage, setMessageList] = useState([]);
+    const [isPageLoad, setIsPageLoad] = useState(false);
+
+    const messagesEndRef = useRef(null);
+
+    useEffect(() => {
+        setMessageList(SAMPLE_MESSAGE);
+        console.log(messagesEndRef.current)
+    }, []);
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [isPageLoad, userMessage]);
+
+    useEffect(() => {
+        setMessageList(SAMPLE_MESSAGE);
+        scrollToBottom();
+    }, [selectedMessage]);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView?.({
+            behavior: 'smooth',
+            block: 'end',
+        });
+    }
 
     const onHandleSendMessage = () => {
         if (userMessageInput.trim() !== '') {
@@ -32,9 +57,7 @@ export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User
 
     const MessageList = () => {
         return (
-            <div
-                style={{display: 'flex', flexDirection: 'column' }}
-            >
+            <div style={{display: 'flex', flexDirection: 'column' }}>
                 {userMessage.map((message, index) => (
                     <MessageBubble
                         key={index}
@@ -42,6 +65,7 @@ export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User
                         isUserMessage={message.isUserMessage}
                     />
                 ))}
+                <div ref={(view) => { messagesEndRef.current = view; setIsPageLoad(true) }} />
             </div>
         );
     };

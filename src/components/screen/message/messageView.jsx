@@ -4,7 +4,7 @@ import { useState } from "react";
 import { MessageContent } from "./content";
 import messageNew from '../../../assets/images/writing.png';
 import { MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH } from '../../../constants/size.global';
-import { SAMPLE_MESSAGE } from '../../../constants/datas.sample';
+// import { SAMPLE_MESSAGE } from '../../../constants/datas.sample';
 
 export const MessageView = () => {
     const [selectedMessage, setSelectedMessage] = useState(-1);
@@ -32,7 +32,10 @@ export const MessageView = () => {
         const filteredList = Array.from({ length: 10 }, (_, i) => (
             <MessagePreview
                 key={i}
-                onClick={() => { setSelectedMessage(i); setSelectedUserMessage(`Mudoker ${i}`) }}
+                onClick={() => {
+                    setSelectedMessage(i);
+                    setSelectedUserMessage(`Mudoker ${i}`);
+                }}
                 isSelected={selectedMessage === i}
                 sentTime={'12:00 PM'}
                 userName={`Mudoker ${i}`}
@@ -83,7 +86,7 @@ export const MessageView = () => {
 
             {/* Message Content */}
             <div style={{ width: '72vw' }}>
-                <MessageContent selectedMessage={selectedMessage} onlineStatus={false} userName={selectedUserMessage} messageList={SAMPLE_MESSAGE} />
+                <MessageContent selectedMessage={selectedMessage} onlineStatus={false} userName={selectedUserMessage} />
             </div>
         </div>
     );
