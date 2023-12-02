@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MessageContent } from "./content";
 import messageNew from '../../../assets/images/writing.png';
 import { MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH } from '../../../constants/size.global';
+import { SAMPLE_MESSAGE } from '../../../constants/datas.sample';
 
 export const MessageView = () => {
     const [selectedMessage, setSelectedMessage] = useState(-1);
@@ -82,7 +83,7 @@ export const MessageView = () => {
 
             {/* Message Content */}
             <div style={{ width: '72vw' }}>
-                <MessageContent selectedMessage={selectedMessage} onlineStatus={false} userName={selectedUserMessage}/>
+                <MessageContent selectedMessage={selectedMessage} onlineStatus={false} userName={selectedUserMessage} messageList={SAMPLE_MESSAGE} />
             </div>
         </div>
     );

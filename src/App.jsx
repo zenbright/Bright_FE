@@ -3,7 +3,7 @@ import './App.css'
 // import { MessageView } from './components/screen/message/messageView'
 // import { Message } from './components/screen/message/message'
 import { MessageView } from './components/screen/message/messageView'
-// import { MessageBlock } from './components/screen/message/messageBlock';
+// import { MessageBubble } from './components/screen/message/bubble';
 
 function App() {
   return (

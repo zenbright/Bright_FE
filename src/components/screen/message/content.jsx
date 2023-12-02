@@ -1,12 +1,51 @@
 import PropTypes from 'prop-types';
+import { useState } from "react";
+
 import messageBubbleIcon from '../../../assets/images/speech-bubble.png';
 import phoneIcon from '../../../assets/images/phone-solid.svg';
 import rmitIcon from '../../../assets/images/rmitlogo.png';
 import videoCallIcon from '../../../assets/images/video-solid.svg';
 import informationIcon from '../../../assets/images/circle-info-solid.svg';
-import { MESSAGE_CONTENT_WIDTH } from '../../../constants/size.global';
+import plusIcon from '../../../assets/images/plus.png';
+import uploadImageIcon from '../../../assets/images/photo.png';
+import micIcon from '../../../assets/images/microphone.png'
+import sendIcon from '../../../assets/images/send.png'
 
-export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User 1' }) => {
+import smileIcon from '../../../assets/images/smile.png';
+
+import { MESSAGE_CONTENT_WIDTH } from '../../../constants/size.global';
+import { MessageBubble } from './bubble';
+import { Message } from "./message.class";
+import { MESSAGE_HEADER_HEIGHT } from '../../../constants/size.global';
+
+export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User 1', messageList }) => {
+    const [userMessageInput, setUserMessageInput] = useState('');
+    const [userMessage, setMessageList] = useState(messageList);
+
+    const onHandleSendMessage = () => {
+        if (userMessageInput.trim() !== '') {
+            const newMessage = new Message(userMessageInput, new Date(), 'Quoc Doan');
+            setMessageList((prevMessages) => [...prevMessages, newMessage]);
+            setUserMessageInput('');  // Reset input value after sending message
+        }
+    };
+
+    const MessageList = () => {
+        return (
+            <div
+                style={{display: 'flex', flexDirection: 'column' }}
+            >
+                {userMessage.map((message, index) => (
+                    <MessageBubble
+                        key={index}
+                        content={message.content}
+                        isUserMessage={message.isUserMessage}
+                    />
+                ))}
+            </div>
+        );
+    };
+
     if (typeof selectedMessage === 'number' && selectedMessage === -1) {
         return (
             <div className="h-screen flex flex-col items-center justify-center">
@@ -16,7 +55,8 @@ export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User
         );
     } else {
         return (
-            <div>
+            <div className='h-screen flex flex-col justify-between'>
+                {/* Header */}
                 <div style={{ width: `${MESSAGE_CONTENT_WIDTH}` }} className='flex items-center top-0 absolute border-b ml-4 h-20 align-baseline'>
                     <div className='relative w-12 h-12 rounded-full'>
                         <img src={rmitIcon} alt="user avatar" className='w-full h-full object-cover' />
@@ -44,6 +84,40 @@ export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User
                         </button>
                     </div>
                 </div>
+
+                {/* Message List */}
+                <div className='overflow-auto scrollbar-thin scrollbar-thumb-gray-200' style={{ marginTop: `${MESSAGE_HEADER_HEIGHT}` }}>
+                    <MessageList />
+                </div>
+
+                {/* Control Bar */}
+                <div className='flex items-center justify-start mb-2 mt-2 ml-4'>
+                    <button className='flex items-center'>
+                        <img src={plusIcon} className='w-5 h-5' />
+                    </button>
+                    <button className='flex items-center ml-4 mr-4'>
+                        <img src={uploadImageIcon} className='w-5 h-5' />
+                    </button>
+                    <button className='flex items-center mr-4'>
+                        <img src={smileIcon} className='w-5 h-5' />
+                    </button>
+                    <button className='flex items-center'>
+                        <img src={micIcon} className='w-5 h-5' />
+                    </button>
+
+                    <input
+                        type="text"
+                        placeholder="Aa..."
+                        value={userMessageInput}
+                        onChange={(e) => setUserMessageInput(e.target.value)}
+                        className="bg-gray-200 h-9 rounded-lg py-2 px-4 outline-none w-4/5 ml-4"
+                    />
+
+                    <button className='flex items-center ml-6' onClick={onHandleSendMessage}>
+                        <img src={sendIcon} className='w-5 h-5' />
+                    </button>
+                </div>
+
             </div>
         );
     }
@@ -53,4 +127,5 @@ MessageContent.propTypes = {
     selectedMessage: PropTypes.number,
     onlineStatus: PropTypes.bool,
     userName: PropTypes.string,
+    messageList: PropTypes.array,
 };
