@@ -6,5 +6,6 @@ function App() {
   return (
     <MessageView />
   );
+}
 
 export default App
