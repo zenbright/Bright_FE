@@ -50,7 +50,7 @@ export const MessageContent = ({ selectedMessage, onlineStatus, userName = 'User
         if (userMessageInput.trim() !== '') {
             const newMessage = new Message(userMessageInput, new Date(), 'Quoc Doan');
             setMessageList((prevMessages) => [...prevMessages, newMessage]);
-            setUserMessageInput('');  // Reset input value after sending message
+            setUserMessageInput('');
         }
     };
 

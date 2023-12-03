@@ -22,7 +22,7 @@ export const MessageBubble = ({ content = 'hello', isUserMessage = false }) => {
                 setRightClicked(true);
                 setPoints({
                     x: (e.screenX + 200) >= window.innerWidth ? window.innerWidth - 150 : e.pageX,
-                    y: e.pageY,
+                    y: (e.screenY + 200) >= window.innerHeight ? window.innerHeight - 200 : e.pageY,
                 });
             }}
         >
