@@ -9,5 +9,10 @@ export default {
   theme: {
     extend: {},
   },
+  variants: {
+    width: ["responsive", "hover", "focus"],
+    height: ["responsive", "hover", "focus"],
+    left: ["responsive", "hover", "focus"],
+},
   plugins: [scrollbarPlugin],
 }

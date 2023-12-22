@@ -1,10 +1,8 @@
-
 import './App.css'
-import { MessageView } from './components/screen/message/messageView'
-
+import Sidebar from './components/screen/sidebar/Sidebar'
 function App() {
   return (
-    <MessageView />
+    <Sidebar></Sidebar>
   );
 }
 
