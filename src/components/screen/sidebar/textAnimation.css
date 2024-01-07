@@ -1,0 +1,30 @@
+.expand-in {
+    animation: expandInAnimation 0.4s ease-out;
+    transform-origin: 0 0;
+}
+
+@keyframes expandInAnimation {
+    from {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-in-out;
+}

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MessageContent } from "./messageContent";
 import messageNew from '../../../assets/images/writing.png';
 import { MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH } from '../../../constants/size.global';
+import Sidebar from "../sidebar/sidebar";
 
 export const MessageView = () => {
     const [selectedMessage, setSelectedMessage] = useState(-1);
