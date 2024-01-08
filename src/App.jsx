@@ -4,7 +4,7 @@ import { MessageView } from './components/screen/message/messageView'
 
 function App() {
   return (
-    <MessageView />
+    <MessageView/>
   );
 }
 
