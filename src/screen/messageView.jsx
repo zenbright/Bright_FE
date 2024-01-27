@@ -1,7 +1,7 @@
-import { MessagePreview } from "./messagePreview";
+import { MessagePreview } from "../components/message/messagePreview";
 import image from '../../../assets/images/rmitlogo.png';
 import { useState } from "react";
-import { MessageContent } from "./messageContent";
+import { MessageContent } from "../components/message/messageContent";
 import messageNew from '../../../assets/images/writing.png';
 import { MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH } from '../../../constants/size.global';
 
