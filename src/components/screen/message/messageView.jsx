@@ -58,6 +58,9 @@ export const MessageView = () => {
     return (
         <div className="flex h-screen w-screen">
             {/* Nav bar */}
+            <div className="z-50 absolute">
+                <Sidebar></Sidebar>
+            </div>
             <div className="h-screen bg-black" style={{ width: `${NAV_BAR_WIDTH}` }} />
 
             {/* Message section */}

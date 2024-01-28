@@ -1,3 +1,16 @@
 .dropdown:hover .dropdown-content .grandchild-content{
 	display: block;
 }
+
+.filteredBar:hover .filterdIcon{
+	fill: white;
+}
+
+.listItem:hover .listIcon{
+	fill: white;
+	color: white;
+}
+
+.nav-pl {
+	padding-left: calc(3vw - 22px);
+}
