@@ -1,4 +1,8 @@
 
+# Bright
+
+Bright is an all-in-one project manangement tool.
+
 ## Run Locally
 
 Clone the project
@@ -24,4 +28,16 @@ Start the server
 ```bash
   pnpm start
 ```
+
+
+## Tech Stack
+
+**Client:** React, Redux, TailwindCSS
+
+**Server:** Node, Express
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at huuquoc7603@gmail.com
 
