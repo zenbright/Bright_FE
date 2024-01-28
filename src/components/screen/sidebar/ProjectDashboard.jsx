@@ -28,7 +28,6 @@ function ProjectDashboard() {
     const [searchProject, setSearchProject] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [setShowRefreshButton] = useState(false);
     const [showAllCategories, setShowAllCategories] = useState({});
 
     const groupedProjects = projects.reduce((acc, project) => {
@@ -55,12 +54,6 @@ function ProjectDashboard() {
         setSelectedProject(null);
         setSearchProject("")
         setSelectedCategory("All")
-    };
-
-    const handleRefreshClick = () => {
-        setSearchProject("");
-        setSelectedCategory("All");
-        setShowRefreshButton(false);
     };
 
     const handleShowMoreClick = (category) => {
@@ -100,13 +93,7 @@ function ProjectDashboard() {
                     </div>
                     {Object.keys(filteredProjects).length === 0 && (
                         <div className="flex place-content-center top-50 flex-col items-center">
-                            <NotFound className="w-20 h-20 m-5 fill-slate-700 opacity-70"></NotFound>
-                            <button
-                                onClick={handleRefreshClick}
-                                className="text-base mt-auto bg-blue-600 p-2 rounded-lg w-[60%] text-white cursor-pointer hover:bg-blue-700 focus:ring"
-                            >
-                                Refresh
-                            </button>
+                            <NotFound className="w-20 h-20 m-5 fill-slate-700 opacity-20"></NotFound>
                         </div>
 
                     )}
