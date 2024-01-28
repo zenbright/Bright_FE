@@ -30,6 +30,28 @@ Start the server
 ```
 
 
+## Commits
+
+New feature
+
+```bash
+  feat!: <message> (Breaking change)
+  feat: <message>
+```
+
+
+Fix bugs
+
+```bash
+  fix!: <message> (Breaking change)
+  fix: <message>
+```
+Others
+
+```bash
+  refactor!: <message> (Breaking change)
+  refactor: <message>
+```
 ## Tech Stack
 
 **Client:** React, Redux, TailwindCSS
