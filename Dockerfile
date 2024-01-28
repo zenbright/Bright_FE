@@ -10,6 +10,7 @@ COPY vite.config.js /bright/frontend/
 COPY tailwind.config.js /bright/frontend/
 COPY package.json /bright/frontend/
 COPY index.html /bright/frontend/
+COPY postcss.config.js /bright/frontend/
 
 # Install dependancies
 RUN npm i -g pnpm
