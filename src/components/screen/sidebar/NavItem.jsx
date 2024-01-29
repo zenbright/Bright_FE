@@ -5,7 +5,8 @@ function NavItem({ text, children }) {
         <div id={text} className='dropdown flex w-full items-center nav-pl 
         transition-all relative h-10 cursor-pointer rounded-md group/item'
         >
-            <div tabIndex="0" className="p-3 transition-all group-hover:w-[95%] h-full flex items-center gap-0 group-hover:gap-3 group-hover/item:bg-blue-600 rounded-md group is-hovered focus:bg-blue-600 focus:fill-white focus/item:text-white duration-0">
+            <div tabIndex="0" className="p-3 transition-all group-hover:w-[95%] h-full flex items-center group-hover:gap-3
+            group-hover/item:bg-blue-600 rounded-md group is-hovered focus:bg-blue-600 focus:fill-white focus/item:text-white duration-0">
 
                 <div className='dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-white '>
                     {children}

@@ -1,5 +1,5 @@
 import './App.css'
-import { MessageView } from './components/screen/message/messageView'
+import { MessageView } from './screen/messageView'
 
 function App() {
   return (
