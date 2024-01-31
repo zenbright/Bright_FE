@@ -1,16 +1,11 @@
+import {StatisticCard} from './components/dashboard/card.stats';
 
-import './App.css'
-import SignUp from './components/screen/SignUp/SignUp';
-import { MessageView } from './components/screen/message/messageView'
-import Loginpage from './components/screen/Login/Loginpage';
-import Board from './components/screen/whiteBoard/whiteBoard';
-
+import React from 'react';
 
 function App() {
   return (
-    //<Board/>
-    //<Loginpage/>
-    <SignUp/>
+    <StatisticCard />
   );
 }
+
 export default App;

@@ -14,6 +14,7 @@ export const MessageBubble = ({ content = 'hello', isUserMessage = false }) => {
     if (isDeleted) {
         return;
     }
+    
     return (
         <span
             style={{ maxWidth: '300px', wordBreak: 'break-all', overflow: 'hidden', display: 'inline-block', alignSelf: !isUserMessage ? 'flex-start' : 'flex-end' }} className={`mx-4 my-4 p-3 rounded-lg ${bgColor} text-white`}
