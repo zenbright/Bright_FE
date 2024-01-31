@@ -1,59 +1,23 @@
 import React from "react";
 import ButtonText from "../../general/buttonText";
 import { useState } from "react";
-
-
+import Header from "../Header";
+import SignUpCom from "./SignUpCom";
 
 const SignUp = () => {
+    const [fname, setFname] = useState("");
+    const [lname, setLname] = useState("");
+    const [date, setDate] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
+    const [cpassword, setCPassword] = useState("");
+
 
     return (
         <body> 
             <div class="min-h-screen">
                 <header class=" bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-200">
-                    <nav class="h-14 flex justify-between items-center w-[92%] mx-auto">
-                        <div>
-                            <div class="w-20 font-medium text-sm cursor-pointer">
-                                <ButtonText title={"Bright F.E"}
-                                            shape="rounded"
-                                            width="80px"
-                                            height="28px"
-                                            textColor={"text-black"}
-                                ></ButtonText>
-                            </div> 
-                        </div>
-                        <div class="nav-links duration-500 md:static absolute  
-                                    md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  
-                                    w-full flex items-center px-5">
-                            <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
-                                <li>
-                                    <a class="hover:text-gray-500 font-medium text-sm " href="#">Products</a>
-                                </li>
-                                <li>
-                                    <a class="hover:text-gray-500 font-medium text-sm" href="#">Resource</a>
-                                </li>
-                                <li>
-                                    <a class="hover:text-gray-500 font-medium text-sm" href="#">Support</a>
-                                </li>
-                                <li>
-                                    <a class="hover:text-gray-500 font-medium text-sm" href="#">Pricing</a>
-                                </li>
-                                <li>
-                                    <a class="hover:text-gray-500 font-medium text-sm" href="#">Blog</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="flex items-center gap-6 font-medium text-sm">
-                            <ButtonText title={"Sign Up"}
-                                        shape="rounded"
-                                        width="56px"
-                                        height="28px"
-                                        textColor={"text-black"}
-                            ></ButtonText>
-                        </div>
-                    </nav>
+                    <Header/>
                 </header>
                 <div class=" flex items-center justify-center bg-white">
                     <div class='p-10 rounded-lg shadow-2xl bg-white max-w-lg w-7/12'>
@@ -62,77 +26,59 @@ const SignUp = () => {
                             <h4 class="text-sm text-black-400 text-center">Unlock Endless Possibilities: Create Your Account Today!</h4>
                         </div>
                         <div class="ml-2 mr-2">
-                            <div class="grid grid-cols-2 gap-4">
+                            <div class="grid grid-cols-2 gap-2">
                                 <div class="relative z-0 w-full group bg-white p-0.5">
-                                    <label  for="base-input" 
-                                            class="block text-xs mb-2 text-black-500 ">First Name</label>
-                                    <input 
-                                            type="text" 
-                                            id="base-input" 
-                                            class="block py-1 px-2 w-full text-sm text-gray-900 bg-transparent
-                                            rounded border border-gray-500 rounded-md
-                                            focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                                    <label  class="block text-xs mb-2 text-black-500 ">First Name</label>
+                                    <SignUpCom  type = 'text'
+                                                value = {fname}
+                                                placeholder=""
+                                                onChange={(e) => setFname(e.target.value)}/>
                                 </div> 
                                 <div class="relative z-0 w-full group bg-white p-0.5"> 
-                                    <label  for="base-input" 
-                                            class="block text-xs mb-2 text-black-500 ">Last Name</label>
-                                    <input 
-                                            type="text" 
-                                            id="base-input" 
-                                            class="block py-1 px-2 w-full text-sm text-gray-900 bg-transparent
-                                            rounded border border-gray-500 rounded-md
-                                            focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                                    <label  class="block text-xs mb-2 text-black-500 ">Last Name</label>
+                                    <SignUpCom  type = 'text'
+                                                value = {lname}
+                                                placeholder=""
+                                                onChange={(e) => setLname(e.target.value)}/>
                                 </div> 
-                                <div class="relative z-0 w-full mt-0 group bg-white p-0.5">
-                                    <label  for="base-input" 
-                                            class="block text-xs mb-2 text-black-500 ">Date of Birth</label>
-                                    <input 
-                                            type="date" 
-                                            id="base-input" 
-                                            class="block py-1 px-2 w-full text-sm text-gray-900 bg-transparent
-                                            rounded border border-gray-500 rounded-md
-                                            focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                                <div class="relative z-0 w-full group bg-white p-0.5">
+                                    <label  class="block text-xs mb-2 text-black-500 ">Date of Birth</label>
+                                    <SignUpCom  type = 'date'
+                                                value = {date}
+                                                placeholder=""
+                                                onChange={(e) => setDate(e.target.value)}/>
                                 </div> 
                             </div>
                             <div class="relative z-0 w-full mt-2 mb-2 group bg-white p-0.5">
-                                    <label  for="base-input" 
-                                            class="block text-xs mb-2 text-black-500 ">Email Address</label>
-                                    <input 
-                                            type="email" 
-                                            id="base-input" 
-                                            class="block py-1 px-2 w-full text-sm text-gray-900 bg-transparent
-                                            rounded border border-gray-500 rounded-md
-                                            focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                                    <label  class="block text-xs mb-2 text-black-500 ">Email Address</label>
+                                    <SignUpCom  type = 'email'
+                                                value = {email}
+                                                placeholder=""
+                                                onChange={(e) => setEmail(e.target.value)}/>
                             </div> 
                             <div class="relative z-0 w-full mt-2 mb-2 group bg-white p-0.5">
-                                    <label  for="base-input" 
-                                            class="block text-xs mb-2 text-black-500 ">Password</label>
-                                    <input 
-                                            type="password" 
-                                            id="base-input" 
-                                            class="block py-1 px-2 w-full text-sm text-gray-900 bg-transparent
-                                            rounded border border-gray-500 rounded-md
-                                            focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                                    <label class="block text-xs mb-2 text-black-500 ">Password</label>
+                                    <SignUpCom  type = 'password'
+                                                value = {password}
+                                                placeholder=""
+                                                onChange={(e) => setPassword(e.target.value)}/>
                             </div> 
                             <div class="relative z-0 w-full mt-2 mb-2 group bg-white p-0.5">
-                                    <label  for="base-input" 
-                                            class="block text-xs mb-2 text-black-500 ">Confirm your Password</label>
-                                    <input 
-                                            type="password" 
-                                            id="base-input" 
-                                            class="block py-1 px-2 w-full text-sm text-gray-900 bg-transparent
-                                            rounded border border-gray-500 rounded-md
-                                            focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                                    <label class="block text-xs mb-2 text-black-500 ">Confirm your Password</label>
+                                    <SignUpCom  type = 'password'
+                                                value = {cpassword}
+                                                placeholder=""
+                                                onChange={(e) => setCPassword(e.target.value)}/>
                             </div> 
                             <div class="flex items-start mb-4">
                                 <div class="flex items-center h-5">
-                                    <input  id="terms" 
+                                    <input  
                                             type="checkbox" 
                                             value="" 
                                             class="w-4 h-4 
                                                 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required/>
                                 </div>
-                                <label  for="terms" 
+                                <label  
                                         class="ms-2 text-sm font-medium text-black-500">I agree with the <a  href="#" 
                                         class="text-black-500 underline">terms and conditions</a>
                                 </label>

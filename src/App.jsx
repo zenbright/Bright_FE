@@ -9,6 +9,7 @@ import Board from './components/screen/whiteBoard/whiteBoard';
 function App() {
   return (
     //<Board/>
+    //<Loginpage/>
     <SignUp/>
   );
 }
