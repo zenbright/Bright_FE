@@ -1,10 +1,12 @@
-import {StatisticCard} from './components/dashboard/card.stats';
+import {Button} from '@/components/ui/button';
 
 import React from 'react';
 
 function App() {
   return (
-    <StatisticCard />
+    <div>
+      <Button>Click me</Button>
+    </div>
   );
 }
 
