@@ -6,7 +6,7 @@ export const StatisticCard = ({width = 250, height = 160}) => {
       className="rounded-lg border-2 border-gray-300 border-opacity-80 shadow-sm m-20"
       style={{width, height}}
     >
-      <h1> Hello </h1>
+      <h1> Hello moi nguoi</h1>
     </div>
   );
 };
