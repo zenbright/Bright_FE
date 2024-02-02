@@ -1,5 +1,6 @@
 import React from 'react'
-import ButtonText from '../general/buttonText'
+import ButtonText from './general/buttonText'
+import logo from "./Login/img/logo.svg"
 
 const Header = () => {
     return (
@@ -7,17 +8,18 @@ const Header = () => {
             <nav class="h-14 flex justify-between items-center w-[92%]  mx-auto">
                 <div>
                     <div class="w-20 font-medium text-sm cursor-pointer">
-                        <ButtonText title={"Bright F.E"}
+                        <ButtonText title={""}
                             shape="rounded"
-                            width="80px"
+                            width="160px"
                             height="28px"
                             textColor={"text-black"}
+                            leftIconPath={<img src={logo} alt="logo" className='rounded-md'/>}
                         ></ButtonText>
                     </div>
                 </div>
                 <div class="nav-links duration-500 md:static absolute  
-                                    md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  
-                                    w-full flex items-center px-5">
+                            md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  
+                            w-full flex items-center px-5">
                     <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
                         <li>
                             <a class="hover:text-gray-500 font-medium text-sm " href="#">Products</a>

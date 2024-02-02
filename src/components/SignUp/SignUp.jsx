@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonText from "../../general/buttonText";
+import ButtonText from "../general/buttonText";
 import { useState } from "react";
 import Header from "../Header";
 import SignUpCom from "./SignUpCom";
@@ -14,7 +14,7 @@ const SignUp = () => {
 
 
     return (
-        <body> 
+        <div> 
             <div class="min-h-screen">
                 <header class=" bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-200">
                     <Header/>
@@ -101,7 +101,7 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
-    </body>
+    </div>
     );
 };
   

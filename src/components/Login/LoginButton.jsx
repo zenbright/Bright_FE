@@ -1,15 +1,16 @@
 import React from 'react'
 
-const LoginButton = () => {
+function LoginButton ({onClick}) {
     return (
         <button type="button"
-                class=" w-full h-full rounded px-5 py-2.5 
+                onClick={onClick}
+                className=" w-full h-full rounded px-5 py-2.5 
                         text-black text-sm bg-white
                         hover:bg-gradient-to-br from-red-200 via-red-300 to-yellow-200
                         font-medium  
                         text-center inline-flex items-center">
             Login to your Account
-            <svg class="rtl:rotate-180 w-6 h-3.5 ml-10"
+            <svg className="rtl:rotate-180 w-6 h-3.5 ml-10"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

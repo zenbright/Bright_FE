@@ -12,15 +12,19 @@
   },
   "dependencies": {
     "@tldraw/tldraw": "^2.0.0-canary.3f453569f6f8",
+    "@types/jest": "^29.5.12",
+    "axios": "^1.6.7",
     "echarts": "^5.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.11.0"
+    "react-icons": "^4.11.0",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.0",
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
+    "@types/node": "^20.11.16",
+    "@types/react": "^18.2.51",
+    "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
