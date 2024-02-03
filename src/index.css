@@ -77,6 +77,11 @@
   }
 }
 
+
+.nunito {
+  font-family: nunito, sans-serif;
+}
+
 * {
   font-family: nunito;
 }
