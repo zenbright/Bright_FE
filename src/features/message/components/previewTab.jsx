@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const MessagePreview = (
+export const MessagePreviewTab = (
     {profileImage, userName, message, sentTime, isSelected, onClick},
 ) => {
   return (
@@ -33,7 +33,7 @@ export const MessagePreview = (
   );
 };
 
-MessagePreview.propTypes = {
+MessagePreviewTab.propTypes = {
   profileImage: PropTypes.string,
   isSelected: PropTypes.bool,
   userName: PropTypes.string,

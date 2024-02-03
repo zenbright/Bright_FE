@@ -6,7 +6,7 @@ import {MessageContent} from '../components/message/messageContent';
 import messageNew from '../../../assets/images/writing.png';
 import {MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH} from '../../../constants/size.global';
 
-export const MessageView = () => {
+export const MessagePage = () => {
   const [selectedMessage, setSelectedMessage] = useState(-1);
   const [selectedUserMessage, setSelectedUserMessage] = useState('');
   const [searchPhrase, setSearchPhrase] = useState('');
