@@ -5,7 +5,7 @@ import Divider from '../../../components/general/divider';
 import {MemberList} from './memList';
 import {CreationDate} from './dateCreation';
 import {Button} from '@/components/ui/button';
-import {ShieldMinus} from 'lucide-react';
+import {ShieldMinus, Star, Settings, CircleDot} from 'lucide-react';
 import ButtonGroup from './boardSelect';
 
 export const Page = () => {
@@ -14,9 +14,27 @@ export const Page = () => {
       <div>
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
-        <h1 className='text-5xl font-bold text-slate-700 mb-4 mt-6'>
-        Bright
-        </h1>
+        <div className=' flex justify-between items-center'>
+          <h1 className='text-5xl font-bold text-slate-700 mb-4 mt-6'>
+            Bright
+          </h1>
+
+          <div className='flex gap-4'>
+            <Button>
+              <Star className="mr-2 h-4 w-4" /> Star
+            </Button>
+
+            <Button variant="secondary">
+              <CircleDot className="mr-2 h-4 w-4" /> Issues
+            </Button>
+
+            <Button variant="secondary">
+              <Settings className="mr-2 h-4 w-4" /> Settings
+            </Button>
+          </div>
+
+        </div>
+
       </div>
 
       <div className='mb-4 flex items-center h-10 gap-4'>
