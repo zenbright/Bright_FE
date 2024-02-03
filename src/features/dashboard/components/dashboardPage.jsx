@@ -6,10 +6,11 @@ import {MemberList} from './memList';
 import {CreationDate} from './dateCreation';
 import {Button} from '@/components/ui/button';
 import {ShieldMinus} from 'lucide-react';
+import ButtonGroup from './boardSelect';
 
 export const Page = () => {
   return (
-    <div className='ml-10'>
+    <div className='p-10 w-full'>
       <div>
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
@@ -29,6 +30,7 @@ export const Page = () => {
       </div>
 
       <Divider height='0.75px'/>
+      <ButtonGroup />
     </div>
   );
 };
