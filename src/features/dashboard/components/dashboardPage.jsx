@@ -1,21 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProjectBreadCrumbs from './breadcrumbs';
-import HorizontalDivider from '../../../components/general/divider';
+import Divider from '../../../components/general/divider';
+import {MemberList} from './memList';
+import {CreationDate} from './dateCreation';
+import {Button} from '@/components/ui/button';
+import {ShieldMinus} from 'lucide-react';
 
 export const Page = () => {
   return (
-    <div>
-      <div className='ml-3'>
+    <div className='ml-10'>
+      <div>
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
-        <h1 className='text-2xl font-bold text-slate-700 mb-2' style={{fontFamily: 'nunito'}}
+        <h1 className='text-5xl font-bold text-slate-700 mb-4 mt-6' style={{fontFamily: 'nunito'}}
         >
         Bright
         </h1>
       </div>
 
-      <HorizontalDivider height='0.75px'/>
+      <div className='mb-4 flex items-center h-10 gap-4'>
+        <CreationDate />
+        <Divider
+          width='1.5px' height='100%' color='rgba(0,0,0,0.20'/>
+        <MemberList />
+        <Divider
+          width='1.5px' height='100%' color='rgba(0,0,0,0.1'/>
+        <Button className='text-rose-500 bg-white hover:bg-slate-200/75'><ShieldMinus className='mr-2'/> Private</Button>
+      </div>
+
+      <Divider height='0.75px'/>
     </div>
   );
 };

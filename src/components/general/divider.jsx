@@ -17,4 +17,4 @@ Divider.propTypes = {
   height: PropTypes.string,
 };
 
-export default HorizontalDivider;
+export default Divider;
