@@ -13,8 +13,7 @@ export const Page = () => {
       <div>
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
-        <h1 className='text-5xl font-bold text-slate-700 mb-4 mt-6' style={{fontFamily: 'nunito'}}
-        >
+        <h1 className='text-5xl font-bold text-slate-700 mb-4 mt-6'>
         Bright
         </h1>
       </div>
