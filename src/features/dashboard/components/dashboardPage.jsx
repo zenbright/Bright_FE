@@ -7,10 +7,22 @@ import {CreationDate} from './dateCreation';
 import {Button} from '@/components/ui/button';
 import {ShieldMinus, Heart, Settings, CircleDot} from 'lucide-react';
 import ButtonGroup from './boardSelect';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+
 
 export const Page = () => {
   return (
-    <div className='p-10 w-full'>
+    <div className='p-10 w-full bg-slate-50'>
       <div>
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
@@ -24,11 +36,11 @@ export const Page = () => {
               <Heart className="mr-2 h-4 w-4" /> Favorred
             </Button>
 
-            <Button variant="secondary">
+            <Button variant="outline">
               <CircleDot className="mr-2 h-4 w-4" /> Issues
             </Button>
 
-            <Button variant="secondary">
+            <Button variant='outline'>
               <Settings className="mr-2 h-4 w-4" /> Settings
             </Button>
           </div>
@@ -44,7 +56,24 @@ export const Page = () => {
         <MemberList />
         <Divider
           width='1.5px' height='100%' color='rgba(0,0,0,0.1'/>
-        <Button className='text-rose-500 bg-white hover:bg-slate-200/75'><ShieldMinus className='mr-2'/> Private</Button>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button className='text-rose-500 bg-white hover:bg-slate-200/75'><ShieldMinus className='mr-2'/> Private</Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Make Project Public ?</AlertDialogTitle>
+              <AlertDialogDescription>
+            This action will change the visibility settings of the project.Please note that this action expose your project. Proceed with caution.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction className='text-rose-600 hover:text-white'>Continue</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
       </div>
 
       <Divider height='0.75px'/>
