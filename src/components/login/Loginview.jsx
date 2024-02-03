@@ -28,14 +28,15 @@ const Loginview = () => {
                         <img src={logo} alt='logo' className='object-contain w-40' />
                     </div>
                     <div className='relative z-20 mt-auto'>
-                        <div className='my-40 text-xl'>Welcome to Bright – where seamless project management meets intuitive task handling, 
-                            making your journey towards efficient collaboration and stunning results a delightful experience!</div>
+                        <div className='my-40'>
+                            <h1 style={{fontFamily: 'nunito', fontSize: 20}} >Welcome to Bright – where seamless project management meets intuitive task handling, 
+                            making your journey towards efficient collaboration and stunning results a delightful experience!</h1></div>
                         <blockquote className="space-y-2">
-                            <p className="text-xl">
+                            <p className="text-xl" style={{fontFamily: 'nunito', fontSize: 20}}>
                                 &ldquo;Revolutionizing Project Management: 
                                 Empowering Efficient Task Handling and Delivering Exceptional Designs with Ease.&rdquo;
                             </p>
-                            <footer className="text-lg">Elon Doan</footer>
+                            <footer className="text-lg" style={{fontFamily: 'nunito', fontSize: 15}}>Elon Doan</footer>
                         </blockquote>
                     </div>
                 </div>

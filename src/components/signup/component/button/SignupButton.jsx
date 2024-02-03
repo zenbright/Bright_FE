@@ -15,11 +15,11 @@ function SignupButton({onClick}) {
             // Assuming login is an asynchronous function
             await login(email, password, fname, lname, date);
             console.log("success");
-          } catch (error) {
+        } catch (error) {
             console.error("failed", error);
-          } finally {
+        } finally {
             setIsLoading(false);
-          }
+        }
       };
     return (
         <form onSubmit={onSubmit}> 

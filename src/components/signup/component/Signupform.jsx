@@ -9,17 +9,17 @@ import { useState } from 'react'
 import { DatePickerDemo } from './Date'
 
 function Signupform() {
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
+    const [account, setFname] = useState("");
+    const [fullname, setLname] = useState("");
     const [date, setDate] = useState("");
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
     const [cpassword, setCPassword] = useState("");
     
     const handleSignUp = async (e) => {
         e.preventDefault();
         try{
-            const post = await login(email, password, fname, lname, date);
+            const post = await login(account, password, fullname , email, date);
             console.log("success",post);
         }
         catch(error){
@@ -31,12 +31,12 @@ function Signupform() {
         <div className='flex flex-col space-y-2 text-center' >
             <div className='flex flex-cols-2 gap-2'>
                 <InputComponent type="text"
-                                value = {fname}
+                                value = {account}
                                 placeholder = {"First Name"}
                                 onChange = {(e) => setFname(e.target.value)}
                 />
                 <InputComponent type="text"
-                                value = {lname}
+                                value = {fullname}
                                 placeholder = {"Last Name"}
                                 onChange = {(e) => setLname(e.target.value)}
                 />    
