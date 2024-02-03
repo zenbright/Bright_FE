@@ -5,7 +5,7 @@ import Divider from '../../../components/general/divider';
 import {MemberList} from './memList';
 import {CreationDate} from './dateCreation';
 import {Button} from '@/components/ui/button';
-import {ShieldMinus, Star, Settings, CircleDot} from 'lucide-react';
+import {ShieldMinus, Heart, Settings, CircleDot} from 'lucide-react';
 import ButtonGroup from './boardSelect';
 
 export const Page = () => {
@@ -20,8 +20,8 @@ export const Page = () => {
           </h1>
 
           <div className='flex gap-4'>
-            <Button>
-              <Star className="mr-2 h-4 w-4" /> Star
+            <Button className='bg-rose-500'>
+              <Heart className="mr-2 h-4 w-4" /> Favorred
             </Button>
 
             <Button variant="secondary">
