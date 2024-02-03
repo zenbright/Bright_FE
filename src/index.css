@@ -1,7 +1,7 @@
+@import "fonts.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -75,7 +75,8 @@
   }
 }
 
-/* Define custom fonts */
+
+/* Define custom fonts
 @font-face {
   font-family: "nunito"; 
   src: url("../assets/fonts/nunito/Nunito.ttf") format("truetype");
@@ -95,3 +96,4 @@
   font-family: "nunitosans-italic"; 
   src: url("../assets/fonts/nunitosans/NunitoSans-Italic.ttf") format("truetype");
 }
+ */
