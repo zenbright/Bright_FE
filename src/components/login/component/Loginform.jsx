@@ -6,6 +6,7 @@ import GoogleButton from '../button/googleButton'
 import FacebookButton from '../button/FacebookButton'
 import login from './service'
 import { useState } from 'react'
+import { Checkbox } from "../../ui/checkbox"
 
 
 function Loginform() {
@@ -40,6 +41,17 @@ function Loginform() {
                     <LoginButton onClick={handleLogin}/>
                 </div>
             </form>
+            <div className="flex items-center justify-between space-x-2">
+                <div className="flex items-start">
+                    <div class="flex items-center h-5">
+                        <input id="remember"  type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required=""/>
+                    </div>
+                    <div class="ml-2 text-sm ">
+                        <label for="remember" class="text-gray-700 font-medium dark:text-gray-300">Remember me</label>
+                    </div>
+                </div>
+                <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
+            </div>
             <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />

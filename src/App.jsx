@@ -6,8 +6,8 @@ import Signupview from './components/signup/Signup';
 import SignupButton from './components/signup/component/button/SignupButton';
 function App() {
   return (
-    //<Loginview />
-    <Signupview />
+    <Loginview />
+    //<Signupview />
     //<SignupButton />
   );
 }
