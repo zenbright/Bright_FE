@@ -6,6 +6,7 @@ import GoogleButton from './button/googleButton'
 import FacebookButton from './button/FacebookButton'
 import login from './service'
 import { useState } from 'react'
+import { DatePickerDemo } from './Date'
 
 function Signupform() {
     const [fname, setFname] = useState("");
@@ -40,11 +41,7 @@ function Signupform() {
                                 onChange = {(e) => setLname(e.target.value)}
                 />    
             </div>
-                <InputComponent type="text"
-                                value = {date}
-                                placeholder = {"Date of Birth"}
-                                onChange = {(e) => setDate(e.target.value)}
-                />
+                <DatePickerDemo />
                 <InputComponent type="email"
                                 value = {email}
                                 placeholder = {"Email Address"}
