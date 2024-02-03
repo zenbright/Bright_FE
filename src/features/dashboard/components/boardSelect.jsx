@@ -19,10 +19,9 @@ const ButtonGroup = ({tableNames = sampleTableNames}) => {
           key={index}
           className={
             `text-left overflow-hidden text-ellipsis whitespace-nowrap transition-all duration-75 font-semibold
-            ${selectedButton === index ? 'text-blue-700 border-b-2 border-blue-700' : ''}`
+            ${selectedButton === index ? 'text-blue-700 border-blue-700' : ''}`
           }
-          style={{maxWidth: '20rem'}}
-
+          style={{maxWidth: '20rem', boxSizing: 'content-box', boxShadow: selectedButton === index ? '0 1px 0 blue' : 'none'}}
 
           onClick={() => handleButtonClick(index)}
         >
