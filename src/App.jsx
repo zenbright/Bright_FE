@@ -1,11 +1,11 @@
 import React from 'react';
 
-import DashboardPage from './features/dashboard';
+import ProjectManagementPage from './features/project';
 
 function App() {
   return (
     <div>
-      <DashboardPage />
+      <ProjectManagementPage />
     </div>
   );
 }

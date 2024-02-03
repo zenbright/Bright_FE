@@ -5,7 +5,7 @@ import {Button} from '@/components/ui/button';
 
 const sampleTableNames = ['Production', 'Development', 'Jan', 'Test'];
 
-const ButtonGroup = ({tableNames = sampleTableNames}) => {
+const BoardTabGroup = ({tableNames = sampleTableNames}) => {
   const [selectedButton, setSelectedButton] = useState(null);
 
   const handleButtonClick = (buttonIndex) => {
@@ -36,9 +36,9 @@ const ButtonGroup = ({tableNames = sampleTableNames}) => {
   );
 };
 
-ButtonGroup.propTypes = {
+BoardTabGroup.propTypes = {
   tableNames: PropTypes.arrayOf(PropTypes.string),
 
 };
 
-export default ButtonGroup;
+export default BoardTabGroup;

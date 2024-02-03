@@ -6,7 +6,7 @@ import {MemberList} from './memList';
 import {CreationDate} from './dateCreation';
 import {Button} from '@/components/ui/button';
 import {ShieldMinus, Heart, Settings, CircleDot} from 'lucide-react';
-import ButtonGroup from './boardSelect';
+import BoardTabGroup from './boardSelect';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,7 +19,6 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 
-
 export const Page = () => {
   return (
     <div className='p-10 w-full bg-slate-50'>
@@ -27,7 +26,7 @@ export const Page = () => {
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
         <div className=' flex justify-between items-center'>
-          <h1 className='text-5xl font-bold text-slate-700 mb-4 mt-6'>
+          <h1 className='text-5xl font-bold text-slate-700 mb-6 mt-7'>
             Bright
           </h1>
 
@@ -77,7 +76,7 @@ export const Page = () => {
       </div>
 
       <Divider height='0.75px'/>
-      <ButtonGroup />
+      <BoardTabGroup />
     </div>
   );
 };
