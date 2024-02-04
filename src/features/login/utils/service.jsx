@@ -1,12 +1,11 @@
-import axios from 'axios';
+import {axiosPost} from '@';
 
 const login = async (account, password) => {
   try {
-    const response = await axios.post('http://13.54.70.178:4000/bright-backend/api/auth/bright/login',
-        {account, password});
+    const response = await axiosPost('bright-backend/api/auth/bright/login', {account, password});
     return response.data;
   } catch (error) {
-    throw error.response.data;
+    console.error(error);
   };
 };
 

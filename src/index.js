@@ -1,3 +1,3 @@
-import {AXIOS_POST} from './config/service/axios';
+import {axiosPost} from './config/service/axios';
 
-export default AXIOS_POST;
+export default axiosPost;
