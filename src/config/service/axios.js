@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BE_ROUTE = 'http://13.54.70.178:4000/';
+const BE_ROUTE = 'http://13.54.70.178:4000/bright-backend/';
 
 export const axiosPost = async (endpoint = '', body = {}) => {
   const apiRoute = BE_ROUTE + endpoint;

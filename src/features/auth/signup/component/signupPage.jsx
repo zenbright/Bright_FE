@@ -1,7 +1,7 @@
 import React from 'react';
 import {AuthBackground} from '../..';
 import Signupform from './signupForm';
-import logo from '@/assets/images/app-logo/light.svg';
+import logo from '@/assets/images/app-logo/logomini-light.svg';
 import {Button} from '../../../../components/ui/button';
 
 
@@ -29,11 +29,12 @@ const SignupPage = () => {
 
           </div>
           <div className='relative z-20 mt-auto'>
-            <div className='my-40'>
-              <h1 style={{fontFamily: 'nunito', fontSize: 20}} >Welcome to Bright – where seamless project management meets intuitive task handling,
-                            making your journey towards efficient collaboration and stunning results a delightful experience!</h1></div>
+            <div className='mb-10'>
+              <h1 className='text-4xl font-bold' style={{fontFamily: 'nunito'}}>BRIGHT</h1>
+              <h1 style={{fontFamily: 'nunito', fontSize: 20}} >Where seamless project management meets intuitive task handling</h1>
+            </div>
             <blockquote className="space-y-2">
-              <p className="text-xl" style={{fontFamily: 'nunito', fontSize: 20}}>
+              <p className="text-xl" style={{fontFamily: 'nunito', fontSize: 20, fontStyle: 'italic'}}>
                                 &ldquo;Revolutionizing Project Management:
                                 Empowering Efficient Task Handling and Delivering Exceptional Designs with Ease.&rdquo;
               </p>

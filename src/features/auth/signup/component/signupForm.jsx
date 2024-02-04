@@ -1,7 +1,7 @@
 import React from 'react';
 import SignupButton from './SignupButton';
 import {FacebookButton, GithubButton, GoogleButton, InputComponent} from '../..';
-import login from '../utils/service';
+import signup from '../utils/service';
 import {useState} from 'react';
 import {DatePickerDemo} from './date';
 
@@ -16,7 +16,7 @@ function Signupform() {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const post = await login(account, password, fullname, email, date);
+      const post = await signup(account, password, fullname, email, date);
       console.log('success', post);
     } catch (error) {
       console.error('failed', error);

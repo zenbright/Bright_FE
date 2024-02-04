@@ -1,8 +1,8 @@
-import axios from 'axios';
+import {axiosPost} from '@/config/service/axios.js';
 
-const login = async (account, password, fname, email, dateOfBirth) => {
+const signup = async (account, password, fname, email, dateOfBirth) => {
   try {
-    const response = await axios.post('http://13.54.70.178:4000/bright-backend/api/auth/bright/signup',
+    const response = await axiosPost('api/auth/bright/signup',
         {account, password, fname, email, dateOfBirth});
     return response.data;
   } catch (error) {
@@ -10,4 +10,4 @@ const login = async (account, password, fname, email, dateOfBirth) => {
   };
 };
 
-export default login;
+export default signup;
