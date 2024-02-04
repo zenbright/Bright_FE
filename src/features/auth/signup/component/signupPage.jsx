@@ -1,13 +1,13 @@
 import React from 'react';
-import bgimg from '../img/bgimg.png';
+import {AuthBackground} from '../..';
 import Signupform from './signupForm';
-import logo from '../img/logomini-vang.svg';
-import {Button} from '../../../components/ui/button';
+import logo from '@/assets/images/app-logo/light.svg';
+import {Button} from '../../../../components/ui/button';
 
 
-const Signupview = () => {
+const SignupPage = () => {
   const divStyle = {
-    backgroundImage: `url(${bgimg})`,
+    backgroundImage: `url(${AuthBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
   };
@@ -76,4 +76,4 @@ const Signupview = () => {
   );
 };
 
-export default Signupview;
+export default SignupPage;

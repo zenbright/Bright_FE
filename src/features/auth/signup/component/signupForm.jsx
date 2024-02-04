@@ -1,7 +1,6 @@
 import React from 'react';
-import InputComponent from './InputComponent';
 import SignupButton from './SignupButton';
-import {FacebookButton, GithubButton, GoogleButton} from '../..';
+import {FacebookButton, GithubButton, GoogleButton, InputComponent} from '../..';
 import login from '../utils/service';
 import {useState} from 'react';
 import {DatePickerDemo} from './date';

@@ -1,4 +1,4 @@
-import {axiosPost} from '@';
+import {axiosPost} from '@/config/service/axios.js';
 
 const login = async (account, password) => {
   try {

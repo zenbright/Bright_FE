@@ -1,8 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
-import InputComponent from './InputComponent';
 import LoginButton from './LoginButton';
-import {GithubButton, FacebookButton, GoogleButton} from '../../';
+import {GithubButton, FacebookButton, GoogleButton, InputComponent} from '../../';
 import login from '../utils/service';
 import {useState} from 'react';
 

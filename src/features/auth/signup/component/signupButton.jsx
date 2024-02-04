@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from '../../../components/ui/button';
+import {Button} from '../../../../components/ui/button';
 import {useState} from 'react';
 import {Brush} from 'lucide-react';
 import PropTypes from 'prop-types';

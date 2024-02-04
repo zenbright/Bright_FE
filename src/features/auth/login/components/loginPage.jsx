@@ -1,12 +1,12 @@
 import React from 'react';
-import bgimg from '../..';
+import {AuthBackground} from '../..';
 import Loginform from './Loginform';
 import logo from '@/assets/images/app-logo/light.svg';
 import {Button} from '../../../../components/ui/button';
 
 const LoginPage = () => {
   const divStyle = {
-    backgroundImage: `url(${bgimg})`,
+    backgroundImage: `url(${AuthBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     /* Additional styles can be added here */

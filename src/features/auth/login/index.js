@@ -1,3 +1,3 @@
 import LoginPage from './components/loginPage';
 
-export {LoginPage};
+export default LoginPage;

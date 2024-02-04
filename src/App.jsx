@@ -1,9 +1,9 @@
 import React from 'react';
-import SignUpPage from './features/signup';
+import {SignupPage} from './features/auth';
 
 function App() {
   return (
-    <SignUpPage />
+    <SignupPage />
   );
 }
 
