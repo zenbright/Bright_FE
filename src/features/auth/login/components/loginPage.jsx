@@ -1,8 +1,8 @@
 import React from 'react';
-import bgimg from '../img/bgimg.png';
+import bgimg from '../..';
 import Loginform from './Loginform';
-import logo from '../img/logomini-vang.svg';
-import {Button} from '../../../components/ui/button';
+import logo from '@/assets/images/app-logo/light.svg';
+import {Button} from '../../../../components/ui/button';
 
 const LoginPage = () => {
   const divStyle = {
