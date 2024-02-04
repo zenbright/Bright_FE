@@ -29,7 +29,6 @@ Start the server
   pnpm start
 ```
 
-
 ## Commits
 
 New feature
@@ -39,27 +38,26 @@ New feature
   feat: <message>
 ```
 
-
 Fix bugs
 
 ```bash
   fix!: <message> (Breaking change)
   fix: <message>
 ```
+
 Others
 
 ```bash
   refactor!: <message> (Breaking change)
   refactor: <message>
 ```
+
 ## Tech Stack
 
 **Client:** React, Redux, TailwindCSS
 
 **Server:** Node, Express
 
-
 ## Feedback
 
-If you have any feedback, please reach out to us at huuquoc7603@gmail.com
-
+If you have any feedback, please reach out to us at <huuquoc7603@gmail.com>
