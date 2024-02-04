@@ -1,9 +1,9 @@
 import React from 'react'
 import InputComponent from './InputComponent'
-import SignupButton from './button/SignupButton'
-import GithubButton from './button/GitHubButton'
-import GoogleButton from './button/googleButton'
-import FacebookButton from './button/FacebookButton'
+import SignupButton from './SignupButton'
+import GithubButton from './GitHubButton'
+import GoogleButton from './googleButton'
+import FacebookButton from './FacebookButton'
 import login from './service'
 import { useState } from 'react'
 import { DatePickerDemo } from './Date'
@@ -15,7 +15,7 @@ function Signupform() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
     const [cpassword, setCPassword] = useState("");
-    
+
     const handleSignUp = async (e) => {
         e.preventDefault();
         try{
@@ -39,7 +39,7 @@ function Signupform() {
                                 value = {fullname}
                                 placeholder = {"Last Name"}
                                 onChange = {(e) => setLname(e.target.value)}
-                />    
+                />
             </div>
                 <DatePickerDemo />
                 <InputComponent type="email"
