@@ -2,9 +2,7 @@
 import React from 'react';
 import InputComponent from './InputComponent';
 import LoginButton from './LoginButton';
-import GithubButton from './GitHubButton';
-import GoogleButton from './googleButton';
-import FacebookButton from './FacebookButton';
+import {GithubButton, FacebookButton, GoogleButton} from '../../';
 import login from '../utils/service';
 import {useState} from 'react';
 
