@@ -1,8 +1,8 @@
 import React from 'react';
 import bgimg from '../img/bgimg.png';
-import Signupform from './component/Signupform';
+import Signupform from './signupForm';
 import logo from '../img/logomini-vang.svg';
-import {Button} from '../../components/ui/button';
+import {Button} from '../../../components/ui/button';
 
 
 const Signupview = () => {
@@ -10,7 +10,6 @@ const Signupview = () => {
     backgroundImage: `url(${bgimg})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    /* Additional styles can be added here */
   };
 
   return (
