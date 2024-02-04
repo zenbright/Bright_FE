@@ -1,3 +1,4 @@
 import {axiosPost} from './config/service/axios';
+import {setCookie, getCookie} from './config/service/cookie';
 
-export default axiosPost;
+export {axiosPost, setCookie, getCookie};
