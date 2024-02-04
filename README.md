@@ -20,7 +20,7 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  npm i -g pnpm && pnpm i
+  npm i -g pnpm && pnpm i && pnpm i prop-types
 ```
 
 Start the server
