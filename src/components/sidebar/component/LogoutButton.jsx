@@ -9,9 +9,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+} from '@/components/ui/alert-dialog';
 
-function LogoutButton({ text, children }) {
+function LogoutButton({text, children}) {
   return (
     <div id={text} className='dropdown flex w-full items-center nav-pl
         transition-all relative h-10 cursor-pointer rounded-md group/item'
@@ -33,7 +33,10 @@ function LogoutButton({ text, children }) {
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you want to logout?</AlertDialogTitle>
+            <AlertDialogTitle className='text-red-500'>You are about to signout</AlertDialogTitle>
+            <AlertDialogDescription>
+            This action cannot be undone and will require you to login again.
+            </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
