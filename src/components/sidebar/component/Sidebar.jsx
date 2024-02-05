@@ -21,7 +21,7 @@ function Sidebar() {
       <div className="relative group w-[6vw] hover:w-[18vw] group-hover:w-[18vw] transition-all duration-300 bg-white border-r-2 pt-2 h-screen flex flex-col items-center over">
         {/* User Information */}
         <UserImageName text={'Username'} image={userImage} />
-        <div className="line mt-2 mb-3 p-[0.5px] w-[0vw] bg-slate-400 overflow-hidden group-hover:w-[16vw] duration-300"></div>
+        <div className="line mt-2 mb-3 p-[0.5px] w-[0vw] opacity-0 group-hover:opacity-100 bg-slate-400 overflow-hidden group-hover:w-[16vw] duration-300"></div>
 
         {/* Navigation Content */}
         <div className="flex flex-col relative w-full h-screen space-y-4">
