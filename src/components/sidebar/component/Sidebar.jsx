@@ -5,6 +5,7 @@ import MessageIcon from '../assets/images/message.svg?react';
 import SettingIcon from '../assets/images/settings.svg?react';
 import AboutIcon from '../assets/images/about.svg?react';
 import LogoutIcon from '../assets/images/logout.svg?react';
+import userImage from '../../../assets/images/rmitlogo.png'
 
 import '../styles/font.css';
 import '../styles/sideBarEffect.css';
@@ -15,7 +16,6 @@ import ProjectDashboard from './ProjectDashboard.jsx';
 import LogoutButton from './LogoutButton.jsx';
 
 function Sidebar() {
-  const userImage = '../assets/images/rmitlogo.png';
   return (
     <div className="flex flex-row container-ns">
       <div className="relative group w-[6vw] hover:w-[18vw] group-hover:w-[18vw] transition-all duration-300 bg-white border-r-2 pt-2 h-screen flex flex-col items-center over">
@@ -56,7 +56,6 @@ function Sidebar() {
             <LogoutIcon className="w-5 h-5 hover:fill-white"/>
           </LogoutButton>
         </div>
-
       </div>
     </div>
   );
