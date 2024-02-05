@@ -13,8 +13,7 @@ import {
 
 function LogoutButton({ text, children }) {
   return (
-    <div id={text} data-modal-target="default-modal" data-modal-toggle="default-modal"
-      className='dropdown flex w-full items-center nav-pl
+    <div id={text} className='dropdown flex w-full items-center nav-pl
         transition-all relative h-10 cursor-pointer rounded-md group/item'
     >
       <AlertDialog>
@@ -31,7 +30,6 @@ function LogoutButton({ text, children }) {
                 '>
             {text}
           </div>
-
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
