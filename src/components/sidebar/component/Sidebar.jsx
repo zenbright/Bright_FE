@@ -6,8 +6,8 @@ import SettingIcon from '../assets/images/settings.svg?react';
 import AboutIcon from '../assets/images/about.svg?react';
 import LogoutIcon from '../assets/images/logout.svg?react';
 
-import '../assets/styles/font.css';
-import '../assets/styles/sideBarEffect.css';
+import '../styles/font.css';
+import '../styles/sideBarEffect.css';
 
 import NavItem from './NavItem.jsx';
 import UserImageName from './UserImageName.jsx';

@@ -1,11 +1,9 @@
 import React from 'react';
-import {LoginPage} from './features/auth';
-import MessagePage from './features/message';
-import Sidebar from './components/screen/sidebar'
+import Sidebar from '@/components/sidebar';
 
 function App() {
   return (
-    <Sidebar></Sidebar>
+    <Sidebar />
   );
 }
 
