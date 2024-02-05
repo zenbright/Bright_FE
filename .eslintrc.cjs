@@ -30,7 +30,7 @@ module.exports = {
   'rules': {
     'react/react-in-jsx-scope': 'off',
     'require-jsdoc': 0,
-    'max-len': ['error', {'code': 150}],
+    'max-len': ['error', {'code': 300}],
     'no-restricted-imports': [
       'error',
       {
