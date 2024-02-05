@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import scrollbarPlugin from 'tailwind-scrollbar';
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -73,5 +75,11 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), scrollbarPlugin],
+  extend: {},
+  variants: {
+    width: ["responsive", "hover", "focus"],
+    height: ["responsive", "hover", "focus"],
+    left: ["responsive", "hover", "focus"],
+  },
 }
