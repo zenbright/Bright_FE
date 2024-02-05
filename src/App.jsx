@@ -1,9 +1,11 @@
-import './App.css'
-import { MessageView } from './screen/messageView'
+import React from 'react';
+import {LoginPage} from './features/auth';
+import MessagePage from './features/message';
+import Sidebar from './components/screen/sidebar'
 
 function App() {
   return (
-    <MessageView />
+    <Sidebar></Sidebar>
   );
 }
 
