@@ -5,7 +5,7 @@ import MessageIcon from '../assets/images/message.svg?react';
 import SettingIcon from '../assets/images/settings.svg?react';
 import AboutIcon from '../assets/images/about.svg?react';
 import LogoutIcon from '../assets/images/logout.svg?react';
-import userImage from '../../../assets/images/rmitlogo.png'
+import userImage from '../../../assets/images/rmitlogo.png';
 
 import '../styles/font.css';
 import '../styles/sideBarEffect.css';
