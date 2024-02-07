@@ -10,7 +10,7 @@ export const KanbanBoard = () => {
   console.log(column);
 
   const createColumn = () => {
-    const newColumn = new Column('Hello');
+    const newColumn = new Column('TODO');
 
     setColumn([...column, newColumn]);
   };

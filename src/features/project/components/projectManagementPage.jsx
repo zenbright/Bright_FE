@@ -25,7 +25,7 @@ export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
 
   return (
-    <div className='p-10 w-full bg-slate-100/80'>
+    <div className='p-10 w-full bg-slate-200/70'>
       <div>
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
