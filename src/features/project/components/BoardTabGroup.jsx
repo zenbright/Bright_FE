@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Plus} from 'lucide-react';
 import {Button} from '@/components/ui/button';
+import {BoardTabContextMenu} from './ContextMenu';
 
 const sampleTableNames = ['Production', 'Development', 'Jan', 'Test'];
 
@@ -25,7 +26,7 @@ const BoardTabGroup = ({tableNames = sampleTableNames}) => {
 
           onClick={() => handleButtonClick(index)}
         >
-          {tableName}
+          <BoardTabContextMenu title={tableName} />
         </button>
       ))}
 
