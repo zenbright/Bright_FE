@@ -10,5 +10,5 @@ export const CreationDate = ({date = new Date()}) => {
 };
 
 CreationDate.propTypes = {
-  date: PropTypes.date,
+  date: PropTypes.instanceOf(Date),
 };

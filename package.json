@@ -24,7 +24,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.0",

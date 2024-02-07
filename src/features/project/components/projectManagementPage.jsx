@@ -19,6 +19,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import {useState} from 'react';
+import {KanbanBoard} from './KanbanBoard';
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
@@ -82,6 +83,7 @@ export const Page = () => {
 
       <Divider height='0.75px'/>
       <BoardTabGroup />
+      <KanbanBoard />
     </div>
   );
 };
