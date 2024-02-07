@@ -4,9 +4,6 @@ import {
   ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuSub,
@@ -23,16 +20,15 @@ export function BoardTabContextMenu({title}) {
       </ContextMenuTrigger>
       <ContextMenuContent className="w-64">
         <ContextMenuItem inset>
-          Back
+         Edit
           <ContextMenuShortcut>⌘[</ContextMenuShortcut>
         </ContextMenuItem>
-        <ContextMenuItem inset disabled>
-          Forward
-          <ContextMenuShortcut>⌘]</ContextMenuShortcut>
+        <ContextMenuItem inset>
+          Share
         </ContextMenuItem>
         <ContextMenuItem inset>
           Reload
-          <ContextMenuShortcut>⌘R</ContextMenuShortcut>
+          <ContextMenuShortcut>F5</ContextMenuShortcut>
         </ContextMenuItem>
         <ContextMenuSub>
           <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
@@ -41,27 +37,20 @@ export function BoardTabContextMenu({title}) {
               Save Page As...
               <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-            <ContextMenuItem>Name Window...</ContextMenuItem>
-            <ContextMenuSeparator />
-            <ContextMenuItem>Developer Tools</ContextMenuItem>
+            <ContextMenuItem>Duplicate</ContextMenuItem>
+            <ContextMenuItem>Add Member</ContextMenuItem>
           </ContextMenuSubContent>
         </ContextMenuSub>
         <ContextMenuSeparator />
         <ContextMenuCheckboxItem checked>
-          Show Bookmarks Bar
+          Make Default
           <ContextMenuShortcut>⌘⇧B</ContextMenuShortcut>
         </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+        <ContextMenuCheckboxItem>Change Visibility</ContextMenuCheckboxItem>
         <ContextMenuSeparator />
-        <ContextMenuRadioGroup value="pedro">
-          <ContextMenuLabel inset>People</ContextMenuLabel>
-          <ContextMenuSeparator />
-          <ContextMenuRadioItem value="pedro">
-            Pedro Duarte
-          </ContextMenuRadioItem>
-          <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
-        </ContextMenuRadioGroup>
+        <ContextMenuItem inset>
+          Delete
+        </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   );
