@@ -33,7 +33,7 @@ function LogoutButton({text, children}) {
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle className='text-red-500'>You are about to signout</AlertDialogTitle>
+            <AlertDialogTitle>You are about to signout</AlertDialogTitle>
             <AlertDialogDescription>
             This action cannot be undone and will require you to login again.
             </AlertDialogDescription>
