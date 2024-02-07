@@ -6,7 +6,7 @@ import {Button} from '@/components/ui/button';
 const sampleTableNames = ['Production', 'Development', 'Jan', 'Test'];
 
 const BoardTabGroup = ({tableNames = sampleTableNames}) => {
-  const [selectedButton, setSelectedButton] = useState(null);
+  const [selectedButton, setSelectedButton] = useState(0);
 
   const handleButtonClick = (buttonIndex) => {
     setSelectedButton(buttonIndex);

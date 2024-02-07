@@ -18,8 +18,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import {useState} from 'react';
 
 export const Page = () => {
+  const [isFavoured, setFavourite] = useState(false);
+
   return (
     <div className='p-10 w-full bg-slate-50'>
       <div>
@@ -31,7 +34,9 @@ export const Page = () => {
           </h1>
 
           <div className='flex gap-4'>
-            <Button className='bg-rose-500'>
+            <Button className={isFavoured ? 'bg-rose-500 hover:bg-red-700' : ''} onClick={() => {
+              setFavourite(!isFavoured);
+            }}>
               <Heart className="mr-2 h-4 w-4" /> Favorred
             </Button>
 
