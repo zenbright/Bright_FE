@@ -96,7 +96,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id}) => {
           <span>Support</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => {
+        <DropdownMenuItem onMouseDown={() => {
           deleteColumn(id);
         }}>
           <div className='hover:text-rose-500 flex w-56'>
