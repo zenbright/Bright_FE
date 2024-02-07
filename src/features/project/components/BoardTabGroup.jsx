@@ -13,7 +13,7 @@ const BoardTabGroup = ({tableNames = sampleTableNames}) => {
   };
 
   return (
-    <div className='flex gap-10 mt-3'>
+    <div className='flex gap-10 mt-2'>
       {tableNames.map((tableName, index) => (
         <button
           key={index}
@@ -29,8 +29,8 @@ const BoardTabGroup = ({tableNames = sampleTableNames}) => {
         </button>
       ))}
 
-      <Button variant="outline" size="icon">
-        <Plus className="h-4 w-4" />
+      <Button className='hover:bg-slate-300 hover:rounded-full rounded-full' variant="ghost" size="icon">
+        <Plus className="h-4 w-4 " />
       </Button>
     </div>
   );

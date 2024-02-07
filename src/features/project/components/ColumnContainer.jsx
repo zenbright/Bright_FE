@@ -8,7 +8,7 @@ export function ColumnContainer({col, deleteColumn}) {
   return (
     <div className='w-80 h-auto max-h-80 overflow-scroll no-scrollbar text-black rounded-md shadow-sm'>
       <Button className='bg-white text-black hover:bg-white w-72 flex justify-between'>
-        <div className='flex items-center'>
+        <div className='flex items-center font-bold'>
           <ListTodo className='mr-4 font-semibold'/> {col.title} ({20})
         </div>
         <div className='flex items-center'>

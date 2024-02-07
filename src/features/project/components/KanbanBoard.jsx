@@ -19,7 +19,7 @@ export const KanbanBoard = () => {
   };
 
   return (
-    <div className='mt-5'>
+    <div className='mt-4'>
       <div className={`flex ${column.length === 0 ? 'gap-0' : 'gap-3'}`}>
         <div className='flex gap-3'>
           {column.map((col, index) => (
