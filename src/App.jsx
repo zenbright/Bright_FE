@@ -1,9 +1,9 @@
 import React from 'react';
-import {LoginPage} from './features/auth';
+import Sidebar from '@/components/sidebar';
 
 function App() {
   return (
-    <LoginPage />
+    <Sidebar></Sidebar>
   );
 }
 

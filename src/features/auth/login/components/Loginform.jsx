@@ -4,6 +4,7 @@ import LoginButton from './LoginButton';
 import {GithubButton, FacebookButton, GoogleButton, InputComponent} from '../../';
 import login from '../utils/service';
 import {useState} from 'react';
+import {setCookie} from '@';
 
 function Loginform() {
   const [account, setEmail] = useState('');
@@ -12,8 +13,8 @@ function Loginform() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const post = await login(account, password);
-      console.log('success', post);
+      const response = await login(account, password);
+      setCookie('accessToken', response.accessToken, 30);
     } catch (error) {
       console.error('failed', error);
     }

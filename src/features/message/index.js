@@ -1,3 +1,3 @@
-import {MessageView} from './components/messagePage';
+import {MessagePage} from './components/messagePage';
 
-export default MessageView;
+export default MessagePage;
