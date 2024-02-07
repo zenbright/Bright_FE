@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProjectBreadCrumbs from './breadcrumbs';
+import ProjectBreadCrumbs from './ProjectBreadCrumbs';
 import Divider from '../../../components/general/divider';
-import {MemberList} from './memList';
-import {CreationDate} from './dateCreation';
+import {MemberList} from './MemberList';
+import {CreationDate} from './CreationDate';
 import {Button} from '@/components/ui/button';
 import {ShieldMinus, Heart, Settings, CircleDot} from 'lucide-react';
-import BoardTabGroup from './boardSelect';
+import BoardTabGroup from './BoardTabGroup';
 import {
   AlertDialog,
   AlertDialogAction,
