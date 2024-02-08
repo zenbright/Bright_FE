@@ -20,7 +20,7 @@ export const MemberList = ({members = sampleMembers}) => {
         {members.map((member, index) => (
           <img
             key={index}
-            className="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+            className="w-9 h-9 border-2 border-white rounded-full dark:border-gray-800"
             src={member.imageUrl}
             alt={member.name}
           />
@@ -28,13 +28,13 @@ export const MemberList = ({members = sampleMembers}) => {
 
         {shouldRenderLink && (
           <a
-            className="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800 z-10"
+            className="flex items-center justify-center w-9 h-9 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800 z-10"
             href="#"
           >+{5 - members.length}</a>
         )}
       </div>
 
-      <Button variant="outline">Add member</Button>
+      <Button className="h-9" variant="outline">Add member</Button>
     </div>
   );
 };

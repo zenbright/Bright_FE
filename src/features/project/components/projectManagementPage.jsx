@@ -25,7 +25,7 @@ export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
 
   return (
-    <div className='px-6 py-2 w-full bg-slate-200/70 h-dvh'>
+    <div className='px-6 py-2 w-full bg-slate-200/70 h-dvh '>
       <div>
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
@@ -82,7 +82,7 @@ export const Page = () => {
       </div>
 
       <Divider height='0.75px'/>
-      <div className='flex items-center mt-2'>
+      <div className='flex items-center mt-1'>
         <BoardTabGroup />
         <Button className='hover:bg-slate-300 hover:rounded-full rounded-full ml-4 mb-1' variant="ghost" size="icon">
           <Plus className="h-4 w-4" />
