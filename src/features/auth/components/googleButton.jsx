@@ -8,28 +8,6 @@ function GoogleButton() {
     window.open('http://127.0.0.1:4000/bright-backend/api/auth/google', '_self');
   };
 
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     fetch('http://127.0.0.1:4000/bright-backend/api/auth/success', {
-  //       method: 'GET',
-  //       credentials: 'include',
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json',
-  //         'Access-Control-Allow-Credentials': true,
-  //       },
-  //     })
-  //         .then((response) => {
-  //           if (response.status === 200) return response.json();
-  //           throw new Error('failed to authenticate user');
-  //         })
-  //         .then((data) => {
-  //           console.log(data);
-  //         });
-  //   };
-  //   getUser();
-  // }, []);
-
   return (
     <Button
       onClick={redirectGoogleOAuth}
