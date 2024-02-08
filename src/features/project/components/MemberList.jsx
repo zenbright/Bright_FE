@@ -1,13 +1,13 @@
 /* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-import cat from '../assets/cat.jpg';
+import userDefaultProfile from '@/assets/images/user-profile-default.svg';
 import {Button} from '@/components/ui/button';
 
 const sampleMembers = [
-  {name: 'John Doe', imageUrl: cat},
-  {name: 'Jane Smith', imageUrl: cat},
-  {name: 'Michael Johnson', imageUrl: cat},
+  {name: 'John Doe', imageUrl: userDefaultProfile},
+  {name: 'Jane Smith', imageUrl: userDefaultProfile},
+  {name: 'Michael Johnson', imageUrl: userDefaultProfile},
 ];
 
 export const MemberList = ({members = sampleMembers}) => {
