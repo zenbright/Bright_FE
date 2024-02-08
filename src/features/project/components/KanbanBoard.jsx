@@ -79,7 +79,7 @@ export const KanbanBoard = () => {
   };
 
   return (
-    <div className='mt-2'>
+    <div className='mt-2 overflow-auto scrollbar-thin'>
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd} sensors={sensors}>
         <div className={`flex ${column.length === 0 ? 'gap-0' : 'gap-3'}`}>
           <div className='flex gap-3'>
