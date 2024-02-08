@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Plus} from 'lucide-react';
 import {Button} from '@/components/ui/button';
-import {BoardTabContextMenu} from './ContextMenu';
+import {BoardTabContextMenu} from '../../features/project/components/ContextMenu';
 
 const sampleTableNames = ['Production', 'Development', 'Jan', 'Test'];
 
-const BoardTabGroup = ({tableNames = sampleTableNames}) => {
+const TabGroup = ({tableNames = sampleTableNames}) => {
   const [selectedButton, setSelectedButton] = useState(0);
 
   const handleButtonClick = (buttonIndex) => {
@@ -37,9 +37,9 @@ const BoardTabGroup = ({tableNames = sampleTableNames}) => {
   );
 };
 
-BoardTabGroup.propTypes = {
+TabGroup.propTypes = {
   tableNames: PropTypes.arrayOf(PropTypes.string),
 
 };
 
-export default BoardTabGroup;
+export default TabGroup;

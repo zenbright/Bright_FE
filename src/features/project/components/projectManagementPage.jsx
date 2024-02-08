@@ -6,7 +6,7 @@ import {MemberList} from './MemberList';
 import {CreationDate} from './CreationDate';
 import {Button} from '@/components/ui/button';
 import {ShieldMinus, Heart, Settings, CircleDot} from 'lucide-react';
-import BoardTabGroup from './BoardTabGroup';
+import BoardTabGroup from '@/components/general/TabGroup';
 import {
   AlertDialog,
   AlertDialogAction,

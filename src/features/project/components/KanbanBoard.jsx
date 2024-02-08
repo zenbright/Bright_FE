@@ -12,6 +12,7 @@ import {MouseSensor, TouchSensor} from '@dnd-kit/core';
 export const KanbanBoard = () => {
   const [column, setColumn] = useState([]);
   const [activeColumn, setActiveColumn] = useState(null);
+  const [taskCount, setTaskCount] = useState({});
 
   const columnId = useMemo(() => column.map((col) => col.id), [column]);
 
@@ -47,6 +48,14 @@ export const KanbanBoard = () => {
     }
   };
 
+  const updateTaskCount = (colId) => {
+    setTaskCount((prevTaskCount) => {
+      const newTaskCount = {...prevTaskCount};
+      newTaskCount[colId] = (newTaskCount[colId] || 0) + 1;
+      return newTaskCount;
+    });
+  };
+
   return (
     <div className='mt-4'>
       <DndContext onDragStart={handleDragStart} sensors={sensors}>
@@ -55,7 +64,7 @@ export const KanbanBoard = () => {
             <SortableContext items={columnId}>
               {column.map((col, index) => (
                 <div key={index}>
-                  <ColumnContainer col={col} deleteColumn={deleteColumn}/>
+                  <ColumnContainer taskCount={taskCount[col.id]} updateTaskCount={updateTaskCount} col={col} deleteColumn={deleteColumn}/>
                 </div>
               ))}
             </SortableContext>
@@ -68,7 +77,7 @@ export const KanbanBoard = () => {
         {createPortal(
             <DragOverlay>
               {activeColumn && (
-                <ColumnContainer col={activeColumn} deleteColumn={deleteColumn} />
+                <ColumnContainer taskCount={taskCount[activeColumn.id]} updateTaskCount={updateTaskCount} col={activeColumn} deleteColumn={deleteColumn} />
               )}
             </DragOverlay>,
             document.body,

@@ -5,11 +5,8 @@ import {Button} from '@/components/ui/button';
 import {ColumnDropdownMenu} from './DropDownMenu';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {useState} from 'react';
 
-export function ColumnContainer({col, deleteColumn}) {
-  const [taskCount, setTaskCount] = useState(0);
-
+export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCount}) {
   const {setNodeRef, attributes, transform, transition, listeners} = useSortable({
     id: col.id,
     data: {
@@ -36,7 +33,7 @@ export function ColumnContainer({col, deleteColumn}) {
           </div>
           <div className='flex items-center'>
             <Plus className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full' onClick={() => {
-              setTaskCount(taskCount + 1);
+              updateTaskCount(col.id);
             }}/>
             <ColumnDropdownMenu id={col.id} deleteColumn={deleteColumn}/>
           </div>
@@ -50,4 +47,6 @@ export function ColumnContainer({col, deleteColumn}) {
 ColumnContainer.propTypes = {
   col: PropTypes.instanceOf(Column),
   deleteColumn: PropTypes.func,
+  taskCount: PropTypes.number,
+  updateTaskCount: PropTypes.func,
 };
