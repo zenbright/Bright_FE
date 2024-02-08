@@ -6,7 +6,7 @@ const login = async (account, password) => {
     return response.payload;
   } catch (error) {
     console.error(error);
-  };
+  }
 };
 
 export default login;
