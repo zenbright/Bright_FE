@@ -4,7 +4,7 @@ import {useState} from 'react';
 import {Column} from '../utils/ColumnClass';
 import {ColumnContainer} from './ColumnContainer';
 import {DndContext, DragOverlay, useSensors, useSensor} from '@dnd-kit/core';
-import {SortableContext} from '@dnd-kit/sortable';
+import {SortableContext, arrayMove} from '@dnd-kit/sortable';
 import {useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import {MouseSensor, TouchSensor} from '@dnd-kit/core';
@@ -50,16 +50,22 @@ export const KanbanBoard = () => {
   const handleDragEnd = (event) => {
     const {active, over} = event;
 
-    if (!over || active.id === over.id) return;
+    if (!over) return;
 
-    setColumn((columns) => {
-      const updatedColumns = [...columns];
-      const activeIndex = updatedColumns.findIndex((col) => col.id === active.id);
-      const overIndex = updatedColumns.findIndex((col) => col.id === over.id);
+    const {id: activeColumnId} = active;
+    const {id: overColumnId} = over;
 
-      [updatedColumns[activeIndex], updatedColumns[overIndex]] = [updatedColumns[overIndex], updatedColumns[activeIndex]];
+    if (activeColumnId === overColumnId) return;
 
-      return updatedColumns;
+    setColumn((column) => {
+      const activeIndex = column.findIndex((col) => col.id === activeColumnId);
+      const overIndex = column.findIndex((col) => col.id === overColumnId);
+
+      // Check if both indexes are valid
+      if (activeIndex !== -1 && overIndex !== -1) {
+        return arrayMove(column, activeIndex, overIndex);
+      }
+      return column; // Return the original array if indexes are invalid
     });
   };
 
@@ -80,7 +86,7 @@ export const KanbanBoard = () => {
             <SortableContext items={columnId}>
               {column.map((col, index) => (
                 <div key={index}>
-                  <ColumnContainer taskCount={taskCount[col.id]} updateTaskCount={updateTaskCount} col={col} deleteColumn={deleteColumn}/>
+                  <ColumnContainer key={col.id} taskCount={taskCount[col.id]} updateTaskCount={updateTaskCount} col={col} deleteColumn={deleteColumn}/>
                 </div>
               ))}
             </SortableContext>
@@ -91,7 +97,7 @@ export const KanbanBoard = () => {
         </div>
 
         {createPortal(
-            <DragOverlay>
+            <DragOverlay >
               {activeColumn && (
                 <ColumnContainer taskCount={taskCount[activeColumn.id]} updateTaskCount={updateTaskCount} col={activeColumn} deleteColumn={deleteColumn} />
               )}
