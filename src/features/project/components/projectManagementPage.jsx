@@ -5,7 +5,7 @@ import Divider from '../../../components/general/divider';
 import {MemberList} from './MemberList';
 import {CreationDate} from './CreationDate';
 import {Button} from '@/components/ui/button';
-import {ShieldMinus, Heart, Settings, CircleDot} from 'lucide-react';
+import {ShieldMinus, Heart, Settings, CircleDot, Plus} from 'lucide-react';
 import BoardTabGroup from '@/components/general/TabGroup';
 import {
   AlertDialog,
@@ -82,7 +82,12 @@ export const Page = () => {
       </div>
 
       <Divider height='0.75px'/>
-      <BoardTabGroup />
+      <div className='flex items-center mt-2'>
+        <BoardTabGroup />
+        <Button className='hover:bg-slate-300 hover:rounded-full rounded-full ml-4 mb-1' variant="ghost" size="icon">
+          <Plus className="h-4 w-4" />
+        </Button>
+      </div>
       <KanbanBoard />
     </div>
   );

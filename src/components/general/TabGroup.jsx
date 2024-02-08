@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {Plus} from 'lucide-react';
-import {Button} from '@/components/ui/button';
 import {BoardTabContextMenu} from '../../features/project/components/ContextMenu';
 
 const sampleTableNames = ['Production', 'Development', 'Jan', 'Test'];
@@ -14,7 +12,7 @@ const TabGroup = ({tableNames = sampleTableNames}) => {
   };
 
   return (
-    <div className='flex gap-10 mt-2'>
+    <div className='flex gap-10'>
       {tableNames.map((tableName, index) => (
         <button
           key={index}
@@ -29,10 +27,6 @@ const TabGroup = ({tableNames = sampleTableNames}) => {
           <BoardTabContextMenu title={tableName} />
         </button>
       ))}
-
-      <Button className='hover:bg-slate-300 hover:rounded-full rounded-full' variant="ghost" size="icon">
-        <Plus className="h-4 w-4 " />
-      </Button>
     </div>
   );
 };
