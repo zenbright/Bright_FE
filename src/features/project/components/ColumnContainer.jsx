@@ -28,7 +28,9 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
         style={style}
       >
         <div {...attributes} {...listeners} >
-          <Button className='w-72 bg-transparent' />
+          <Button className='w-72 bg-transparent' >
+            <div className='flex items-center font-bold' />
+          </Button>
         </div>
 
         <div className='h-96 bg-transparent w-72 mt-3 rounded-md'>
