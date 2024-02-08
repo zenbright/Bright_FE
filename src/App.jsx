@@ -1,9 +1,10 @@
 import React from 'react';
 import Sidebar from '@/components/sidebar';
+import SettingPage from './features/setting';
 
 function App() {
   return (
-    <Sidebar></Sidebar>
+    <SettingPage></SettingPage>
   );
 }
 
