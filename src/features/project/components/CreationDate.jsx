@@ -4,7 +4,7 @@ import {formatDate} from '../utils/dateConverter';
 export const CreationDate = ({date = new Date()}) => {
   return (
     <span>
-    Created at: <span className='font-bold'>{formatDate(date)}</span>
+    Created at: <span className='font-semibold'>{formatDate(date)}</span>
     </span>
   );
 };
