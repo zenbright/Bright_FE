@@ -25,12 +25,12 @@ export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
 
   return (
-    <div className='px-6 py-2 w-full bg-slate-200/70'>
+    <div className='px-6 py-2 w-full bg-slate-200/70 h-dvh'>
       <div>
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
         <div className=' flex justify-between items-center'>
-          <h1 className='text-4xl font-bold text-slate-700 mb-3 mt-3'>
+          <h1 className='text-4xl font-bold text-slate-700 mb-5 mt-2'>
             Bright
           </h1>
 

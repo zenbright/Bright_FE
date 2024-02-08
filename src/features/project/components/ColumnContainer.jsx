@@ -7,7 +7,7 @@ import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 
 export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCount}) {
-  const {setNodeRef, attributes, transform, transition, listeners} = useSortable({
+  const {setNodeRef, attributes, transform, transition, listeners, isDragging} = useSortable({
     id: col.id,
     data: {
       type: 'Column',
@@ -20,10 +20,28 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
     transform: CSS.Transform.toString(transform),
   };
 
+  if (isDragging) {
+    return (
+      <div
+        ref={setNodeRef}
+        className='w-fit h-auto overflow-scroll no-scrollbar bg-gray-300/60 text-black rounded-md shadow-sm'
+        style={style}
+      >
+        <div {...attributes} {...listeners} >
+          <Button className='w-72 bg-transparent' />
+        </div>
+
+        <div className='h-96 bg-transparent w-72 mt-3 rounded-md'>
+
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       ref={setNodeRef}
-      className='w-80 h-auto max-h-80 overflow-scroll no-scrollbar text-black rounded-md shadow-sm'
+      className='w-fit h-auto overflow-scroll no-scrollbar text-black rounded-md shadow-sm'
       style={style}
     >
       <div {...attributes} {...listeners} >
@@ -40,6 +58,9 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
         </Button>
       </div>
 
+      <div className='h-96 bg-transparent w-72 mt-3 rounded-md'>
+
+      </div>
     </div>
   );
 }

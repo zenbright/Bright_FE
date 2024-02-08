@@ -57,7 +57,7 @@ export const KanbanBoard = () => {
   };
 
   return (
-    <div className='mt-4'>
+    <div className='mt-2'>
       <DndContext onDragStart={handleDragStart} sensors={sensors}>
         <div className={`flex ${column.length === 0 ? 'gap-0' : 'gap-3'}`}>
           <div className='flex gap-3'>
