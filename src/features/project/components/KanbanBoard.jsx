@@ -42,11 +42,27 @@ export const KanbanBoard = () => {
   };
 
   const handleDragStart = (event) => {
-    console.log('Start', event);
     if (event.active.data.current.type === 'Column') {
       setActiveColumn(event.active.data.current.col);
     }
   };
+
+  const handleDragEnd = (event) => {
+    const {active, over} = event;
+
+    if (!over || active.id === over.id) return;
+
+    setColumn((columns) => {
+      const updatedColumns = [...columns];
+      const activeIndex = updatedColumns.findIndex((col) => col.id === active.id);
+      const overIndex = updatedColumns.findIndex((col) => col.id === over.id);
+
+      [updatedColumns[activeIndex], updatedColumns[overIndex]] = [updatedColumns[overIndex], updatedColumns[activeIndex]];
+
+      return updatedColumns;
+    });
+  };
+
 
   const updateTaskCount = (colId) => {
     setTaskCount((prevTaskCount) => {
@@ -58,7 +74,7 @@ export const KanbanBoard = () => {
 
   return (
     <div className='mt-2'>
-      <DndContext onDragStart={handleDragStart} sensors={sensors}>
+      <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd} sensors={sensors}>
         <div className={`flex ${column.length === 0 ? 'gap-0' : 'gap-3'}`}>
           <div className='flex gap-3'>
             <SortableContext items={columnId}>
