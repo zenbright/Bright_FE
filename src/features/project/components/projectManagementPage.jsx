@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import {useState} from 'react';
 import {KanbanBoard} from './KanbanBoard';
+import {SYSTEM_ALERT} from '../../../config/constants/strings.global';
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
@@ -61,15 +62,16 @@ export const Page = () => {
         <MemberList />
         <Divider
           width='1.5px' height='100%' color='rgba(0,0,0,0.1'/>
+
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button className='text-rose-500 bg-white hover:bg-slate-200/75'><ShieldMinus className='mr-2'/> Private</Button>
+            <Button className='text-rose-500 bg-white hover:bg-slate-200/75'><ShieldMinus className='mr-2'/>Private</Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Make Project Public ?</AlertDialogTitle>
+              <AlertDialogTitle>{SYSTEM_ALERT.PRJ_ALT_ACC_TITLE}</AlertDialogTitle>
               <AlertDialogDescription>
-            This action will change the visibility settings of the project.Please note that this action expose your project. Proceed with caution.
+                {SYSTEM_ALERT.PRJ_ALT_ACC_DES}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
