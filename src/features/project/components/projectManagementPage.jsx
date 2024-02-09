@@ -26,8 +26,8 @@ export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
 
   return (
-    <div className='px-6 py-2 w-full bg-slate-200/70 h-dvh '>
-      <div>
+    <div className='px-2 py-1 w-full bg-slate-200/70 h-dvh '>
+      <div className='px-4'>
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
         <div className=' flex justify-between items-center'>
@@ -55,7 +55,7 @@ export const Page = () => {
 
       </div>
 
-      <div className='mb-4 flex items-center h-10 gap-4'>
+      <div className='mb-2 flex items-center h-10 gap-4 px-4'>
         <CreationDate />
         <Divider
           width='1.5px' height='100%' color='rgba(0,0,0,0.20'/>
@@ -65,7 +65,7 @@ export const Page = () => {
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button className='text-rose-500 bg-white hover:bg-slate-200/75'><ShieldMinus className='mr-2'/>Private</Button>
+            <Button className='text-rose-500 bg-white hover:bg-slate-200/75 h-8'><ShieldMinus className='mr-2'/>Private</Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
@@ -84,9 +84,9 @@ export const Page = () => {
       </div>
 
       <Divider height='0.75px'/>
-      <div className='flex items-center mt-1'>
+      <div className='flex items-center mt-1 px-4'>
         <BoardTabGroup />
-        <Button className='hover:bg-slate-300 hover:rounded-full rounded-full ml-4 mb-1' variant="ghost" size="icon">
+        <Button className='hover:bg-slate-300 hover:rounded-full rounded-full ml-4' variant="ghost" size="icon">
           <Plus className="h-4 w-4" />
         </Button>
       </div>

@@ -81,7 +81,7 @@ export const KanbanBoard = () => {
   return (
     <div className="mt-2 overflow-auto scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent scrollbar-thumb-rounded-lg">
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd} sensors={sensors}>
-        <div className={`flex ${column.length === 0 ? 'gap-0' : 'gap-3'} mb-6`}>
+        <div className={`flex ${column.length === 0 ? 'gap-0' : 'gap-3'} mb-3`}>
           <div className='flex gap-3'>
             <SortableContext items={columnId}>
               {column.map((col, index) => (

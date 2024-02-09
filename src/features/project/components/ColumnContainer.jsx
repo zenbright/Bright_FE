@@ -28,12 +28,12 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
         style={style}
       >
         <div {...attributes} {...listeners} >
-          <Button className='w-72 bg-transparent' >
+          <Button className='w-80 bg-transparent' >
             <div className='flex items-center font-bold' />
           </Button>
         </div>
 
-        <div className='h-96 bg-transparent w-72 mt-3 rounded-md'>
+        <div className='h-[62vh] bg-transparent w-80 mt-1 rounded-md'>
 
         </div>
       </div>
@@ -43,11 +43,11 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
   return (
     <div
       ref={setNodeRef}
-      className='w-fit h-auto overflow-scroll no-scrollbar text-black rounded-md shadow-sm'
+      className='w-fit h-auto overflow-scroll no-scrollbar text-black rounded-md'
       style={style}
     >
       <div {...attributes} {...listeners} >
-        <Button className='bg-white text-black hover:bg-white w-72 flex justify-between'>
+        <Button className='bg-white text-black hover:bg-white w-80 flex justify-between'>
           <div className='flex items-center font-bold'>
             <ListTodo className='mr-4 font-semibold'/> {col.title} ({taskCount})
           </div>
@@ -60,7 +60,7 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
         </Button>
       </div>
 
-      <div className='h-96 bg-transparent w-72 mt-3 rounded-md'>
+      <div className='h-[62vh] bg-white w-80 mt-1 rounded-md'>
 
       </div>
     </div>

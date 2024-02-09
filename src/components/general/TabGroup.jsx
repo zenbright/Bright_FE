@@ -12,7 +12,7 @@ const TabGroup = ({tableNames = sampleTableNames}) => {
   };
 
   return (
-    <div className='flex gap-10'>
+    <div className='flex gap-8'>
       {tableNames.map((tableName, index) => (
         <button
           key={index}
