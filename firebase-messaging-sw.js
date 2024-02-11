@@ -6,26 +6,29 @@ REFERENCE
 https://firebase.google.com/docs/cloud-messaging/js/send-multiple
 */
 
-// When a notification is received, the push event is called.
-self.addEventListener(
-  "push",
-  function (event) {
-    console.log("event: " + JSON.stringify(event));
-    
-    let messageTitle = "Bright";
-    let messageBody = "Check your notifications on the app!";
-
-    const notificationPromise = self.registration.showNotification(
-      messageTitle,
-      {
-        body: messageBody,
-      }
-    );
-
-    event.waitUntil(notificationPromise);
-  },
-  false
+importScripts("https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js");
+importScripts(
+  "https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"
 );
 
 
+firebase.initializeApp({
+  // TODO: info
+});
 
+// Get a reference to the messaging service
+const messaging = firebase.messaging();
+
+// Check if service worker is already initialized
+if (!firebase.apps.length) {
+  messaging.onBackgroundMessage((payload) => {
+    console.log("[firebase-messaging-sw.js] Received background message ", payload);
+
+    const notificationTitle = payload.notification.title;
+    const notificationOptions = {
+      body: payload.notification.body,
+    };
+
+    self.registration.showNotification(notificationTitle, notificationOptions);
+  });
+}
