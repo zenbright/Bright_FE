@@ -2,7 +2,7 @@ import {Button} from '@/components/ui/button';
 import {PlusCircle} from 'lucide-react';
 import {useState} from 'react';
 import {Column, Task} from '../utils/class';
-import {ColumnContainer} from './ColumnContainer';
+import {ColumnContainer} from './column/ColumnContainer';
 import {DndContext, DragOverlay, useSensors, useSensor} from '@dnd-kit/core';
 import {SortableContext, arrayMove} from '@dnd-kit/sortable';
 import {useMemo} from 'react';

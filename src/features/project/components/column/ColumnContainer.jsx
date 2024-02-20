@@ -1,10 +1,11 @@
-import {Column, Task} from '../utils/class';
+import {Column, Task} from '../../utils/class';
 import PropTypes from 'prop-types';
 import {ListTodo, Plus} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {ColumnDropdownMenu} from './DropDownMenu';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
+import {TaskContainer} from '../task/TaskContainer';
 
 export function ColumnContainer({col, deleteColumn, taskList, updateColumnTitle, createTask}) {
   const {setNodeRef, attributes, transform, transition, listeners, isDragging} = useSortable({
@@ -62,10 +63,10 @@ export function ColumnContainer({col, deleteColumn, taskList, updateColumnTitle,
         </Button>
       </div>
 
-      <div className='h-[62vh] bg-white w-80 mt-1 rounded-md'>
+      <div className='h-[62vh] w-80 mt-1 rounded-md'>
         {taskList && taskList.map((task) =>
-          <div key={task.id} className='text-black'>
-            {task.content}
+          <div key={task.id}>
+            <TaskContainer task={task} />
           </div>,
         )}
       </div>
