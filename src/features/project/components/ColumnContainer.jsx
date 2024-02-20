@@ -47,9 +47,11 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
       style={style}
     >
       <div {...attributes} {...listeners} >
-        <Button className='bg-white text-black hover:bg-white w-80 flex justify-between'>
+        <Button className='bg-white text-black hover:bg-white w-80 max-w-80 overflow-hidden flex justify-between'>
           <div className='flex items-center font-bold'>
-            <ListTodo className='mr-4 font-semibold'/> {col.title} ({taskCount})
+            <ListTodo className='mr-4 font-semibold'/>
+            <span className='truncate max-w-36 mr-1'>{col.title}</span>
+            ({taskCount})
           </div>
           <div className='flex items-center'>
             <Plus className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full' onClick={() => {
