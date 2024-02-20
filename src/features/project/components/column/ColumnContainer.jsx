@@ -44,7 +44,7 @@ export function ColumnContainer({col, deleteColumn, taskList, updateColumnTitle,
   return (
     <div
       ref={setNodeRef}
-      className='w-fit h-auto overflow-scroll no-scrollbar text-black rounded-md'
+      className='w-fit h-auto  text-black rounded-md'
       style={style}
     >
       <div {...attributes} {...listeners} >
@@ -63,7 +63,7 @@ export function ColumnContainer({col, deleteColumn, taskList, updateColumnTitle,
         </Button>
       </div>
 
-      <div className='h-[62vh] w-80 mt-1 rounded-md'>
+      <div className='h-[62vh] w-80 mt-1 rounded-md overflow-scroll no-scrollbar'>
         {taskList && taskList.map((task) =>
           <div key={task.id}>
             <TaskContainer task={task} />
