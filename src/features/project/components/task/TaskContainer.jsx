@@ -7,8 +7,28 @@ import {UserRoundPlus, MoreHorizontal, List, Paperclip, Calendar, Flag} from 'lu
 import {Button} from '@/components/ui/button';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
+import {useRef} from 'react';
+import {useLayoutEffect} from 'react';
+import {useState} from 'react';
+import {useEffect} from 'react';
 
 export const TaskContainer = ({task}) => {
+  const ref = useRef();
+  const [dimensions, setDimensions] = useState({width: 0, height: 0});
+
+  useLayoutEffect(() => {
+    if (ref.current) {
+      setDimensions({
+        width: ref.current.offsetWidth,
+        height: ref.current.offsetHeight,
+      });
+    }
+  }, [task]);
+
+  useEffect(() => {
+    console.log(dimensions.width, dimensions.height);
+  }, [dimensions]);
+
   const {setNodeRef, attributes, transform, transition, listeners, isDragging} = useSortable({
     id: task.id,
     data: {
@@ -26,8 +46,8 @@ export const TaskContainer = ({task}) => {
     return (
       <div
         ref={setNodeRef}
-        className='bg-white mb-1 py-1 px-4 rounded-md h-[22vh]'
-        style={style}
+        className='bg-white mb-1 py-1 px-4 rounded-md'
+        style={{...style, width: dimensions.width, height: dimensions.height}}
       >
         <div className='flex justify-between items-center'>
           <div className='flex'>
@@ -68,42 +88,50 @@ export const TaskContainer = ({task}) => {
     <div
       ref={setNodeRef}
       style={style}
-      className='bg-white mb-1 py-1 px-4 rounded-md h-[22vh]'
+      className='bg-white rounded-md'
       {...attributes}
       {...listeners}
     >
-      <div className='flex justify-between items-center'>
-        <div>
-          {task.tags && task.tags.map((tag) => (
-            <Badge key={tag.id} className={`${tag.bg} mr-2`}>{tag.title}</Badge>
-          ))}
+      <div ref={ref} className='mb-1 py-1 px-4 '>
+        <div className='flex justify-between items-center'>
+          <div>
+            {task.tags && task.tags.map((tag) => (
+              <Badge key={tag.id} className={`${tag.bg} mr-2`}>{tag.title}</Badge>
+            ))}
+          </div>
+
+          <Button variant="ghost"> <MoreHorizontal /></Button>
+
         </div>
 
-        <Button variant="ghost"> <MoreHorizontal /></Button>
-
-      </div>
-
-      <div className='text-xl font-semibold'>
-        {task.title}
-      </div>
-
-      <div className='flex justify-between items-center'>
-        <MemberList width={6} height={6}/>
-        <Button variant="ghost"> <UserRoundPlus className='w-5 h-5'/></Button>
-      </div>
-
-      <Divider
-        width='100%' height='1px' color='rgba(0,0,0,0.20'/>
-
-      <div className='flex items-center mt-3 justify-between'>
-        <div className='flex gap-4 text-sm'>
-          <div className='flex items-center gap-1'> <List className='w-4 h-5'/>3</div>
-          <div className='flex items-center gap-1'> <Paperclip className='w-4 h-5'/>2</div>
-          <div className='flex items-center gap-1'> <Calendar className='w-4 h-5'/>3 days</div>
+        <div className='text-xl font-semibold truncate max-w-52'>
+          {task.title}
         </div>
-        <Flag className='w-4 h-4' />
+
+        <div className='text-sm truncate max-w-60'>
+          {task.des}
+        </div>
+
+        <div className='flex justify-between items-center'>
+          <MemberList width={6} height={6}/>
+          <Button variant="ghost"> <UserRoundPlus className='w-5 h-5'/></Button>
+        </div>
+
+        <Divider
+          width='100%' height='1px' color='rgba(0,0,0,0.20'/>
+
+        <div className='flex items-center mt-1 justify-between'>
+          <div className='flex gap-4 text-sm'>
+            <div className='flex items-center gap-1'> <List className='w-4 h-5'/>3</div>
+            <div className='flex items-center gap-1'> <Paperclip className='w-4 h-5'/>2</div>
+            <div className='flex items-center gap-1'> <Calendar className='w-4 h-5'/>3 days</div>
+          </div>
+          <Button variant="ghost"> <Flag className='w-4 h-4'/></Button>
+        </div>
       </div>
     </div>
+
+
   );
 };
 

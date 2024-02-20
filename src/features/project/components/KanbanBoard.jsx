@@ -125,7 +125,7 @@ export const KanbanBoard = () => {
   };
 
   const createTask = (colId) => {
-    const newTask = new Task(colId, 'DashBoard', 'Lorem ipsum xyz 123');
+    const newTask = new Task(colId, 'Code DashBoard UI', 'Follow design on figma');
 
     setTaskList([...tasks, newTask]);
   };
