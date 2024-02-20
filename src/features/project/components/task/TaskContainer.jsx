@@ -133,10 +133,10 @@ export const TaskContainer = ({task}) => {
 
         {/* Helper Buttons */}
         <div className='flex items-center mt-1 justify-between'>
-          <div className='flex gap-4 text-sm'>
-            <div className='flex items-center gap-1'> <List className='w-4 h-5'/>3</div>
-            <div className='flex items-center gap-1'> <Paperclip className='w-4 h-5'/>2</div>
-            <div className='flex items-center gap-1'> <Calendar className='w-4 h-5'/>3 days</div>
+          <div className='flex gap-2 text-sm'>
+            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'> <List className='w-4 h-5'/>3</div>
+            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'> <Paperclip className='w-4 h-5'/>2</div>
+            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'> <Calendar className='w-4 h-5'/>3 days</div>
           </div>
 
           <Button variant="ghost"> <Flag className='w-4 h-4'/></Button>
