@@ -6,7 +6,7 @@ import {ColumnDropdownMenu} from './DropDownMenu';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 
-export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCount}) {
+export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCount, updateColumnTitle}) {
   const {setNodeRef, attributes, transform, transition, listeners, isDragging} = useSortable({
     id: col.id,
     data: {
@@ -55,7 +55,7 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
             <Plus className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full' onClick={() => {
               updateTaskCount(col.id);
             }}/>
-            <ColumnDropdownMenu id={col.id} deleteColumn={deleteColumn}/>
+            <ColumnDropdownMenu id={col.id} deleteColumn={deleteColumn} updateColumnTitle={updateColumnTitle}/>
           </div>
         </Button>
       </div>
@@ -72,4 +72,5 @@ ColumnContainer.propTypes = {
   deleteColumn: PropTypes.func,
   taskCount: PropTypes.number,
   updateTaskCount: PropTypes.func,
+  updateColumnTitle: PropTypes.func,
 };

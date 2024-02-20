@@ -29,7 +29,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 
-export const ColumnDropdownMenu = ({deleteColumn, id}) => {
+export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -87,9 +87,12 @@ export const ColumnDropdownMenu = ({deleteColumn, id}) => {
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => {
+          updateColumnTitle(id, 'Hello');
+          console.log('Hello');
+        }}>
           <Pencil className="mr-2 h-4 w-4" />
-          <span>Edit</span>
+          <span>Rename</span>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <LifeBuoy className="mr-2 h-4 w-4" />

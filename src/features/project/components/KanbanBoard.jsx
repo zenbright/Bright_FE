@@ -10,11 +10,11 @@ import {createPortal} from 'react-dom';
 import {MouseSensor, TouchSensor} from '@dnd-kit/core';
 
 export const KanbanBoard = () => {
-  const [column, setColumn] = useState([]);
+  const [columns, setColumn] = useState([]);
   const [activeColumn, setActiveColumn] = useState(null);
   const [taskCount, setTaskCount] = useState({});
 
-  const columnId = useMemo(() => column.map((col) => col.id), [column]);
+  const columnId = useMemo(() => columns.map((col) => col.id), [columns]);
 
   const sensors = useSensors(
       useSensor(MouseSensor, {
@@ -33,12 +33,24 @@ export const KanbanBoard = () => {
   const createColumn = () => {
     const newColumn = new Column('TODO');
 
-    setColumn([...column, newColumn]);
+    setColumn([...columns, newColumn]);
   };
 
   const deleteColumn = (id) => {
-    const filteredColumn = column.filter((col) => col.id !== id);
+    const filteredColumn = columns.filter((col) => col.id !== id);
     setColumn(filteredColumn);
+  };
+
+  const updateColumnTitle = (id, title) => {
+    const updatedColumn = columns.map((col) => {
+      if (col.id !== id) {
+        return col;
+      }
+      col.title = title;
+      return col;
+    });
+
+    setColumn(updatedColumn);
   };
 
   const handleDragStart = (event) => {
@@ -80,13 +92,24 @@ export const KanbanBoard = () => {
 
   return (
     <div className="mt-2 overflow-auto scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent scrollbar-thumb-rounded-lg">
-      <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd} sensors={sensors}>
-        <div className={`flex ${column.length === 0 ? 'gap-0 px-4' : 'gap-3'} mb-3`}>
+      <DndContext
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        sensors={sensors}
+      >
+        <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-3'} mb-3`}>
           <div className='flex gap-3'>
             <SortableContext items={columnId}>
-              {column.map((col, index) => (
+              {columns.map((col, index) => (
                 <div key={index}>
-                  <ColumnContainer key={col.id} taskCount={taskCount[col.id]} updateTaskCount={updateTaskCount} col={col} deleteColumn={deleteColumn}/>
+                  <ColumnContainer
+                    key={col.id}
+                    taskCount={taskCount[col.id]}
+                    updateTaskCount={updateTaskCount}
+                    col={col}
+                    deleteColumn={deleteColumn}
+                    updateColumnTitle={updateColumnTitle}
+                  />
                 </div>
               ))}
             </SortableContext>
@@ -99,7 +122,12 @@ export const KanbanBoard = () => {
         {createPortal(
             <DragOverlay >
               {activeColumn && (
-                <ColumnContainer taskCount={taskCount[activeColumn.id]} updateTaskCount={updateTaskCount} col={activeColumn} deleteColumn={deleteColumn} />
+                <ColumnContainer
+                  taskCount={taskCount[activeColumn.id]}
+                  updateTaskCount={updateTaskCount}
+                  col={activeColumn}
+                  deleteColumn={deleteColumn}
+                />
               )}
             </DragOverlay>,
             document.body,

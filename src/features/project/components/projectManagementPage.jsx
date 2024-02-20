@@ -39,7 +39,7 @@ export const Page = () => {
             <Button className={isFavoured ? 'bg-rose-500 hover:bg-red-700' : ''} onClick={() => {
               setFavourite(!isFavoured);
             }}>
-              <Heart className="mr-2 h-4 w-4" /> Favorred
+              <Heart className="mr-2 h-4 w-4" /> {isFavoured ? 'Favourred' : 'Favour'}
             </Button>
 
             <Button variant="outline">
