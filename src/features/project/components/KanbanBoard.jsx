@@ -3,29 +3,25 @@ import {PlusCircle} from 'lucide-react';
 import {useState} from 'react';
 import {Column, Task} from '../utils/class';
 import {ColumnContainer} from './column/ColumnContainer';
-import {DndContext, DragOverlay, useSensors, useSensor} from '@dnd-kit/core';
+import {DndContext, DragOverlay, useSensors, useSensor, PointerSensor} from '@dnd-kit/core';
 import {SortableContext, arrayMove} from '@dnd-kit/sortable';
 import {useMemo} from 'react';
 import {createPortal} from 'react-dom';
-import {MouseSensor, TouchSensor} from '@dnd-kit/core';
+import {TaskContainer} from './task/TaskContainer';
 
 export const KanbanBoard = () => {
   const [columns, setColumn] = useState([]);
   const [activeColumn, setActiveColumn] = useState(null);
-  const [tasks, setTaskList] = useState({});
+  const [activeTask, setActiveTask] = useState(null);
+
+  const [tasks, setTaskList] = useState([]);
 
   const columnId = useMemo(() => columns.map((col) => col.id), [columns]);
 
   const sensors = useSensors(
-      useSensor(MouseSensor, {
+      useSensor(PointerSensor, {
         activationConstraint: {
-          distance: 8,
-        },
-      }),
-      useSensor(TouchSensor, {
-        activationConstraint: {
-          delay: 200,
-          tolerance: 6,
+          distance: 3,
         },
       }),
   );
@@ -56,10 +52,19 @@ export const KanbanBoard = () => {
   const handleDragStart = (event) => {
     if (event.active.data.current.type === 'Column') {
       setActiveColumn(event.active.data.current.col);
+      console.log('column');
+    }
+
+    if (event.active.data.current.type === 'Task') {
+      setActiveTask(event.active.data.current.task);
+      console.log('task');
     }
   };
 
   const handleDragEnd = (event) => {
+    setActiveColumn(null);
+    setActiveTask(null);
+
     const {active, over} = event;
 
     if (!over) return;
@@ -81,16 +86,48 @@ export const KanbanBoard = () => {
     });
   };
 
+  const handleDragOver = (event) => {
+    const {active, over} = event;
+
+    if (!over) return;
+
+    const {id: activeTaskId} = active;
+    const {id: overTaskId} = over;
+
+    if (activeTaskId === overTaskId) return;
+
+    const isTaskActive = active.data.current.type === 'Task';
+    const isOverTask = over.data.current.type === 'Task';
+    const isOverColumn = over.data.current.type === 'Column';
+
+    if (!isTaskActive) return;
+
+    if (isTaskActive && isOverTask) {
+      setTaskList((tasks) => {
+        const activeIndex = tasks.findIndex((t) => t.id === activeTaskId);
+        const overIndex = tasks.findIndex((t) => t.id === overTaskId);
+
+        tasks[activeIndex]. columnId = tasks[overIndex].columnId;
+
+        return arrayMove(tasks, activeIndex, overIndex);
+      });
+    }
+
+    if (isTaskActive && isOverColumn) {
+      setTaskList((tasks) => {
+        const activeIndex = tasks.findIndex((t) => t.id === activeTaskId);
+
+        tasks[activeIndex]. columnId = overTaskId;
+
+        return arrayMove(tasks, activeIndex, activeIndex);
+      });
+    }
+  };
 
   const createTask = (colId) => {
-    setTaskList((prevTaskList) => {
-      const updatedTaskList = {...prevTaskList};
-      if (!updatedTaskList[colId]) {
-        updatedTaskList[colId] = [];
-      }
-      updatedTaskList[colId].push(new Task(colId, 'DashBoard', 'Lorem ipsum xyz 123'));
-      return updatedTaskList;
-    });
+    const newTask = new Task(colId, 'DashBoard', 'Lorem ipsum xyz 123');
+
+    setTaskList([...tasks, newTask]);
   };
 
   return (
@@ -98,6 +135,7 @@ export const KanbanBoard = () => {
       <DndContext
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
+        onDragOver={handleDragOver}
         sensors={sensors}
       >
         <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-3'} mb-3`}>
@@ -111,7 +149,7 @@ export const KanbanBoard = () => {
                     deleteColumn={deleteColumn}
                     updateColumnTitle={updateColumnTitle}
                     createTask={createTask}
-                    taskList={tasks[col.id]}
+                    taskList={tasks.filter((task) => task.columnId === col.id)}
                   />
                 </div>
               ))}
@@ -130,6 +168,9 @@ export const KanbanBoard = () => {
                   deleteColumn={deleteColumn}
                   taskList={tasks[activeColumn.id]}
                 />
+              )}
+              {activeTask && (
+                <TaskContainer task={activeTask}/>
               )}
             </DragOverlay>,
             document.body,
