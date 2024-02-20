@@ -1,4 +1,4 @@
-import {Column} from '../utils/ColumnClass';
+import {Column, Task} from '../utils/class';
 import PropTypes from 'prop-types';
 import {ListTodo, Plus} from 'lucide-react';
 import {Button} from '@/components/ui/button';
@@ -6,7 +6,7 @@ import {ColumnDropdownMenu} from './DropDownMenu';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 
-export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCount, updateColumnTitle}) {
+export function ColumnContainer({col, deleteColumn, taskList, updateColumnTitle, createTask}) {
   const {setNodeRef, attributes, transform, transition, listeners, isDragging} = useSortable({
     id: col.id,
     data: {
@@ -51,11 +51,11 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
           <div className='flex items-center font-bold'>
             <ListTodo className='mr-4 font-semibold'/>
             <span className='truncate max-w-36 mr-1'>{col.title}</span>
-            ({taskCount})
+            ({taskList ? taskList.length : 0})
           </div>
           <div className='flex items-center'>
             <Plus className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full' onClick={() => {
-              updateTaskCount(col.id);
+              createTask(col.id);
             }}/>
             <ColumnDropdownMenu id={col.id} deleteColumn={deleteColumn} updateColumnTitle={updateColumnTitle}/>
           </div>
@@ -63,7 +63,11 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
       </div>
 
       <div className='h-[62vh] bg-white w-80 mt-1 rounded-md'>
-
+        {taskList && taskList.map((task) =>
+          <div key={task.id} className='text-black'>
+            {task.content}
+          </div>,
+        )}
       </div>
     </div>
   );
@@ -72,7 +76,7 @@ export function ColumnContainer({col, deleteColumn, taskCount = 0, updateTaskCou
 ColumnContainer.propTypes = {
   col: PropTypes.instanceOf(Column),
   deleteColumn: PropTypes.func,
-  taskCount: PropTypes.number,
-  updateTaskCount: PropTypes.func,
+  taskList: PropTypes.arrayOf(PropTypes.instanceOf(Task)),
   updateColumnTitle: PropTypes.func,
+  createTask: PropTypes.func,
 };

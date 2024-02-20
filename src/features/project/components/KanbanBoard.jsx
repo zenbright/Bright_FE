@@ -1,7 +1,7 @@
 import {Button} from '@/components/ui/button';
 import {PlusCircle} from 'lucide-react';
 import {useState} from 'react';
-import {Column} from '../utils/ColumnClass';
+import {Column, Task} from '../utils/class';
 import {ColumnContainer} from './ColumnContainer';
 import {DndContext, DragOverlay, useSensors, useSensor} from '@dnd-kit/core';
 import {SortableContext, arrayMove} from '@dnd-kit/sortable';
@@ -12,7 +12,7 @@ import {MouseSensor, TouchSensor} from '@dnd-kit/core';
 export const KanbanBoard = () => {
   const [columns, setColumn] = useState([]);
   const [activeColumn, setActiveColumn] = useState(null);
-  const [taskCount, setTaskCount] = useState({});
+  const [tasks, setTaskList] = useState({});
 
   const columnId = useMemo(() => columns.map((col) => col.id), [columns]);
 
@@ -82,11 +82,14 @@ export const KanbanBoard = () => {
   };
 
 
-  const updateTaskCount = (colId) => {
-    setTaskCount((prevTaskCount) => {
-      const newTaskCount = {...prevTaskCount};
-      newTaskCount[colId] = (newTaskCount[colId] || 0) + 1;
-      return newTaskCount;
+  const createTask = (colId) => {
+    setTaskList((prevTaskList) => {
+      const updatedTaskList = {...prevTaskList};
+      if (!updatedTaskList[colId]) {
+        updatedTaskList[colId] = [];
+      }
+      updatedTaskList[colId].push(new Task(colId, 'Hello'));
+      return updatedTaskList;
     });
   };
 
@@ -104,11 +107,11 @@ export const KanbanBoard = () => {
                 <div key={index}>
                   <ColumnContainer
                     key={col.id}
-                    taskCount={taskCount[col.id]}
-                    updateTaskCount={updateTaskCount}
                     col={col}
                     deleteColumn={deleteColumn}
                     updateColumnTitle={updateColumnTitle}
+                    createTask={createTask}
+                    taskList={tasks[col.id]}
                   />
                 </div>
               ))}
@@ -123,10 +126,9 @@ export const KanbanBoard = () => {
             <DragOverlay >
               {activeColumn && (
                 <ColumnContainer
-                  taskCount={taskCount[activeColumn.id]}
-                  updateTaskCount={updateTaskCount}
                   col={activeColumn}
                   deleteColumn={deleteColumn}
+                  taskList={tasks[activeColumn.id]}
                 />
               )}
             </DragOverlay>,
