@@ -8,9 +8,12 @@ import {CSS} from '@dnd-kit/utilities';
 import {TaskContainer} from '../task/TaskContainer';
 import {useMemo} from 'react';
 
-export function ColumnContainer({col, deleteColumn, taskList = [], updateColumnTitle, createTask}) {
+export function ColumnContainer(
+    {col, deleteColumn, taskList = [], updateColumnTitle, createTask},
+) {
   const taskId = useMemo(() => taskList.map((task) => task.id), [taskList]);
 
+  // Drag n Drop handler
   const {setNodeRef, attributes, transform, transition, listeners, isDragging} = useSortable({
     id: col.id,
     data: {
@@ -24,6 +27,7 @@ export function ColumnContainer({col, deleteColumn, taskList = [], updateColumnT
     transform: CSS.Transform.toString(transform),
   };
 
+  // On drag placeholder
   if (isDragging) {
     return (
       <div
@@ -57,15 +61,25 @@ export function ColumnContainer({col, deleteColumn, taskList = [], updateColumnT
             <span className='truncate max-w-36 mr-1'>{col.title}</span>
             ({taskList ? taskList.length : 0})
           </div>
+
+          {/* Helper buttons */}
           <div className='flex items-center'>
-            <Plus className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full' onClick={() => {
-              createTask(col.id);
-            }}/>
-            <ColumnDropdownMenu id={col.id} deleteColumn={deleteColumn} updateColumnTitle={updateColumnTitle}/>
+            <Plus
+              className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full'
+              onClick={() => {
+                createTask(col.id);
+              }}
+            />
+            <ColumnDropdownMenu
+              id={col.id}
+              deleteColumn={deleteColumn}
+              updateColumnTitle={updateColumnTitle}
+            />
           </div>
         </Button>
       </div>
 
+      {/* Task Containers */}
       <div className='h-[62vh] w-80 mt-1 rounded-md overflow-scroll no-scrollbar'>
         <SortableContext items={taskId}>
           {taskList && taskList.map((task, index) =>

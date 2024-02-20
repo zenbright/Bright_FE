@@ -13,11 +13,11 @@ export const KanbanBoard = () => {
   const [columns, setColumn] = useState([]);
   const [activeColumn, setActiveColumn] = useState(null);
   const [activeTask, setActiveTask] = useState(null);
-
   const [tasks, setTaskList] = useState([]);
 
   const columnId = useMemo(() => columns.map((col) => col.id), [columns]);
 
+  // Only trigger drag event on desired distance
   const sensors = useSensors(
       useSensor(PointerSensor, {
         activationConstraint: {
@@ -26,9 +26,9 @@ export const KanbanBoard = () => {
       }),
   );
 
+  // Columns
   const createColumn = () => {
     const newColumn = new Column('TODO');
-
     setColumn([...columns, newColumn]);
   };
 
@@ -49,17 +49,21 @@ export const KanbanBoard = () => {
     setColumn(updatedColumn);
   };
 
+  // Event Handlers
   const handleDragStart = (event) => {
+    // On move column
     if (event.active.data.current.type === 'Column') {
       setActiveColumn(event.active.data.current.col);
     }
 
+    // On move task
     if (event.active.data.current.type === 'Task') {
       setActiveTask(event.active.data.current.task);
     }
   };
 
   const handleDragEnd = (event) => {
+    // Reset states
     setActiveTask(null);
     setActiveColumn(null);
 
@@ -115,9 +119,9 @@ export const KanbanBoard = () => {
     });
   };
 
+  // Tasks
   const createTask = (colId) => {
     const newTask = new Task(colId, 'Code DashBoard UI', 'Follow design on figma');
-
     setTaskList([...tasks, newTask]);
   };
 

@@ -8,11 +8,15 @@ const ProjectBreadCrumbs = ({projectType = 'Software', projectOwner = 'MUDOKER'}
       <button className="text-slate-500/80 hover:text-gray-500 focus:outline-none">
         PROJECTS
       </button>
+
       <ChevronRight className="w-5 h-5" />
+
       <button className="text-slate-500/80 hover:text-gray-500 focus:outline-none">
         {projectType}
       </button>
+
       <ChevronRight className="w-5 h-5" />
+
       <button className="text-slate-500/80 hover:text-gray-500 focus:outline-none">
         {projectOwner}
       </button>

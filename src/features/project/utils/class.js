@@ -13,7 +13,7 @@ export class Task {
     this.columnId = columnId;
     this.title = title;
     this.des = des;
-    this.tags = [new TaskTag(this.id, 'Medium'), new TaskTag(this.id, 'Late')];
+    this.tags = [new TaskTag(this.id, 'In progress'), new TaskTag(this.id, 'Pending')];
   }
 }
 
@@ -28,6 +28,8 @@ export class TaskTag {
       'High': 'bg-rose-500',
       'Low': 'bg-green-500',
       'Late': 'bg-rose-500',
+      'Urgent': 'bg-violet-700',
+      'In progress': 'bg-orange-400',
     };
 
     this.bg = tagColors[title] || 'bg-gray-500';

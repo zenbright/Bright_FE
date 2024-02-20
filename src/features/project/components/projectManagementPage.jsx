@@ -28,8 +28,10 @@ export const Page = () => {
   return (
     <div className='px-2 py-1 w-full bg-slate-200/70 h-dvh '>
       <div className='px-4'>
+        {/* Project Headers */}
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
 
+        {/* Title + Util Buttons */}
         <div className=' flex justify-between items-center'>
           <h1 className='text-4xl font-bold text-slate-700 mb-2 mt-2'>
             Bright
@@ -50,11 +52,10 @@ export const Page = () => {
               <Settings className="mr-2 h-4 w-4" /> Settings
             </Button>
           </div>
-
         </div>
-
       </div>
 
+      {/* Creation Date + Member List + Privacy */}
       <div className='mb-2 flex items-center h-10 gap-4 px-4'>
         <CreationDate />
         <Divider
@@ -85,16 +86,19 @@ export const Page = () => {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-
       </div>
 
       <Divider height='0.75px'/>
+
+      {/* Board Tab */}
       <div className='flex items-center mt-1 px-4'>
         <BoardTabGroup />
         <Button className='hover:bg-slate-300 hover:rounded-full rounded-full ml-4' variant="ghost" size="icon">
           <Plus className="h-4 w-4" />
         </Button>
       </div>
+
+      {/* Task Management Board */}
       <KanbanBoard />
     </div>
   );
