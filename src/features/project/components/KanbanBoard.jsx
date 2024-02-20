@@ -52,18 +52,16 @@ export const KanbanBoard = () => {
   const handleDragStart = (event) => {
     if (event.active.data.current.type === 'Column') {
       setActiveColumn(event.active.data.current.col);
-      console.log('column');
     }
 
     if (event.active.data.current.type === 'Task') {
       setActiveTask(event.active.data.current.task);
-      console.log('task');
     }
   };
 
   const handleDragEnd = (event) => {
-    setActiveColumn(null);
     setActiveTask(null);
+    setActiveColumn(null);
 
     const {active, over} = event;
 
@@ -89,12 +87,10 @@ export const KanbanBoard = () => {
   const handleDragOver = (event) => {
     const {active, over} = event;
 
-    if (!over) return;
+    if (!over || !active || active.id === over.id) return;
 
     const {id: activeTaskId} = active;
     const {id: overTaskId} = over;
-
-    if (activeTaskId === overTaskId) return;
 
     const isTaskActive = active.data.current.type === 'Task';
     const isOverTask = over.data.current.type === 'Task';
@@ -102,26 +98,21 @@ export const KanbanBoard = () => {
 
     if (!isTaskActive) return;
 
-    if (isTaskActive && isOverTask) {
-      setTaskList((tasks) => {
-        const activeIndex = tasks.findIndex((t) => t.id === activeTaskId);
+    setTaskList((tasks) => {
+      const activeIndex = tasks.findIndex((t) => t.id === activeTaskId);
+
+      if (isOverTask) {
         const overIndex = tasks.findIndex((t) => t.id === overTaskId);
-
-        tasks[activeIndex]. columnId = tasks[overIndex].columnId;
-
+        tasks[activeIndex].columnId = tasks[overIndex].columnId;
         return arrayMove(tasks, activeIndex, overIndex);
-      });
-    }
+      }
 
-    if (isTaskActive && isOverColumn) {
-      setTaskList((tasks) => {
-        const activeIndex = tasks.findIndex((t) => t.id === activeTaskId);
+      if (isOverColumn) {
+        tasks[activeIndex].columnId = overTaskId;
+      }
 
-        tasks[activeIndex]. columnId = overTaskId;
-
-        return arrayMove(tasks, activeIndex, activeIndex);
-      });
-    }
+      return arrayMove(tasks, activeIndex, activeIndex);
+    });
   };
 
   const createTask = (colId) => {
@@ -166,7 +157,7 @@ export const KanbanBoard = () => {
                 <ColumnContainer
                   col={activeColumn}
                   deleteColumn={deleteColumn}
-                  taskList={tasks[activeColumn.id]}
+                  taskList={tasks.filter((task) => task.columnId === activeColumn.id)}
                 />
               )}
               {activeTask && (

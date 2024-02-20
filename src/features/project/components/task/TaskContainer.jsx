@@ -10,7 +10,6 @@ import {CSS} from '@dnd-kit/utilities';
 import {useRef} from 'react';
 import {useLayoutEffect} from 'react';
 import {useState} from 'react';
-import {useEffect} from 'react';
 
 export const TaskContainer = ({task}) => {
   const ref = useRef();
@@ -18,16 +17,23 @@ export const TaskContainer = ({task}) => {
 
   useLayoutEffect(() => {
     if (ref.current) {
-      setDimensions({
-        width: ref.current.offsetWidth,
-        height: ref.current.offsetHeight,
-      });
+      const newWidth = ref.current.offsetWidth;
+      const newHeight = ref.current.offsetHeight;
+      setDimensions({width: newWidth, height: newHeight});
+
+      sessionStorage.setItem('taskDimensions', JSON.stringify({width: newWidth, height: newHeight}));
     }
   }, [task]);
 
-  useEffect(() => {
-    console.log(dimensions.width, dimensions.height);
-  }, [dimensions]);
+  useLayoutEffect(() => {
+    // Retrieve dimensions from local storage when the component mounts
+    const storedDimensions = sessionStorage.getItem('taskDimensions');
+    if (storedDimensions) {
+      const {width, height} = JSON.parse(storedDimensions);
+      setDimensions({width, height});
+    }
+    console.log('size: ', dimensions);
+  }, []);
 
   const {setNodeRef, attributes, transform, transition, listeners, isDragging} = useSortable({
     id: task.id,
