@@ -8,10 +8,11 @@ export class Column {
 }
 
 export class Task {
-  constructor(columnId, content) {
+  constructor(columnId, title, des) {
     this.id = uuidv4();
     this.columnId = columnId;
-    this.content = content;
+    this.title = title;
+    this.des = des;
     this.tags = [new TaskTag(this.id, 'Medium'), new TaskTag(this.id, 'Late')];
   }
 }

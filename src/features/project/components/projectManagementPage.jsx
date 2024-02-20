@@ -59,7 +59,12 @@ export const Page = () => {
         <CreationDate />
         <Divider
           width='1.5px' height='100%' color='rgba(0,0,0,0.20'/>
-        <MemberList />
+
+        <div className='flex'>
+          <MemberList />
+          <Button className="h-8" variant="outline">Add member</Button>
+        </div>
+
         <Divider
           width='1.5px' height='100%' color='rgba(0,0,0,0.1'/>
 

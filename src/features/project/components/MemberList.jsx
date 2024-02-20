@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import userDefaultProfile from '@/assets/images/user-profile-default.svg';
-import {Button} from '@/components/ui/button';
 
 const sampleMembers = [
   {name: 'John Doe', imageUrl: userDefaultProfile},
@@ -10,7 +9,7 @@ const sampleMembers = [
   {name: 'Michael Johnson', imageUrl: userDefaultProfile},
 ];
 
-export const MemberList = ({members = sampleMembers}) => {
+export const MemberList = ({members = sampleMembers, width = 8, height = 8}) => {
   // Check if the number of members is less than 5
   const shouldRenderLink = members.length < 5;
 
@@ -20,7 +19,7 @@ export const MemberList = ({members = sampleMembers}) => {
         {members.map((member, index) => (
           <img
             key={index}
-            className="w-8 h-8 border-2 border-white rounded-full dark:border-gray-800"
+            className={`w-${width} h-${height} border-2 border-white rounded-full dark:border-gray-800`}
             src={member.imageUrl}
             alt={member.name}
           />
@@ -28,13 +27,11 @@ export const MemberList = ({members = sampleMembers}) => {
 
         {shouldRenderLink && (
           <a
-            className="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800 z-10"
+            className={`flex items-center justify-center w-${width} h-${height} text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800 z-10`}
             href="#"
           >+{5 - members.length}</a>
         )}
       </div>
-
-      <Button className="h-8" variant="outline">Add member</Button>
     </div>
   );
 };
@@ -46,4 +43,6 @@ MemberList.propTypes = {
         imageUrl: PropTypes.string.isRequired,
       }),
   ),
+  width: PropTypes.number,
+  height: PropTypes.number,
 };

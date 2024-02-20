@@ -88,7 +88,7 @@ export const KanbanBoard = () => {
       if (!updatedTaskList[colId]) {
         updatedTaskList[colId] = [];
       }
-      updatedTaskList[colId].push(new Task(colId, 'Hello'));
+      updatedTaskList[colId].push(new Task(colId, 'DashBoard', 'Lorem ipsum xyz 123'));
       return updatedTaskList;
     });
   };
