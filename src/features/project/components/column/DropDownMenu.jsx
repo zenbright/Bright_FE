@@ -27,7 +27,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-// import {useState} from 'react';
+import {UnderDevDialog} from '../../../../components/general/UnderDevDialog';
 
 import {
   Dialog,
@@ -44,6 +44,7 @@ import {useState} from 'react';
 
 export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
   const [isRenameDialogOpen, setIsRenameDialogOpen] = useState(false);
+  const [isUnderDevDialogOpen, setIsUnderDevDialogOpen] = useState(false);
 
   const [updatedTitle, setUpdatedTitle] = useState('');
 
@@ -117,7 +118,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
             <span>Rename</span>
           </DropdownMenuItem>
 
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setIsUnderDevDialogOpen(true)}>
             <LifeBuoy className="mr-2 h-4 w-4" />
             <span>Support</span>
           </DropdownMenuItem>
@@ -172,6 +173,12 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Others */}
+      {
+        isUnderDevDialogOpen &&
+      <UnderDevDialog isOpen={isUnderDevDialogOpen} setIsOpen={setIsUnderDevDialogOpen} />
+      }
     </>
   );
 };
