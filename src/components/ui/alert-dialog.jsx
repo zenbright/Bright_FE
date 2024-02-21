@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-=======
-/* eslint-disable react/prop-types */
-/* eslint-disable max-len */
->>>>>>> 5fb332bb3399cacab8a81d7fcfa67d94d54b6489
 import * as React from 'react';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 
