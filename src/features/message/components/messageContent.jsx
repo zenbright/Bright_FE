@@ -2,22 +2,22 @@
 import PropTypes from 'prop-types';
 import {useState, useRef, useEffect} from 'react';
 
-import messageBubbleIcon from '../../../assets/images/speech-bubble.png';
-import phoneIcon from '../../../assets/images/phone-solid.svg';
+import messageBubbleIcon from '../assets/speech-bubble.png';
+import phoneIcon from '../assets/phone-solid.svg';
 import rmitIcon from '../../../assets/images/rmitlogo.png';
-import videoCallIcon from '../../../assets/images/video-solid.svg';
-import informationIcon from '../../../assets/images/circle-info-solid.svg';
-import plusIcon from '../../../assets/images/plus.png';
-import uploadImageIcon from '../../../assets/images/photo.png';
-import micIcon from '../../../assets/images/microphone.png';
-import sendIcon from '../../../assets/images/send.png';
-import smileIcon from '../../../assets/images/smile.png';
+import videoCallIcon from '../assets/video-solid.svg';
+import informationIcon from '../assets/circle-info-solid.svg';
+import plusIcon from '../assets/plus.png';
+import uploadImageIcon from '../assets/photo.png';
+import micIcon from '../assets/microphone.png';
+import sendIcon from '../assets/send.png';
+import smileIcon from '../assets/smile.png';
 
-import {MESSAGE_CONTENT_WIDTH} from '../../../constants/size.global';
-import {MessageBubble} from './messageBubble';
-import {Message} from './message.class';
-import {MESSAGE_HEADER_HEIGHT} from '../../../constants/size.global';
-import {SAMPLE_MESSAGE} from '../../../constants/datas.sample';
+import {MESSAGE_CONTENT_WIDTH} from '../../../lib/constants/size.global';
+import {MessageBubble} from './bubble';
+import {Message} from '../utils/message.class';
+import {MESSAGE_HEADER_HEIGHT} from '../../../lib/constants/size.global';
+import {SAMPLE_MESSAGE} from '../test/data/message';
 
 export const MessageContent = ({selectedMessage, onlineStatus, userName = 'User 1'}) => {
   const [userMessageInput, setUserMessageInput] = useState('');
