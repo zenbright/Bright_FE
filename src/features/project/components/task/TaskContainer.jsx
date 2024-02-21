@@ -57,7 +57,12 @@ export const TaskContainer = ({task}) => {
       <div
         ref={setNodeRef}
         className='bg-white mb-1 py-1 px-4 rounded-md'
-        style={{...style, width: dimensions.width, height: dimensions.height}}
+        style={
+          {...style,
+            width: dimensions.width,
+            height: dimensions.height,
+          }
+        }
       >
         <div className='flex justify-between items-center'>
           <div className='flex'>
@@ -71,24 +76,32 @@ export const TaskContainer = ({task}) => {
 
         <div className='flex justify-between items-center mt-1'>
           <div className="flex gap-2">
-            <div className='bg-gray-300 h-6 w-6 animate-pulse rounded-full'></div>
-            <div className='bg-gray-300 h-6 w-6 animate-pulse rounded-full'></div>
-            <div className='bg-gray-300 h-6 w-6 animate-pulse rounded-full'></div>
+            <div className='bg-gray-300 h-6 w-6 animate-pulse rounded-full'/>
+            <div className='bg-gray-300 h-6 w-6 animate-pulse rounded-full'/>
+            <div className='bg-gray-300 h-6 w-6 animate-pulse rounded-full'/>
           </div>
-          <div className="bg-gray-300 h-6 w-6 animate-pulse rounded-md"></div>
+          <div className="bg-gray-300 h-6 w-6 animate-pulse rounded-md"/>
         </div>
 
         <div className='mt-1'>
-          <div className="bg-gray-300 h-1 w-full animate-pulse"></div>
+          <div className="bg-gray-300 h-1 w-full animate-pulse"/>
         </div>
 
         <div className='flex items-center mt-2 justify-between mb-1'>
           <div className='flex gap-4 text-sm'>
-            <div className='flex items-center gap-1'> <div className='bg-gray-300 h-4 w-4 animate-pulse rounded-md'/></div>
-            <div className='flex items-center gap-1'> <div className='bg-gray-300 h-4 w-4 animate-pulse rounded-md'/></div>
-            <div className='flex items-center gap-1'> <div className='bg-gray-300 h-4 w-4 animate-pulse rounded-md'/></div>
+            <div className='flex items-center gap-1'>
+              <div className='bg-gray-300 h-4 w-4 animate-pulse rounded-md'/>
+            </div>
+
+            <div className='flex items-center gap-1'>
+              <div className='bg-gray-300 h-4 w-4 animate-pulse rounded-md'/>
+            </div>
+
+            <div className='flex items-center gap-1'>
+              <div className='bg-gray-300 h-4 w-4 animate-pulse rounded-md'/>
+            </div>
           </div>
-          <div className="bg-gray-300 h-4 w-4 animate-pulse rounded-md"></div>
+          <div className="bg-gray-300 h-4 w-4 animate-pulse rounded-md" />
         </div>
       </div>
     );
@@ -106,11 +119,17 @@ export const TaskContainer = ({task}) => {
         <div className='flex justify-between items-center'>
           <div>
             {task.tags && task.tags.map((tag) => (
-              <Badge key={tag.id} className={`${tag.bg} mr-2`}>{tag.title}</Badge>
+              <Badge
+                key={tag.id}
+                className={`${tag.bg} mr-2`}>
+                {tag.title}
+              </Badge>
             ))}
           </div>
 
-          <Button variant="ghost"> <MoreHorizontal /></Button>
+          <Button variant="ghost">
+            <MoreHorizontal />
+          </Button>
         </div>
 
         {/* Task Contents */}
@@ -125,26 +144,36 @@ export const TaskContainer = ({task}) => {
         {/* Asignee List */}
         <div className='flex justify-between items-center'>
           <MemberList width={6} height={6}/>
-          <Button variant="ghost"> <UserRoundPlus className='w-5 h-5'/></Button>
+
+          <Button variant="ghost">
+            <UserRoundPlus className='w-5 h-5'/>
+          </Button>
         </div>
 
-        <Divider
-          width='100%' height='1px' color='rgba(0,0,0,0.20'/>
+        <Divider width='100%' height='1px' color='rgba(0,0,0,0.20'/>
 
         {/* Helper Buttons */}
         <div className='flex items-center mt-1 justify-between'>
           <div className='flex gap-2 text-sm'>
-            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'> <List className='w-4 h-5'/>3</div>
-            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'> <Paperclip className='w-4 h-5'/>2</div>
-            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'> <Calendar className='w-4 h-5'/>3 days</div>
+            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+              <List className='w-4 h-5'/>3
+            </div>
+
+            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+              <Paperclip className='w-4 h-5'/>2
+            </div>
+
+            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+              <Calendar className='w-4 h-5'/>3 days
+            </div>
           </div>
 
-          <Button variant="ghost"> <Flag className='w-4 h-4'/></Button>
+          <Button variant="ghost">
+            <Flag className='w-4 h-4'/>
+          </Button>
         </div>
       </div>
     </div>
-
-
   );
 };
 

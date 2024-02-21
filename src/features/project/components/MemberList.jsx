@@ -2,6 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import userDefaultProfile from '@/assets/images/user-profile-default.svg';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/components/ui/avatar';
 
 const sampleMembers = [
   {name: 'John Doe', imageUrl: userDefaultProfile},
@@ -17,17 +22,18 @@ export const MemberList = ({members = sampleMembers, width = 8, height = 8}) => 
     <div className='flex'>
       <div className="flex -space-x-4 rtl:space-x-reverse mr-5">
         {members.map((member, index) => (
-          <img
+          <Avatar
             key={index}
-            className={`w-${width} h-${height} border-2 border-white rounded-full dark:border-gray-800`}
-            src={member.imageUrl}
-            alt={member.name}
-          />
+            className={`w-${width} h-${height} rounded-full`}
+          >
+            <AvatarImage src={member.imageUrl} alt={member.name} />
+            <AvatarFallback>BR</AvatarFallback>
+          </Avatar>
         ))}
 
         {shouldRenderLink && (
           <a
-            className={`flex items-center justify-center w-${width} h-${height} text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800 z-10`}
+            className={`flex items-center justify-center w-${width} h-${height} text-xs font-medium text-white bg-gray-600 rounded-full hover:bg-gray-600 dark:border-gray-800 z-10`}
             href="#"
           >+{5 - members.length}</a>
         )}

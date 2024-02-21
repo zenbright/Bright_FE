@@ -70,6 +70,7 @@ export function ColumnContainer(
                 createTask(col.id);
               }}
             />
+
             <ColumnDropdownMenu
               id={col.id}
               deleteColumn={deleteColumn}

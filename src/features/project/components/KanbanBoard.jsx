@@ -150,6 +150,7 @@ export const KanbanBoard = () => {
               ))}
             </SortableContext>
           </div>
+
           <Button onClick={createColumn}>
             <PlusCircle className='mr-2'/> Create new column
           </Button>
@@ -164,6 +165,7 @@ export const KanbanBoard = () => {
                   taskList={tasks.filter((task) => task.columnId === activeColumn.id)}
                 />
               )}
+
               {activeTask && (
                 <TaskContainer task={activeTask}/>
               )}

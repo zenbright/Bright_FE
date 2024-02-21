@@ -38,9 +38,11 @@ export const Page = () => {
           </h1>
 
           <div className='flex gap-4'>
-            <Button className={isFavoured ? 'bg-rose-500 hover:bg-red-700' : ''} onClick={() => {
-              setFavourite(!isFavoured);
-            }}>
+            <Button
+              className={isFavoured ? 'bg-rose-500 hover:bg-red-700' : ''}
+              onClick={() => {
+                setFavourite(!isFavoured);
+              }} >
               <Heart className="mr-2 h-4 w-4" /> {isFavoured ? 'Favourred' : 'Favour'}
             </Button>
 
@@ -66,8 +68,7 @@ export const Page = () => {
           <Button className="h-8" variant="outline">Add member</Button>
         </div>
 
-        <Divider
-          width='1.5px' height='100%' color='rgba(0,0,0,0.1'/>
+        <Divider width='1.5px' height='100%' color='rgba(0,0,0,0.1'/>
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
@@ -93,7 +94,11 @@ export const Page = () => {
       {/* Board Tab */}
       <div className='flex items-center mt-1 px-4'>
         <BoardTabGroup />
-        <Button className='hover:bg-slate-300 hover:rounded-full rounded-full ml-4' variant="ghost" size="icon">
+
+        <Button
+          className='hover:bg-slate-300 hover:rounded-full rounded-full ml-4'
+          variant="ghost"
+          size="icon">
           <Plus className="h-4 w-4" />
         </Button>
       </div>
