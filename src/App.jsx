@@ -1,9 +1,12 @@
 import React from 'react';
-import {LoginPage} from './features/auth';
+
+import ProjectManagementPage from './features/project';
 
 function App() {
   return (
-    <LoginPage />
+    <div>
+      <ProjectManagementPage />
+    </div>
   );
 }
 
