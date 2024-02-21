@@ -16,7 +16,7 @@ export function UnderDevDialog({isOpen = false, setIsOpen}) {
     <AlertDialog open={isOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle className='font-bold'>Coming soon!</AlertDialogTitle>
+          <AlertDialogTitle className='font-bold text-2xl'>Coming soon!</AlertDialogTitle>
           <AlertDialogDescription>
            This feature is under development and not yet available for use. We&apos;ll let you know when it&apos;s ready!
           </AlertDialogDescription>
