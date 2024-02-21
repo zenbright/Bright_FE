@@ -1,12 +1,9 @@
-import {Button} from '@/components/ui/button';
-
 import React from 'react';
+import {LoginPage} from './features/auth';
 
 function App() {
   return (
-    <div>
-      <Button>Click me</Button>
-    </div>
+    <LoginPage />
   );
 }
 
