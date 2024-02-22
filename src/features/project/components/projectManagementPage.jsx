@@ -65,25 +65,25 @@ export const Page = () => {
 
         <div className='flex'>
           <MemberList />
-          <Button className="h-8" variant="outline">Add member</Button>
+          <Button className="h-9" variant="outline">Add member</Button>
         </div>
 
         <Divider width='1.5px' height='100%' color='rgba(0,0,0,0.1'/>
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button className='text-rose-500 bg-white hover:bg-slate-200/75 h-8'><ShieldMinus className='mr-2'/>Private</Button>
+            <Button className='text-rose-500 bg-white hover:bg-slate-200/75 h-9'><ShieldMinus className='mr-2'/>Private</Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>{SYSTEM_ALERT.PRJ_ALT_ACC_TITLE}</AlertDialogTitle>
+              <AlertDialogTitle className="text-xl font-bold">{SYSTEM_ALERT.PRJ_ALT_ACC_TITLE}</AlertDialogTitle>
               <AlertDialogDescription>
                 {SYSTEM_ALERT.PRJ_ALT_ACC_DES}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction className='text-rose-600 hover:text-white'>Continue</AlertDialogAction>
+              <AlertDialogAction>Continue</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

@@ -5,3 +5,5 @@ export const SYSTEM_ALERT = {
   PRJ_ALT_ACC_DES: 'This action will change the visibility settings of the project. Proceed with caution.',
   NOTIFICATION: 'SYSTEM NOTIFICATION',
 };
+
+export const BRIGHT_EMAIL = 'bright-tools-official@gmail.com';
