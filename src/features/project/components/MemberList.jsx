@@ -14,7 +14,7 @@ const sampleMembers = [
   {name: 'Michael Johnson', imageUrl: userDefaultProfile},
 ];
 
-export const MemberList = ({members = sampleMembers, width = 8, height = 8}) => {
+export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => {
   // Check if the number of members is less than 5
   const shouldRenderLink = members.length < 5;
 
@@ -33,14 +33,15 @@ export const MemberList = ({members = sampleMembers, width = 8, height = 8}) => 
 
         {shouldRenderLink && (
           <a
-            className={`flex items-center justify-center font-thin text-sm text-white w-${width} h-${height} text-xs font-medium text-black bg-gray-500 rounded-full hover:bg-gray-600 dark:border-gray-800 z-10`}
+            className={`flex items-center justify-center w-${width} h-${height} text-xs font-medium text-white bg-gray-600 rounded-full hover:bg-gray-600 z-10`}
             href="#"
           >
-            +5
+        +5
           </a>
         )}
       </div>
     </div>
+
   );
 };
 
