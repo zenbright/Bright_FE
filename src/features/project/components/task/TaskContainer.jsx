@@ -56,7 +56,7 @@ export const TaskContainer = ({task}) => {
       // Task Skeleton
       <div
         ref={setNodeRef}
-        className='bg-white mb-1 py-1 px-4 rounded-md'
+        className='bg-white mb-1 px-3 rounded-md'
         style={
           {...style,
             width: dimensions.width,
@@ -115,7 +115,7 @@ export const TaskContainer = ({task}) => {
       {...attributes}
       {...listeners}
     >
-      <div ref={ref} className='mb-1 py-1 px-4 '>
+      <div ref={ref} className='mb-1 px-3'>
         <div className='flex justify-between items-center'>
           <div>
             {task.tags && task.tags.map((tag) => (
@@ -153,7 +153,7 @@ export const TaskContainer = ({task}) => {
         <Divider width='100%' height='1px' color='rgba(0,0,0,0.20'/>
 
         {/* Helper Buttons */}
-        <div className='flex items-center mt-1 justify-between'>
+        <div className='flex items-center justify-between'>
           <div className='flex gap-2 text-sm'>
             <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
               <List className='w-4 h-5'/>3
