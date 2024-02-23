@@ -7,6 +7,7 @@ import {SortableContext, useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 import {TaskContainer} from '../task/TaskContainer';
 import {useMemo} from 'react';
+import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
 
 export function ColumnContainer(
     {col, deleteColumn, taskList = [], updateColumnTitle, createTask},
@@ -32,7 +33,7 @@ export function ColumnContainer(
     return (
       <div
         ref={setNodeRef}
-        className='w-fit h-auto overflow-scroll no-scrollbar bg-gray-300/60 text-black rounded-md shadow-sm'
+        className='w-fit h-auto overflow-auto no-scrollbar bg-gray-300/60 text-black rounded-md shadow-sm'
         style={style}
       >
         <div>
@@ -41,7 +42,7 @@ export function ColumnContainer(
           </Button>
         </div>
 
-        <div className='h-[70vh] bg-transparent w-80 mt-1 rounded-md'>
+        <div className='h-[73vh] bg-transparent w-80 mt-1 rounded-md'>
 
         </div>
       </div>
@@ -51,13 +52,14 @@ export function ColumnContainer(
   return (
     <div
       ref={setNodeRef}
-      className='w-fit h-auto  text-black rounded-md'
+      className='w-fit h-auto text-black rounded-md'
       style={style}
     >
       <div {...attributes} {...listeners} >
-        <Button className='bg-white text-black hover:bg-white w-80 max-w-80 overflow-hidden flex justify-between'>
-          <div className='flex items-center font-bold'>
-            <ListTodo className='mr-4 font-semibold'/>
+        <div
+          className='bg-white p-2 text-sm rounded-md w-80 max-w-80 overflow-hidden flex justify-between'>
+          <div className='flex font-bold h-5 items-center'>
+            <ListTodo className='mr-1 h-5'/>
             <span className='truncate max-w-36 mr-1'>{col.title}</span>
             ({taskList ? taskList.length : 0})
           </div>
@@ -77,19 +79,25 @@ export function ColumnContainer(
               updateColumnTitle={updateColumnTitle}
             />
           </div>
-        </Button>
+        </div>
       </div>
 
-      {/* Task Containers */}
-      <div className='h-[70vh] w-80 mt-1 rounded-md overflow-scroll no-scrollbar'>
-        <SortableContext items={taskId}>
-          {taskList && taskList.map((task, index) =>
-            <div key={index}>
-              <TaskContainer task={task} />
-            </div>,
-          )}
-        </SortableContext>
-      </div>
+      <OverlayScrollbarsComponent
+        element="div"
+        options={{scrollbars: {autoHide: 'move'}}}
+        defer
+      >
+        {/* Task Containers */}
+        <div className='h-[73vh] w-80 mt-1 rounded-md'>
+          <SortableContext items={taskId}>
+            {taskList && taskList.map((task, index) =>
+              <div key={index}>
+                <TaskContainer task={task} />
+              </div>,
+            )}
+          </SortableContext>
+        </div>
+      </OverlayScrollbarsComponent>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import {SortableContext, arrayMove} from '@dnd-kit/sortable';
 import {useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import {TaskContainer} from './task/TaskContainer';
+import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
 
 export const KanbanBoard = () => {
   const [columns, setColumn] = useState([]);
@@ -126,53 +127,59 @@ export const KanbanBoard = () => {
   };
 
   return (
-    <div className="mt-2 overflow-auto scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent scrollbar-thumb-rounded-lg">
-      <DndContext
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        onDragOver={handleDragOver}
-        sensors={sensors}
-      >
-        <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-3'} mb-2`}>
-          <div className='flex gap-3'>
-            <SortableContext items={columnId}>
-              {columns.map((col, index) => (
-                <div key={index}>
-                  <ColumnContainer
-                    key={col.id}
-                    col={col}
-                    deleteColumn={deleteColumn}
-                    updateColumnTitle={updateColumnTitle}
-                    createTask={createTask}
-                    taskList={tasks.filter((task) => task.columnId === col.id)}
-                  />
-                </div>
-              ))}
-            </SortableContext>
+    <OverlayScrollbarsComponent
+      element="div"
+      options={{scrollbars: {autoHide: 'scroll'}}}
+      defer
+    >
+      <div className="mt-2">
+        <DndContext
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onDragOver={handleDragOver}
+          sensors={sensors}
+        >
+          <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-3'}`}>
+            <div className='flex gap-3'>
+              <SortableContext items={columnId}>
+                {columns.map((col, index) => (
+                  <div key={index}>
+                    <ColumnContainer
+                      key={col.id}
+                      col={col}
+                      deleteColumn={deleteColumn}
+                      updateColumnTitle={updateColumnTitle}
+                      createTask={createTask}
+                      taskList={tasks.filter((task) => task.columnId === col.id)}
+                    />
+                  </div>
+                ))}
+              </SortableContext>
+            </div>
+
+            <Button onClick={createColumn}>
+              <PlusCircle className='mr-2'/> Create new column
+            </Button>
           </div>
 
-          <Button onClick={createColumn}>
-            <PlusCircle className='mr-2'/> Create new column
-          </Button>
-        </div>
+          {createPortal(
+              <DragOverlay >
+                {activeColumn && (
+                  <ColumnContainer
+                    col={activeColumn}
+                    deleteColumn={deleteColumn}
+                    taskList={tasks.filter((task) => task.columnId === activeColumn.id)}
+                  />
+                )}
 
-        {createPortal(
-            <DragOverlay >
-              {activeColumn && (
-                <ColumnContainer
-                  col={activeColumn}
-                  deleteColumn={deleteColumn}
-                  taskList={tasks.filter((task) => task.columnId === activeColumn.id)}
-                />
-              )}
-
-              {activeTask && (
-                <TaskContainer task={activeTask}/>
-              )}
-            </DragOverlay>,
-            document.body,
-        )}
-      </DndContext>
-    </div>
+                {activeTask && (
+                  <TaskContainer task={activeTask}/>
+                )}
+              </DragOverlay>,
+              document.body,
+          )}
+        </DndContext>
+      </div>
+    </OverlayScrollbarsComponent>
   );
 };

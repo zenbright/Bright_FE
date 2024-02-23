@@ -56,6 +56,12 @@ dependencies:
   lucide-react:
     specifier: ^0.321.0
     version: 0.321.0(react@18.2.0)
+  overlayscrollbars:
+    specifier: ^2.5.0
+    version: 2.5.0
+  overlayscrollbars-react:
+    specifier: ^0.5.4
+    version: 0.5.4(overlayscrollbars@2.5.0)(react@18.2.0)
   prop-types:
     specifier: ^15.8.1
     version: 15.8.1
@@ -3580,6 +3586,20 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /overlayscrollbars-react@0.5.4(overlayscrollbars@2.5.0)(react@18.2.0):
+    resolution: {integrity: sha512-FPKx9XnXovTnI4+2JXig5uEaTLSEJ6svOwPzIfBBXTHBRNsz2+WhYUmfM0K/BNYxjgDEwuPm+NQhEoOA0RoG1g==}
+    peerDependencies:
+      overlayscrollbars: ^2.0.0
+      react: '>=16.8.0'
+    dependencies:
+      overlayscrollbars: 2.5.0
+      react: 18.2.0
+    dev: false
+
+  /overlayscrollbars@2.5.0:
+    resolution: {integrity: sha512-CWVC2dwS07XZfLHDm5GmZN1iYggiJ8Vufnvzwt0gwR9Yz1hVckKeTxg7VILZeYVGhDYJHZ1Xc8Xfys5dWZ1qiA==}
+    dev: false
 
   /p-limit@3.1.0:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}
