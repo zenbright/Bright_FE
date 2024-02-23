@@ -133,7 +133,7 @@ export const KanbanBoard = () => {
         onDragOver={handleDragOver}
         sensors={sensors}
       >
-        <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-3'} mb-3`}>
+        <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-3'} mb-2`}>
           <div className='flex gap-3'>
             <SortableContext items={columnId}>
               {columns.map((col, index) => (
