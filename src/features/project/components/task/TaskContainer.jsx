@@ -164,7 +164,7 @@ export const TaskContainer = ({task}) => {
             </div>
 
             <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-              <Calendar className='w-4 h-5'/>3 days
+              <Calendar className='w-4 h-5'/>3 days left
             </div>
           </div>
 

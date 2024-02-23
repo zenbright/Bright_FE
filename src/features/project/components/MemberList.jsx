@@ -12,16 +12,19 @@ const sampleMembers = [
   {name: 'John Doe', imageUrl: userDefaultProfile},
   {name: 'Jane Smith', imageUrl: userDefaultProfile},
   {name: 'Michael Johnson', imageUrl: userDefaultProfile},
+  {name: 'Michael Johnson', imageUrl: userDefaultProfile},
+  {name: 'Michael Johnson', imageUrl: userDefaultProfile},
+  {name: 'Michael Johnson', imageUrl: userDefaultProfile},
 ];
 
 export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => {
   // Check if the number of members is less than 5
-  const shouldRenderLink = members.length < 5 && members.length > 0;
+  const shouldRenderLink = members.length > 3;
 
   return (
     <div className='flex'>
       <div className="flex -space-x-4 rtl:space-x-reverse mr-5">
-        {members.map((member, index) => (
+        {members.slice(0, 3).map((member, index) => (
           <Avatar
             key={index}
             className={`w-${width} h-${height} rounded-full`}
@@ -36,7 +39,7 @@ export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => 
             className={`flex items-center justify-center w-${width} h-${height} text-xs font-medium text-white bg-gray-600 rounded-full hover:bg-gray-600 z-10`}
             href="#"
           >
-        +{members.length - 5}
+        +{members.length - 3}
           </a>
         )}
 

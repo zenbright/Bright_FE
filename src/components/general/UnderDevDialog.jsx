@@ -21,7 +21,7 @@ export function UnderDevDialog({isOpen = false, setIsOpen}) {
            This feature is under development and not yet available for use. We&apos;ll let you know when it&apos;s ready!
           </AlertDialogDescription>
           <AlertDialogDescription className='flex'>
-           Contact us at: <div className=' text-amber-500 ml-2 hover:cursor-pointer'>{BRIGHT_EMAIL}</div>
+           Contact us at: <div className=' font-bold text-black ml-2 hover:cursor-pointer'>{BRIGHT_EMAIL}</div>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

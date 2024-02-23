@@ -43,16 +43,17 @@ import {Input} from '@/components/ui/input';
 import {useState} from 'react';
 
 export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
-  const [isRenameDialogOpen, setIsRenameDialogOpen] = useState(false);
+  const [selectedDialog, setSelectedDialog] = useState('');
   const [isUnderDevDialogOpen, setIsUnderDevDialogOpen] = useState(false);
 
+  // Rename Dialog
   const [updatedTitle, setUpdatedTitle] = useState('');
 
   const onHandleUpdateTitle = () => {
     if (updatedTitle.trim() !== '') {
       updateColumnTitle(id, updatedTitle.trim());
     }
-    setIsRenameDialogOpen(false);
+    setSelectedDialog('');
   };
 
   return (
@@ -63,7 +64,9 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>Action Menu</DropdownMenuLabel>
+
           <DropdownMenuSeparator />
+
           <DropdownMenuGroup>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
@@ -72,23 +75,43 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setSelectedDialog('add-mail'),
+                      setIsUnderDevDialogOpen(true);
+                    }}>
                     <Mail className="mr-2 h-4 w-4" />
                     <span>Email</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setSelectedDialog('add-msg'),
+                      setIsUnderDevDialogOpen(true);
+                    }}>
                     <MessageSquare className="mr-2 h-4 w-4" />
                     <span>Message</span>
                   </DropdownMenuItem>
+
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
+
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setSelectedDialog('add-link'),
+                      setIsUnderDevDialogOpen(true);
+                    }}>
                     <PlusCircle className="mr-2 h-4 w-4" />
                     <span>More...</span>
                   </DropdownMenuItem>
+
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub>
-            <DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                setSelectedDialog('support'),
+                setIsUnderDevDialogOpen(true);
+              }}>
               <Clock2 className="mr-2 h-4 w-4" />
               <span>Watch</span>
             </DropdownMenuItem>
@@ -99,11 +122,19 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setSelectedDialog('sort-az'),
+                      setIsUnderDevDialogOpen(true);
+                    }}>
                     <ArrowDownAz className="mr-2 h-4 w-4" />
                     <span>Newest</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setSelectedDialog('sort-za'),
+                      setIsUnderDevDialogOpen(true);
+                    }}>
                     <ArrowUpZA className="mr-2 h-4 w-4" />
                     <span>Oldest</span>
                   </DropdownMenuItem>
@@ -113,12 +144,17 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
             </DropdownMenuSub>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => setIsRenameDialogOpen(true)}>
+
+          <DropdownMenuItem onClick={() => setSelectedDialog('rename')}>
             <Pencil className="mr-2 h-4 w-4" />
             <span>Rename</span>
           </DropdownMenuItem>
 
-          <DropdownMenuItem onClick={() => setIsUnderDevDialogOpen(true)}>
+          <DropdownMenuItem onClick={() => {
+            setSelectedDialog('support'),
+            setIsUnderDevDialogOpen(true);
+          }}>
+
             <LifeBuoy className="mr-2 h-4 w-4" />
             <span>Support</span>
           </DropdownMenuItem>
@@ -136,9 +172,10 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
 
       {/* Rename Dialog */}
       <Dialog
-        open={isRenameDialogOpen}
-        onOpenChange={setIsRenameDialogOpen}
-        onClose={() => setIsRenameDialogOpen(false)}
+        open={selectedDialog === 'rename'}
+        onOpenChange={setSelectedDialog}
+        setIsRenameDialogOpen
+        onClose={() => setSelectedDialog('false')}
       >
         <DialogContent
           onKeyDown={(e) => {
@@ -176,7 +213,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
 
       {/* Others */}
       {
-        isUnderDevDialogOpen &&
+        isUnderDevDialogOpen && selectedDialog !== 'rename' &&
       <UnderDevDialog isOpen={isUnderDevDialogOpen} setIsOpen={setIsUnderDevDialogOpen} />
       }
     </>
