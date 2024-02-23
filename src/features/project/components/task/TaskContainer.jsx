@@ -143,7 +143,7 @@ export const TaskContainer = ({task}) => {
 
         {/* Asignee List */}
         <div className='flex justify-between items-center'>
-          <MemberList width={6} height={6}/>
+          <MemberList width={6} height={6} members={task.memList}/>
 
           <Button variant="ghost">
             <UserRoundPlus className='w-5 h-5'/>

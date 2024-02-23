@@ -16,7 +16,7 @@ const sampleMembers = [
 
 export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => {
   // Check if the number of members is less than 5
-  const shouldRenderLink = members.length < 5;
+  const shouldRenderLink = members.length < 5 && members.length > 0;
 
   return (
     <div className='flex'>
@@ -36,8 +36,12 @@ export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => 
             className={`flex items-center justify-center w-${width} h-${height} text-xs font-medium text-white bg-gray-600 rounded-full hover:bg-gray-600 z-10`}
             href="#"
           >
-        +5
+        +{members.length - 5}
           </a>
+        )}
+
+        {members.length == 0 && (
+          <div className=' font-extralight'> No Assignee </div>
         )}
       </div>
     </div>

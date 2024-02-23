@@ -7,13 +7,22 @@ export class Column {
   }
 }
 
+// Define default tags as constants
+const DEFAULT_TAGS = ['In progress', 'Low'];
+const SAMPLE_MEMLIST = [];
+
 export class Task {
   constructor(columnId, title, des) {
     this.id = uuidv4();
     this.columnId = columnId;
     this.title = title;
     this.des = des;
-    this.tags = [new TaskTag(this.id, 'In progress'), new TaskTag(this.id, 'Pending')];
+    this.tags = this.createTags(DEFAULT_TAGS);
+    this.memList = SAMPLE_MEMLIST;
+  }
+
+  createTags(tags) {
+    return tags.map((tag) => new TaskTag(this.id, tag));
   }
 }
 
