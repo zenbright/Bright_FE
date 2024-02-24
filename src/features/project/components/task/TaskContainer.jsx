@@ -146,7 +146,7 @@ export const TaskContainer = ({task}) => {
           <MemberList width={6} height={6} members={task.memList}/>
 
           <Button variant="ghost">
-            <UserRoundPlus className='w-5 h-5'/>
+            <UserRoundPlus className='w-4 h-4'/>
           </Button>
         </div>
 

@@ -1,5 +1,5 @@
 import {v4 as uuidv4} from 'uuid';
-
+import userDefaultProfile from '../assets/cat.jpg';
 export class Column {
   constructor(title) {
     this.id = uuidv4();
@@ -9,7 +9,15 @@ export class Column {
 
 // Define default tags as constants
 const DEFAULT_TAGS = ['In progress', 'Low'];
-const SAMPLE_MEMLIST = [];
+// const SAMPLE_MEMLIST = [];
+const SAMPLE_MEMLIST = [
+  {name: 'John Doe', imageUrl: userDefaultProfile},
+  {name: 'Jane Smith', imageUrl: userDefaultProfile},
+  {name: 'Michael Johnson', imageUrl: userDefaultProfile},
+  {name: 'Michael Johnson', imageUrl: userDefaultProfile},
+  {name: 'Michael Johnson', imageUrl: userDefaultProfile},
+  {name: 'Michael Johnson', imageUrl: userDefaultProfile},
+];
 
 export class Task {
   constructor(columnId, title, des) {
