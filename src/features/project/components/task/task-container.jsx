@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {Task} from '../../utils/class';
 import {Badge} from '@/components/ui/badge';
-import {MemberList} from '../MemberList';
+import {MemberList} from '../member-list';
 import Divider from '../../../../components/general/divider';
 import {UserRoundPlus, MoreHorizontal, List, Paperclip, Calendar, Flag} from 'lucide-react';
 import {Button} from '@/components/ui/button';

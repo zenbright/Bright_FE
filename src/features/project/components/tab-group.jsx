@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {KanbanSquare, GanttChartSquare, Grid2X2} from 'lucide-react';
+import {KanbanSquare, GanttChartSquare, FileSpreadsheet} from 'lucide-react';
 
 const TableNames = [
   {name: 'Board', icon: KanbanSquare},
   {name: 'Timeline', icon: GanttChartSquare},
-  {name: 'Table', icon: Grid2X2},
+  {name: 'Sheet', icon: FileSpreadsheet},
 ];
 
 const TabGroup = ({tableNames = TableNames, setIsUnderDevDialogOpen}) => {
@@ -25,10 +25,10 @@ const TabGroup = ({tableNames = TableNames, setIsUnderDevDialogOpen}) => {
         <button
           key={index}
           className={
-            `flex gap-2 transition-all duration-75 pb-1 items-center font-semibold
-            ${selectedButton === index ? 'text-blue-700 border-blue-700' : ''}`
+            `flex gap-2 transition-all duration-75 items-center font-semibold py-1
+            ${selectedButton === index ? 'text-blue-700 border-blue-700' : ' text-black/80'}`
           }
-          style={{maxWidth: '20rem', boxSizing: 'content-box', boxShadow: selectedButton === index ? '0 1px 0 blue' : 'none'}}
+          style={{maxWidth: '20rem', boxSizing: 'content-box', boxShadow: selectedButton === index ? '0px 1px 0px 0px blue' : 'none'}}
 
           onClick={() => handleButtonClick(index)}
         >

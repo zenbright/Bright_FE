@@ -2,12 +2,12 @@ import {Button} from '@/components/ui/button';
 import {PlusCircle} from 'lucide-react';
 import {useState} from 'react';
 import {Column, Task} from '../utils/class';
-import {ColumnContainer} from './column/ColumnContainer';
+import {ColumnContainer} from './column/column-container';
 import {DndContext, DragOverlay, useSensors, useSensor, PointerSensor} from '@dnd-kit/core';
 import {SortableContext, arrayMove} from '@dnd-kit/sortable';
 import {useMemo} from 'react';
 import {createPortal} from 'react-dom';
-import {TaskContainer} from './task/TaskContainer';
+import {TaskContainer} from './task/task-container';
 import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
 
 export const KanbanBoard = () => {

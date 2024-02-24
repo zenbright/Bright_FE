@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProjectBreadCrumbs from './ProjectBreadCrumbs';
+import ProjectBreadCrumbs from './breadcrumbs';
 import Divider from '../../../components/general/divider';
-import {MemberList} from './MemberList';
+import {MemberList} from './member-list';
 import {Button} from '@/components/ui/button';
 import {ShieldMinus, Heart, Settings, CircleDot, UserRoundPlus} from 'lucide-react';
-import BoardTabGroup from './TabGroup';
+import BoardTabGroup from './tab-group';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,7 +18,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import {useState} from 'react';
-import {KanbanBoard} from './KanbanBoard';
+import {KanbanBoard} from './kanban-board';
 import {SYSTEM_ALERT} from '../../../config/constants/strings.global';
 import {UnderDevDialog} from '../../../components/general/UnderDevDialog';
 
@@ -78,7 +78,7 @@ export const Page = () => {
           <MemberList width={7} height={7} />
 
           <Button
-            className="h-9 border-black/15"
+            className="h-8 border-black/15"
             variant="outline"
             onClick={() => setIsUnderDevDialogOpen(true)}>
             <UserRoundPlus className='h-4'/> Invite
@@ -89,7 +89,7 @@ export const Page = () => {
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button className='text-rose-500 bg-white border-black/15 hover:bg-slate-200/75 h-9' variant="outline">
+            <Button className='text-rose-500 bg-white border-black/15 hover:bg-slate-200/75 h-8' variant="outline">
               <ShieldMinus className='h-4'/>Private
             </Button>
           </AlertDialogTrigger>

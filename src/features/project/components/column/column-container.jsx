@@ -2,10 +2,10 @@ import {Column, Task} from '../../utils/class';
 import PropTypes from 'prop-types';
 import {ListTodo, Plus} from 'lucide-react';
 import {Button} from '@/components/ui/button';
-import {ColumnDropdownMenu} from './DropDownMenu';
+import {ColumnDropdownMenu} from './column-action-list';
 import {SortableContext, useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {TaskContainer} from '../task/TaskContainer';
+import {TaskContainer} from '../task/task-container';
 import {useMemo} from 'react';
 import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
 
@@ -57,7 +57,7 @@ export function ColumnContainer(
     >
       <div {...attributes} {...listeners} >
         <div
-          className='bg-white p-2 text-sm rounded-md w-80 max-w-80 overflow-hidden flex justify-between'>
+          className='bg-white p-2 text-sm rounded-md w-80 max-w-80 overflow-hidden flex justify-between '>
           <div className='flex font-bold h-5 items-center'>
             <ListTodo className='mr-1 h-5'/>
             <span className='truncate max-w-36 mr-1'>{col.title}</span>
