@@ -20,9 +20,11 @@ import {
 import {useState} from 'react';
 import {KanbanBoard} from './KanbanBoard';
 import {SYSTEM_ALERT} from '../../../config/constants/strings.global';
+import {UnderDevDialog} from '../../../components/general/UnderDevDialog';
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
+  const [isUnderDevDialogOpen, setIsUnderDevDialogOpen] = useState(false);
 
   return (
     <div className='px-2 py-1 w-full bg-slate-200/60 h-dvh overflow-auto '>
@@ -32,24 +34,28 @@ export const Page = () => {
 
         {/* Title + Util Buttons */}
         <div className=' flex justify-between items-center'>
-          <h1 className='text-4xl font-bold text-slate-700 mb-1 mt-1'>
+          <h1 className='text-4xl font-bold text-slate-700 mb-1 mt-3'>
             Bright
           </h1>
 
           <div className='flex gap-4'>
             <Button
-              className={isFavoured ? 'bg-rose-500 hover:bg-red-700' : ''}
-              onClick={() => {
-                setFavourite(!isFavoured);
-              }} >
+              className={isFavoured ? 'bg-rose-500 hover:bg-red-500' : ''}
+              onClick={() => setFavourite(!isFavoured)}>
               <Heart className="mr-2 h-4 w-4" /> {isFavoured ? 'Favourred' : 'Favour'}
             </Button>
 
-            <Button className="border-black/15" variant="outline">
+            <Button
+              className="border-black/15"
+              variant="outline"
+              onClick={() => setIsUnderDevDialogOpen(true)}>
               <CircleDot className="mr-2 h-4 w-4" /> Issues
             </Button>
 
-            <Button className="border-black/15" variant='outline'>
+            <Button
+              className="border-black/15"
+              variant='outline'
+              onClick={() => setIsUnderDevDialogOpen(true)}>
               <Settings className="mr-2 h-4 w-4" /> Settings
             </Button>
           </div>
@@ -57,23 +63,29 @@ export const Page = () => {
       </div>
 
       {/* Creation Date + Member List + Privacy */}
-      <div className='mb-2 flex items-center h-10 gap-4'>
+      <div className='mb-1 flex items-center h-10 gap-4 mt-1'>
         {/* Board Tab */}
-        <div className='flex items-center mt-1 pl-4'>
-          <BoardTabGroup />
+        <div className='flex items-center pl-4'>
+          <BoardTabGroup
+            isUnderDevDialogOpen={isUnderDevDialogOpen}
+            setIsUnderDevDialogOpen={setIsUnderDevDialogOpen}/>
         </div>
 
         <Divider
-          width='1.5px' height='80%' color='rgba(0,0,0,0.20)'/>
+          width='1.5px' height='70%' color='rgba(0,0,0,0.2)'/>
 
-        <div className='flex'>
-          <MemberList />
-          <Button className="h-9 gap-2 border-black/15" variant="outline">
+        <div className='flex items-center'>
+          <MemberList width={7} height={7} />
+
+          <Button
+            className="h-9 border-black/15"
+            variant="outline"
+            onClick={() => setIsUnderDevDialogOpen(true)}>
             <UserRoundPlus className='h-4'/> Invite
           </Button>
         </div>
 
-        <Divider width='1.5px' height='80%' color='rgba(0,0,0,0.2)'/>
+        <Divider width='1.5px' height='70%' color='rgba(0,0,0,0.2)'/>
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
@@ -90,7 +102,7 @@ export const Page = () => {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
+              <AlertDialogAction onClick={() => setIsUnderDevDialogOpen(true)}>Continue</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
@@ -100,6 +112,14 @@ export const Page = () => {
 
       {/* Task Management Board */}
       <KanbanBoard />
+
+      {/* Others */}
+      {
+        isUnderDevDialogOpen &&
+        <UnderDevDialog
+          isOpen={isUnderDevDialogOpen}
+          setIsOpen={setIsUnderDevDialogOpen} />
+      }
     </div>
   );
 };

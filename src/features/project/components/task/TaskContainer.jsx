@@ -56,7 +56,7 @@ export const TaskContainer = ({task}) => {
       // Task Skeleton
       <div
         ref={setNodeRef}
-        className='bg-white mb-1 px-3 rounded-md'
+        className='bg-white mb-1 pl-3 rounded-md'
         style={
           {...style,
             width: dimensions.width,
@@ -115,7 +115,7 @@ export const TaskContainer = ({task}) => {
       {...attributes}
       {...listeners}
     >
-      <div ref={ref} className='mb-1 px-3'>
+      <div ref={ref} className='mb-1 pl-3'>
         <div className='flex justify-between items-center'>
           <div>
             {task.tags && task.tags.map((tag) => (

@@ -4,7 +4,7 @@ import {ChevronRight} from 'lucide-react';
 
 const ProjectBreadCrumbs = ({projectType = 'Software', projectOwner = 'MUDOKER'}) => {
   return (
-    <div className="flex items-center pb-1 pt-2 text-slate-500/60 text-sm font-bold">
+    <div className="flex items-center pb-1 pt-2 text-slate-500/60 text-sm font-semibold">
       <button className="text-slate-500/60 hover:text-gray-500 focus:outline-none">
         PROJECTS
       </button>
