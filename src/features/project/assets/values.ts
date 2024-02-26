@@ -1,0 +1,16 @@
+export const DEFAULT_TASK_TAGS = {
+    'Medium': { value: 'medium', color: 'bg-yellow-200' },
+    'High': { value: 'high', color: 'bg-red-200' },
+    'Low': { value: 'low', color: 'bg-green-200' },
+    'Late': { value: 'late', color: 'bg-yellow-300' },
+    'Urgent': { value: 'urgent', color: 'bg-red-300' },
+    'In Progress': { value: 'in progress', color: 'bg-green-400' },
+    'Enhancement': { value: 'enhancement', color: 'bg-teal-200' },
+    'Fix': { value: 'fix', color: 'bg-yellow-300' },
+    'Maintenance': { value: 'maintenance', color: 'bg-teal-200' },
+    'Important': { value: 'important', color: 'bg-yellow-400' },
+    'Pending': { value: 'pending', color: 'bg-blue-200' },
+    'Completed': { value: 'completed', color: 'bg-green-300' },
+    'Blocked': { value: 'blocked', color: 'bg-gray-400' },
+    'Review': { value: 'review', color: 'bg-blue-500' },
+};

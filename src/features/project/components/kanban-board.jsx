@@ -3,6 +3,8 @@ import {PlusCircle} from 'lucide-react';
 import {useState} from 'react';
 import {Column, Task} from '../utils/class';
 import {ColumnContainer} from './column/column-container';
+
+// Drag n drop
 import {DndContext, DragOverlay, useSensors, useSensor, PointerSensor} from '@dnd-kit/core';
 import {SortableContext, arrayMove} from '@dnd-kit/sortable';
 import {useMemo} from 'react';
@@ -126,8 +128,8 @@ export const KanbanBoard = () => {
   };
 
   // Tasks
-  const createTask = (colId) => {
-    const newTask = new Task(colId, 'Code DashBoard UI', 'Follow design on figma');
+  const createTask = (colId, title = '', des = '') => {
+    const newTask = new Task(colId, title, des);
     setTaskList([...tasks, newTask]);
   };
 

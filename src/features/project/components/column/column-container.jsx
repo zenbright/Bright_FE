@@ -8,10 +8,21 @@ import {CSS} from '@dnd-kit/utilities';
 import {TaskContainer} from '../task/task-container';
 import {useMemo} from 'react';
 import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
+import TaskCreationForm from '../task/task-creation-form';
+import {useState} from 'react';
 
 export function ColumnContainer(
-    {col, deleteColumn, taskList = [], updateColumnTitle, createTask},
+    {
+      col,
+      deleteColumn,
+      taskList = [],
+      updateColumnTitle,
+      createTask,
+    },
+
 ) {
+  const [isCreateNewTask, setIsCreateNewTask] = useState(false);
+
   const taskId = useMemo(() => taskList.map((task) => task.id), [taskList]);
 
   // Drag n Drop handler
@@ -69,7 +80,8 @@ export function ColumnContainer(
             <Plus
               className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full'
               onClick={() => {
-                createTask(col.id);
+                // createTask(col.id);
+                setIsCreateNewTask(true);
               }}
             />
 
@@ -98,6 +110,8 @@ export function ColumnContainer(
           </SortableContext>
         </div>
       </OverlayScrollbarsComponent>
+
+      {isCreateNewTask && <TaskCreationForm isCreateNewTask={isCreateNewTask} setIsCreateNewTask={setIsCreateNewTask} createTask={createTask} colId={col.id}/>}
     </div>
   );
 }
@@ -108,4 +122,5 @@ ColumnContainer.propTypes = {
   taskList: PropTypes.arrayOf(PropTypes.instanceOf(Task)),
   updateColumnTitle: PropTypes.func,
   createTask: PropTypes.func,
+  setIsCreateNewTask: PropTypes.func,
 };
