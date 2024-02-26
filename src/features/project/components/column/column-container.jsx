@@ -53,7 +53,7 @@ export function ColumnContainer(
           </Button>
         </div>
 
-        <div className='h-[74vh] bg-transparent w-80 rounded-md'>
+        <div className=' h-[70vh] bg-transparent w-80 rounded-md mt-1'>
 
         </div>
       </div>
@@ -100,7 +100,7 @@ export function ColumnContainer(
         defer
       >
         {/* Task Containers */}
-        <div className='h-[74vh] w-80 rounded-md mt-1'>
+        <div className='h-[70vh] w-80 rounded-md mt-1'>
           <SortableContext items={taskId}>
             {taskList && taskList.map((task, index) =>
               <div key={index}>

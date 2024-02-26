@@ -139,7 +139,7 @@ export const KanbanBoard = () => {
       options={{scrollbars: {autoHide: 'never'}}}
       defer
     >
-      <div className="mt-1">
+      <div className="mt-2">
         <DndContext
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}

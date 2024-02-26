@@ -34,7 +34,7 @@ export const Page = () => {
 
         {/* Title + Util Buttons */}
         <div className=' flex justify-between items-center'>
-          <h1 className='text-4xl font-bold text-slate-700 mb-1 mt-2'>
+          <h1 className='text-4xl font-bold text-slate-700 mb-3 mt-4'>
             Bright
           </h1>
 
