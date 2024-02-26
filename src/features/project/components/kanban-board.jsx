@@ -65,8 +65,8 @@ export const KanbanBoard = () => {
 
   const handleDragEnd = (event) => {
     // Reset states
-    setActiveTask(null);
     setActiveColumn(null);
+    setActiveTask(null);
 
     const {active, over} = event;
 
@@ -81,11 +81,7 @@ export const KanbanBoard = () => {
       const activeIndex = column.findIndex((col) => col.id === activeColumnId);
       const overIndex = column.findIndex((col) => col.id === overColumnId);
 
-      // Check if both indexes are valid
-      if (activeIndex !== -1 && overIndex !== -1) {
-        return arrayMove(column, activeIndex, overIndex);
-      }
-      return column; // Return the original array if indexes are invalid
+      return arrayMove(column, activeIndex, overIndex);
     });
   };
 
@@ -99,7 +95,6 @@ export const KanbanBoard = () => {
 
     const isTaskActive = active.data.current.type === 'Task';
     const isOverTask = over.data.current.type === 'Task';
-    const isOverColumn = over.data.current.type === 'Column';
 
     if (!isTaskActive) return;
 
@@ -108,9 +103,15 @@ export const KanbanBoard = () => {
 
       if (isOverTask) {
         const overIndex = tasks.findIndex((t) => t.id === overTaskId);
-        tasks[activeIndex].columnId = tasks[overIndex].columnId;
+        if (tasks[activeIndex].columnId != tasks[overIndex].columnId) {
+          tasks[activeIndex].columnId = tasks[overIndex].columnId;
+          return arrayMove(tasks, activeIndex, overIndex - 1);
+        }
+
         return arrayMove(tasks, activeIndex, overIndex);
       }
+
+      const isOverColumn = over.data.current.type === 'Column';
 
       if (isOverColumn) {
         tasks[activeIndex].columnId = overTaskId;

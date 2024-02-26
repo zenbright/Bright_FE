@@ -20,12 +20,12 @@ const TabGroup = ({tableNames = TableNames, setIsUnderDevDialogOpen}) => {
   };
 
   return (
-    <div className='flex gap-6'>
+    <div className='flex gap-6 text-sm'>
       {tableNames.map((table, index) => (
         <button
           key={index}
           className={
-            `flex gap-2 transition-all duration-75 items-center font-semibold py-1
+            `flex gap-2 transition-all duration-75 items-center font-bold py-1
             ${selectedButton === index ? 'text-blue-700 border-blue-700' : ' text-black/80'}`
           }
           style={{maxWidth: '20rem', boxSizing: 'content-box', boxShadow: selectedButton === index ? '0px 1px 0px 0px blue' : 'none'}}

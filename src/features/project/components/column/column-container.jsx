@@ -33,7 +33,7 @@ export function ColumnContainer(
     return (
       <div
         ref={setNodeRef}
-        className='w-fit h-auto overflow-auto no-scrollbar bg-gray-300/60 text-black rounded-md shadow-sm'
+        className='w-fit h-auto overflow-hidden no-scrollbar bg-gray-300/60 text-black rounded-md shadow-sm'
         style={style}
       >
         <div>
@@ -42,7 +42,7 @@ export function ColumnContainer(
           </Button>
         </div>
 
-        <div className='h-[73vh] bg-transparent w-80 mt-1 rounded-md'>
+        <div className='h-[73vh] bg-transparent w-80 rounded-md'>
 
         </div>
       </div>
@@ -52,7 +52,7 @@ export function ColumnContainer(
   return (
     <div
       ref={setNodeRef}
-      className='w-fit h-auto text-black rounded-md'
+      className='w-fit h-auto overflow-hidden text-black rounded-md'
       style={style}
     >
       <div {...attributes} {...listeners} >
