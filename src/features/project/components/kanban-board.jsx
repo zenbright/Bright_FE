@@ -136,7 +136,7 @@ export const KanbanBoard = () => {
   return (
     <OverlayScrollbarsComponent
       element="div"
-      options={{scrollbars: {autoHide: 'scroll'}}}
+      options={{scrollbars: {autoHide: 'never'}}}
       defer
     >
       <div className="mt-1">
