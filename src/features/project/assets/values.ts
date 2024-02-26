@@ -16,7 +16,7 @@ export const DEFAULT_TASK_TAGS = {
     },
     'Late': {
         value: 'late',
-        color: 'bg-yellow-300',
+        color: 'bg-rose-500',
         description: 'Tasks that are late'
     },
     'Urgent': {

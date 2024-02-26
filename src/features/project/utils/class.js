@@ -1,6 +1,7 @@
 import {v4 as uuidv4} from 'uuid';
 // import userDefaultProfile from '../assets/cat.jpg';
 import {DEFAULT_TASK_TAGS} from '../assets/values';
+import {differenceInDays} from 'date-fns';
 
 export class Column {
   constructor(title) {
@@ -34,6 +35,11 @@ export class Task {
     this.attachments = [];
     this.startDate = startDate;
     this.endDate = endDate;
+
+    const today = new Date();
+    if (differenceInDays(today, endDate) > 0) {
+      this.addTags(['Late']);
+    }
   }
 
   createTags(tags) {

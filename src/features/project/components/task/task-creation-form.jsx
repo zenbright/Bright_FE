@@ -10,7 +10,7 @@ import {
 import {Input} from '@/components/ui/input';
 import PropTypes from 'prop-types';
 import {TASK_CREATION_DES, TITLE_INPUT_VALIDATOR, TITLE_DES_INPUT_VALIDATOR} from '../../assets/strings';
-import {format} from 'date-fns';
+import {differenceInDays, format} from 'date-fns';
 
 // Form
 import {z} from 'zod';
@@ -50,7 +50,7 @@ const formSchema = z.object({
   endDate: z.date().optional(),
 }).refine((data) => {
   if (data.endDate !== undefined && data.endDate !== null) {
-    return data.endDate >= data.startDate;
+    return differenceInDays(data.endDate, data.startDate) >= 0;
   }
   return true;
 }, {
@@ -66,6 +66,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
     defaultValues: {
       title: '',
       description: '',
+      startDate: new Date(),
     },
   });
 
