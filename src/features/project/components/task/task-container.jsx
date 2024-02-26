@@ -95,7 +95,7 @@ export const TaskContainer = ({task}) => {
             {task.tags && task.tags.map((tag) => (
               <Badge
                 key={tag.id}
-                className={`${tag.bg} mr-2`}>
+                className={`${tag.bg} mr-2 hover:${tag.bg}`}>
                 {tag.title}
               </Badge>
             ))}
