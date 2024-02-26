@@ -33,7 +33,7 @@ export function ColumnContainer(
     return (
       <div
         ref={setNodeRef}
-        className='w-fit h-auto overflow-hidden no-scrollbar bg-gray-300/60 text-black rounded-md shadow-sm'
+        className='w-fit h-auto overflow-hidden bg-gray-300/60 rounded-md mb-1'
         style={style}
       >
         <div>
@@ -42,7 +42,7 @@ export function ColumnContainer(
           </Button>
         </div>
 
-        <div className='h-[73vh] bg-transparent w-80 rounded-md'>
+        <div className='h-[74vh] bg-transparent w-80 rounded-md'>
 
         </div>
       </div>
@@ -52,12 +52,12 @@ export function ColumnContainer(
   return (
     <div
       ref={setNodeRef}
-      className='w-fit h-auto overflow-hidden text-black rounded-md'
+      className='w-fit h-auto text-black rounded-md mb-1'
       style={style}
     >
       <div {...attributes} {...listeners} >
         <div
-          className='bg-white p-2 text-sm rounded-md w-80 max-w-80 overflow-hidden flex justify-between '>
+          className='bg-white p-2 border-2 border-slate-200 text-sm rounded-md w-80 max-w-80 overflow-hidden flex justify-between '>
           <div className='flex font-bold h-5 items-center'>
             <ListTodo className='mr-1 h-5'/>
             <span className='truncate max-w-36 mr-1'>{col.title}</span>
@@ -88,7 +88,7 @@ export function ColumnContainer(
         defer
       >
         {/* Task Containers */}
-        <div className='h-[73vh] w-80 mt-1 rounded-md'>
+        <div className='h-[74vh] w-80 rounded-md mt-1'>
           <SortableContext items={taskId}>
             {taskList && taskList.map((task, index) =>
               <div key={index}>

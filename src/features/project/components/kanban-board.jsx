@@ -103,12 +103,16 @@ export const KanbanBoard = () => {
 
       if (isOverTask) {
         const overIndex = tasks.findIndex((t) => t.id === overTaskId);
-        if (tasks[activeIndex].columnId != tasks[overIndex].columnId) {
-          tasks[activeIndex].columnId = tasks[overIndex].columnId;
-          return arrayMove(tasks, activeIndex, overIndex - 1);
-        }
+        const activeTask = tasks[activeIndex];
+        const overTask = tasks[overIndex];
 
-        return arrayMove(tasks, activeIndex, overIndex);
+        if (activeTask.columnId !== overTask.columnId) {
+          activeTask.columnId = overTask.columnId;
+          const newOverIndex = Math.max(overIndex - 1, 0);
+          return arrayMove(tasks, activeIndex, newOverIndex);
+        } else {
+          return arrayMove(tasks, activeIndex, overIndex);
+        }
       }
 
       const isOverColumn = over.data.current.type === 'Column';
@@ -133,15 +137,15 @@ export const KanbanBoard = () => {
       options={{scrollbars: {autoHide: 'scroll'}}}
       defer
     >
-      <div className="mt-2">
+      <div className="mt-1">
         <DndContext
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
           onDragOver={handleDragOver}
           sensors={sensors}
         >
-          <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-3'}`}>
-            <div className='flex gap-3'>
+          <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-2'}`}>
+            <div className='flex gap-2'>
               <SortableContext items={columnId}>
                 {columns.map((col, index) => (
                   <div key={index}>

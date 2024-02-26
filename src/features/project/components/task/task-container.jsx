@@ -56,54 +56,14 @@ export const TaskContainer = ({task}) => {
       // Task Skeleton
       <div
         ref={setNodeRef}
-        className='bg-white mb-1 pl-3 rounded-md'
         style={
           {...style,
-            width: dimensions.width,
+            width: dimensions.width + 3,
             height: dimensions.height,
           }
         }
-      >
-        <div className='flex justify-between items-center'>
-          <div className='flex'>
-            <div className="bg-gray-300 h-3 w-16 animate-pulse rounded-md mr-2" />
-            <div className="bg-gray-300 h-3 w-16 animate-pulse rounded-md mr-2" />
-          </div>
-          <div className="bg-gray-300 h-6 w-6 animate-pulse rounded-md"></div>
-        </div>
-
-        <div className='text-xl font-semibold bg-gray-300 h-6 w-32 animate-pulse rounded-md mt-1'/>
-
-        <div className='flex justify-between items-center mt-1'>
-          <div className="flex gap-2">
-            <div className='bg-gray-300 h-6 w-6 animate-pulse rounded-full'/>
-            <div className='bg-gray-300 h-6 w-6 animate-pulse rounded-full'/>
-            <div className='bg-gray-300 h-6 w-6 animate-pulse rounded-full'/>
-          </div>
-          <div className="bg-gray-300 h-6 w-6 animate-pulse rounded-md"/>
-        </div>
-
-        <div className='mt-1'>
-          <div className="bg-gray-300 h-1 w-full animate-pulse"/>
-        </div>
-
-        <div className='flex items-center mt-2 justify-between mb-1'>
-          <div className='flex gap-4 text-sm'>
-            <div className='flex items-center gap-1'>
-              <div className='bg-gray-300 h-4 w-4 animate-pulse rounded-md'/>
-            </div>
-
-            <div className='flex items-center gap-1'>
-              <div className='bg-gray-300 h-4 w-4 animate-pulse rounded-md'/>
-            </div>
-
-            <div className='flex items-center gap-1'>
-              <div className='bg-gray-300 h-4 w-4 animate-pulse rounded-md'/>
-            </div>
-          </div>
-          <div className="bg-gray-300 h-4 w-4 animate-pulse rounded-md" />
-        </div>
-      </div>
+        className='bg-gray-300/60 rounded-md mb-2'
+      />
     );
   }
 
@@ -111,11 +71,11 @@ export const TaskContainer = ({task}) => {
     <div
       ref={setNodeRef}
       style={style}
-      className='bg-white rounded-md'
+      className='bg-white rounded-md border-2 border-slate-200 mb-1'
       {...attributes}
       {...listeners}
     >
-      <div ref={ref} className='mb-1 pl-3'>
+      <div ref={ref} className='pl-3 pr-1'>
         <div className='flex justify-between items-center'>
           <div>
             {task.tags && task.tags.map((tag) => (
@@ -133,7 +93,7 @@ export const TaskContainer = ({task}) => {
         </div>
 
         {/* Task Contents */}
-        <div className='text-xl font-semibold truncate max-w-52'>
+        <div className='text-lg font-semibold truncate max-w-52'>
           {task.title}
         </div>
 
@@ -150,7 +110,7 @@ export const TaskContainer = ({task}) => {
           </Button>
         </div>
 
-        <Divider width='100%' height='1px' color='rgba(0,0,0,0.20'/>
+        <Divider width='100%' height='1px' color='rgba(0,0,0,0.20)'/>
 
         {/* Helper Buttons */}
         <div className='flex items-center justify-between'>

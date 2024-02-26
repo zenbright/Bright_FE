@@ -34,7 +34,7 @@ export const Page = () => {
 
         {/* Title + Util Buttons */}
         <div className=' flex justify-between items-center'>
-          <h1 className='text-4xl font-bold text-slate-700 mb-1 mt-3'>
+          <h1 className='text-4xl font-bold text-slate-700 mb-1 mt-2'>
             Bright
           </h1>
 
@@ -63,7 +63,7 @@ export const Page = () => {
       </div>
 
       {/* Creation Date + Member List + Privacy */}
-      <div className='mb-1 flex items-center h-10 gap-4 mt-1'>
+      <div className='mb-1 flex items-center h-10 gap-4'>
         {/* Board Tab */}
         <div className='flex items-center pl-4'>
           <BoardTabGroup
@@ -108,7 +108,7 @@ export const Page = () => {
         </AlertDialog>
       </div>
 
-      <Divider height='1.5px' color='rgba(0,0,0,0.05)'/>
+      {/* <Divider height='1.5px' color='rgba(0,0,0,0.05)'/> */}
 
       {/* Task Management Board */}
       <KanbanBoard />
