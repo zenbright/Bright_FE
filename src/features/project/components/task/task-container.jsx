@@ -93,7 +93,7 @@ export const TaskContainer = ({task}) => {
         </div>
 
         {/* Task Contents */}
-        <div className='text-lg font-semibold truncate max-w-52'>
+        <div className='text-xl font-semibold truncate max-w-52'>
           {task.title}
         </div>
 

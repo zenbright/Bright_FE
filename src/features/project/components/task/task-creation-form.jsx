@@ -196,7 +196,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                 )}
               />
             </div>
-            <Button type="submit">Submit</Button>
+            <Button className='w-full' type="submit">Submit</Button>
           </form>
         </Form>
       </DialogContent>
