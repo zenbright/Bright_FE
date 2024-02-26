@@ -9,7 +9,7 @@ import {
 
 import {Input} from '@/components/ui/input';
 import PropTypes from 'prop-types';
-import {TASK_CREATION_DES, TITLE_INPUT_VALIDATOR, TITLE_DES_INPUT_VALIDATOR} from '../../assets/strings';
+import {TASK_CREATION_DES, TITLE_INPUT_VALIDATOR, TITLE_DES_INPUT_VALIDATOR, END_DATE_INPUT_VALIDATOR} from '../../assets/strings';
 import {differenceInDays, format} from 'date-fns';
 
 // Form
@@ -54,7 +54,7 @@ const formSchema = z.object({
   }
   return true;
 }, {
-  message: 'End date must be after or equal to the start date',
+  message: END_DATE_INPUT_VALIDATOR.ERROR,
 });
 
 
@@ -77,6 +77,10 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
 
   const onError = (error) => {
     setEndDateError(error[''].message);
+  };
+
+  const handleEndDateChange = () => {
+    setEndDateError(undefined);
   };
 
   return (
@@ -169,7 +173,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
-                            variant={'outline'}
+                            variant={'outline'} onClick={() => handleEndDateChange()}
                             className={`w-full pl-3 text-left font-normal ${!field.value && 'text-muted-foreground'}`}
                           >
                             {field.value ? (

@@ -8,3 +8,7 @@ export const TITLE_DES_INPUT_VALIDATOR = {
     SHORT: 'Description must be at least 2 characters.',
     LONG: 'The description exceeds the 200-character limit. Please condense it.'
 }
+
+export const END_DATE_INPUT_VALIDATOR = {
+    ERROR: 'End date must be after or equal to the start date'
+}
