@@ -2,7 +2,7 @@ import { useState } from "react"
 
 function SettingTab({tab, tabIndex, children, paragraph, selectedActive, handleSelected}) {
     return (
-        <div className={`flex flex-col p-3 group cursor-pointer border-slate-300 border-b-[1px] hover:bg-slate-100
+        <div className={`flex flex-col p-3 w-full group cursor-pointer border-slate-300 border-b-[1px] hover:bg-slate-100
                         ${selectedActive === tabIndex ? 'border-r-blue-700 rounded-none border-r-[3px]' : ''}`}
             onClick={handleSelected}
         >

@@ -7,8 +7,9 @@ function SettingSideBar() {
     const handleSelected = (index) => {
         setSelectedActive(index)
     }
+    
     return (
-        <div className="h-screen w-[19vw] bg-slate-100/30 border-r-[1px] border-slate-300 flex flex-col no-scrollbar">
+        <div className="h-screen w-[19vw] bg-slate-100/30 border-r-[1px] border-slate-300 flex flex-col no-scrollbar overflow-auto">
             <div className="text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group w-full"> Setting</div>
             <div>
                 {SETTING_TABS.map((tab, index) => (
