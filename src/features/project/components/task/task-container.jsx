@@ -10,10 +10,24 @@ import {CSS} from '@dnd-kit/utilities';
 import {useRef} from 'react';
 import {useLayoutEffect} from 'react';
 import {useState} from 'react';
+import {differenceInDays} from 'date-fns';
 
 export const TaskContainer = ({task}) => {
   const ref = useRef();
   const [dimensions, setDimensions] = useState({width: 0, height: 0});
+
+  let timeLeftText = '';
+
+  if (task.endDate) {
+    const endDate = new Date(task.endDate);
+    const today = new Date();
+
+    let differenceDays = 0;
+
+    differenceDays = differenceInDays(endDate, today);
+
+    timeLeftText = differenceDays > 0 ? `${differenceDays} days left` : differenceDays == 0 ?'Today' : `${Math.abs(differenceDays)} days ago`;
+  }
 
   // Calculate current task size
   useLayoutEffect(() => {
@@ -116,16 +130,17 @@ export const TaskContainer = ({task}) => {
         <div className='flex items-center justify-between'>
           <div className='flex gap-2 text-sm'>
             <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-              <List className='w-4 h-5'/>3
+              <List className='w-4 h-5'/>{task.todos.length}
             </div>
 
             <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-              <Paperclip className='w-4 h-5'/>2
+              <Paperclip className='w-4 h-5'/>{task.attachments.length}
             </div>
 
-            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-              <Calendar className='w-4 h-5'/>3 days left
-            </div>
+            {task.endDate && <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+              <Calendar className='w-4 h-5'/> {task.endDate && <div>{timeLeftText}</div>}
+
+            </div>}
           </div>
 
           <Button variant="ghost">

@@ -23,13 +23,17 @@ const DEFAULT_TAGS = ['In Progress'];
 // ];
 
 export class Task {
-  constructor(columnId, title, des) {
+  constructor(columnId, title, des, startDate, endDate) {
     this.id = uuidv4();
     this.columnId = columnId;
     this.title = title;
     this.des = des;
     this.tags = this.createTags(DEFAULT_TAGS);
     this.memList = [];
+    this.todos = [];
+    this.attachments = [];
+    this.startDate = startDate;
+    this.endDate = endDate;
   }
 
   createTags(tags) {
@@ -47,6 +51,5 @@ export class TaskTag {
     this.taskId = taskId;
     this.title = title;
     this.bg = DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
-    console.log(this.bg);
   }
 }

@@ -111,7 +111,12 @@ export function ColumnContainer(
         </div>
       </OverlayScrollbarsComponent>
 
-      {isCreateNewTask && <TaskCreationForm isCreateNewTask={isCreateNewTask} setIsCreateNewTask={setIsCreateNewTask} createTask={createTask} colId={col.id}/>}
+      {isCreateNewTask &&
+      <TaskCreationForm
+        isCreateNewTask={isCreateNewTask}
+        setIsCreateNewTask={setIsCreateNewTask}
+        createTask={createTask}
+        colId={col.id}/>}
     </div>
   );
 }

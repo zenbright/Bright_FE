@@ -35,9 +35,10 @@ import {
 
 import {CalendarPlus} from 'lucide-react';
 import {Textarea} from '@/components/ui/textarea';
+import {useState} from 'react';
 
 const formSchema = z.object({
-  title: z.string()
+  title: z.string().trim()
       .min(2, {message: TITLE_INPUT_VALIDATOR.SHORT})
       .max(50),
   description: z.string()
@@ -54,11 +55,12 @@ const formSchema = z.object({
   return true;
 }, {
   message: 'End date must be after or equal to the start date',
-  path: 'endDate',
 });
 
 
 const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colId}) => {
+  const [endDateError, setEndDateError] = useState(null);
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -68,18 +70,17 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
   });
 
   const onSubmit = (values) => {
-    console.log(values);
-    createTask(colId, values.title, values.description);
+    createTask(colId, values.title, values.description, values.startDate, values.endDate);
     setIsCreateNewTask(false);
   };
 
   const onError = (error) => {
-    console.log(error);
+    setEndDateError(error[''].message);
   };
 
   return (
     <Dialog open={isCreateNewTask} onOpenChange={setIsCreateNewTask}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[450px]">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">Create new task</DialogTitle>
           <DialogDescription>
@@ -117,7 +118,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
               )}
             />
 
-            <div className='flex justify-between w-full'>
+            <div className='flex justify-between w-full gap-2'>
               <FormField
                 control={form.control}
                 name="startDate"
@@ -191,7 +192,9 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                         />
                       </PopoverContent>
                     </Popover>
-                    <FormMessage />
+                    {endDateError && (
+                      <FormMessage error="true">{endDateError}</FormMessage>
+                    )}
                   </FormItem>
                 )}
               />
