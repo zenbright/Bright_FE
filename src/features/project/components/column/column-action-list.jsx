@@ -27,7 +27,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {UnderDevDialog} from '../../../../components/general/UnderDevDialog';
+import {UnderDevDialog} from '../../../../components/general/under-development-dialog';
 
 import {
   Dialog,

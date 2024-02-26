@@ -20,7 +20,7 @@ import {
 import {useState} from 'react';
 import {KanbanBoard} from './kanban-board';
 import {SYSTEM_ALERT} from '../../../config/constants/strings.global';
-import {UnderDevDialog} from '../../../components/general/UnderDevDialog';
+import {UnderDevDialog} from '../../../components/general/under-development-dialog';
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
