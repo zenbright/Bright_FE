@@ -76,7 +76,7 @@ export const AttachmentList = ({attachments = SAMPLE_ATTACHMENT_LIST}) => {
               window.location.href = attachment.url;
             }}
             key={index}
-            className='hover:bg-slate-100 h-20 rounded-md flex gap-4 font-bold'>
+            className='hover:bg-slate-100 h-20 rounded-md flex gap-4 font-bold hover:cursor-pointer'>
             {
             attachment.mimeType.startsWith('image/') ? (
                 <ImagePreview attachment={attachment} />
