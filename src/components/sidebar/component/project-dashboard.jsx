@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import ProjectDetail from './ProjectDetail';
+import ProjectDetail from './project-detail';
 import FilterIcon from '../assets/images/filter.svg?react';
 import ProjectIcon from '../assets/images/picon.svg?react';
 import NotFound from '../assets/images/notfound.svg?react';

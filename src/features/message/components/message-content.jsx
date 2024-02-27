@@ -15,9 +15,9 @@ import smileIcon from '../assets/smile.png';
 
 import {MESSAGE_CONTENT_WIDTH} from '../../../lib/constants/size.global';
 import {MessageBubble} from './bubble';
-import {Message} from '../utils/message.class';
+import {Message} from '../utils/class';
 import {MESSAGE_HEADER_HEIGHT} from '../../../lib/constants/size.global';
-import {SAMPLE_MESSAGE} from '../test/data/message';
+import {SAMPLE_MESSAGE} from '../test/values';
 
 export const MessageContent = ({selectedMessage, onlineStatus, userName = 'User 1'}) => {
   const [userMessageInput, setUserMessageInput] = useState('');

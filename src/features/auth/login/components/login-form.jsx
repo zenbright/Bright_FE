@@ -1,26 +1,26 @@
 /* eslint-disable max-len */
-import React, { useState } from "react";
-import LoginButton from "./LoginButton";
+import React, {useState} from 'react';
+import LoginButton from './LoginButton';
 import {
   GithubButton,
   FacebookButton,
   GoogleButton,
   InputComponent,
-} from "../../";
-import login from "../utils/service";
-import { setCookie } from "@";
+} from '../..';
+import login from '../utils/service';
+import {setCookie} from '@';
 
 function Loginform() {
-  const [account, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [account, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await login(account, password);
-      setCookie("accessToken", response.accessToken, 30);
+      setCookie('accessToken', response.accessToken, 30);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -30,13 +30,13 @@ function Loginform() {
         <InputComponent
           type="email"
           value={account}
-          placeholder={"Account Email"}
+          placeholder={'Account Email'}
           onChange={(e) => setEmail(e.target.value)}
         />
         <InputComponent
           type="password"
           value={password}
-          placeholder={"Password"}
+          placeholder={'Password'}
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="">

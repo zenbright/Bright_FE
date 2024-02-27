@@ -2,7 +2,7 @@
 import {MessagePreviewTab} from '../components/previewTab';
 import image from '../../../assets/images/rmitlogo.png';
 import {useState} from 'react';
-import {MessageContent} from '../components/messageContent';
+import {MessageContent} from './message-content';
 import messageNew from '../assets/writing.png';
 import {MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH} from '../../../lib/constants/size.global';
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import {AuthBackground} from '../..';
-import Loginform from './Loginform';
+import Signupform from './page';
 import logo from '@/assets/images/app-logo/logomini-light.svg';
 import {Button} from '../../../../components/ui/button';
 
-const LoginPage = () => {
+
+const SignupPage = () => {
   const divStyle = {
     backgroundImage: `url(${AuthBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    /* Additional styles can be added here */
   };
 
   return (
@@ -21,11 +21,12 @@ const LoginPage = () => {
         />
       </div>
       <div className='container relative hidden min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0'>
-        <Button href="/login" className = "absolute right-4 top-4 md:right-8 md:top-8"> Create account </Button>
+        <Button href="/login" className = "absolute right-4 top-4 md:right-8 md:top-8"> Login </Button>
         <div className='relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r'>
-          <div className='absolute inset-0' style={divStyle}/>
+          <div className='absolute inset-0' style={divStyle} />
           <div className='relative z-20 flex items-center text-lg font-medium'>
             <img src={logo} alt='logo' className='object-contain w-40' />
+
           </div>
           <div className='relative z-20 mt-auto'>
             <div className='mb-10'>
@@ -45,13 +46,13 @@ const LoginPage = () => {
           <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
             <div className='flex flex-col space-y-2 text-center'>
               <h1 className="text-2xl font-semibold tracking-tight">
-                                Login to your account
+                                Create your account
               </h1>
               <p className="text-sm text-muted-foreground">
-                                Enter your email below to login to your account
+                                Unlock Endless Possibilities: Create Your Account Today!
               </p>
             </div>
-            <Loginform />
+            <Signupform />
             <p className="px-8 text-center text-sm text-muted-foreground">
                             By clicking continue, you agree to our{' '}
               <a
@@ -76,4 +77,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;

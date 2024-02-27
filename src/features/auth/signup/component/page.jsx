@@ -1,5 +1,5 @@
 import React from 'react';
-import SignupButton from './SignupButton';
+import SignupButton from './signup-button';
 import {FacebookButton, GithubButton, GoogleButton, InputComponent} from '../..';
 import signup from '../utils/service';
 import {useState} from 'react';
