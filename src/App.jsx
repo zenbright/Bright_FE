@@ -1,9 +1,13 @@
 import React from 'react';
-import Sidebar from '@/components/sidebar';
+import 'overlayscrollbars/styles/overlayscrollbars.css';
+
+import ProjectManagementPage from './features/project';
 
 function App() {
   return (
-    <Sidebar></Sidebar>
+    <div>
+      <ProjectManagementPage/>
+    </div>
   );
 }
 
