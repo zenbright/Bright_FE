@@ -115,7 +115,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Follow design on Figma" {...field}
+                    <Textarea className="max-h-40" placeholder="Follow design on Figma" {...field}
                     />
                   </FormControl>
                   <FormMessage />
