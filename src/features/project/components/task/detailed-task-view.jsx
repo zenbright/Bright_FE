@@ -1,6 +1,3 @@
-import {Button} from '@/components/ui/button';
-import {Input} from '@/components/ui/input';
-import {Label} from '@/components/ui/label';
 import {
   Sheet,
   SheetContent,
@@ -11,37 +8,73 @@ import {
 } from '@/components/ui/sheet';
 import PropTypes from 'prop-types';
 import {Task} from '../../utils/class';
+import {MemberList} from '../member-list';
+import {format} from 'date-fns';
+import {Badge} from '@/components/ui/badge';
+import TabGroup from '../tab-group';
+import {TASK_DETAILED_TABS} from '../../assets/values';
+import {useState} from 'react';
+import {AttachmentList} from './detailed-task-view/attachment-list';
 
 export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, task}) => {
-  console.log('Test:', task);
+  const [tabSelected, setTabSelected] = useState(2);
+
   return (
-    <Sheet open={isShowTaskDetailed} onOpenChange={setIsShowTaskDetailed} >
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>Edit profile</SheetTitle>
-          <SheetDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </SheetDescription>
-        </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" className="col-span-3" />
+    <div
+    >
+      <Sheet open={isShowTaskDetailed} onOpenChange={setIsShowTaskDetailed} >
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle className='text-2xl font-bold'>{task.title}</SheetTitle>
+            <SheetDescription className='text-md'>
+              {task.des}
+            </SheetDescription>
+          </SheetHeader>
+
+          {/* Headers */}
+          <div className='text-sm mt-3 flex-col flex gap-4'>
+            <div className='flex items-center gap-11'>
+            Assignee <MemberList width={6} height={6}/>
+            </div>
+            <div className='flex items-center gap-12'>
+            Timeline
+              <div className=''>
+                {`${format(task.startDate, 'MM/dd/yyyy')}`} { task.endDate && - `${format(task.endDate, 'MM/dd/yyyy')}`}
+              </div>
+            </div>
+            <div className='flex gap-16'>
+            Tags
+              <div className=' ml-2'>
+                {task.tags && task.tags.map((tag) => (
+                  <Badge
+                    key={tag.id}
+                    style={{
+                      backgroundColor: tag.color,
+                    }}
+                    className='h-6 mr-1 mb-1'>
+                    {tag.title}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            {/* Inner tabs */}
+            <TabGroup
+              tableNames={TASK_DETAILED_TABS}
+              selected={tabSelected}
+              setSelected={setTabSelected}/>
+
+            {tabSelected === 2 && <AttachmentList />}
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" className="col-span-3" />
-          </div>
-        </div>
-        <SheetFooter>
-          <Button onClick={() => setIsShowTaskDetailed(false)}>Save changes</Button>
-        </SheetFooter>
-      </SheetContent>
-    </Sheet>
+
+
+          <SheetFooter>
+            {/* <Button onClick={() => setIsShowTaskDetailed(false)}>Save changes</Button> */}
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
+    </div>
+
   );
 };
 

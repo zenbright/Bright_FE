@@ -84,92 +84,93 @@ export const TaskContainer = ({task}) => {
   }
 
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      className='bg-white rounded-md border-2 border-slate-200 mb-1'
-      {...attributes}
-      {...listeners}
-    >
-      <div ref={ref} className='pl-3 pr-1'>
-        <div className='flex justify-between items-center'>
-          <div className='flex'>
-            {task.tags && task.tags.slice(0, 2).map((tag) => (
-              <Badge
-                key={tag.id}
-                className={`mr-1`}
-                style={
-                  {
-                    backgroundColor: tag.color,
-                  }
-                }>
-                {tag.title}
-              </Badge>
-            ))}
-            { task.tags.length > 2 && <div>
-              <Badge className='bg-slate-400'>
-                + {task.tags.length - 2}
-              </Badge>
-            </div>}
-          </div>
-
-          <Button onClick={() => {
-            console.log('ok');
-          }} variant="ghost">
-            <MoreHorizontal />
-          </Button>
-        </div>
-
-        <div onClick={() => setIsShowTaskDetailed(true)}>
-          {/* Task Contents */}
-          <div className='text-xl font-semibold truncate max-w-52'>
-            {task.title}
-          </div>
-
-          <div className='text-sm truncate max-w-60'>
-            {task.des}
-          </div>
-
-          {/* Asignee List */}
-          <div className='flex justify-between items-center'>
-            <MemberList width={6} height={6} members={task.memList}/>
-
-            <Button onClick={(e) => e.stopPropagation()} variant="ghost">
-              <UserRoundPlus className='w-4 h-4'/>
-            </Button>
-          </div>
-
-          <Divider width='100%' height='1px' color='rgba(0,0,0,0.20)'/>
-
-          {/* Helper Buttons */}
-          <div className='flex items-center justify-between'>
-            <div className='flex gap-2 text-sm'>
-              <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-                <List className='w-4 h-5'/>{task.todos.length}
-              </div>
-
-              <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-                <Paperclip className='w-4 h-5'/>{task.attachments.length}
-              </div>
-
-              {task.endDate && <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-                <Calendar className='w-4 h-5'/> {task.endDate && <div>{timeLeftText}</div>}
-
-              </div>}
-            </div>
-
-            <Button variant="ghost">
-              <Flag className='w-4 h-4'/>
-            </Button>
-          </div>
-        </div>
-      </div>
-
+    <div>
       {isShowTaskDetailed && <DetailedTaskView
         isShowTaskDetailed={isShowTaskDetailed}
         setIsShowTaskDetailed={setIsShowTaskDetailed}
         task={task}/>}
+      <div
+        ref={setNodeRef}
+        style={style}
+        className='bg-white rounded-md border-2 border-slate-200 mb-1'
+        {...attributes}
+        {...listeners}
+      >
+        <div ref={ref} className='pl-3 pr-1'>
+          <div className='flex justify-between items-center'>
+            <div className='flex gap-1'>
+              {task.tags && task.tags.slice(0, 2).map((tag) => (
+                <Badge
+                  key={tag.id}
+                  style={{
+                    backgroundColor: tag.color,
+                  }}
+                  className='h-6'>
+                  {tag.title}
+                </Badge>
+              ))}
+              {task.tags.length > 2 && (
+                <Badge className='bg-slate-200 text-slate-700 h-6 hover:bg-slate-300'>
+      + {task.tags.length - 2}
+                </Badge>
+              )}
+            </div>
+
+
+            <Button onClick={() => {
+              console.log('ok');
+            }} variant="ghost">
+              <MoreHorizontal />
+            </Button>
+          </div>
+
+          <div onClick={() => setIsShowTaskDetailed(true)}>
+            {/* Task Contents */}
+            <div className='text-xl font-semibold truncate max-w-52'>
+              {task.title}
+            </div>
+
+            <div className='text-sm truncate max-w-60'>
+              {task.des}
+            </div>
+
+            {/* Asignee List */}
+            <div className='flex justify-between items-center'>
+              <MemberList width={6} height={6} members={task.memList}/>
+
+              <Button onClick={(e) => e.stopPropagation()} variant="ghost">
+                <UserRoundPlus className='w-4 h-4'/>
+              </Button>
+            </div>
+
+            <Divider width='100%' height='1px' color='rgba(0,0,0,0.20)'/>
+
+            {/* Helper Buttons */}
+            <div className='flex items-center justify-between'>
+              <div className='flex gap-2 text-sm'>
+                <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+                  <List className='w-4 h-5'/>{task.todos.length}
+                </div>
+
+                <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+                  <Paperclip className='w-4 h-5'/>{task.attachments.length}
+                </div>
+
+                {task.endDate && <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+                  <Calendar className='w-4 h-5'/> {task.endDate && <div>{timeLeftText}</div>}
+
+                </div>}
+              </div>
+
+              <Button variant="ghost">
+                <Flag className='w-4 h-4'/>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
   );
 };
 
