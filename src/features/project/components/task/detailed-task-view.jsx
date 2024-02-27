@@ -18,7 +18,7 @@ import {AttachmentList} from './detailed-task-view/attachment-list';
 
 export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, task}) => {
   const [tabSelected, setTabSelected] = useState(2);
-
+  console.log(task);
   return (
     <div
     >
@@ -39,7 +39,8 @@ export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, tas
             <div className='flex items-center gap-12'>
             Timeline
               <div className=''>
-                {`${format(task.startDate, 'MM/dd/yyyy')}`} { task.endDate && - `${format(task.endDate, 'MM/dd/yyyy')}`}
+                {`${format(task.startDate, 'MM/dd/yyyy')}`} {task.endDate && `- ${format(task.endDate, 'MM/dd/yyyy')}`}
+
               </div>
             </div>
             <div className='flex gap-16'>
