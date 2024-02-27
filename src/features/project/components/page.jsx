@@ -108,8 +108,6 @@ export const Page = () => {
         </AlertDialog>
       </div>
 
-      {/* <Divider height='1.5px' color='rgba(0,0,0,0.05)'/> */}
-
       {/* Task Management Board */}
       <KanbanBoard />
 

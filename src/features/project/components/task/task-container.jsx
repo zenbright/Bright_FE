@@ -11,10 +11,12 @@ import {useRef} from 'react';
 import {useLayoutEffect} from 'react';
 import {useState} from 'react';
 import {differenceInDays} from 'date-fns';
+import {DetailedTaskView} from './detailed-task-view';
 
 export const TaskContainer = ({task}) => {
   const ref = useRef();
   const [dimensions, setDimensions] = useState({width: 0, height: 0});
+  const [isShowTaskDetailed, setIsShowTaskDetailed] = useState(false);
 
   let timeLeftText = '';
 
@@ -89,7 +91,7 @@ export const TaskContainer = ({task}) => {
       {...attributes}
       {...listeners}
     >
-      <div ref={ref} className='pl-3 pr-1'>
+      <div ref={ref} className='pl-3 pr-1' onClick={() => setIsShowTaskDetailed(true)}>
         <div className='flex justify-between items-center'>
           <div>
             {task.tags && task.tags.slice(0, 2).map((tag) => (
@@ -153,6 +155,10 @@ export const TaskContainer = ({task}) => {
           </Button>
         </div>
       </div>
+
+      <DetailedTaskView
+        isShowTaskDetailed={isShowTaskDetailed}
+        setIsShowTaskDetailed={setIsShowTaskDetailed}/>
     </div>
   );
 };
