@@ -91,9 +91,9 @@ export const TaskContainer = ({task}) => {
       {...attributes}
       {...listeners}
     >
-      <div ref={ref} className='pl-3 pr-1' onClick={() => setIsShowTaskDetailed(true)}>
+      <div ref={ref} className='pl-3 pr-1'>
         <div className='flex justify-between items-center'>
-          <div>
+          <div className='flex'>
             {task.tags && task.tags.slice(0, 2).map((tag) => (
               <Badge
                 key={tag.id}
@@ -106,53 +106,62 @@ export const TaskContainer = ({task}) => {
                 {tag.title}
               </Badge>
             ))}
+            { task.tags.length > 2 && <div>
+              <Badge className='bg-slate-400'>
+                + {task.tags.length - 2}
+              </Badge>
+            </div>}
           </div>
 
-          <Button variant="ghost">
+          <Button onClick={() => {
+            console.log('ok');
+          }} variant="ghost">
             <MoreHorizontal />
           </Button>
         </div>
 
-        {/* Task Contents */}
-        <div className='text-xl font-semibold truncate max-w-52'>
-          {task.title}
-        </div>
-
-        <div className='text-sm truncate max-w-60'>
-          {task.des}
-        </div>
-
-        {/* Asignee List */}
-        <div className='flex justify-between items-center'>
-          <MemberList width={6} height={6} members={task.memList}/>
-
-          <Button variant="ghost">
-            <UserRoundPlus className='w-4 h-4'/>
-          </Button>
-        </div>
-
-        <Divider width='100%' height='1px' color='rgba(0,0,0,0.20)'/>
-
-        {/* Helper Buttons */}
-        <div className='flex items-center justify-between'>
-          <div className='flex gap-2 text-sm'>
-            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-              <List className='w-4 h-5'/>{task.todos.length}
-            </div>
-
-            <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-              <Paperclip className='w-4 h-5'/>{task.attachments.length}
-            </div>
-
-            {task.endDate && <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-              <Calendar className='w-4 h-5'/> {task.endDate && <div>{timeLeftText}</div>}
-
-            </div>}
+        <div onClick={() => setIsShowTaskDetailed(true)}>
+          {/* Task Contents */}
+          <div className='text-xl font-semibold truncate max-w-52'>
+            {task.title}
           </div>
 
-          <Button variant="ghost">
-            <Flag className='w-4 h-4'/>
-          </Button>
+          <div className='text-sm truncate max-w-60'>
+            {task.des}
+          </div>
+
+          {/* Asignee List */}
+          <div className='flex justify-between items-center'>
+            <MemberList width={6} height={6} members={task.memList}/>
+
+            <Button onClick={(e) => e.stopPropagation()} variant="ghost">
+              <UserRoundPlus className='w-4 h-4'/>
+            </Button>
+          </div>
+
+          <Divider width='100%' height='1px' color='rgba(0,0,0,0.20)'/>
+
+          {/* Helper Buttons */}
+          <div className='flex items-center justify-between'>
+            <div className='flex gap-2 text-sm'>
+              <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+                <List className='w-4 h-5'/>{task.todos.length}
+              </div>
+
+              <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+                <Paperclip className='w-4 h-5'/>{task.attachments.length}
+              </div>
+
+              {task.endDate && <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+                <Calendar className='w-4 h-5'/> {task.endDate && <div>{timeLeftText}</div>}
+
+              </div>}
+            </div>
+
+            <Button variant="ghost">
+              <Flag className='w-4 h-4'/>
+            </Button>
+          </div>
         </div>
       </div>
 
