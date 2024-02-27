@@ -27,7 +27,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {UnderDevDialog} from '../../../../components/general/UnderDevDialog';
+import {UnderDevDialog} from '../../../../components/general/under-development-dialog';
 
 import {
   Dialog,
@@ -173,24 +173,21 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
       {/* Rename Dialog */}
       <Dialog
         open={selectedDialog === 'rename'}
-        onOpenChange={setSelectedDialog}
-        setIsRenameDialogOpen
-        onClose={() => setSelectedDialog('false')}
-      >
+        onOpenChange={() => setSelectedDialog('')} >
         <DialogContent
+          className="sm:max-w-[425px]"
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               onHandleUpdateTitle();
             }
-          }}
-          className="sm:max-w-[425px]"
-        >
+          }} >
           <DialogHeader>
             <DialogTitle>Edit Title</DialogTitle>
             <DialogDescription>
                 Make changes to your task container here. Click save when done.
             </DialogDescription>
           </DialogHeader>
+
           <Input
             id="name"
             placeholder="Input a new title here"
@@ -203,6 +200,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
               }
             }}
           />
+
           <DialogFooter>
             <Button onClick={() => {
               onHandleUpdateTitle();

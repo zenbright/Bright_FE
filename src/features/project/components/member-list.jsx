@@ -23,7 +23,7 @@ export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => 
 
   return (
     <div className='flex'>
-      <div className="flex -space-x-4 rtl:space-x-reverse mr-5">
+      <div className="flex -space-x-4 rtl:space-x-reverse mr-3">
         {members.slice(0, 3).map((member, index) => (
           <Avatar
             key={index}
@@ -44,7 +44,7 @@ export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => 
         )}
 
         {members.length == 0 && (
-          <div className=' font-extralight'> No Assignee </div>
+          <div className=' font-light text-sm'> No Assignee </div>
         )}
       </div>
     </div>

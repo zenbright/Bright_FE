@@ -2,12 +2,15 @@ import {Button} from '@/components/ui/button';
 import {PlusCircle} from 'lucide-react';
 import {useState} from 'react';
 import {Column, Task} from '../utils/class';
-import {ColumnContainer} from './column/ColumnContainer';
+import {ColumnContainer} from './column/column-container';
+
+// Drag n drop
 import {DndContext, DragOverlay, useSensors, useSensor, PointerSensor} from '@dnd-kit/core';
 import {SortableContext, arrayMove} from '@dnd-kit/sortable';
 import {useMemo} from 'react';
 import {createPortal} from 'react-dom';
-import {TaskContainer} from './task/TaskContainer';
+import {TaskContainer} from './task/task-container';
+import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
 
 export const KanbanBoard = () => {
   const [columns, setColumn] = useState([]);
@@ -64,8 +67,8 @@ export const KanbanBoard = () => {
 
   const handleDragEnd = (event) => {
     // Reset states
-    setActiveTask(null);
     setActiveColumn(null);
+    setActiveTask(null);
 
     const {active, over} = event;
 
@@ -80,11 +83,7 @@ export const KanbanBoard = () => {
       const activeIndex = column.findIndex((col) => col.id === activeColumnId);
       const overIndex = column.findIndex((col) => col.id === overColumnId);
 
-      // Check if both indexes are valid
-      if (activeIndex !== -1 && overIndex !== -1) {
-        return arrayMove(column, activeIndex, overIndex);
-      }
-      return column; // Return the original array if indexes are invalid
+      return arrayMove(column, activeIndex, overIndex);
     });
   };
 
@@ -98,7 +97,6 @@ export const KanbanBoard = () => {
 
     const isTaskActive = active.data.current.type === 'Task';
     const isOverTask = over.data.current.type === 'Task';
-    const isOverColumn = over.data.current.type === 'Column';
 
     if (!isTaskActive) return;
 
@@ -107,9 +105,19 @@ export const KanbanBoard = () => {
 
       if (isOverTask) {
         const overIndex = tasks.findIndex((t) => t.id === overTaskId);
-        tasks[activeIndex].columnId = tasks[overIndex].columnId;
-        return arrayMove(tasks, activeIndex, overIndex);
+        const activeTask = tasks[activeIndex];
+        const overTask = tasks[overIndex];
+
+        if (activeTask.columnId !== overTask.columnId) {
+          activeTask.columnId = overTask.columnId;
+          const newOverIndex = Math.max(overIndex - 1, 0);
+          return arrayMove(tasks, activeIndex, newOverIndex);
+        } else {
+          return arrayMove(tasks, activeIndex, overIndex);
+        }
       }
+
+      const isOverColumn = over.data.current.type === 'Column';
 
       if (isOverColumn) {
         tasks[activeIndex].columnId = overTaskId;
@@ -120,59 +128,65 @@ export const KanbanBoard = () => {
   };
 
   // Tasks
-  const createTask = (colId) => {
-    const newTask = new Task(colId, 'Code DashBoard UI', 'Follow design on figma');
+  const createTask = (colId, title = '', des = '', startDate, endDate, tags) => {
+    const newTask = new Task(colId, title, des, startDate, endDate, tags);
     setTaskList([...tasks, newTask]);
   };
 
   return (
-    <div className="mt-2 overflow-auto scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent scrollbar-thumb-rounded-lg">
-      <DndContext
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        onDragOver={handleDragOver}
-        sensors={sensors}
-      >
-        <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-3'} mb-3`}>
-          <div className='flex gap-3'>
-            <SortableContext items={columnId}>
-              {columns.map((col, index) => (
-                <div key={index}>
-                  <ColumnContainer
-                    key={col.id}
-                    col={col}
-                    deleteColumn={deleteColumn}
-                    updateColumnTitle={updateColumnTitle}
-                    createTask={createTask}
-                    taskList={tasks.filter((task) => task.columnId === col.id)}
-                  />
-                </div>
-              ))}
-            </SortableContext>
+    <OverlayScrollbarsComponent
+      element="div"
+      options={{scrollbars: {autoHide: 'never'}}}
+      defer
+    >
+      <div className="mt-2">
+        <DndContext
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onDragOver={handleDragOver}
+          sensors={sensors}
+        >
+          <div className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-2'}`}>
+            <div className='flex gap-2'>
+              <SortableContext items={columnId}>
+                {columns.map((col, index) => (
+                  <div key={index}>
+                    <ColumnContainer
+                      key={col.id}
+                      col={col}
+                      deleteColumn={deleteColumn}
+                      updateColumnTitle={updateColumnTitle}
+                      createTask={createTask}
+                      taskList={tasks.filter((task) => task.columnId === col.id)}
+                    />
+                  </div>
+                ))}
+              </SortableContext>
+            </div>
+
+            <Button className='h-9' onClick={createColumn}>
+              <PlusCircle className='mr-2 h-5'/> Create new column
+            </Button>
           </div>
 
-          <Button onClick={createColumn}>
-            <PlusCircle className='mr-2'/> Create new column
-          </Button>
-        </div>
+          {createPortal(
+              <DragOverlay>
+                {activeColumn && (
+                  <ColumnContainer
+                    col={activeColumn}
+                    deleteColumn={deleteColumn}
+                    taskList={tasks.filter((task) => task.columnId === activeColumn.id)}
+                  />
+                )}
 
-        {createPortal(
-            <DragOverlay >
-              {activeColumn && (
-                <ColumnContainer
-                  col={activeColumn}
-                  deleteColumn={deleteColumn}
-                  taskList={tasks.filter((task) => task.columnId === activeColumn.id)}
-                />
-              )}
-
-              {activeTask && (
-                <TaskContainer task={activeTask}/>
-              )}
-            </DragOverlay>,
-            document.body,
-        )}
-      </DndContext>
-    </div>
+                {activeTask && (
+                  <TaskContainer task={activeTask}/>
+                )}
+              </DragOverlay>,
+              document.body,
+          )}
+        </DndContext>
+      </div>
+    </OverlayScrollbarsComponent>
   );
 };
