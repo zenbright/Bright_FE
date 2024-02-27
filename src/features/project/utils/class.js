@@ -10,26 +10,13 @@ export class Column {
   }
 }
 
-// Define default tags as constants
-const DEFAULT_TAGS = ['In Progress'];
-
-// const SAMPLE_MEMLIST = [];
-// const SAMPLE_MEMLIST = [
-//   {name: 'John Doe', imageUrl: userDefaultProfile},
-//   {name: 'Jane Smith', imageUrl: userDefaultProfile},
-//   {name: 'Michael Johnson', imageUrl: userDefaultProfile},
-//   {name: 'Michael Johnson', imageUrl: userDefaultProfile},
-//   {name: 'Michael Johnson', imageUrl: userDefaultProfile},
-//   {name: 'Michael Johnson', imageUrl: userDefaultProfile},
-// ];
-
 export class Task {
-  constructor(columnId, title, des, startDate, endDate) {
+  constructor(columnId, title, des, startDate, endDate, tags = []) {
     this.id = uuidv4();
     this.columnId = columnId;
     this.title = title;
     this.des = des;
-    this.tags = this.createTags(DEFAULT_TAGS);
+    this.tags = this.createTags(tags);
     this.memList = [];
     this.todos = [];
     this.attachments = [];
@@ -43,19 +30,24 @@ export class Task {
   }
 
   createTags(tags) {
-    return tags.map((tag) => new TaskTag(this.id, tag));
-  }
+    return tags.map((tag) => {
+      const tagParts = tag.split('-');
+      const tagTitle = tagParts[0].charAt(0).toUpperCase() + tagParts[0].slice(1);
+      const tagColor = tagParts[1];
 
+      return new TaskTag(this.id, tagTitle, tagColor);
+    });
+  }
   addTags(newTags) {
     this.tags = [...this.tags, ...this.createTags(newTags)];
   }
 }
 
 export class TaskTag {
-  constructor(taskId, title) {
+  constructor(taskId, title, color) {
     this.id = uuidv4();
     this.taskId = taskId;
     this.title = title;
-    this.bg = DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
+    this.color = color ? color : DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
   }
 }

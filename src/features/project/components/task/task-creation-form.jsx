@@ -33,6 +33,8 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 
+import {CreatableMultiSelectDropdown} from './creatable-multiselect-menu';
+
 import {CalendarPlus} from 'lucide-react';
 import {Textarea} from '@/components/ui/textarea';
 import {useState} from 'react';
@@ -60,6 +62,7 @@ const formSchema = z.object({
 
 const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colId}) => {
   const [endDateError, setEndDateError] = useState(null);
+  const [selectedTags, setSelectedTags] = useState([]);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -71,7 +74,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
   });
 
   const onSubmit = (values) => {
-    createTask(colId, values.title, values.description, values.startDate, values.endDate);
+    createTask(colId, values.title, values.description, values.startDate, values.endDate, selectedTags);
     setIsCreateNewTask(false);
   };
 
@@ -204,6 +207,22 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                 )}
               />
             </div>
+
+            <FormField
+              control={form.control}
+              name="description"
+              render={({field}) => (
+                <FormItem className='flex flex-col justify-between'>
+                  <FormLabel>Tags</FormLabel>
+                  <FormControl>
+                    <CreatableMultiSelectDropdown
+                      selectedTags={selectedTags}
+                      setSelectedTags={setSelectedTags} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <Button className='w-full' type="submit">Submit</Button>
           </form>
         </Form>

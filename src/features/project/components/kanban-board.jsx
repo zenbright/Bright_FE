@@ -128,8 +128,8 @@ export const KanbanBoard = () => {
   };
 
   // Tasks
-  const createTask = (colId, title = '', des = '', startDate, endDate) => {
-    const newTask = new Task(colId, title, des, startDate, endDate);
+  const createTask = (colId, title = '', des = '', startDate, endDate, tags) => {
+    const newTask = new Task(colId, title, des, startDate, endDate, tags);
     setTaskList([...tasks, newTask]);
   };
 

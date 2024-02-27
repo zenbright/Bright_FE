@@ -1,72 +1,67 @@
 export const DEFAULT_TASK_TAGS = {
     'Medium': {
         value: 'medium',
-        color: 'bg-yellow-200',
+        color: '#f59e0b',
         description: 'Tasks with medium priority'
     },
     'High': {
         value: 'high',
-        color: 'bg-red-200',
+        color: '#e11d48',
         description: 'Tasks with high priority'
     },
     'Low': {
         value: 'low',
-        color: 'bg-green-200',
+        color: '#4ade80',
         description: 'Tasks with low priority'
     },
     'Late': {
         value: 'late',
-        color: 'bg-rose-500',
+        color: '#be123c',
         description: 'Tasks that are late'
     },
     'Urgent': {
         value: 'urgent',
-        color: 'bg-red-300',
+        color: '#4f46e5',
         description: 'Urgent tasks'
-    },
-    'In Progress': {
-        value: 'in progress',
-        color: 'bg-green-400',
-        description: 'Tasks currently in progress'
     },
     'Enhancement': {
         value: 'enhancement',
-        color: 'bg-teal-200',
+        color: '#10b981',
         description: 'Tasks related to enhancements'
     },
     'Fix': {
         value: 'fix',
-        color: 'bg-yellow-300',
+        color: '#0369a1',
         description: 'Tasks to fix issues'
     },
     'Maintenance': {
         value: 'maintenance',
-        color: 'bg-teal-200',
+        color: '#14b8a6',
         description: 'Tasks for maintenance'
     },
     'Important': {
         value: 'important',
-        color: 'bg-yellow-400',
+        color: '#701a75',
         description: 'Important tasks'
     },
     'Pending': {
         value: 'pending',
-        color: 'bg-blue-200',
+        color: '#c2410c',
         description: 'Tasks pending completion'
     },
     'Completed': {
         value: 'completed',
-        color: 'bg-green-300',
+        color: '#22c55e',
         description: 'Completed tasks'
     },
     'Blocked': {
         value: 'blocked',
-        color: 'bg-gray-400',
+        color: '#a8a29e',
         description: 'Tasks that are blocked'
     },
     'Review': {
         value: 'review',
-        color: 'bg-blue-500',
+        color: '#e879f9',
         description: 'Tasks under review'
     },
 };

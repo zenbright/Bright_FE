@@ -6,7 +6,7 @@ import ProjectManagementPage from './features/project';
 function App() {
   return (
     <div>
-      <ProjectManagementPage />
+      <ProjectManagementPage/>
     </div>
   );
 }
