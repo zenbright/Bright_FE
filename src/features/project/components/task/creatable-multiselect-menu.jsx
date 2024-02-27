@@ -59,6 +59,7 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
           <CommandInput
             onValueChange={(txt) => setSearchPhrase(txt)}
             value={searchPhrase}
+            onChange={(e) => setSearchPhrase(e.target.value)}
             placeholder="Search tags..." />
           <CommandEmpty className='m-1'>
             <div

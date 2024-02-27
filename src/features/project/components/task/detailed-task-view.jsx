@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import {Task} from '../../utils/class';
 
 export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, task}) => {
+  console.log('Test:', task);
   return (
     <Sheet open={isShowTaskDetailed} onOpenChange={setIsShowTaskDetailed} >
       <SheetContent>
@@ -27,13 +28,13 @@ export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, tas
             <Label htmlFor="name" className="text-right">
               Name
             </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+            <Input id="name" className="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
               Username
             </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
+            <Input id="username" className="col-span-3" />
           </div>
         </div>
         <SheetFooter>

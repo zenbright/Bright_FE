@@ -156,9 +156,10 @@ export const TaskContainer = ({task}) => {
         </div>
       </div>
 
-      <DetailedTaskView
+      {isShowTaskDetailed && <DetailedTaskView
         isShowTaskDetailed={isShowTaskDetailed}
-        setIsShowTaskDetailed={setIsShowTaskDetailed}/>
+        setIsShowTaskDetailed={setIsShowTaskDetailed}
+        task={task}/>}
     </div>
   );
 };
