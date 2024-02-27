@@ -16,7 +16,6 @@ export const TaskContainer = ({task}) => {
   const ref = useRef();
   const [dimensions, setDimensions] = useState({width: 0, height: 0});
 
-  console.log('tags:', task.tags);
   let timeLeftText = '';
 
   if (task.endDate) {
@@ -93,12 +92,15 @@ export const TaskContainer = ({task}) => {
       <div ref={ref} className='pl-3 pr-1'>
         <div className='flex justify-between items-center'>
           <div>
-            {task.tags && task.tags.slice(0, 3).map((tag) => (
+            {task.tags && task.tags.slice(0, 2).map((tag) => (
               <Badge
                 key={tag.id}
-                className={`mr-2`}
-                style={{backgroundColor: tag.color,
-                }}>
+                className={`mr-1`}
+                style={
+                  {
+                    backgroundColor: tag.color,
+                  }
+                }>
                 {tag.title}
               </Badge>
             ))}

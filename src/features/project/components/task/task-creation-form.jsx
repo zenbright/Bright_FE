@@ -9,7 +9,7 @@ import {
 
 import {Input} from '@/components/ui/input';
 import PropTypes from 'prop-types';
-import {TASK_CREATION_DES, TITLE_INPUT_VALIDATOR, TITLE_DES_INPUT_VALIDATOR, END_DATE_INPUT_VALIDATOR} from '../../assets/strings';
+import {TASK_CREATION_DES, TITLE_INPUT_VALIDATOR, TITLE_DES_INPUT_VALIDATOR, END_DATE_INPUT_VALIDATOR, TAGS_INPUT_VALIDATOR} from '../../assets/strings';
 import {differenceInDays, format} from 'date-fns';
 
 // Form
@@ -38,6 +38,7 @@ import {CreatableMultiSelectDropdown} from './creatable-multiselect-menu';
 import {CalendarPlus} from 'lucide-react';
 import {Textarea} from '@/components/ui/textarea';
 import {useState} from 'react';
+import {useEffect} from 'react';
 
 const formSchema = z.object({
   title: z.string().trim()
@@ -62,6 +63,7 @@ const formSchema = z.object({
 
 const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colId}) => {
   const [endDateError, setEndDateError] = useState(null);
+  const [tagError, setTagError] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
 
   const form = useForm({
@@ -73,13 +75,24 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
     },
   });
 
+  useEffect(() => {
+    setTagError(null);
+  }, [selectedTags]);
+
   const onSubmit = (values) => {
+    if (selectedTags.length === 0) {
+      setTagError(TAGS_INPUT_VALIDATOR.SHORT);
+      return;
+    }
     createTask(colId, values.title, values.description, values.startDate, values.endDate, selectedTags);
     setIsCreateNewTask(false);
   };
 
   const onError = (error) => {
-    setEndDateError(error[''].message);
+    console.log(error);
+    if (error[''] && error[''].message) {
+      setEndDateError(error[''].message);
+    }
   };
 
   const handleEndDateChange = () => {
@@ -210,16 +223,18 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
 
             <FormField
               control={form.control}
-              name="description"
+              name="selectedTags"
               render={({field}) => (
                 <FormItem className='flex flex-col justify-between'>
                   <FormLabel>Tags</FormLabel>
                   <FormControl>
                     <CreatableMultiSelectDropdown
                       selectedTags={selectedTags}
-                      setSelectedTags={setSelectedTags} />
+                      setSelectedTags={setSelectedTags}/>
                   </FormControl>
-                  <FormMessage />
+                  {tagError && (
+                    <FormMessage error="true">{tagError}</FormMessage>
+                  )}
                 </FormItem>
               )}
             />

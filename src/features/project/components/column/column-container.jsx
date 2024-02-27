@@ -45,8 +45,7 @@ export function ColumnContainer(
       <div
         ref={setNodeRef}
         className='w-fit h-auto overflow-hidden bg-gray-300/60 rounded-md mb-1'
-        style={style}
-      >
+        style={style} >
         <div>
           <Button className='w-80 bg-transparent' >
             <div className='flex items-center font-bold' />

@@ -12,3 +12,7 @@ export const TITLE_DES_INPUT_VALIDATOR = {
 export const END_DATE_INPUT_VALIDATOR = {
     ERROR: 'End date must be after or equal to the start date'
 }
+
+export const TAGS_INPUT_VALIDATOR = {
+    SHORT: 'Please select at least 1 tag'
+}
