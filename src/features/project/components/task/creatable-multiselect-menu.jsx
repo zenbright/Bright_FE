@@ -1,34 +1,19 @@
-'use client';
-
 import * as React from 'react';
 import {Check, ChevronsUpDown, Pencil} from 'lucide-react';
-
-import {cn} from '@/lib/utils';
 import {Button} from '@/components/ui/button';
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from '@/components/ui/command';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
-
 import {DEFAULT_TASK_TAGS} from '../../assets/values';
 import {useState} from 'react';
 import {getRandomColor} from '@/components/utils/color-generator';
-
 import PropTypes from 'prop-types';
+import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from '@/components/ui/command';
+import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover';
 
 export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) => {
   const [open, setOpen] = useState(false);
   const [tagList, setTagList] = useState(DEFAULT_TASK_TAGS);
   const [searchPhrase, setSearchPhrase] = useState('');
 
+  // Create new tag
   const handleAddNewTag = (title) => {
     const newTag = {
       value: title,
@@ -36,7 +21,6 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
       description: `Tasks related to ${title}`,
     };
 
-    // Add the new tag to the tag list
     setTagList({...tagList, [title]: newTag});
     setSearchPhrase('');
   };
@@ -54,6 +38,7 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
+
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput
@@ -81,17 +66,22 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
                   );
                 }}
               >
+
+                {/* Selected mark */}
                 <Check
-                  className={cn(
-                      'mr-2 h-4 w-4',
-              selectedTags.findIndex((tag) => tag.split('-')[0] === tagList[tagKey].value) !== -1 ? 'opacity-100' : 'opacity-0',
-                  )}
-                />
+                  className={
+                    `mr-2 h-4 w-4  ${selectedTags.findIndex((tag) => tag.split('-')[0] === tagList[tagKey].value) !== -1 ? 'opacity-100' : 'opacity-0'}`
+                  } />
+
+                {/* Tag Color Dot */}
                 <div
                   className={`w-2 h-2 mr-3 rounded-full`}
                   style={
                     {background: `${tagList[tagKey].color}`}
-                  }/>
+                  }
+                />
+
+                {/* Title */}
                 {tagKey}
               </CommandItem>
             ))}

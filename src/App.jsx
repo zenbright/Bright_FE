@@ -1,12 +1,12 @@
 import React from 'react';
 import 'overlayscrollbars/styles/overlayscrollbars.css';
 
-import ProjectManagementPage from './features/project';
+import LandingPage from './features/landingPage';
 
 function App() {
   return (
     <div>
-      <ProjectManagementPage/>
+      <LandingPage/>
     </div>
   );
 }
