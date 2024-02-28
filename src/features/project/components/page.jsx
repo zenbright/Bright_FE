@@ -5,7 +5,7 @@ import Divider from '../../../components/general/divider';
 import {MemberList} from './member-list';
 import {Button} from '@/components/ui/button';
 import {ShieldMinus, Heart, Settings, CircleDot, UserRoundPlus} from 'lucide-react';
-import BoardTabGroup from './tab-group';
+import BoardTabGroup from '../../../components/general/tab-group';
 import {
   AlertDialog,
   AlertDialogAction,

@@ -10,7 +10,7 @@ import {Task} from '../../utils/class';
 import {MemberList} from '../member-list';
 import {format} from 'date-fns';
 import {Badge} from '@/components/ui/badge';
-import TabGroup from '../tab-group';
+import TabGroup from '@/components/general/tab-group';
 import {TASK_DETAILED_TABS} from '../../assets/values';
 import {useState} from 'react';
 import {AttachmentList} from './detailed-task-view/attachment-list';

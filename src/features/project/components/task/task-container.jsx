@@ -19,18 +19,6 @@ export const TaskContainer = ({task}) => {
   const [isShowTaskDetailed, setIsShowTaskDetailed] = useState(false);
   const [remainingDateText, setRemainingDateText] = useState('');
 
-  // Calculate due date
-  if (task.endDate) {
-    const endDate = new Date(task.endDate);
-    const today = new Date();
-
-    const differenceDays = differenceInDays(endDate, today);
-
-    const remainingDateText = differenceDays > 0 ? `${differenceDays} days left` : differenceDays == 0 ?'Today' : `${Math.abs(differenceDays)} days ago`;
-
-    setRemainingDateText(remainingDateText);
-  }
-
   // Calculate current task size
   useLayoutEffect(() => {
     if (ref.current) {
@@ -50,6 +38,17 @@ export const TaskContainer = ({task}) => {
     if (storedDimensions) {
       const {width, height} = JSON.parse(storedDimensions);
       setDimensions({width, height});
+    }
+    // Calculate due date
+    if (task.endDate) {
+      const endDate = new Date(task.endDate);
+      const today = new Date();
+
+      const differenceDays = differenceInDays(endDate, today);
+
+      const remainingDateText = differenceDays > 0 ? `${differenceDays} days left` : differenceDays == 0 ?'Today' : `${Math.abs(differenceDays)} days ago`;
+
+      setRemainingDateText(remainingDateText);
     }
   }, []);
 
@@ -84,8 +83,7 @@ export const TaskContainer = ({task}) => {
   return (
     <div ref={ref}>
       {/* Task detailed view */}
-      {
-        isShowTaskDetailed &&
+      {isShowTaskDetailed &&
         <DetailedTaskView
           isShowTaskDetailed={isShowTaskDetailed}
           setIsShowTaskDetailed={setIsShowTaskDetailed}
