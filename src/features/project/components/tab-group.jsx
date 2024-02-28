@@ -25,11 +25,14 @@ const TabGroup = ({tableNames = TableNames, setIsUnderDevDialogOpen, selected, s
             `flex gap-2 transition-all duration-75 items-center font-bold py-1
             ${selected === index ? 'text-blue-700 border-blue-700' : ' text-black/80'}`
           }
-          style={{maxWidth: '20rem', boxSizing: 'content-box', boxShadow: selected === index ? '0px 1px 0px 0px blue' : 'none'}}
-
-          onClick={() => handleButtonClick(index)}
-        >
+          style={
+            {
+              maxWidth: '20rem', boxSizing: 'content-box', boxShadow: selected === index ? '0px 1px 0px 0px blue' : 'none',
+            }
+          }
+          onClick={() => handleButtonClick(index)} >
           {table.icon && <table.icon className='h-5 w-5' /> }
+
           <div>{table.name}</div>
         </button>
       ))}

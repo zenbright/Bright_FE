@@ -1,45 +1,28 @@
-import {Button} from '@/components/ui/button';
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-
+  TASK_CREATION_DES,
+  TITLE_INPUT_VALIDATOR,
+  TITLE_DES_INPUT_VALIDATOR,
+  END_DATE_INPUT_VALIDATOR,
+  TAGS_INPUT_VALIDATOR,
+} from '../../assets/strings';
+import {Button} from '@/components/ui/button';
+import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from '@/components/ui/dialog';
 import {Input} from '@/components/ui/input';
 import PropTypes from 'prop-types';
-import {TASK_CREATION_DES, TITLE_INPUT_VALIDATOR, TITLE_DES_INPUT_VALIDATOR, END_DATE_INPUT_VALIDATOR, TAGS_INPUT_VALIDATOR} from '../../assets/strings';
 import {differenceInDays, format} from 'date-fns';
-
-// Form
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
-
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form';
 import {Calendar} from '@/components/ui/calendar';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
-
+import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover';
 import {CreatableMultiSelectDropdown} from './creatable-multiselect-menu';
-
 import {CalendarPlus} from 'lucide-react';
 import {Textarea} from '@/components/ui/textarea';
 import {useState} from 'react';
 import {useEffect} from 'react';
 
+// Define form schema
 const formSchema = z.object({
   title: z.string().trim()
       .min(2, {message: TITLE_INPUT_VALIDATOR.SHORT})
@@ -56,16 +39,14 @@ const formSchema = z.object({
     return differenceInDays(data.endDate, data.startDate) >= 0;
   }
   return true;
-}, {
-  message: END_DATE_INPUT_VALIDATOR.ERROR,
-});
-
+}, {message: END_DATE_INPUT_VALIDATOR.ERROR});
 
 const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colId}) => {
   const [endDateError, setEndDateError] = useState(null);
   const [tagError, setTagError] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
 
+  // Create form hook with schema
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -75,26 +56,34 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
     },
   });
 
+  // Reset empty tag error on selected
   useEffect(() => {
     setTagError(null);
   }, [selectedTags]);
 
+  // Handle form submit
   const onSubmit = (values) => {
+    // Constraint: must be selected at least 1 tag
     if (selectedTags.length === 0) {
       setTagError(TAGS_INPUT_VALIDATOR.SHORT);
       return;
     }
+
     createTask(colId, values.title, values.description, values.startDate, values.endDate, selectedTags);
     setIsCreateNewTask(false);
   };
 
+  // Handle failed to submit
   const onError = (error) => {
     console.log(error);
+
+    // If error related to endDate
     if (error[''] && error[''].message) {
       setEndDateError(error[''].message);
     }
   };
 
+  // Reset error on date changed
   const handleEndDateChange = () => {
     setEndDateError(undefined);
   };
@@ -108,8 +97,10 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
             {TASK_CREATION_DES}
           </DialogDescription>
         </DialogHeader>
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit, onError)} className=" space-y-4">
+            {/* Task title */}
             <FormField
               control={form.control}
               name="title"
@@ -124,6 +115,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
               )}
             />
 
+            {/* Task Description */}
             <FormField
               control={form.control}
               name="description"
@@ -131,14 +123,14 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Textarea className="max-h-40" placeholder="Follow design on Figma" {...field}
-                    />
+                    <Textarea className="max-h-40" placeholder="Follow design on Figma" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
+            {/* Date Seletection */}
             <div className='flex justify-between w-full gap-2'>
               <FormField
                 control={form.control}
@@ -150,18 +142,14 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
-                            variant={'outline'}
                             className={`w-full pl-3 text-left font-normal ${!field.value && 'text-muted-foreground'}`}
-                          >
-                            {field.value ? (
-                  format(field.value, 'PPP')
-                ) : (
-                  <span>Pick a date</span>
-                )}
+                            variant={'outline'} >
+                            {field.value ? ( format(field.value, 'PPP') ) : ( <span>Pick a date</span> )}
                             <CalendarPlus className="ml-3 h-4 w-4 opacity-50" />
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
+
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
@@ -176,8 +164,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                     </Popover>
                     <FormMessage />
                   </FormItem>
-                )}
-              />
+                )} />
 
               <FormField
                 control={form.control}
@@ -189,18 +176,14 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
-                            variant={'outline'} onClick={() => handleEndDateChange()}
                             className={`w-full pl-3 text-left font-normal ${!field.value && 'text-muted-foreground'}`}
-                          >
-                            {field.value ? (
-                  format(field.value, 'PPP')
-                ) : (
-                  <span>Pick a date</span>
-                )}
+                            variant={'outline'} onClick={() => handleEndDateChange()} >
+                            {field.value ? ( format(field.value, 'PPP') ) : ( <span>Pick a date</span> )}
                             <CalendarPlus className="ml-3 h-4 w-4 opacity-50" />
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
+
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
@@ -213,12 +196,12 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                         />
                       </PopoverContent>
                     </Popover>
-                    {endDateError && (
+
+                    {endDateError &&
                       <FormMessage error="true">{endDateError}</FormMessage>
-                    )}
+                    }
                   </FormItem>
-                )}
-              />
+                )} />
             </div>
 
             <FormField
@@ -230,14 +213,15 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                   <FormControl>
                     <CreatableMultiSelectDropdown
                       selectedTags={selectedTags}
-                      setSelectedTags={setSelectedTags}/>
+                      setSelectedTags={setSelectedTags} />
                   </FormControl>
-                  {tagError && (
+
+                  {tagError &&
                     <FormMessage error="true">{tagError}</FormMessage>
-                  )}
+                  }
                 </FormItem>
-              )}
-            />
+              )} />
+
             <Button className='w-full' type="submit">Submit</Button>
           </form>
         </Form>

@@ -175,8 +175,7 @@ export const KanbanBoard = () => {
                   <ColumnContainer
                     col={activeColumn}
                     deleteColumn={deleteColumn}
-                    taskList={tasks.filter((task) => task.columnId === activeColumn.id)}
-                  />
+                    taskList={tasks.filter((task) => task.columnId === activeColumn.id)} />
                 )}
 
                 {activeTask && (

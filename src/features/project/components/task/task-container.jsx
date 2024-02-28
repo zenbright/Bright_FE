@@ -17,18 +17,18 @@ export const TaskContainer = ({task}) => {
   const ref = useRef();
   const [dimensions, setDimensions] = useState({width: 0, height: 0});
   const [isShowTaskDetailed, setIsShowTaskDetailed] = useState(false);
+  const [remainingDateText, setRemainingDateText] = useState('');
 
-  let timeLeftText = '';
-
+  // Calculate due date
   if (task.endDate) {
     const endDate = new Date(task.endDate);
     const today = new Date();
 
-    let differenceDays = 0;
+    const differenceDays = differenceInDays(endDate, today);
 
-    differenceDays = differenceInDays(endDate, today);
+    const remainingDateText = differenceDays > 0 ? `${differenceDays} days left` : differenceDays == 0 ?'Today' : `${Math.abs(differenceDays)} days ago`;
 
-    timeLeftText = differenceDays > 0 ? `${differenceDays} days left` : differenceDays == 0 ?'Today' : `${Math.abs(differenceDays)} days ago`;
+    setRemainingDateText(remainingDateText);
   }
 
   // Calculate current task size
@@ -43,6 +43,7 @@ export const TaskContainer = ({task}) => {
     }
   }, [task]);
 
+  // Fetch size on first load
   useLayoutEffect(() => {
     // Retrieve dimensions from local storage when the component mounts
     const storedDimensions = sessionStorage.getItem('taskDimensions');
@@ -55,10 +56,7 @@ export const TaskContainer = ({task}) => {
   // Handle drag n drop
   const {setNodeRef, attributes, transform, transition, listeners, isDragging} = useSortable({
     id: task.id,
-    data: {
-      type: 'Task',
-      task,
-    },
+    data: {type: 'Task', task},
   });
 
   const style = {
@@ -66,37 +64,42 @@ export const TaskContainer = ({task}) => {
     transform: CSS.Transform.toString(transform),
   };
 
-  // On drag placeholder
+  // Drag item placeholder
   if (isDragging) {
     return (
-      // Task Skeleton
       <div
         ref={setNodeRef}
         style={
-          {...style,
-            width: dimensions.width + 3,
+          {
+            width: dimensions.width,
             height: dimensions.height,
+            ...style,
           }
         }
-        className='bg-gray-300/60 rounded-md mb-2'
+        className='bg-gray-300/60 rounded-md mb-2 border-2'
       />
     );
   }
 
   return (
-    <div>
-      {isShowTaskDetailed && <DetailedTaskView
-        isShowTaskDetailed={isShowTaskDetailed}
-        setIsShowTaskDetailed={setIsShowTaskDetailed}
-        task={task}/>}
+    <div ref={ref}>
+      {/* Task detailed view */}
+      {
+        isShowTaskDetailed &&
+        <DetailedTaskView
+          isShowTaskDetailed={isShowTaskDetailed}
+          setIsShowTaskDetailed={setIsShowTaskDetailed}
+          task={task}/>
+      }
+
+      {/* Task Container */}
       <div
         ref={setNodeRef}
         style={style}
         className='bg-white rounded-md border-2 border-slate-200 mb-1'
         {...attributes}
-        {...listeners}
-      >
-        <div ref={ref} className='pl-3 pr-1'>
+        {...listeners} >
+        <div className='pl-3 pr-1' >
           <div className='flex justify-between items-center'>
             <div className='flex gap-1'>
               {task.tags && task.tags.slice(0, 2).map((tag) => (
@@ -109,17 +112,19 @@ export const TaskContainer = ({task}) => {
                   {tag.title}
                 </Badge>
               ))}
+
               {task.tags.length > 2 && (
                 <Badge className='bg-slate-200 text-slate-700 h-6 hover:bg-slate-300'>
-      + {task.tags.length - 2}
+                  + {task.tags.length - 2}
                 </Badge>
               )}
             </div>
 
-
-            <Button onClick={() => {
-              console.log('ok');
-            }} variant="ghost">
+            <Button
+              onClick={() => {
+                console.log('ok');
+              }}
+              variant="ghost" >
               <MoreHorizontal />
             </Button>
           </div>
@@ -138,6 +143,7 @@ export const TaskContainer = ({task}) => {
             <div className='flex justify-between items-center'>
               <MemberList width={6} height={6} members={task.memList}/>
 
+              {/* prevent on trigger drag event */}
               <Button onClick={(e) => e.stopPropagation()} variant="ghost">
                 <UserRoundPlus className='w-4 h-4'/>
               </Button>
@@ -156,10 +162,11 @@ export const TaskContainer = ({task}) => {
                   <Paperclip className='w-4 h-5'/>{task.attachments.length}
                 </div>
 
-                {task.endDate && <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-                  <Calendar className='w-4 h-5'/> {task.endDate && <div>{timeLeftText}</div>}
-
-                </div>}
+                {task.endDate &&
+                  <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
+                    <Calendar className='w-4 h-5'/> {task.endDate && <div>{remainingDateText}</div>}
+                  </div>
+                }
               </div>
 
               <Button variant="ghost">

@@ -117,8 +117,7 @@ export const AttachmentList = ({attachments = SAMPLE_ATTACHMENT_LIST}) => {
               key={index}
               className='hover:bg-slate-100 h-20 rounded-md flex gap-4 font-bold hover:cursor-pointer'>
               {/* Preview */}
-              {
-                attachment.mimeType.startsWith('image/') ? (
+              {attachment.mimeType.startsWith('image/') ? (
                 <ImagePreview attachment={attachment} />
                 ) : attachment.mimeType.startsWith('video/') ? (
                 <VideoPreview attachment={attachment} />
@@ -126,8 +125,7 @@ export const AttachmentList = ({attachments = SAMPLE_ATTACHMENT_LIST}) => {
                 <AudioPreview />
                 ) : (
                 <DocsPreview />
-                )
-              }
+                ) }
 
               {/* Metadata */}
               <div className='text-xs text-gray-400 font-normal'>

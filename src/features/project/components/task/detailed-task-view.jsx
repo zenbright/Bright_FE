@@ -2,7 +2,6 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet';
@@ -17,11 +16,10 @@ import {useState} from 'react';
 import {AttachmentList} from './detailed-task-view/attachment-list';
 
 export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, task}) => {
-  const [tabSelected, setTabSelected] = useState(2);
-  console.log(task);
+  const [tabSelected, setTabSelected] = useState(0);
+
   return (
-    <div
-    >
+    <div>
       <Sheet open={isShowTaskDetailed} onOpenChange={setIsShowTaskDetailed} >
         <SheetContent>
           <SheetHeader>
@@ -33,16 +31,18 @@ export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, tas
 
           {/* Headers */}
           <div className='text-sm mt-3 flex-col flex gap-4'>
+            {/* Task brief */}
             <div className='flex items-center gap-11'>
             Assignee <MemberList width={6} height={6}/>
             </div>
+
             <div className='flex items-center gap-12'>
             Timeline
               <div className=''>
                 {`${format(task.startDate, 'MM/dd/yyyy')}`} {task.endDate && `- ${format(task.endDate, 'MM/dd/yyyy')}`}
-
               </div>
             </div>
+
             <div className='flex gap-16'>
             Tags
               <div className=' ml-2'>
@@ -67,11 +67,6 @@ export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, tas
 
             {tabSelected === 2 && <AttachmentList />}
           </div>
-
-
-          <SheetFooter>
-            {/* <Button onClick={() => setIsShowTaskDetailed(false)}>Save changes</Button> */}
-          </SheetFooter>
         </SheetContent>
       </Sheet>
     </div>

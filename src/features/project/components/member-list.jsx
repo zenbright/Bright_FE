@@ -27,8 +27,7 @@ export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => 
         {members.slice(0, 3).map((member, index) => (
           <Avatar
             key={index}
-            className={`w-${width} h-${height} rounded-full`}
-          >
+            className={`w-${width} h-${height} rounded-full`} >
             <AvatarImage src={member.imageUrl} alt={member.name} />
             <AvatarFallback>BR</AvatarFallback>
           </Avatar>
@@ -36,10 +35,10 @@ export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => 
 
         {shouldRenderLink && (
           <a
-            className={`flex items-center justify-center w-${width} h-${height} text-xs font-medium text-white bg-gray-600 rounded-full hover:bg-gray-600 z-10`}
-            href="#"
-          >
-        +{members.length - 3}
+            className={`flex items-center justify-center w-${width} h-${height} text-xs font-medium text-white bg-gray-600
+            rounded-full hover:bg-gray-600 z-10`}
+            href="#" >
+           +{members.length - 3}
           </a>
         )}
 

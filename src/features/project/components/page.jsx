@@ -68,11 +68,11 @@ export const Page = () => {
         <div className='flex items-center pl-4'>
           <BoardTabGroup
             isUnderDevDialogOpen={isUnderDevDialogOpen}
-            setIsUnderDevDialogOpen={setIsUnderDevDialogOpen}/>
+            setIsUnderDevDialogOpen={setIsUnderDevDialogOpen} />
         </div>
 
         <Divider
-          width='1.5px' height='70%' color='rgba(0,0,0,0.2)'/>
+          width='1.5px' height='70%' color='rgba(0,0,0,0.2)' />
 
         <div className='flex items-center'>
           <MemberList width={7} height={7} />
@@ -85,11 +85,13 @@ export const Page = () => {
           </Button>
         </div>
 
-        <Divider width='1.5px' height='70%' color='rgba(0,0,0,0.2)'/>
+        <Divider width='1.5px' height='70%' color='rgba(0,0,0,0.2)' />
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button className='text-rose-500 bg-white border-black/15 hover:bg-slate-200/75 h-8' variant="outline">
+            <Button
+              className='text-rose-500 bg-white border-black/15 hover:bg-slate-200/75 h-8'
+              variant="outline">
               <ShieldMinus className='h-4'/>Private
             </Button>
           </AlertDialogTrigger>
