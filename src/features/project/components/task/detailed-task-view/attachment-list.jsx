@@ -39,7 +39,7 @@ const AudioPreview = () => {
   return (
     <div className='w-28 h-full rounded-md bg-gray-300 flex items-center justify-center flex-col text-gray-500' >
       <AudioLines className='w-10 h-10 ' />
-      <div className='font-bold'>Audio</div>
+      <div className='font-semibold text-xs'>Audio</div>
     </div>
   );
 };
