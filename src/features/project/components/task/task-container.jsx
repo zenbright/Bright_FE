@@ -87,7 +87,8 @@ export const TaskContainer = ({task}) => {
         <DetailedTaskView
           isShowTaskDetailed={isShowTaskDetailed}
           setIsShowTaskDetailed={setIsShowTaskDetailed}
-          task={task}/>
+          task={task}
+        />
       }
 
       {/* Task Container */}
@@ -96,7 +97,8 @@ export const TaskContainer = ({task}) => {
         style={style}
         className='bg-white rounded-md border-2 border-slate-200 mb-1'
         {...attributes}
-        {...listeners} >
+        {...listeners}
+      >
         <div className='pl-3 pr-1' >
           <div className='flex justify-between items-center'>
             <div className='flex gap-1'>
@@ -122,7 +124,8 @@ export const TaskContainer = ({task}) => {
               onClick={() => {
                 console.log('ok');
               }}
-              variant="ghost" >
+              variant="ghost"
+            >
               <MoreHorizontal />
             </Button>
           </div>
@@ -139,7 +142,7 @@ export const TaskContainer = ({task}) => {
 
             {/* Asignee List */}
             <div className='flex justify-between items-center'>
-              <MemberList width={6} height={6} members={task.memList}/>
+              <MemberList width={6} height={6} members={task.memList} />
 
               {/* prevent on trigger drag event */}
               <Button onClick={(e) => e.stopPropagation()} variant="ghost">
@@ -147,7 +150,7 @@ export const TaskContainer = ({task}) => {
               </Button>
             </div>
 
-            <Divider width='100%' height='1px' color='rgba(0,0,0,0.20)'/>
+            <Divider width='100%' height='1px' color='rgba(0,0,0,0.20)' />
 
             {/* Helper Buttons */}
             <div className='flex items-center justify-between'>

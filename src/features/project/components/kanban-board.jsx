@@ -179,7 +179,7 @@ export const KanbanBoard = () => {
                 )}
 
                 {activeTask && (
-                  <TaskContainer task={activeTask}/>
+                  <TaskContainer task={activeTask} />
                 )}
               </DragOverlay>,
               document.body,

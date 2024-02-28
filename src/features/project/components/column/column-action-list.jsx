@@ -180,7 +180,8 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
             if (e.key === 'Enter') {
               onHandleUpdateTitle();
             }
-          }} >
+          }}
+        >
           <DialogHeader>
             <DialogTitle>Edit Title</DialogTitle>
             <DialogDescription>

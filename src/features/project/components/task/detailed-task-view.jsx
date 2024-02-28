@@ -33,18 +33,19 @@ export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, tas
           <div className='text-sm mt-3 flex-col flex gap-4'>
             {/* Task brief */}
             <div className='flex items-center gap-11'>
-            Assignee <MemberList width={6} height={6}/>
+              Assignee
+              <MemberList width={6} height={6}/>
             </div>
 
             <div className='flex items-center gap-12'>
-            Timeline
+              Timeline
               <div className=''>
                 {`${format(task.startDate, 'MM/dd/yyyy')}`} {task.endDate && `- ${format(task.endDate, 'MM/dd/yyyy')}`}
               </div>
             </div>
 
             <div className='flex gap-16'>
-            Tags
+              Tags
               <div className=' ml-2'>
                 {task.tags && task.tags.map((tag) => (
                   <Badge

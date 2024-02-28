@@ -64,7 +64,8 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
                             selectedTags.filter((tag) => tag !== currentValue) :
                             [...selectedTags, currentValue],
                   );
-                }} >
+                }}
+              >
 
                 {/* Selected mark */}
                 <Check
@@ -77,7 +78,8 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
                   className={`w-2 h-2 mr-3 rounded-full`}
                   style={
                     {background: `${tagList[tagKey].color}`}
-                  }/>
+                  }
+                />
 
                 {/* Title */}
                 {tagKey}

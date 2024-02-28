@@ -213,12 +213,15 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
                   <FormControl>
                     <CreatableMultiSelectDropdown
                       selectedTags={selectedTags}
-                      setSelectedTags={setSelectedTags} />
+                      setSelectedTags={setSelectedTags}
+                    />
                   </FormControl>
 
-                  {tagError &&
-                    <FormMessage error="true">{tagError}</FormMessage>
-                  }
+                  {tagError && (
+                    <FormMessage error="true">{
+                      tagError}
+                    </FormMessage>
+                  )}
                 </FormItem>
               )} />
 

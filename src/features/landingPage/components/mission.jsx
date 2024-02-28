@@ -35,7 +35,7 @@ export const MissionGroup = () => {
             </p>
 
             <button className="border px-4 py-1 rounded-lg  border-gray-500 ">
-            Explore
+              Explore
             </button>
 
             {/* Meaty part - Meteor effect */}
@@ -49,6 +49,7 @@ export const MissionGroup = () => {
   return (
     <div className='flex flex-col gap-8 w-full'>
       <div className='font-bold text-4xl'>Our Missions</div>
+
       <div className='flex justify-between'>
         <FeaturedButton
           title='For Project Managers'

@@ -9,6 +9,7 @@ import {
 import React from 'react';
 import {cn} from '@/lib/utils';
 import BrightLogo from '@/assets/images/app-logo/dark.svg';
+import {INTRODUCTION} from '../assets/strings';
 
 export const NavigationMenuGroup = () => {
   const ListItem = React.forwardRef(
@@ -57,19 +58,19 @@ export const NavigationMenuGroup = () => {
                       Bright
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                     Stop juggling tasks and spreadsheets. Start building success with our project management tools that empower your team to reach its full potential.
+                      {INTRODUCTION.GETTING_STARTED.OVERVIEW}
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/docs" title="Introduction">
-                All-in-one project management tools made for developers.
+                {INTRODUCTION.GETTING_STARTED.INTRODUCTION}
               </ListItem>
               <ListItem href="/docs/spnsor" title="Sponsor">
-                Become a sponsor and help us improve the application.
+                {INTRODUCTION.GETTING_STARTED.SPONSOR}
               </ListItem>
               <ListItem href="/docs/about" title="About us">
-                Connect with the dedicated minds behind this initiative.
+                {INTRODUCTION.GETTING_STARTED.ABOUT}
               </ListItem>
             </ul>
           </NavigationMenuContent>

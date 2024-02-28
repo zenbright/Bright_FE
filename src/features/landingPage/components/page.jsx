@@ -10,10 +10,12 @@ import BrightLogo from '@/assets/images/app-logo/logomini-dark.svg';
 import {Copyright} from 'lucide-react';
 import {useRef} from 'react';
 import {useEffect} from 'react';
+import {WELCOME_TEXT, INTRODUCTION, PROMOTION_TEXT, TRADEMARK} from '../assets/strings';
 
 export const Page = () => {
   const headerRef = useRef(null);
 
+  // Used to igmore the headers on sroll
   useEffect(() => {
     if (headerRef.current) {
       const headerHeight = headerRef.current.clientHeight;
@@ -24,25 +26,6 @@ export const Page = () => {
       }
     }
   }, []);
-
-  const words = [
-    {
-      text: 'Get',
-    },
-    {
-      text: 'things',
-    },
-    {
-      text: 'done',
-    },
-    {
-      text: 'with',
-    },
-    {
-      text: 'Bright.',
-      className: 'text-yellow-500 dark:text-blue-500',
-    },
-  ];
 
   return (
     <div
@@ -55,15 +38,20 @@ export const Page = () => {
           overflow: 'hidden',
         }
       }
-      defer
     >
       <Header ref={headerRef}/>
 
+      {/* Contents */}
       <OverlayScrollbarsComponent id="content-container" className={`max-h-screen`}>
-        <div className='flex justify-center items-center flex-col mt-16'>
-          <div className='font-semibold text-xl'>The complete project management solution</div>
-          <TypewriterEffectSmooth words={words} />
-          <div className=' text-center max-w-96 font-semibold text-md'>Boost team collaboration and achieve project goals with our intuitive tools.
+        <div className='flex justify-center items-center flex-col'>
+          <div className='font-semibold text-xl'>
+            {INTRODUCTION.LANDING_PAGE.SHORT}
+          </div>
+
+          <TypewriterEffectSmooth words={WELCOME_TEXT} />
+
+          <div className=' text-center max-w-96 font-semibold text-md'>
+            {INTRODUCTION.LANDING_PAGE.LONG}
           </div>
 
           <div className='flex gap-3 mt-7'>
@@ -78,10 +66,11 @@ export const Page = () => {
           <div className='flex justify-between items-center'>
             <div className='flex flex-col gap-6'>
               <div className='font-bold text-4xl'>
-              Start your free trial of Bright.
+                {PROMOTION_TEXT.FREE_TRIAL_TITLE}
               </div>
+
               <div className='text-lg max-w-[550px] font-normal'>
-Tired of juggling projects and feeling overwhelmed? Go ahead, unleash your brilliance! Bright is a free project management tool with all the features you need to organize your work, collaborate effectively, and achieve your goals. Start today and see what you can accomplish!
+                {PROMOTION_TEXT.FREE_TRIAL_DES}
               </div>
             </div>
 
@@ -90,11 +79,11 @@ Tired of juggling projects and feeling overwhelmed? Go ahead, unleash your brill
 
           <div className='flex flex-col items-center font-semibold text-slate-400 gap-1 h-48'>
             <img src={BrightLogo} className=' h-20'/>
+
             <div className='flex text-lg'>
-              ZenBright Co. 2024
+              {TRADEMARK.COMPANY}
               <Copyright className='h-3 w-3' />
             </div>
-
 
             <div className='flex' >
               <Button variant='ghost' className=' hover:bg-transparent'>Terms & Conditions</Button>
