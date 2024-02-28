@@ -66,7 +66,7 @@ export const NavigationMenuGroup = () => {
               <ListItem href="/docs" title="Introduction">
                 {INTRODUCTION.GETTING_STARTED.INTRODUCTION}
               </ListItem>
-              <ListItem href="/docs/spnsor" title="Sponsor">
+              <ListItem href="/docs/sponsor" title="Sponsor">
                 {INTRODUCTION.GETTING_STARTED.SPONSOR}
               </ListItem>
               <ListItem href="/docs/about" title="About us">
