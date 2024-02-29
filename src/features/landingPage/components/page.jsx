@@ -43,24 +43,30 @@ export const Page = () => {
 
       {/* Contents */}
       <OverlayScrollbarsComponent id="content-container" className={`max-h-screen`}>
-        <div className='flex justify-center items-center flex-col'>
-          <div className='font-semibold text-xl'>
+        <div className='flex justify-center items-center flex-col gap-5 mt-10'>
+          <div className='font-semibold text-3xl'>
             {INTRODUCTION.LANDING_PAGE.SHORT}
           </div>
 
           <TypewriterEffectSmooth words={WELCOME_TEXT} />
 
-          <div className=' text-center max-w-96 font-semibold text-md'>
-            {INTRODUCTION.LANDING_PAGE.LONG}
+          <div className='text-center max-w-[630px] text-xl text-gray-500'>
+            <span dangerouslySetInnerHTML={{
+              __html: INTRODUCTION.LANDING_PAGE.LONG.replace(
+                  /(Streamline|boost|deliver)/g,
+                  '<span class=\'font-bold text-black\'>$1</span>',
+              ),
+            }}
+            />
           </div>
 
-          <div className='flex gap-3 mt-7'>
-            <Button>Request a demo</Button>
-            <Button variant='ghost' className='border-2'>FAQ</Button>
+          <div className='flex gap-3 mt-12'>
+            <Button className='text-lg p-7 rounded-lg'>Request a demo</Button>
+            <Button variant='ghost' className='text-lg p-7 hover:font-bold hover:bg-transparent'>FAQ</Button>
           </div>
         </div>
 
-        <div className='flex mt-14 px-6 flex-col gap-28 mb-20'>
+        <div className='flex mt-48 px-6 flex-col gap-28 mb-20'>
           <MissionGroup />
 
           <div className='flex justify-between items-center'>
@@ -69,8 +75,8 @@ export const Page = () => {
                 {PROMOTION_TEXT.FREE_TRIAL_TITLE}
               </div>
 
-              <div className='text-lg max-w-[550px] font-normal'>
-                {PROMOTION_TEXT.FREE_TRIAL_DES}
+              <div className='text-lg max-w-[500px] font-normal flex flex-col'>
+                <div>{PROMOTION_TEXT.FREE_TRIAL_DES}</div>
               </div>
             </div>
 
@@ -80,7 +86,7 @@ export const Page = () => {
           <div className='flex flex-col items-center font-semibold text-slate-400 gap-1 h-48'>
             <img src={BrightLogo} className=' h-20'/>
 
-            <div className='flex text-lg'>
+            <div className='flex text-lg font-thin'>
               {TRADEMARK.COMPANY}
               <Copyright className='h-3 w-3' />
             </div>

@@ -83,6 +83,7 @@ export const TypewriterEffectSmooth = ({
     text: word.text.split(''),
   }));
 
+  console.log(words);
   const renderWords = () => (
     <div>
       {wordsArray.map((word, idx) => (
@@ -90,7 +91,7 @@ export const TypewriterEffectSmooth = ({
           {word.text.map((char, index) => (
             <span
               key={`char-${index}`}
-              className={cn(`dark:text-white text-black `, word.className)}
+              className={`dark:text-white text-black ${word.className} text-black dark:text-blue-500`}
             >
               {char}
             </span>
@@ -129,7 +130,7 @@ export const TypewriterEffectSmooth = ({
         }}
       >
         <div
-          className="text-xs sm:text-base md:text-xl lg:text:3xl xl:text-5xl font-bold"
+          className="text-xs sm:text-base md:text-xl lg:text:3xl xl:text-6xl font-bold"
           style={{
             whiteSpace: 'nowrap',
           }}
@@ -150,7 +151,7 @@ export const TypewriterEffectSmooth = ({
           repeatType: 'reverse',
         }}
         className={cn(
-            'block rounded-sm w-[4px]  h-4 sm:h-6 xl:h-12 bg-yellow-500',
+            'block rounded-sm w-[4px] h-4 sm:h-6 xl:h-12 bg-yellow-500',
             cursorClassName,
         )}
       ></motion.span>
