@@ -12,6 +12,7 @@ import {useLayoutEffect} from 'react';
 import {useState} from 'react';
 import {differenceInDays} from 'date-fns';
 import {DetailedTaskView} from './detailed-task-view';
+import tinycolor from 'tinycolor2';
 
 export const TaskContainer = ({task}) => {
   const ref = useRef();
@@ -19,6 +20,9 @@ export const TaskContainer = ({task}) => {
   const [isShowTaskDetailed, setIsShowTaskDetailed] = useState(false);
   const [remainingDateText, setRemainingDateText] = useState('');
 
+  const [badgeColor, colorWeight] = task.tags.map((tag) => tag.color.split('-'));
+
+  console.log(badgeColor, ' - ', colorWeight);
   // Calculate current task size
   useLayoutEffect(() => {
     if (ref.current) {
@@ -106,7 +110,8 @@ export const TaskContainer = ({task}) => {
                 <Badge
                   key={tag.id}
                   style={{
-                    backgroundColor: tag.color,
+                    backgroundColor: tinycolor(tag.color).lighten(50),
+                    color: tinycolor(tag.color),
                   }}
                   className='h-6'>
                   {tag.title}

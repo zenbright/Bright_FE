@@ -3,32 +3,32 @@ import { CheckSquare, Folder, BookOpenText } from 'lucide-react'
 export const DEFAULT_TASK_TAGS = {
     'Medium': {
         value: 'medium',
-        color: '#f59e0b',
+        color: '#b45309',
         description: 'Tasks with medium priority'
     },
     'High': {
         value: 'high',
-        color: '#e11d48',
+        color: '#be123c',
         description: 'Tasks with high priority'
     },
     'Low': {
         value: 'low',
-        color: '#4ade80',
+        color: '#047857',
         description: 'Tasks with low priority'
     },
     'Late': {
         value: 'late',
-        color: '#be123c',
+        color: '#9f1239',
         description: 'Tasks that are late'
     },
     'Urgent': {
         value: 'urgent',
-        color: '#4f46e5',
+        color: '#6b21a8',
         description: 'Urgent tasks'
     },
     'Enhancement': {
         value: 'enhancement',
-        color: '#10b981',
+        color: '#c2410c',
         description: 'Tasks related to enhancements'
     },
     'Fix': {
@@ -38,32 +38,17 @@ export const DEFAULT_TASK_TAGS = {
     },
     'Maintenance': {
         value: 'maintenance',
-        color: '#14b8a6',
+        color: '#0f766e',
         description: 'Tasks for maintenance'
-    },
-    'Important': {
-        value: 'important',
-        color: '#701a75',
-        description: 'Important tasks'
-    },
-    'Pending': {
-        value: 'pending',
-        color: '#c2410c',
-        description: 'Tasks pending completion'
     },
     'Completed': {
         value: 'completed',
-        color: '#22c55e',
+        color: '#15803d',
         description: 'Completed tasks'
-    },
-    'Blocked': {
-        value: 'blocked',
-        color: '#a8a29e',
-        description: 'Tasks that are blocked'
     },
     'Review': {
         value: 'review',
-        color: '#e879f9',
+        color: '#a21caf',
         description: 'Tasks under review'
     },
 };
