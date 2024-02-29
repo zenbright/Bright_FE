@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import {cn} from '@/lib/utils';
 import {motion, useAnimation, useInView} from 'framer-motion';
-import {useRef} from 'react';
 import {useState} from 'react';
 import {useEffect} from 'react';
 
@@ -114,7 +113,6 @@ export const TypewriterEffectSmooth = ({
       </div>
     );
   };
-
 
   return (
     <div className={cn('flex space-x-1 my-6', className)}>
