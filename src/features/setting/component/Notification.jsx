@@ -16,7 +16,7 @@ function Notification() {
     const [notifyMe, setNotifyMe] = useState(false)
 
     const setCommunicationEmailState = () => {
-        if(!notifyMe){
+        if (!notifyMe) {
             setCommunicationEmail(!communicationEmail)
         } else {
             setCommunicationEmail(!communicationEmail)
@@ -25,7 +25,7 @@ function Notification() {
     }
 
     const setSecurityEmailState = () => {
-        if(!notifyMe){
+        if (!notifyMe) {
             setSecurityEmail(!securityEmail)
         } else {
             setSecurityEmail(!securityEmail)
@@ -34,7 +34,7 @@ function Notification() {
     }
 
     const setSocialEmailState = () => {
-        if(!notifyMe){
+        if (!notifyMe) {
             setSocialEmail(!socialEmail)
         } else {
             setSocialEmail(!socialEmail)
@@ -49,7 +49,7 @@ function Notification() {
             setSecurityEmail(false);
             setSocialEmail(false);
             setNotifyMe(true);
-        } else if (!communicationEmail && !securityEmail && !   socialEmail){
+        } else if (!communicationEmail && !securityEmail && !socialEmail) {
             setNotifyMe(!notifyMe)
         } else {
             // Otherwise, set notifyMe to false
@@ -83,29 +83,37 @@ function Notification() {
                     <div className="p-3 border-b-[1px] bg-opacity-50 font-semibold bg-slate-200 rounded-t-md">
                         Subscription
                     </div>
-                    <div className="p-3 border-b-[1px]">
-                        <p className="text-md font-semibold">Communication email</p>
-                        <p className="text-md">Receive email about your account activity</p>
+                    <div className="p-3 border-b-[1px] flex flex-row justify-between items-center">
+                        <div>
+                            <p className="text-md font-semibold">Communication email</p>
+                            <p className="text-md">Receive email about your account activity</p>
+                        </div>
                         <Switch className="mt-2" checked={communicationEmail} onClick={setCommunicationEmailState}></Switch>
                     </div>
-                    <div className="p-3 border-b-[1px]">
-                        <p className="text-md font-semibold">Security email</p>
-                        <p className="text-md">Receive email about your account security</p>
+                    <div className="p-3 border-b-[1px] flex flex-row justify-between items-center">
+                        <div>
+                            <p className="text-md font-semibold">Security email</p>
+                            <p className="text-md">Receive email about your account security</p>
+                        </div>
                         <Switch className="mt-2" checked={securityEmail} onClick={setSecurityEmailState}></Switch>
                     </div>
-                    <div className="p-3 border-b-[1px]">
-                        <p className="text-md font-semibold">Social email</p>
-                        <p className="text-md">Receive email about friend requests, follows and more</p>
+                    <div className="p-3 border-b-[1px] flex flex-row justify-between items-center">
+                        <div>
+                            <p className="text-md font-semibold">Social email</p>
+                            <p className="text-md">Receive email about friend requests, follows and more</p>
+                        </div>
                         <Switch className="mt-2" checked={socialEmail} onClick={setSocialEmailState}></Switch>
                     </div>
-                    <div className="p-3">
-                        <p className="text-md font-semibold">Don't notify me </p>
-                        <p className="text-md">You won't be able to receive any more notification</p>
+                    <div className="p-3 flex flex-row justify-between items-center">
+                        <div>
+                            <p className="text-md font-semibold">Don't notify me </p>
+                            <p className="text-md">You won't be able to receive any more notification</p>
+                        </div>
                         <Switch className="mt-2" checked={notifyMe} onClick={handleDisableAll}></Switch>
                     </div>
                 </div>
                 <div className="mx-3 mb-2">
-                    <Button className="bg-blue-700 hover:bg-blue-600">Save changes</Button>
+                    <Button>Save changes</Button>
                 </div>
             </div>
         </div>

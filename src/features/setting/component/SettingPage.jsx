@@ -8,15 +8,15 @@ import {MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH} from '../../../lib/constants/size.glob
 import '../styles/font.css'
 function SettingPage() {
     return (
-        <div className="flex h-screen w-screen container-ns">
+        <div className="flex h-screen container-ns">
             {/* Nav Bar */}
             <div className="h-screen bg-black" style={{width: `${NAV_BAR_WIDTH}`}} />
 
             {/* Setting Page Section */}
-            <div className='flex flex-row'>
+            <div className='flex flex-row h-screen'>
                 <SettingSideBar></SettingSideBar>
-                <Profile></Profile>
-                {/* <Account></Account> */}
+                {/* <Profile></Profile> */}
+                <Account></Account>
                 {/* <Appearance></Appearance> */}
                 {/* <Notification></Notification> */}
             </div>

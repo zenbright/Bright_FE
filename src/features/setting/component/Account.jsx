@@ -24,14 +24,14 @@ function Account() {
                         <p className="font-semibold w-50">Confirm new Password</p>
                         <Input placeholder="Old password" value="kiensama" type="password" className="w-[350px]"/>
                     </div>
-                    <Button className="bg-blue-600 hover:bg-blue-400">Update</Button>
+                    <Button className="">Update</Button>
                 </div>
                 <div className="m-3 border-b-[1px] p-2">
-                    <p className="font-semibold text-red-600">Delete Account</p>
+                    <p className="font-semibold text-rose-600">Delete Account</p>
                 </div>
                 <div className="mx-3 p-2 space-y-4">
                     <p>Once you delete your account, there is no going back. Please be certain.</p>
-                    <Button className="bg-red-600 hover:bg-red-400">Delete your account</Button>
+                    <Button className="bg-rose-600 hover:bg-rose-500">Delete your account</Button>
                 </div>
             </div>
         </div>
