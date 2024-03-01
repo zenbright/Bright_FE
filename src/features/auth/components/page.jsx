@@ -39,7 +39,7 @@ export const Page = () => {
           className = "absolute right-4 top-4 md:right-8 md:top-8"
           onClick={() => setIsSignIn(!isSignIn)}
         >
-          {isSignIn ? 'Create account' : 'SignIn'}
+          {isSignIn ? 'Create account' : 'Sign In'}
         </Button>
 
         <div className='relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r'>
