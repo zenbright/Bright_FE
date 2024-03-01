@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/select"
 import catImage from '../asset/cat.jpg'
 import themes from '../test/data/themes'
-import Theme from '../component/Theme'
+import Theme from './theme'
 
 function Appearance() {
     return (

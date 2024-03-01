@@ -1,8 +1,8 @@
-import SettingSideBar from './SettingSideBar'
-import Profile from './Profile'
-import Account from './Account';
-import Appearance from './Appearance';
-import Notification from './Notification';
+import SettingSideBar from './setting-side-bar'
+import Profile from './profile-page'
+import Account from './account-page';
+import Appearance from './appearance-page';
+import Notification from './notification-page';
 import {MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH} from '../../../lib/constants/size.global';
 
 import '../styles/font.css'

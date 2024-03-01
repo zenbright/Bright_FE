@@ -1,3 +1,3 @@
-import SettingPage from "./component/SettingPage";
+import SettingPage from "./component/page";
 
 export default SettingPage

@@ -10,10 +10,10 @@ import userImage from '../../../assets/images/rmitlogo.png';
 import '../styles/font.css';
 import '../styles/sideBarEffect.css';
 
-import NavItem from './NavItem.jsx';
-import UserImageName from './UserImageName.jsx';
-import ProjectDashboard from './ProjectDashboard.jsx';
-import LogoutButton from './LogoutButton.jsx';
+import NavItem from './nav-item.jsx';
+import UserImageName from './user-image-name.jsx';
+import ProjectDashboard from './project-dashboard.jsx';
+import LogoutButton from './button-logout.jsx';
 
 function Sidebar() {
   return (

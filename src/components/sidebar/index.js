@@ -1,3 +1,3 @@
-import Sidebar from "./component/Sidebar";
+import Sidebar from "./component/page.jsx";
 
 export default Sidebar
