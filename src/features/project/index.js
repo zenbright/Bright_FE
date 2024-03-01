@@ -1,3 +1,3 @@
-import {Page as ProjectManagementPage} from './components/projectManagementPage';
+import {Page as ProjectManagementPage} from './components/page';
 
 export default ProjectManagementPage;
