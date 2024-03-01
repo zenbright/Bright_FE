@@ -1,9 +1,10 @@
 import React from 'react';
-import SignupButton from './signup-button';
-import {FacebookButton, GithubButton, GoogleButton, InputComponent} from '../..';
-import signup from '../utils/service';
+import {signup} from '../utils/service';
 import {useState} from 'react';
-import {DatePickerDemo} from './date';
+import {BirthdayPicker} from './birthday-picker';
+import {Input} from '@/components/ui/input';
+import {Button} from '@/components/ui/button';
+import {SIGN_UP} from '../assets/strings';
 
 function Signupform() {
   const [account, setFname] = useState('');
@@ -25,52 +26,61 @@ function Signupform() {
 
   return (
     <div className='flex flex-col space-y-2 text-center' >
+      <div className='flex flex-col space-y-2 text-center'>
+        <h1 className="text-2xl font-semibold tracking-tight">
+          {SIGN_UP.TITLE}
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          {SIGN_UP.DES}
+        </p>
+      </div>
+
       <div className='flex flex-cols-2 gap-2'>
-        <InputComponent type="text"
+        <Input type="text"
           value = {account}
           placeholder = {'First Name'}
           onChange = {(e) => setFname(e.target.value)}
+          className='border border-black/30'
         />
-        <InputComponent type="text"
+
+        <Input type="text"
           value = {fullname}
           placeholder = {'Last Name'}
           onChange = {(e) => setLname(e.target.value)}
+          className='border border-black/30'
         />
       </div>
-      <DatePickerDemo />
-      <InputComponent type="email"
+
+      <BirthdayPicker />
+
+      <Input type="email"
         value = {email}
         placeholder = {'Email Address'}
         onChange = {(e) => setEmail(e.target.value)}
+        className='border border-black/30'
       />
-      <InputComponent type="password"
+
+      <Input type="password"
         value = {password}
         placeholder = {'Password'}
         onChange = {(e) => setPassword(e.target.value)}
+        className='border border-black/30'
       />
-      <InputComponent type="password"
+
+      <Input type="password"
         value = {cpassword}
         placeholder = {'Confirm your password'}
         onChange = {(e) => setCPassword(e.target.value)}
+        className='border border-black/30'
       />
-      <div className="">
-        <SignupButton onClick={handleSignUp}/>
-      </div>
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t" />
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">
-                        Or sign up with
-          </span>
-        </div>
-      </div>
-      <div>
-        <GithubButton />
-        <GoogleButton />
-        <FacebookButton />
-      </div>
+
+      <Button
+        variant="outline"
+        className=" w-full h-9 rounded px-5 py-2.5 text-black text-sm bg-white font-medium hover:bg-gray-300 text-center inline-flex items-center border border-gray-400"
+        onClick={handleSignUp}
+      >
+        Sign up
+      </Button>
     </div>
   );
 }

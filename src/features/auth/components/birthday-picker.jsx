@@ -1,20 +1,18 @@
-'use client';
-
 import * as React from 'react';
 import {format} from 'date-fns';
 
 import {cn} from '@/lib/utils';
-import {Button} from '../../../../components/ui/button';
-import {Calendar} from '../../../../components/ui/calendar';
+import {Button} from '../../../components/ui/button';
+import {Calendar} from '../../../components/ui/calendar';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '../../../../components/ui/popover';
+} from '../../../components/ui/popover';
 import {CalendarDays} from 'lucide-react';
 
 
-export function DatePickerDemo() {
+export const BirthdayPicker = () => {
   const [date, setDate] = React.useState(null);
 
   return (
@@ -41,4 +39,4 @@ export function DatePickerDemo() {
       </PopoverContent>
     </Popover>
   );
-}
+};
