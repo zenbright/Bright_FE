@@ -28,11 +28,9 @@ export const Page = () => {
   return (
     <div>
       <div className='md:hidden'>
-        <div style={divStyle}
-          alt="Authentication"
-          className="block"
-        />
+        <div style={divStyle} alt="Authentication" className="block" />
       </div>
+
       <div className='container relative hidden min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0'>
         <Button
           href="/login"
@@ -44,16 +42,21 @@ export const Page = () => {
 
         <div className='relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r'>
           <div className='absolute inset-0' style={divStyle}/>
+
           <div className='relative z-20 flex items-center text-lg font-medium'>
             <img src={logo} alt='logo' className='object-contain w-40' />
           </div>
+
           <div className='relative z-20 mt-auto'>
             <div className='mb-10'>
               <h1 className='text-4xl font-bold'>{WEBSITE_NAME.toUpperCase()}</h1>
+
               <h1 className='text-lg'>
                 {WEB_BRIEF_INTRO}
               </h1>
+
             </div>
+
             <blockquote className="space-y-2">
               <p className="text-xl italic" >
                 {`“${QUOTE.CONTENT}”`}
@@ -87,7 +90,7 @@ export const Page = () => {
                 className="flex items-center justify-center h-8 px-5 py-2.5 rounded bg-white text-black font-medium hover:bg-gray-300 border border-gray-400"
               >
                 <Github className="mr-2 h-4 w-4" />
-                Sign in with GitHub
+                {'Sign in with GitHub'}
               </Button>
 
               <Button
@@ -95,27 +98,27 @@ export const Page = () => {
                 className="flex items-center justify-center h-8 px-5 py-2.5 rounded bg-white text-black font-medium hover:bg-gray-300 border border-gray-400"
               >
                 <Mail className="mr-2 h-4 w-4" />
-                Sign in with Google
+                {'Sign in with Google'}
               </Button>
             </div>
 
             {/* Terms and cons */}
             <p className="px-8 text-center text-sm text-muted-foreground">
-                By clicking continue, you agree to our{' '}
+              {'By clicking continue, you agree to our '}
               <a
                 href="/terms"
                 className="underline underline-offset-4 hover:text-primary"
               >
-                Terms of Service
+                {'Terms of Service'}
               </a>
 
-              {' '}  and {' '}
+              {' and '}
 
               <a
                 href="/privacy"
                 className="underline underline-offset-4 hover:text-primary"
               >
-                Privacy Policy.
+                {'Privacy Policy.'}
               </a>
             </p>
           </div>
