@@ -47,6 +47,7 @@ function Loginform() {
         <h1 className="text-2xl font-semibold tracking-tight">
           {SIGN_IN.TITLE}
         </h1>
+
         <p className="text-sm text-muted-foreground">
           {SIGN_IN.DES}
         </p>
@@ -72,7 +73,7 @@ function Loginform() {
         <Button
           onClick={handleLogin}
           className="w-full h-8 rounded px-5 py-2.5 text-black text-sm bg-white font-medium  hover:bg-gray-200 text-center inline-flex items-center border border-gray-400">
-            Sign in
+          {'Sign in'}
         </Button>
       </form>
 
@@ -83,13 +84,14 @@ function Loginform() {
             htmlFor="terms"
             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
-            Remember Me
+            {'Remember Me'}
           </label>
         </div>
+
         <a
           href="#"
           className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
-          Forgot password?
+          {'Forgot password?'}
         </a>
       </div>
     </div>
