@@ -27,6 +27,7 @@ export const Page = () => {
 
   return (
     <div>
+      {/* Side Background */}
       <div className='md:hidden'>
         <div style={divStyle} alt="Authentication" className="block" />
       </div>
@@ -40,6 +41,7 @@ export const Page = () => {
           {isSignIn ? 'Create account' : 'Sign In'}
         </Button>
 
+        {/* Side panel */}
         <div className='relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r'>
           <div className='absolute inset-0' style={divStyle}/>
 
@@ -49,12 +51,13 @@ export const Page = () => {
 
           <div className='relative z-20 mt-auto'>
             <div className='mb-10'>
-              <h1 className='text-4xl font-bold'>{WEBSITE_NAME.toUpperCase()}</h1>
+              <h1 className='text-4xl font-bold'>
+                {WEBSITE_NAME.toUpperCase()}
+              </h1>
 
               <h1 className='text-lg'>
                 {WEB_BRIEF_INTRO}
               </h1>
-
             </div>
 
             <blockquote className="space-y-2">
@@ -67,6 +70,7 @@ export const Page = () => {
           </div>
         </div>
 
+        {/* Auth Form */}
         <div className='lg:p-8'>
           <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
             { isSignIn ? <Loginform/> : <Signupform />}
