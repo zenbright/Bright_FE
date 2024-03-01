@@ -1,20 +1,13 @@
 import * as React from 'react';
 import {format} from 'date-fns';
-
 import {cn} from '@/lib/utils';
 import {Button} from '../../../components/ui/button';
 import {Calendar} from '../../../components/ui/calendar';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '../../../components/ui/popover';
+import {Popover, PopoverContent, PopoverTrigger} from '../../../components/ui/popover';
 import {CalendarDays} from 'lucide-react';
+import PropTypes from 'prop-types';
 
-
-export const BirthdayPicker = () => {
-  const [date, setDate] = React.useState(null);
-
+export const BirthdayPicker = ({date, setDate}) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -39,4 +32,9 @@ export const BirthdayPicker = () => {
       </PopoverContent>
     </Popover>
   );
+};
+
+BirthdayPicker.propTypes = {
+  date: PropTypes.date,
+  setDate: PropTypes.func,
 };

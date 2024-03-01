@@ -9,15 +9,16 @@ import {SIGN_UP} from '../assets/strings';
 function Signupform() {
   const [account, setFname] = useState('');
   const [fullname, setLname] = useState('');
-  const [date] = useState('');
+  const [dob, setDob] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+
     try {
-      const post = await signup(account, password, fullname, email, date);
+      const post = await signup(account, password, fullname, email, dob);
       console.log('success', post);
     } catch (error) {
       console.error('failed', error);
@@ -51,7 +52,7 @@ function Signupform() {
         />
       </div>
 
-      <BirthdayPicker />
+      <BirthdayPicker date={dob} setDate={setDob} />
 
       <Input type="email"
         value = {email}
@@ -79,7 +80,7 @@ function Signupform() {
         className=" w-full h-9 rounded px-5 py-2.5 text-black text-sm bg-white font-medium hover:bg-gray-300 text-center inline-flex items-center border border-gray-400"
         onClick={handleSignUp}
       >
-        Sign up
+        {'Sign up'}
       </Button>
     </div>
   );
