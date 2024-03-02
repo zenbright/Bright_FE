@@ -20,8 +20,8 @@ export const Header = React.forwardRef((props, ref) => {
         </div>
 
         <div className='flex gap-4 mr-12'>
-          <Button> Login </Button>
-          <Button variant='outline' className='border-2 border-black/15'>SignUp</Button>
+          <Button> Sign in </Button>
+          <Button variant='outline' className='border-2 border-black/15'>Contact us</Button>
         </div>
       </div>
     </div>
