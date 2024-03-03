@@ -47,6 +47,10 @@ function App() {
     const currentRouter = isLogIn ? appRouter : guestRouter;
 
     setCurerentRouter(currentRouter);
+
+    if (!isLogIn) {
+      window.history.pushState({}, '', '/');
+    }
     console.log('Login: ', isLogIn);
   }, [isLogIn]);
 
