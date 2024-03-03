@@ -7,6 +7,7 @@ import {Mail, Github} from 'lucide-react';
 import {useState} from 'react';
 import {WEBSITE_NAME} from '../../../config/constants/strings.global';
 import {QUOTE, WEB_BRIEF_INTRO} from '../assets/strings';
+import {NavLink} from 'react-router-dom';
 
 export const Page = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -45,8 +46,10 @@ export const Page = () => {
         <div className='relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r'>
           <div className='absolute inset-0' style={divStyle}/>
 
-          <div className='relative z-20 flex items-center text-lg font-medium'>
-            <img src={logo} alt='logo' className='object-contain w-40' />
+          <div className='relative z-20 flex items-center text-lg font-medium hover:cursor-pointer'>
+            <NavLink to={'/'}>
+              <img src={logo} alt='logo' className='object-contain w-40' />
+            </NavLink>
           </div>
 
           <div className='relative z-20 mt-auto'>

@@ -2,6 +2,7 @@ import React from 'react';
 import {NavigationMenuGroup} from './navigation-menu-group';
 import {Button} from '@/components/ui/button';
 import BrightLogo from '@/assets/images/app-logo/logomini-dark.svg';
+import {NavLink} from 'react-router-dom';
 
 export const Header = React.forwardRef((props, ref) => {
   return (
@@ -20,7 +21,9 @@ export const Header = React.forwardRef((props, ref) => {
         </div>
 
         <div className='flex gap-4 mr-12'>
-          <Button> Sign in </Button>
+          <NavLink to={'/auth'}>
+            <Button> Sign in </Button>
+          </NavLink>
           <Button variant='outline' className='border-2 border-black/15'>Contact us</Button>
         </div>
       </div>
