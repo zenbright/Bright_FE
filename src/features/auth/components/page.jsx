@@ -10,7 +10,7 @@ import {QUOTE, WEB_BRIEF_INTRO} from '../assets/strings';
 import {NavLink} from 'react-router-dom';
 
 export const Page = () => {
-  const [isSignIn, setIsSignIn] = useState(true);
+  const [isUserLogin, setIsUserLogin] = useState(true);
 
   const divStyle = {
     backgroundImage: `url(${AuthBackground})`,
@@ -37,9 +37,9 @@ export const Page = () => {
         <Button
           href="/login"
           className = "absolute right-4 top-4 md:right-8 md:top-8"
-          onClick={() => setIsSignIn(!isSignIn)}
+          onClick={() => setIsUserLogin(!isUserLogin)}
         >
-          {isSignIn ? 'Create account' : 'Sign In'}
+          {isUserLogin ? 'Create account' : 'Sign In'}
         </Button>
 
         {/* Side panel */}
@@ -76,7 +76,7 @@ export const Page = () => {
         {/* Auth Form */}
         <div className='lg:p-8'>
           <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
-            { isSignIn ? <Loginform/> : <Signupform />}
+            { isUserLogin ? <Loginform/> : <Signupform />}
 
             {/* Other login methods */}
             <div className="relative">
