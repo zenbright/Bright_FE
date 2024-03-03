@@ -9,8 +9,8 @@ import {
 
 import LandingPage from './features/landingPage';
 import {AuthenticationPage} from './features/auth';
-import {LandingAuthLayout} from './layouts/landing-auth-layout';
-import {AppLayout} from './layouts/app-layout';
+import {LandingAuthLayout} from './app/layouts/landing-auth-layout';
+import {AppLayout} from './app/layouts/app-layout';
 import ProjectManagementPage from '@/features/project';
 
 // Routing from landing page to its child and sign in paage
