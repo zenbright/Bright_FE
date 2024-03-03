@@ -38,7 +38,7 @@ const appRouter = createBrowserRouter(
 
 function App() {
   // Check if signed in (will be updated using redux)
-  const isLogIn = useSelector((state) => state.auth.isLogIn);
+  const isLogIn = useSelector((state) => state.auth.isLogin);
 
   const [currentRouter, setCurerentRouter] = useState(isLogIn ? appRouter : guestRouter);
 
@@ -47,6 +47,7 @@ function App() {
     const currentRouter = isLogIn ? appRouter : guestRouter;
 
     setCurerentRouter(currentRouter);
+    console.log('Login: ', isLogIn);
   }, [isLogIn]);
 
   return (
