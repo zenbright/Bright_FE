@@ -7,7 +7,7 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
-import LandingPage from './features/landingPage';
+import {LandingPage} from './features/landingPage';
 import {AuthenticationPage} from './features/auth';
 import {LandingAuthLayout} from './layouts/landing-auth-layout';
 import {AppLayout} from './layouts/app-layout';

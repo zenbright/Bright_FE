@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
-import {login} from '../utils/service';
-import {setCookie} from '@';
+// import {login} from '../utils/service';
+// import {setCookie} from '@/components/config/service/cookie';
 import {Input} from '@/components/ui/input';
 import {Button} from '../../../components/ui/button';
 import {Checkbox} from '@/components/ui/checkbox';
@@ -18,8 +18,8 @@ function Loginform() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await login(account, password);
-      setCookie('accessToken', response.accessToken, 30);
+      // const response = await login(account, password);
+      // setCookie('accessToken', response.accessToken, 30);
 
       // set login state to true
       dispatch(setLoginStatus(true));
