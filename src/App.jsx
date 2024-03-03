@@ -12,6 +12,9 @@ import {AuthenticationPage} from './features/auth';
 import {LandingAuthLayout} from './layouts/landing-auth-layout';
 import {AppLayout} from './layouts/app-layout';
 import ProjectManagementPage from '@/features/project';
+import {useEffect} from 'react';
+import {useState} from 'react';
+import {useSelector} from 'react-redux';
 
 // Routing from landing page to its child and sign in paage
 const guestRouter = createBrowserRouter(
@@ -35,10 +38,16 @@ const appRouter = createBrowserRouter(
 
 function App() {
   // Check if signed in (will be updated using redux)
-  const isSignIn = true;
+  const isLogIn = useSelector((state) => state.auth.isLogIn);
 
-  // Choose router with proper layout
-  const currentRouter = isSignIn ? appRouter : guestRouter;
+  const [currentRouter, setCurerentRouter] = useState(isLogIn ? appRouter : guestRouter);
+
+  useEffect(() => {
+    // Choose router with proper layout
+    const currentRouter = isLogIn ? appRouter : guestRouter;
+
+    setCurerentRouter(currentRouter);
+  }, [isLogIn]);
 
   return (
     <RouterProvider router={currentRouter} />
