@@ -45,7 +45,7 @@ export const Page = () => {
       <Header ref={headerRef}/>
 
       {/* Contents */}
-      <OverlayScrollbarsComponent id="content-container" className={`max-h-screen`}>
+      <OverlayScrollbarsComponent id="content-container" className={`max-h-screen`} defer>
         <div className='flex justify-center items-center flex-col gap-5 mt-10'>
           <div className='font-semibold text-3xl'>
             {INTRODUCTION.LANDING_PAGE.SHORT}
@@ -78,8 +78,8 @@ export const Page = () => {
             {'/'}
 
             <div className='flex gap-4'>
-              <img src={Github} className='w-8 hover:cursor-pointer'/>
-              <img src={Facebook} className='w-8 hover:cursor-pointer'/>
+              <img src={Github} className='w-6 hover:cursor-pointer'/>
+              <img src={Facebook} className='w-6 hover:cursor-pointer'/>
             </div>
           </div>
         </div>
