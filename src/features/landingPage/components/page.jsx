@@ -71,13 +71,15 @@ export const Page = () => {
           <div className='flex items-center gap-2 mt-8 font-semibold text-slate-500'>
             {'Contact us at: '}
 
-            <div className='font-bold text-black'>{`${BRIGHT_EMAIL}`}</div>
+            <div className='font-bold text-black hover:cursor-pointer hover:underline'>
+              {`${BRIGHT_EMAIL}`}
+            </div>
 
             {'/'}
 
             <div className='flex gap-4'>
-              <img src={Github} className='w-8'/>
-              <img src={Facebook} className='w-8'/>
+              <img src={Github} className='w-8 hover:cursor-pointer'/>
+              <img src={Facebook} className='w-8 hover:cursor-pointer'/>
             </div>
           </div>
         </div>
