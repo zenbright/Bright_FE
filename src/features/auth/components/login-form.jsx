@@ -1,22 +1,28 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
-import {login} from '../utils/service';
-import {setCookie} from '@';
+// import {login} from '../utils/service';
+// import {setCookie} from '@/components/config/service/cookie';
 import {Input} from '@/components/ui/input';
 import {Button} from '../../../components/ui/button';
 import {Checkbox} from '@/components/ui/checkbox';
 import {useEffect} from 'react';
 import {SIGN_IN} from '../assets/strings';
+import {useDispatch} from 'react-redux';
+import {setLoginStatus} from '../utils/authSlice';
 
 function Loginform() {
+  const dispatch = useDispatch();
   const [account, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await login(account, password);
-      setCookie('accessToken', response.accessToken, 30);
+      // const response = await login(account, password);
+      // setCookie('accessToken', response.accessToken, 30);
+
+      // set login state to true
+      dispatch(setLoginStatus(true));
     } catch (error) {
       console.error('failed', error);
     }
@@ -58,6 +64,7 @@ function Loginform() {
           type="email"
           value={account}
           placeholder={'Account Email'}
+          autoComplete='email'
           onChange={(e) => setEmail(e.target.value)}
           className='border border-black/30'
         />
@@ -65,6 +72,7 @@ function Loginform() {
         <Input
           type="password"
           value={password}
+          autoComplete='current-password'
           placeholder={'Password'}
           onChange={(e) => setPassword(e.target.value)}
           className='border border-black/30'

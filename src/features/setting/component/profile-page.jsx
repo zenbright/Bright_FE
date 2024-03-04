@@ -117,7 +117,7 @@ function Profile() {
                                             <FormControl>
                                                 <Input placeholder="Nickname" {...field} className="h-9" />
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage/>
                                         </FormItem>
                                     )}
                                 />

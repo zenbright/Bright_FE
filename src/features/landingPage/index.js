@@ -1,3 +1,5 @@
 import {Page as LandingPage} from './components/page';
+import {Header} from './components/header';
 
-export default LandingPage;
+export {LandingPage, Header};
+
