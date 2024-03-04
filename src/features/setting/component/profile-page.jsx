@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import {
@@ -32,6 +32,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import Modal from "./modal"
 
 const formShcema = z.object({
     username: z.string().trim()
@@ -40,15 +41,15 @@ const formShcema = z.object({
     nickname: z.string().trim()
         .max(50),
     bio: z.string()
-        .min(0, { message: "Please tell me about more about you"})
+        .min(0, { message: "Please tell me about more about you" })
         .max(200, { message: "The bio exceeds the 200-character limit. Please condense it." }),
     pronouns: z.string(),
     url: z.string()
         .optional(),
-    social_account1: z.string(),
-    social_account2: z.string(),
-    social_account3: z.string(),
-    social_account4: z.string(),
+    social_account1: z.string().optional(),
+    social_account2: z.string().optional(),
+    social_account3: z.string().optional(),
+    social_account4: z.string().optional(),
     email_address: z.string()
         .email(),
     phone_number: z.number()
@@ -59,7 +60,9 @@ const formShcema = z.object({
 
 function Profile() {
     const [date, setDate] = useState(Date);
+    const [modalOpen, setModalOpen] = useState(false);
 
+    const ref = useRef(null)
     const form = useForm({
         resolver: zodResolver(formShcema),
         defaultValues: {
@@ -76,16 +79,20 @@ function Profile() {
         console.log(error)
     }
 
+    useEffect(() => {
+        console.log(ref)
+    }, [])
+
     return (
-        <div className="container-ns flex flex-col w-[75vw] overflow-auto h-screen">
-            <div className="mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-white z-40">
+        <div className="w-[75vw] overflow-auto">
+            <div className="mx-3 text-lg font-bold p-2 border-b-[1px] border-slate-300 ">
                 Public Profile
             </div>
-            <div className="flex flex-row overflow-x-scroll no-scrollbar">
-                <div className="w-9/12 px-5 py-3 h-full">
+            <div className="flex bg-black">
+                <div className="w-9/12 px-5 py-2 bg-black">
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit, onError)} className='h-fit'>
-                            <div id="name-container" className="flex flex-row w-full gap-7">
+                        <form ref={ref} className=' overflow-hidden' onSubmit={form.handleSubmit(onSubmit, onError)}>
+                            <div id="name-container" className="flex w-full gap-7">
                                 {/* Username */}
                                 <FormField
                                     control={form.control}
@@ -94,7 +101,7 @@ function Profile() {
                                         <FormItem className="w-5/12">
                                             <FormLabel className="font-semibold text-md">Username</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Username" {...field} className="h-[35px]" />
+                                                <Input placeholder="Username" {...field} className="h-9" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -108,14 +115,14 @@ function Profile() {
                                         <FormItem className="w-5/12">
                                             <FormLabel className="font-semibold text-md">Nickname</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Nickname" {...field} className="h-[35px]" />
+                                                <Input placeholder="Nickname" {...field} className="h-9" />
                                             </FormControl>
-                                            <FormMessage/>
+                                            <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div id="bio" className="pt-3 w-full" >
+                            <div id="bio" className="mt-3 w-full" >
                                 {/* Bio */}
                                 <FormField
                                     control={form.control}
@@ -126,42 +133,16 @@ function Profile() {
                                             <FormControl>
                                                 <Textarea
                                                     placeholder="Tell us a little about yourself"
-                                                    className="w-8/12"
+                                                    className="w-8/12 resize-none"
                                                     {...field}
                                                 />
                                             </FormControl>
-                                            <FormMessage/>
+                                            <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div id="pronouns" className="pt-3 w-full">
-                                {/* Pronouns */}
-                                <FormField
-                                    control={form.control}
-                                    name="pronouns"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="font-semibold text-md">Pronouns</FormLabel>
-                                            <Select onValueChange={field.onChange} defaultValues={field.value}>
-                                                <FormControl>
-                                                    <SelectTrigger className="w-8/12 h-[35px]">
-                                                        <SelectValue placeholder="Don't Specify" />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent>
-                                                    <SelectItem value="a">Don't Specify</SelectItem>
-                                                    <SelectItem value="b">they/them</SelectItem>
-                                                    <SelectItem value="c">he/him</SelectItem>
-                                                    <SelectItem value="d">she/her</SelectItem>
-                                                </SelectContent>
-                                            </Select>
-                                            <FormMessage/>
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-                            <div id="url" className="pt-3 w-full">
+                            <div id="url" className="mt-3 w-full">
                                 {/* URL */}
                                 <FormField
                                     control={form.control}
@@ -170,50 +151,50 @@ function Profile() {
                                         <FormItem>
                                             <FormLabel className="text-md font-semibold">URL</FormLabel>
                                             <FormControl>
-                                                <Input className="w-8/12 h-[35px]" {...field} />
+                                                <Input className="w-8/12 h-9" {...field} />
                                             </FormControl>
-                                            <FormMessage/>
+                                            <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div id="social-account" className="pt-3 w-full">
+                            <div id="social-account" className="mt-3 w-full">
                                 {/* Social Accounts */}
                                 <FormField
                                     control={form.control}
                                     name="social_account"
                                     render={({ field }) => (
-                                        <FormItem>
+                                        <FormItem className="space-y-1">
                                             <FormLabel className="font-semibold text-md">Social Account</FormLabel>
-                                            <FormControl className="flex flex-row gap-y-2 pt-1">
+                                            <FormControl className="flex flex-row gap-y-1 pt-1">
                                                 <div>
                                                     <LinkIcon className="w-5 h-5 mt-2 mr-2" />
-                                                    <Input placeholder="Link to social profile" className="w-10/12 h-[35px]" {...field} />
+                                                    <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
                                                 </div>
                                             </FormControl>
                                             <FormControl className="flex flex-row gap-y-2 pt-1">
                                                 <div>
                                                     <LinkIcon className="w-5 h-5 mt-2 mr-2" />
-                                                    <Input placeholder="Link to social profile" className="w-10/12 h-[35px]" {...field} />
+                                                    <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
                                                 </div>
                                             </FormControl>
                                             <FormControl className="flex flex-row gap-y-2 pt-1">
                                                 <div>
                                                     <LinkIcon className="w-5 h-5 mt-2 mr-2" />
-                                                    <Input placeholder="Link to social profile" className="w-10/12 h-[35px]" {...field} />
+                                                    <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
                                                 </div>
                                             </FormControl>
                                             <FormControl className="flex flex-row gap-y-2 pt-1">
                                                 <div>
                                                     <LinkIcon className="w-5 h-5 mt-2 mr-2" />
-                                                    <Input placeholder="Link to social profile" className="w-10/12 h-[35px]" {...field} />
+                                                    <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
                                                 </div>
                                             </FormControl>
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div id="personal" className="my-3 pt-3 border-t-[1px] border-slate-300 text-lg font-semibold">
+                            <div id="personal" className="my-3 mt-3 border-t-[1px] border-slate-300 text-lg font-semibold">
                                 Personal Information
                             </div>
                             <div id="personal-container-1" className="w-full flex flex-row gap-7 mb-3">
@@ -226,7 +207,7 @@ function Profile() {
                                             <FormItem>
                                                 <FormLabel className="font-semibold text-md">Email Address</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Email Address" type="email" className="h-[35px]" {...field} />
+                                                    <Input placeholder="Email Address" type="email" className="h-9" {...field} />
                                                 </FormControl>
                                             </FormItem>
                                         )}
@@ -242,7 +223,7 @@ function Profile() {
                                                 <FormLabel className="font-semibold text-md">Country</FormLabel>
                                                 <Select onValueChange={field.onChange} defaultValues={field.value}>
                                                     <FormControl>
-                                                        <SelectTrigger className="w-8/12 h-[35px]">
+                                                        <SelectTrigger className="w-8/12 h-9">
                                                             <SelectValue placeholder="Select Your Country" />
                                                         </SelectTrigger>
                                                     </FormControl>
@@ -258,7 +239,7 @@ function Profile() {
                                     />
                                 </div>
                             </div>
-                            <div id="personal-content-2" className="flex flex-row w-full gap-7">
+                            <div id="personal-content-2" className="flex flex-row w-full gap-6">
                                 <div id="phone_number" className="w-5/12">
                                     <FormField
                                         control={form.control}
@@ -267,7 +248,7 @@ function Profile() {
                                             <FormItem>
                                                 <FormLabel className="font-semibold text-md">Phone number</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Phone number" type="number" className="h-[35px]" {...field} />
+                                                    <Input placeholder="Phone number" type="number" className="h-9" {...field} />
                                                 </FormControl>
                                             </FormItem>
                                         )}
@@ -286,7 +267,7 @@ function Profile() {
                                                             <Button
                                                                 variant={"outline"}
                                                                 className={cn(
-                                                                    "w-[240px] h-[35px] pl-3 text-left font-normal",
+                                                                    "w-[240px] h-9 pl-3 text-left font-normal",
                                                                     !field.value && "text-muted-foreground"
                                                                 )}
                                                             >
@@ -317,16 +298,19 @@ function Profile() {
                                 </div>
                             </div>
 
-                            <Button className="mt-5 mb-3 h-[35px]">Update Profile</Button>
+                            <Button className="mt-3 mb-3 h-9">Update Profile</Button>
                         </form>
                     </Form>
                 </div>
-                <div className="w-3/12 relative z-0">
+                {/* <div className="w-3/12 relative z-0">
                     <img src={userImage} alt="" className='h-50 w-50 rounded-full p-5' />
-                    <Button class="absolute top-10 w-[60px] bg-black text-white p-2 rounded-sm hover:bg-slate-900 m-2">
+                    <Button class="absolute top-10 w-[60px] bg-black text-white p-2 rounded-sm hover:bg-slate-900 m-2"
+                        onClick={() => setModalOpen(true)}
+                    >
                         Edit
                     </Button>
-                </div>
+                </div> */}
+                {/* {modalOpen && <Modal closeModal={() => setModalOpen(false)} />} */}
             </div>
         </div>
     )
