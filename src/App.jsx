@@ -48,7 +48,7 @@ function App() {
 
     setCurerentRouter(currentRouter);
 
-    if (!isLogIn) {
+    if (isLogIn) {
       window.history.pushState({}, '', '/');
     }
     console.log('Login: ', isLogIn);
