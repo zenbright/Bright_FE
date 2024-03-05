@@ -23,17 +23,19 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { ACCOUNT } from "../test/data/strings"
+
 
 const formShcema = z.object({
     old_password: z.string().trim()
         .min(6),
     new_password: z.string({
-        required_error: "New password can not be blank"
+        required_error:  ACCOUNT.NEW_PASSWORD_REQUIRED
     })
         .trim()
         .min(6),
     re_confirm_password: z.string({
-        required_error: "Please re-confirm your new password"
+        required_error: ACCOUNT.CONFIRM_PASSWORD_REQUIRED
     })
         .trim()
         .min(6),
@@ -41,6 +43,7 @@ const formShcema = z.object({
     message: "New password and confirm password must be match",
     path: ["re_confirm_password"]
 })
+
 function Account() {
     const form = useForm({
         resolver: zodResolver(formShcema),

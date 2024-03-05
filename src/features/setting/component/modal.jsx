@@ -1,5 +1,6 @@
 import { XCircle } from 'lucide-react';
 import ImageCropper from './image_cropper';
+import PropTypes from 'prop-types';
 
 const Modal = ({ closeModal }) => {
     return (
@@ -29,6 +30,10 @@ const Modal = ({ closeModal }) => {
             </div>
         </div>
     )
+}
+
+Modal.propTypes = {
+    closeModal: PropTypes.func
 }
 
 export default Modal

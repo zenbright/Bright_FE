@@ -33,16 +33,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import Modal from "./modal"
+import PROFILE from "../test/data/strings"
 
 const formShcema = z.object({
     username: z.string().trim()
-        .min(2, { message: "Username is too short " })
-        .max(50),
+        .min(2, { message: PROFILE.SHORT})
+        .max(50, {message: PROFILE.USERNAME_LONG}),
     nickname: z.string().trim()
-        .max(50),
+        .max(50, {message: PROFILE.NICKNAME_LONG}),
     bio: z.string()
-        .min(0, { message: "Please tell me about more about you" })
-        .max(200, { message: "The bio exceeds the 200-character limit. Please condense it." }),
+        .min(0, { message:  PROFILE.BIO_SHORT})
+        .max(200, { message:  PROFILE.BIO_LONG}),
     pronouns: z.string(),
     url: z.string()
         .optional(),
@@ -302,15 +303,15 @@ function Profile() {
                         </form>
                     </Form>
                 </div>
-                {/* <div className="w-3/12 relative z-0">
+                <div className="w-3/12 relative z-0">
                     <img src={userImage} alt="" className='h-50 w-50 rounded-full p-5' />
                     <Button class="absolute top-10 w-[60px] bg-black text-white p-2 rounded-sm hover:bg-slate-900 m-2"
                         onClick={() => setModalOpen(true)}
                     >
                         Edit
                     </Button>
-                </div> */}
-                {/* {modalOpen && <Modal closeModal={() => setModalOpen(false)} />} */}
+                </div>
+                {modalOpen && <Modal closeModal={() => setModalOpen(false)} />}
             </div>
         </div>
     )

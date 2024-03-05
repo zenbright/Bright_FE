@@ -1,4 +1,5 @@
 import { useState } from "react"
+import PropTypes from 'prop-types';
 
 function SettingTab({tab, tabIndex, selectedActive, handleSelected}) {
     return (
@@ -17,6 +18,13 @@ function SettingTab({tab, tabIndex, selectedActive, handleSelected}) {
             </div>
         </div>
     )
+}
+
+SettingTab.propTypes = {
+    tab: PropTypes.node,
+    tabIndex: PropTypes.number,
+    selectedActive: PropTypes.number,
+    handleSelected: PropTypes.func
 }
 
 export default SettingTab
