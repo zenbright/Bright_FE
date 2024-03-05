@@ -25,6 +25,7 @@ import {UnderDevDialog} from '../../../components/general/under-development-dial
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
   const [isUnderDevDialogOpen, setIsUnderDevDialogOpen] = useState(false);
+  const [selectedTab, setSelectedTab] = useState(0);
 
   return (
     <div className='px-2 py-1 w-full h-dvh overflow-auto '>
@@ -68,7 +69,9 @@ export const Page = () => {
         <div className='flex items-center pl-4'>
           <BoardTabGroup
             isUnderDevDialogOpen={isUnderDevDialogOpen}
-            setIsUnderDevDialogOpen={setIsUnderDevDialogOpen} />
+            setIsUnderDevDialogOpen={setIsUnderDevDialogOpen}
+            selected={selectedTab}
+            setSelected={setSelectedTab} />
         </div>
 
         <Divider

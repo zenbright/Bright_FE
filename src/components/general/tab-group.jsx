@@ -9,10 +9,12 @@ const TableNames = [
 
 const TabGroup = ({tableNames = TableNames, setIsUnderDevDialogOpen, selected, setSelected}) => {
   const handleButtonClick = (buttonIndex) => {
-    // if (buttonIndex !== 0) {
-    //   setIsUnderDevDialogOpen(true);
-    //   return;
-    // }
+    // Only apply for board tab group (Testing purposes)
+    if (buttonIndex !== 0 && tableNames[0].name === 'Board') {
+      setIsUnderDevDialogOpen(true);
+      return;
+    }
+
     setSelected(buttonIndex);
   };
 
