@@ -3,7 +3,7 @@ import {Task} from '../../utils/class';
 import {Badge} from '@/components/ui/badge';
 import {MemberList} from '../member-list';
 import Divider from '../../../../components/general/divider';
-import {UserRoundPlus, MoreHorizontal, List, Paperclip, Calendar, Flag} from 'lucide-react';
+import {UserRoundPlus, List, Paperclip, Calendar, Flag, Settings2} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
@@ -13,16 +13,15 @@ import {useState} from 'react';
 import {differenceInDays} from 'date-fns';
 import {DetailedTaskView} from './detailed-task-view/detailed-task-view';
 import tinycolor from 'tinycolor2';
+import TaskCreationForm from './task-creation-form';
 
 export const TaskContainer = ({task}) => {
   const ref = useRef();
   const [dimensions, setDimensions] = useState({width: 0, height: 0});
   const [isShowTaskDetailed, setIsShowTaskDetailed] = useState(false);
   const [remainingDateText, setRemainingDateText] = useState('');
+  const [isEditTask, setIsEditTask] = useState(false);
 
-  const [badgeColor, colorWeight] = task.tags.map((tag) => tag.color.split('-'));
-
-  console.log(badgeColor, ' - ', colorWeight);
   // Calculate current task size
   useLayoutEffect(() => {
     if (ref.current) {
@@ -95,6 +94,14 @@ export const TaskContainer = ({task}) => {
         />
       }
 
+      {/* Edit task */}
+      {isEditTask && (
+        <TaskCreationForm
+          isOpen={isEditTask}
+          setIsOpen={setIsEditTask}
+          task={task} />
+      )}
+
       {/* Task Container */}
       <div
         ref={setNodeRef}
@@ -127,11 +134,11 @@ export const TaskContainer = ({task}) => {
 
             <Button
               onClick={() => {
-                console.log('ok');
+                setIsEditTask(true);
               }}
               variant="ghost"
             >
-              <MoreHorizontal />
+              <Settings2 className=' w-4 h-4' />
             </Button>
           </div>
 

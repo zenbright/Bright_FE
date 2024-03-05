@@ -42,18 +42,18 @@ const formSchema = z.object({
   return true;
 }, {message: END_DATE_INPUT_VALIDATOR.ERROR});
 
-const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId}) => {
+const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task}) => {
   const [endDateError, setEndDateError] = useState(null);
   const [tagError, setTagError] = useState(null);
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState(task ? task.tags : []);
 
   // Create form hook with schema
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: '',
-      description: '',
-      startDate: new Date(),
+      title: task ? task.title : '',
+      description: task ? task.des ? task.des : '' : '',
+      startDate: task ? task.startDate : new Date(),
     },
   });
 
@@ -109,7 +109,7 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId}) => {
                 <FormItem>
                   <FormLabel>Title *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Design homepage" {...field} />
+                    <Input placeholder="Design homepage" {...field}/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -226,7 +226,7 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId}) => {
                 </FormItem>
               )} />
 
-            <Button className='w-full' type="submit">Submit</Button>
+            <Button className='w-full' type="submit">{task ? 'Update' : 'Submit'}</Button>
           </form>
         </Form>
       </DialogContent>
