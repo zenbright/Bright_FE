@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import {cn} from '@/lib/utils';
 import {motion, useAnimation, useInView} from 'framer-motion';
-import {useState} from 'react';
 import {useEffect} from 'react';
 
 export const TypewriterEffect = ({
@@ -83,16 +82,6 @@ export const TypewriterEffectSmooth = ({
     text: word.text.split(''),
   }));
 
-  const [animationKey, setAnimationKey] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimationKey(animationKey + 1);
-    }, 20000);
-
-    return () => clearTimeout(timer);
-  }, [animationKey]);
-
   const renderWords = () => {
     return (
       <div>
@@ -117,25 +106,24 @@ export const TypewriterEffectSmooth = ({
   return (
     <div className={cn('flex space-x-1 my-6', className)}>
       <motion.div
-        key={animationKey}
         className="overflow-hidden pb-2"
         initial={{
           width: '0%',
         }}
-        whileInView={{
-          width: 'fit-content',
-        }}
         animate={{
           width: 'fit-content',
         }}
+        whileInView={{
+          width: 'fit-content',
+        }}
         transition={{
-          duration: 1.5,
+          duration: 1.2,
           ease: 'linear',
-          delay: 1,
+          delay: 0.2,
         }}
       >
         <div
-          className="text-xs sm:text-base md:text-xl lg:text:3xl xl:text-6xl font-bold"
+          className="text-xs sm:text-base md:text-xl lg:text:3xl xl:text-7xl font-bold"
           style={{
             whiteSpace: 'nowrap',
           }}
@@ -156,7 +144,7 @@ export const TypewriterEffectSmooth = ({
           repeatType: 'reverse',
         }}
         className={cn(
-            'block rounded-sm w-[4px] h-4 sm:h-6 xl:h-12 bg-yellow-500',
+            'block rounded-sm w-[4px] h-4 sm:h-6 xl:h-16 bg-yellow-500',
             cursorClassName,
         )}
       ></motion.span>

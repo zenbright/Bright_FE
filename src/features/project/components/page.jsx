@@ -27,7 +27,7 @@ export const Page = () => {
   const [isUnderDevDialogOpen, setIsUnderDevDialogOpen] = useState(false);
 
   return (
-    <div className='px-2 py-1 w-full bg-slate-200/60 h-dvh overflow-auto '>
+    <div className='px-2 py-1 w-full h-dvh overflow-auto '>
       <div className='px-4'>
         {/* Project Headers */}
         <ProjectBreadCrumbs projectType='SOFTWARE' projectOwner='MUDOKER' />
