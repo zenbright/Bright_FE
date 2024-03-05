@@ -79,7 +79,6 @@ export function ColumnContainer(
             <Plus
               className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full'
               onClick={() => {
-                // createTask(col.id);
                 setIsCreateNewTask(true);
               }}
             />
@@ -112,9 +111,9 @@ export function ColumnContainer(
 
       {isCreateNewTask &&
       <TaskCreationForm
-        isCreateNewTask={isCreateNewTask}
-        setIsCreateNewTask={setIsCreateNewTask}
-        createTask={createTask}
+        isOpen={isCreateNewTask}
+        setIsOpen={setIsCreateNewTask}
+        onSubmit={createTask}
         colId={col.id}/>}
     </div>
   );

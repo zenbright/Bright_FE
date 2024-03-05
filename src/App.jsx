@@ -20,6 +20,7 @@ const guestRouter = createBrowserRouter(
         <Route path='/' element={<LandingAuthLayout />}>
           <Route path="/" element={<LandingPage />} />,
           <Route path="/auth" element={<AuthenticationPage />} />,
+          <Route path="*" element={<h1>404 - Notfound</h1>} />,
         </Route>,
     ),
 );
@@ -27,7 +28,7 @@ const guestRouter = createBrowserRouter(
 // Routing from within the application
 const appRouter = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/' element={<AppLayout />}>
+        <Route path='/' element={<ProjectManagementPage />}>
           <Route path="/dashboard" element={<ProjectManagementPage />} />,
           <Route path="*" element={<h1>404 - Notfound</h1>} />,
         </Route>,
@@ -42,7 +43,7 @@ function App() {
 
   useEffect(() => {
     // Choose router with proper layout
-    const currentRouter = isLogIn ? appRouter : guestRouter;
+    const currentRouter = !isLogIn ? appRouter : guestRouter;
 
     setCurerentRouter(currentRouter);
 

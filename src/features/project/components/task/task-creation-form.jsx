@@ -21,6 +21,7 @@ import {CalendarPlus} from 'lucide-react';
 import {Textarea} from '@/components/ui/textarea';
 import {useState} from 'react';
 import {useEffect} from 'react';
+import {Task} from '../../utils/class';
 
 // Define form schema
 const formSchema = z.object({
@@ -41,7 +42,7 @@ const formSchema = z.object({
   return true;
 }, {message: END_DATE_INPUT_VALIDATOR.ERROR});
 
-const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colId}) => {
+const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId}) => {
   const [endDateError, setEndDateError] = useState(null);
   const [tagError, setTagError] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -62,19 +63,19 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
   }, [selectedTags]);
 
   // Handle form submit
-  const onSubmit = (values) => {
+  const onValid = (values) => {
     // Constraint: must be selected at least 1 tag
     if (selectedTags.length === 0) {
       setTagError(TAGS_INPUT_VALIDATOR.SHORT);
       return;
     }
 
-    createTask(colId, values.title, values.description, values.startDate, values.endDate, selectedTags);
-    setIsCreateNewTask(false);
+    onSubmit(colId, values.title, values.description, values.startDate, values.endDate, selectedTags);
+    setIsOpen(false);
   };
 
   // Handle failed to submit
-  const onError = (error) => {
+  const onInValid = (error) => {
     console.log(error);
 
     // If error related to endDate
@@ -89,7 +90,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
   };
 
   return (
-    <Dialog open={isCreateNewTask} onOpenChange={setIsCreateNewTask}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-[450px]">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">Create new task</DialogTitle>
@@ -99,7 +100,7 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit, onError)} className=" space-y-4">
+          <form onSubmit={form.handleSubmit(onValid, onInValid)} className=" space-y-4">
             {/* Task title */}
             <FormField
               control={form.control}
@@ -236,8 +237,9 @@ const TaskCreationForm = ({isCreateNewTask, setIsCreateNewTask, createTask, colI
 export default TaskCreationForm;
 
 TaskCreationForm.propTypes = {
-  isCreateNewTask: PropTypes.bool,
-  setIsCreateNewTask: PropTypes.func,
-  createTask: PropTypes.func,
+  isOpen: PropTypes.bool,
+  setIsOpen: PropTypes.func,
+  onSubmit: PropTypes.func,
   colId: PropTypes.string,
+  task: PropTypes.instanceOf(Task),
 };

@@ -6,14 +6,14 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import PropTypes from 'prop-types';
-import {Task} from '../../utils/class';
-import {MemberList} from '../member-list';
+import {Task} from '../../../utils/class';
+import {MemberList} from '../../member-list';
 import {format} from 'date-fns';
 import {Badge} from '@/components/ui/badge';
 import TabGroup from '@/components/general/tab-group';
-import {TASK_DETAILED_TABS} from '../../assets/values';
+import {TASK_DETAILED_TABS} from '../../../assets/values';
 import {useState} from 'react';
-import {AttachmentList} from './detailed-task-view/attachment-list';
+import {AttachmentList} from './attachment-list';
 import tinycolor from 'tinycolor2';
 
 export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, task}) => {

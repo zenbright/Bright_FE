@@ -11,7 +11,7 @@ import {useRef} from 'react';
 import {useLayoutEffect} from 'react';
 import {useState} from 'react';
 import {differenceInDays} from 'date-fns';
-import {DetailedTaskView} from './detailed-task-view';
+import {DetailedTaskView} from './detailed-task-view/detailed-task-view';
 import tinycolor from 'tinycolor2';
 
 export const TaskContainer = ({task}) => {
