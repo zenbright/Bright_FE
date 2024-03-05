@@ -99,6 +99,11 @@ export const TaskContainer = ({task}) => {
         <TaskCreationForm
           isOpen={isEditTask}
           setIsOpen={setIsEditTask}
+          onSubmit={() => {
+            console.log(
+                'Update successfully',
+            );
+          }}
           task={task} />
       )}
 

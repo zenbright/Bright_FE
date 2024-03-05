@@ -30,11 +30,23 @@ export class Task {
   }
 
   createTags(tags) {
+    console.log(tags);
     return tags.map((tag) => TaskTag.parseTag(tag));
   }
 
   addTags(newTags) {
     this.tags = [...this.tags, ...this.createTags(newTags)];
+  }
+
+  update(title, des, startDate, endDate, tags) {
+    this.title = title !== undefined ? title : this.title;
+    this.des = des !== undefined ? des : this.des;
+    this.startDate = startDate !== undefined ? startDate : this.startDate;
+    this.endDate = endDate !== undefined ? endDate : this.endDate;
+
+    if (tags !== undefined) {
+      this.tags = this.createTags(tags);
+    }
   }
 }
 
@@ -52,5 +64,9 @@ export class TaskTag {
     const tagColor = tagParts[1];
 
     return new TaskTag(null, tagTitle, tagColor);
+  }
+
+  static toString(tag) {
+    return tag ? `${tag.title.toLowerCase()}-${tag.color}` : '';
   }
 }

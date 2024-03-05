@@ -21,7 +21,7 @@ import {CalendarPlus} from 'lucide-react';
 import {Textarea} from '@/components/ui/textarea';
 import {useState} from 'react';
 import {useEffect} from 'react';
-import {Task} from '../../utils/class';
+import {Task, TaskTag} from '../../utils/class';
 
 // Define form schema
 const formSchema = z.object({
@@ -45,7 +45,8 @@ const formSchema = z.object({
 const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task}) => {
   const [endDateError, setEndDateError] = useState(null);
   const [tagError, setTagError] = useState(null);
-  const [selectedTags, setSelectedTags] = useState(task ? task.tags : []);
+  const initialSelectedTags = task ? task.tags.map((tag) => TaskTag.toString(tag)) : [];
+  const [selectedTags, setSelectedTags] = useState(initialSelectedTags);
 
   // Create form hook with schema
   const form = useForm({
@@ -70,7 +71,13 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task}) => {
       return;
     }
 
-    onSubmit(colId, values.title, values.description, values.startDate, values.endDate, selectedTags);
+    // Create new or edit existing
+    if (!task) {
+      onSubmit(colId, values.title, values.description, values.startDate, values.endDate, selectedTags);
+    } else {
+      task.update(values.title, values.description, values.startDate, values.endDate, selectedTags);
+    }
+
     setIsOpen(false);
   };
 
