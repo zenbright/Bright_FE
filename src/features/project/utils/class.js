@@ -30,7 +30,6 @@ export class Task {
   }
 
   createTags(tags) {
-    console.log(tags);
     return tags.map((tag) => TaskTag.parseTag(tag));
   }
 
