@@ -9,3 +9,5 @@ export const SYSTEM_ALERT = {
 export const BRIGHT_EMAIL = 'bright-tools-official@gmail.com';
 
 export const RESULT_NOT_FOUND = 'No results found.';
+
+export const WEBSITE_NAME = 'Bright';

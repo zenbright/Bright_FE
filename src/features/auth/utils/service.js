@@ -1,7 +1,16 @@
 import {axiosPost} from '@/config/service/axios.js';
-import {getDeviceToken} from '../getDeviceToken';
 
-const login = async (account, password) => {
+export const signup = async (account, password, fname, email, dateOfBirth) => {
+  try {
+    const response = await axiosPost('api/auth/bright/signup',
+        {account, password, fname, email, dateOfBirth});
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  };
+};
+
+export const login = async (account, password) => {
   try {
     const response = await axiosPost('api/auth/bright/login', {
       account,
@@ -21,5 +30,3 @@ const login = async (account, password) => {
     console.error(error);
   }
 };
-
-export default login;

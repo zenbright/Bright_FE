@@ -39,7 +39,7 @@ export const MissionGroup = () => {
             </button>
 
             {/* Meaty part - Meteor effect */}
-            <Meteors number={20} />
+            <Meteors number={10} />
           </div>
         </div>
       </div>
@@ -47,10 +47,11 @@ export const MissionGroup = () => {
   };
 
   return (
-    <div className='flex flex-col gap-8 w-full'>
-      <div className='font-bold text-4xl'>Our Missions</div>
+    <div className='flex flex-col gap-6 items-center'>
+      <div className='font-bold text-5xl self-center'>Our Missions</div>
+      <div className=' font text-lg font-semibold max-w-xl text-center'>{'Through collaboration and expertise, we provide the tools and resources you need to achieve your goals.'}</div>
 
-      <div className='flex justify-between'>
+      <div className='flex gap-8 mt-4'>
         <FeaturedButton
           title='For Project Managers'
           des='Seamless management for individuals and enterprises. Achieve peak productivity.' />
