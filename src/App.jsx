@@ -51,7 +51,6 @@ function App() {
     if (isLogIn) {
       window.history.pushState({}, '', '/');
     }
-    console.log('Login: ', isLogIn);
   }, [isLogIn]);
 
   return (
