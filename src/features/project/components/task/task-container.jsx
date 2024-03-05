@@ -15,7 +15,7 @@ import {DetailedTaskView} from './detailed-task-view/detailed-task-view';
 import tinycolor from 'tinycolor2';
 import TaskCreationForm from './task-creation-form';
 
-export const TaskContainer = ({task}) => {
+export const TaskContainer = ({task, onDelete}) => {
   const ref = useRef();
   const [dimensions, setDimensions] = useState({width: 0, height: 0});
   const [isShowTaskDetailed, setIsShowTaskDetailed] = useState(false);
@@ -99,11 +99,7 @@ export const TaskContainer = ({task}) => {
         <TaskCreationForm
           isOpen={isEditTask}
           setIsOpen={setIsEditTask}
-          onSubmit={() => {
-            console.log(
-                'Update successfully',
-            );
-          }}
+          onDelete={onDelete}
           task={task} />
       )}
 
@@ -201,4 +197,5 @@ export const TaskContainer = ({task}) => {
 
 TaskContainer.propTypes = {
   task: PropTypes.instanceOf(Task),
+  onDelete: PropTypes.func,
 };

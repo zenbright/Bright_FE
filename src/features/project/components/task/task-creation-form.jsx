@@ -42,7 +42,7 @@ const formSchema = z.object({
   return true;
 }, {message: END_DATE_INPUT_VALIDATOR.ERROR});
 
-const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task}) => {
+const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task, onDelete}) => {
   const [endDateError, setEndDateError] = useState(null);
   const [tagError, setTagError] = useState(null);
   const initialSelectedTags = task ? task.tags.map((tag) => TaskTag.toString(tag)) : [];
@@ -233,7 +233,19 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task}) => {
                 </FormItem>
               )} />
 
-            <Button className='w-full' type="submit">{task ? 'Update' : 'Submit'}</Button>
+            <div className='flex flex-col gap-2 items-center'>
+              <Button className='w-full' type="submit">{task ? 'Update' : 'Submit'}</Button>
+
+              {/* Remove current task */}
+              {task && (
+                <Button
+                  className=' w-fit hover:underline text-red-500 hover:text-rose-600'
+                  variant="link"
+                  onClick={() => onDelete(task.id)}>
+                  {'Delete'}
+                </Button>
+              )}
+            </div>
           </form>
         </Form>
       </DialogContent>
@@ -249,4 +261,5 @@ TaskCreationForm.propTypes = {
   onSubmit: PropTypes.func,
   colId: PropTypes.string,
   task: PropTypes.instanceOf(Task),
+  onDelete: PropTypes.func,
 };

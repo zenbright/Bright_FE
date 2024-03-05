@@ -18,6 +18,7 @@ export function ColumnContainer(
       taskList = [],
       updateColumnTitle,
       createTask,
+      deleteTask,
     },
 
 ) {
@@ -102,7 +103,7 @@ export function ColumnContainer(
           <SortableContext items={taskId}>
             {taskList && taskList.map((task, index) =>
               <div key={index}>
-                <TaskContainer task={task} />
+                <TaskContainer task={task} onDelete={deleteTask} />
               </div>,
             )}
           </SortableContext>
@@ -126,4 +127,5 @@ ColumnContainer.propTypes = {
   updateColumnTitle: PropTypes.func,
   createTask: PropTypes.func,
   setIsCreateNewTask: PropTypes.func,
+  deleteTask: PropTypes.func,
 };

@@ -37,7 +37,9 @@ export const KanbanBoard = () => {
 
   const deleteColumn = (id) => {
     const filteredColumn = columns.filter((col) => col.id !== id);
+    const filteredTask = tasks.filter((task) => task.colId !== id);
     setColumn(filteredColumn);
+    setTaskList(filteredTask);
   };
 
   const updateColumnTitle = (id, title) => {
@@ -133,6 +135,11 @@ export const KanbanBoard = () => {
     setTaskList([...tasks, newTask]);
   };
 
+  const deleteTask = (id) => {
+    const filteredTask = tasks.filter((task) => task.id !== id);
+    setTaskList(filteredTask);
+  };
+
   return (
     <OverlayScrollbarsComponent
       element="div"
@@ -157,6 +164,7 @@ export const KanbanBoard = () => {
                       deleteColumn={deleteColumn}
                       updateColumnTitle={updateColumnTitle}
                       createTask={createTask}
+                      deleteTask={deleteTask}
                       taskList={tasks.filter((task) => task.columnId === col.id)}
                     />
                   </div>
