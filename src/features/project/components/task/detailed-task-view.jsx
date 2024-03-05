@@ -14,6 +14,7 @@ import TabGroup from '@/components/general/tab-group';
 import {TASK_DETAILED_TABS} from '../../assets/values';
 import {useState} from 'react';
 import {AttachmentList} from './detailed-task-view/attachment-list';
+import tinycolor from 'tinycolor2';
 
 export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, task}) => {
   const [tabSelected, setTabSelected] = useState(0);
@@ -51,7 +52,8 @@ export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, tas
                   <Badge
                     key={tag.id}
                     style={{
-                      backgroundColor: tag.color,
+                      backgroundColor: tinycolor(tag.color).lighten(50),
+                      color: tinycolor(tag.color),
                     }}
                     className='h-6 mr-1 mb-1'>
                     {tag.title}
