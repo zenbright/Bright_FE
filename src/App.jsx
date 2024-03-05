@@ -15,6 +15,7 @@ import ProjectManagementPage from '@/features/project';
 import {useEffect} from 'react';
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
+import SettingPage from './features/setting/component/page';
 
 // Routing from landing page to its child and sign in paage
 const guestRouter = createBrowserRouter(
@@ -22,6 +23,7 @@ const guestRouter = createBrowserRouter(
         <Route path='/' element={<LandingAuthLayout />}>
           <Route path="/" element={<LandingPage />} />,
           <Route path="/auth" element={<AuthenticationPage />} />,
+          <Route path="/setting" element={<SettingPage />} />,
         </Route>,
     ),
 );

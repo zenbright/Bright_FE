@@ -32,7 +32,7 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 import {z} from 'zod';
 import Modal from './modal';
-import PROFILE from '../test/data/strings';
+import {PROFILE} from '../test/data/strings';
 
 const formShcema = z.object({
   username: z.string().trim()
@@ -89,8 +89,8 @@ function Profile() {
       <div className="mx-3 text-lg font-bold p-2 border-b-[1px] border-slate-300 ">
                 Public Profile
       </div>
-      <div className="flex bg-black">
-        <div className="w-9/12 px-5 py-2 bg-black">
+      <div className="flex">
+        <div className="w-9/12 px-5 py-2">
           <Form {...form}>
             <form ref={ref} className=' overflow-hidden' onSubmit={form.handleSubmit(onSubmit, onError)}>
               <div id="name-container" className="flex w-full gap-7">
@@ -304,12 +304,13 @@ function Profile() {
           </Form>
         </div>
         <div className="w-3/12 relative z-0">
-          <img src={userImage} alt="" className='h-50 w-50 rounded-full p-5' />
-          <Button class="absolute top-10 w-[60px] bg-black text-white p-2 rounded-sm hover:bg-slate-900 m-2"
-            onClick={() => setModalOpen(true)}
-          >
-                        Edit
-          </Button>
+          <button className="relative w-[200px] h-[200px] rounded-full text-white overflow-hidden group mt-10"
+            onClick={() => setModalOpen(true)}>
+            <img src={userImage} alt="" className='h-50 w-50 rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-80' />
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-50 transition-opacity duration-300 bg-black bg-opacity-50">
+              <span className="text-xl">Edit</span>
+            </div>
+          </button>
         </div>
         {modalOpen && <Modal closeModal={() => setModalOpen(false)} />}
       </div>
