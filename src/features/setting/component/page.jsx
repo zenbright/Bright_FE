@@ -1,28 +1,32 @@
-import SettingSideBar from './setting-side-bar'
-import Profile from './profile-page'
+// eslint-disable-next-line no-unused-vars
+import SettingSideBar from './setting-side-bar';
+import Profile from './profile-page';
+// eslint-disable-next-line no-unused-vars
 import Account from './account-page';
+// eslint-disable-next-line no-unused-vars
 import Appearance from './appearance-page';
+// eslint-disable-next-line no-unused-vars
 import Notification from './notification-page';
-import {MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH} from '../../../lib/constants/size.global';
+import {NAV_BAR_WIDTH} from '../../../lib/constants/size.global';
 
-import '../styles/font.css'
+import '../styles/font.css';
 function SettingPage() {
-    return (
-        <div className="flex h-screen container-ns">
-            {/* Nav Bar */}
-            <div className="h-screen bg-black" style={{width: `${NAV_BAR_WIDTH}`}} />
+  return (
+    <div className="flex h-dvh ">
+      {/* Nav Bar */}
+      <div className="h-dvh bg-black" style={{width: `${NAV_BAR_WIDTH}`}} />
 
-            {/* Setting Page Section */}
-            <div className='flex flex-row h-screen'>
-                <SettingSideBar></SettingSideBar>
-                {/* <Profile></Profile> */}
-                <Account></Account>
-                {/* <Appearance></Appearance> */}
-                {/* <Notification></Notification> */}
-            </div>
-            
-        </div>
-    )
+      {/* Setting Page Section */}
+      <div className='flex h-screen overflow-hidden'>
+        <SettingSideBar />
+        <Profile />
+        {/* <Account></Account> */}
+        {/* <Appearance></Appearance> */}
+        {/* <Notification></Notification> */}
+      </div>
+
+    </div>
+  );
 }
 
 export default SettingPage;
