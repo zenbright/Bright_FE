@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
 function Theme({name, image}) {
   return (
     <div className="rounded-md w-fit border-[2px] cursor-pointer">
@@ -13,7 +12,7 @@ function Theme({name, image}) {
   );
 }
 
-Theme.PropTypes={
+Theme.propTypes = {
   name: PropTypes.string,
   image: PropTypes.string,
 };
