@@ -44,7 +44,7 @@ function App() {
 
   useEffect(() => {
     // Choose router with proper layout
-    const currentRouter = isLogIn ? appRouter : guestRouter;
+    const currentRouter = !isLogIn ? appRouter : guestRouter;
 
     setCurerentRouter(currentRouter);
 

@@ -6,7 +6,7 @@ function SettingTab({tab, tabIndex, selectedActive, handleSelected}) {
                         ${selectedActive === tabIndex ? 'border-r-blue-700 rounded-none border-r-[3px]' : ''}`}
     onClick={handleSelected}
     >
-      <div className={`flex flex-row gap-2 
+      <div className={`flex flex-row gap-2
                             ${selectedActive === tabIndex ? 'text-blue-700' : ''}`}
       >
         {tab.icon}
@@ -20,7 +20,7 @@ function SettingTab({tab, tabIndex, selectedActive, handleSelected}) {
 }
 
 SettingTab.propTypes = {
-  tab: PropTypes.node,
+  tab: PropTypes.object,
   tabIndex: PropTypes.number,
   selectedActive: PropTypes.number,
   handleSelected: PropTypes.func,

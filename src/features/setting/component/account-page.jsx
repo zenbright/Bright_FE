@@ -46,6 +46,11 @@ const formShcema = z.object({
 function Account() {
   const form = useForm({
     resolver: zodResolver(formShcema),
+    defaultValues: {
+      old_password: '',
+      new_password: '',
+      re_confirm_password: '',
+    },
   });
 
   const onSubmit = () => {
@@ -68,6 +73,8 @@ function Account() {
         <div className="mx-3 p-2 space-y-4">
           <Form {...form}>
             <form onSubmit={form.handleSubmit({onSubmit, onError})}>
+              <input hidden type="text" autoComplete="username" />
+
               <FormField
                 control={form.control}
                 name="old_password"
@@ -76,7 +83,7 @@ function Account() {
                     <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
                       <FormLabel className="font-semibold text-base">{'Old password'}</FormLabel>
                       <FormControl>
-                        <Input placeholder="Old password" {...field} type="password" className="w-[350px]" />
+                        <Input autoComplete="current-password" placeholder="Old password" {...field} type="password" className="w-[350px]" />
                       </FormControl>
                     </div>
                     <FormMessage />
@@ -91,7 +98,7 @@ function Account() {
                     <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
                       <FormLabel className="font-semibold text-base">{'New password'}</FormLabel>
                       <FormControl>
-                        <Input placeholder="New password" {...field} type="password" className="w-[350px]" />
+                        <Input autoComplete="new-password" placeholder="New password" {...field} type="password" className="w-[350px]" />
                       </FormControl>
                     </div>
                     <FormMessage />
@@ -106,7 +113,7 @@ function Account() {
                     <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
                       <FormLabel className="font-semibold text-base">{'Confirm new password'}</FormLabel>
                       <FormControl>
-                        <Input placeholder="Confirm new password" {...field} type="password" className="w-[350px]" />
+                        <Input autoComplete="new-password" placeholder="Confirm new password" {...field} type="password" className="w-[350px]" />
                       </FormControl>
                     </div>
                     <FormMessage />
@@ -124,7 +131,7 @@ function Account() {
           <p>{ACCOUNT.DELETE_DESCRIPTION}</p>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button className="bg-rose-600 hover:bg-rose-500">{'Delete your account'}</Button>
+              <Button className="bg-white text-red-400 hover:bg-rose-500 hover:text-white">{'Delete your account'}</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
