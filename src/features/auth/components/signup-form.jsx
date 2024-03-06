@@ -1,37 +1,34 @@
 import React from 'react';
-import { signup } from '../utils/service';
-import { useState } from 'react';
-import { BirthdayPicker } from './birthday-picker';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { PASSWORD_INPUT_VALIDATOR, SIGN_UP } from '../assets/strings';
-import { SIGN_UP_VALIDATOR } from '../assets/strings';
-import { z } from "zod"
+import {signup} from '../utils/service';
+import {useState} from 'react';
+import {BirthdayPicker} from './birthday-picker';
+import {Input} from '@/components/ui/input';
+import {Button} from '@/components/ui/button';
+import {PASSWORD_INPUT_VALIDATOR, SIGN_UP} from '../assets/strings';
+import {SIGN_UP_VALIDATOR} from '../assets/strings';
+import {z} from 'zod';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+} from '@/components/ui/form';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 const formSchema = z.object({
-  firstname: z.string({ required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED }),
-  lastname: z.string({ required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED }),
-  email: z.string({ required_error: SIGN_UP_VALIDATOR.EMAIL }).email(),
-  password: z.string({ required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED })
-    .min(6, { message: PASSWORD_INPUT_VALIDATOR.SHORT })
-    .max(50, { message: PASSWORD_INPUT_VALIDATOR.LONG }),
+  firstname: z.string({required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED}),
+  lastname: z.string({required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED}),
+  email: z.string({required_error: SIGN_UP_VALIDATOR.EMAIL}).email(),
+  password: z.string({required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED})
+      .min(6, {message: PASSWORD_INPUT_VALIDATOR.SHORT})
+      .max(50, {message: PASSWORD_INPUT_VALIDATOR.LONG}),
   confirm_password: z.string(PASSWORD_INPUT_VALIDATOR.RE_CONFIRM),
   dob: z.date().optional(),
-}).refine(data => data.password === data.confirm_password, {
-  message: "New password and confirm password must be match",
-  path: ["confirm_password"]
-})
+}).refine((data) => data.password === data.confirm_password, {
+  message: 'New password and confirm password must be match',
+  path: ['confirm_password'],
+});
 
 
 function Signupform() {
@@ -54,16 +51,16 @@ function Signupform() {
   };
 
   const form = useForm({
-    resolver: zodResolver(formSchema)
-  })
+    resolver: zodResolver(formSchema),
+  });
 
   const onSubmit = () => {
-    console.log("Account created")
-  }
+    console.log('Account created');
+  };
 
   const onError = (error) => {
-    console.log(error)
-  }
+    console.log(error);
+  };
 
   return (
     <div className='flex flex-col space-y-2 text-center' >
@@ -81,10 +78,10 @@ function Signupform() {
             <FormField
               control={form.control}
               name="firstname"
-              render={({ field }) => (
+              render={({field}) => (
                 <FormItem>
                   <FormControl>
-                    <Input 
+                    <Input
                       type="text"
                       value={account}
                       placeholder={'First Name'}
@@ -99,10 +96,10 @@ function Signupform() {
             <FormField
               control={form.control}
               name="lastname"
-              render={({ field }) => (
+              render={({field}) => (
                 <FormItem>
                   <FormControl>
-                    <Input 
+                    <Input
                       type="text"
                       value={fullname}
                       placeholder={'Last Name'}
@@ -119,10 +116,10 @@ function Signupform() {
           <FormField
             control={form.control}
             name="email"
-            render={({ field }) => (
+            render={({field}) => (
               <FormItem>
                 <FormControl>
-                  <Input 
+                  <Input
                     type="email"
                     value={email}
                     placeholder={'Email Address'}
@@ -137,10 +134,10 @@ function Signupform() {
           <FormField
             control={form.control}
             name="password"
-            render={({ field }) => (
+            render={({field}) => (
               <FormItem>
                 <FormControl>
-                  <Input 
+                  <Input
                     type="password"
                     value={password}
                     placeholder={'Password'}
@@ -155,10 +152,10 @@ function Signupform() {
           <FormField
             control={form.control}
             name="confirm_password"
-            render={({ field }) => (
+            render={({field}) => (
               <FormItem>
                 <FormControl>
-                  <Input 
+                  <Input
                     type="password"
                     value={cpassword}
                     placeholder={'Confirm your Password'}
@@ -175,7 +172,7 @@ function Signupform() {
           type="submit"
           variant="outline"
           className=" w-full h-9 rounded px-5 py-2.5 text-black text-sm bg-white font-medium hover:bg-gray-300 text-center inline-flex items-center border border-gray-400"
-          // onClick={handleSignUp}
+          onClick={handleSignUp}
         >
           {'Sign up'}
         </Button>

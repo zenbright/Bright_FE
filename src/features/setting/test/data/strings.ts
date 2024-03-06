@@ -8,5 +8,15 @@ export const PROFILE = {
 
 export const ACCOUNT = {
     NEW_PASSWORD_REQUIRED: "New password can not be blank",
-    CONFIRM_PASSWORD_REQUIRED: "Please re-confirm your new password"
+    CONFIRM_PASSWORD_REQUIRED: "Please re-confirm your new password",
+    ALERT: "This action cannot be undone. This will permanently delete your account and remove your data from our servers.",
+    DELETE_DESCRIPTION: "Once you delete your account, there is no going back. Please be certain."
+}
+
+export const NOTIFICATION = {
+    NOTIFICATION_DESCTIOPTION: "Choose where you`d like emails to be sent. You can add more email addresses. Use custom routes to specify different email addresses to be used for individual organizations.",
+    COMMUNICATION_DESCRIPTION: "Receive email about your account activity", 
+    SECURITY_DESCRIPTION: "Receive email about your account security", 
+    SOCIAL_DESCRIPTION: "Receive email about friend requests, follows and more", 
+    DONT_NOTIFY_DESCRIPTION: "You won`t be able to receive any more notification", 
 }

@@ -46,11 +46,6 @@ const formShcema = z.object({
 function Account() {
   const form = useForm({
     resolver: zodResolver(formShcema),
-    defaultValues: {
-      old_password: 'mudoker',
-      new_password: 'mujoker123',
-      re_confirm_password: 'mujoker123',
-    },
   });
 
   const onSubmit = () => {
@@ -64,11 +59,11 @@ function Account() {
   return (
     <div className="container-ns flex flex-col w-[75vw] overflow-auto">
       <div className="z-30 mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-white">
-                Account
+        {'Account'}
       </div>
       <div className="flex flex-col">
         <div className="m-3 border-b-[1px] p-2">
-          <p className="font-semibold">Change Password</p>
+          <p className="font-semibold">{'Change Password'}</p>
         </div>
         <div className="mx-3 p-2 space-y-4">
           <Form {...form}>
@@ -79,7 +74,7 @@ function Account() {
                 render={({field}) => (
                   <FormItem className="flex flex-col">
                     <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
-                      <FormLabel className="font-semibold text-base">Old password</FormLabel>
+                      <FormLabel className="font-semibold text-base">{'Old password'}</FormLabel>
                       <FormControl>
                         <Input placeholder="Old password" {...field} type="password" className="w-[350px]" />
                       </FormControl>
@@ -94,7 +89,7 @@ function Account() {
                 render={({field}) => (
                   <FormItem className="flex flex-col">
                     <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
-                      <FormLabel className="font-semibold text-base">New password</FormLabel>
+                      <FormLabel className="font-semibold text-base">{'New password'}</FormLabel>
                       <FormControl>
                         <Input placeholder="New password" {...field} type="password" className="w-[350px]" />
                       </FormControl>
@@ -109,7 +104,7 @@ function Account() {
                 render={({field}) => (
                   <FormItem className="flex flex-col">
                     <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
-                      <FormLabel className="font-semibold text-base">Confirm new password</FormLabel>
+                      <FormLabel className="font-semibold text-base">{'Confirm new password'}</FormLabel>
                       <FormControl>
                         <Input placeholder="Confirm new password" {...field} type="password" className="w-[350px]" />
                       </FormControl>
@@ -118,30 +113,29 @@ function Account() {
                   </FormItem>
                 )}
               />
-              <Button className="mt-3">Update</Button>
+              <Button className="mt-3">{'Update'}</Button>
             </form>
           </Form>
         </div>
         <div className="m-3 border-b-[1px] p-2">
-          <p className="font-semibold text-rose-600">Delete Account</p>
+          <p className="font-semibold text-rose-600">{'Delete Account'}</p>
         </div>
         <div className="mx-3 p-2 space-y-4">
-          <p>Once you delete your account, there is no going back. Please be certain.</p>
+          <p>{ACCOUNT.DELETE_DESCRIPTION}</p>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button className="bg-rose-600 hover:bg-rose-500">Delete your account</Button>
+              <Button className="bg-rose-600 hover:bg-rose-500">{'Delete your account'}</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogTitle>{'Are you absolutely sure?'}</AlertDialogTitle>
                 <AlertDialogDescription>
-                                    This action cannot be undone. This will permanently delete your
-                                    account and remove your data from our servers.
+                  {ACCOUNT.ALERT}
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Continue</AlertDialogAction>
+                <AlertDialogCancel>{'Cancel'}</AlertDialogCancel>
+                <AlertDialogAction>{'Continue'}</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>

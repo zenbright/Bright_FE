@@ -23,7 +23,6 @@ const guestRouter = createBrowserRouter(
         <Route path='/' element={<LandingAuthLayout />}>
           <Route path="/" element={<LandingPage />} />,
           <Route path="/auth" element={<AuthenticationPage />} />,
-          <Route path="/setting" element={<SettingPage />} />,
         </Route>,
     ),
 );
@@ -32,6 +31,7 @@ const guestRouter = createBrowserRouter(
 const appRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<AppLayout />}>
+          <Route path="/settings" element={<SettingPage />} />,
           <Route path="/dashboard" element={<ProjectManagementPage />} />,
           <Route path="*" element={<h1>404 - Notfound</h1>} />,
         </Route>,

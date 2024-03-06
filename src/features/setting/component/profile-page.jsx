@@ -87,7 +87,7 @@ function Profile() {
   return (
     <div className="w-[75vw] overflow-auto">
       <div className="mx-3 text-lg font-bold p-2 border-b-[1px] border-slate-300 ">
-                Public Profile
+        {'Public Profile'}
       </div>
       <div className="flex">
         <div className="w-9/12 px-5 py-2">
@@ -100,7 +100,7 @@ function Profile() {
                   name="username"
                   render={({field}) => (
                     <FormItem className="w-5/12">
-                      <FormLabel className="font-semibold text-md">Username</FormLabel>
+                      <FormLabel className="font-semibold text-md">{'Username'}</FormLabel>
                       <FormControl>
                         <Input placeholder="Username" {...field} className="h-9" />
                       </FormControl>
@@ -114,7 +114,7 @@ function Profile() {
                   name="nickname"
                   render={({field}) => (
                     <FormItem className="w-5/12">
-                      <FormLabel className="font-semibold text-md">Nickname</FormLabel>
+                      <FormLabel className="font-semibold text-md">{'Nickname'}</FormLabel>
                       <FormControl>
                         <Input placeholder="Nickname" {...field} className="h-9" />
                       </FormControl>
@@ -130,7 +130,7 @@ function Profile() {
                   name="bio"
                   render={({field}) => (
                     <FormItem>
-                      <FormLabel className="font-semibold text-md">Bio</FormLabel>
+                      <FormLabel className="font-semibold text-md">{'Bio'}</FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Tell us a little about yourself"
@@ -150,7 +150,7 @@ function Profile() {
                   name="url"
                   render={({field}) => (
                     <FormItem>
-                      <FormLabel className="text-md font-semibold">URL</FormLabel>
+                      <FormLabel className="text-md font-semibold">{'URL'}</FormLabel>
                       <FormControl>
                         <Input className="w-8/12 h-9" {...field} />
                       </FormControl>
@@ -166,7 +166,7 @@ function Profile() {
                   name="social_account"
                   render={({field}) => (
                     <FormItem className="space-y-1">
-                      <FormLabel className="font-semibold text-md">Social Account</FormLabel>
+                      <FormLabel className="font-semibold text-md">{'Social Account'}</FormLabel>
                       <FormControl className="flex flex-row gap-y-1 pt-1">
                         <div>
                           <LinkIcon className="w-5 h-5 mt-2 mr-2" />
@@ -196,7 +196,7 @@ function Profile() {
                 />
               </div>
               <div id="personal" className="my-3 mt-3 border-t-[1px] border-slate-300 text-lg font-semibold">
-                                Personal Information
+                {'Personal Information'}
               </div>
               <div id="personal-container-1" className="w-full flex flex-row gap-7 mb-3">
                 {/* Email Address */}
@@ -206,7 +206,7 @@ function Profile() {
                     name="email_address"
                     render={({field}) => (
                       <FormItem>
-                        <FormLabel className="font-semibold text-md">Email Address</FormLabel>
+                        <FormLabel className="font-semibold text-md">{'Email Address'}</FormLabel>
                         <FormControl>
                           <Input placeholder="Email Address" type="email" className="h-9" {...field} />
                         </FormControl>
@@ -221,7 +221,7 @@ function Profile() {
                     name="country"
                     render={({field}) => (
                       <FormItem>
-                        <FormLabel className="font-semibold text-md">Country</FormLabel>
+                        <FormLabel className="font-semibold text-md">{'Country'}</FormLabel>
                         <Select onValueChange={field.onChange} defaultValues={field.value}>
                           <FormControl>
                             <SelectTrigger className="w-8/12 h-9">
@@ -229,10 +229,10 @@ function Profile() {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="vn-VN">Vietnam</SelectItem>
-                            <SelectItem value="us-US">United State</SelectItem>
-                            <SelectItem value="en-EN">England</SelectItem>
-                            <SelectItem value="jp-JP">Japan</SelectItem>
+                            <SelectItem value="vn-VN">{'Vietnam'}</SelectItem>
+                            <SelectItem value="us-US">{'United State'}</SelectItem>
+                            <SelectItem value="en-EN">{'England'}</SelectItem>
+                            <SelectItem value="jp-JP">{'Japan'}</SelectItem>
                           </SelectContent>
                         </Select>
                       </FormItem>
@@ -247,7 +247,7 @@ function Profile() {
                     name="phone_number"
                     render={({field}) => (
                       <FormItem>
-                        <FormLabel className="font-semibold text-md">Phone number</FormLabel>
+                        <FormLabel className="font-semibold text-md">{'Phone number'}</FormLabel>
                         <FormControl>
                           <Input placeholder="Phone number" type="number" className="h-9" {...field} />
                         </FormControl>
@@ -261,7 +261,7 @@ function Profile() {
                     name="dob"
                     render={({field}) => (
                       <FormItem className="flex flex-col">
-                        <FormLabel className="font-semibold text-md">Date of birth</FormLabel>
+                        <FormLabel className="font-semibold text-md">{'Date of birth'}</FormLabel>
                         <Popover>
                           <PopoverTrigger asChild>
                             <FormControl>
@@ -275,7 +275,7 @@ function Profile() {
                                 {field.value ? (
                                                                     format(field.value, 'PPP')
                                                                 ) : (
-                                                                    <span>Pick a date</span>
+                                                                    <span>{'Pick a date'}</span>
                                                                 )}
                                 <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                               </Button>
@@ -308,7 +308,7 @@ function Profile() {
             onClick={() => setModalOpen(true)}>
             <img src={userImage} alt="" className='h-50 w-50 rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-80' />
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-50 transition-opacity duration-300 bg-black bg-opacity-50">
-              <span className="text-xl">Edit</span>
+              <span className="text-xl">{'Edit'}</span>
             </div>
           </button>
         </div>
