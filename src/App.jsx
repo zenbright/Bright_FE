@@ -1,4 +1,3 @@
-import React from 'react';
 import 'overlayscrollbars/styles/overlayscrollbars.css';
 import {
   Route,
@@ -6,7 +5,6 @@ import {
   RouterProvider,
   createRoutesFromElements,
 } from 'react-router-dom';
-
 import {LandingPage} from './features/landingPage';
 import {AuthenticationPage} from './features/auth';
 import {LandingAuthLayout} from './layouts/landing-auth-layout';
@@ -50,10 +48,9 @@ function App() {
 
     setCurerentRouter(currentRouter);
 
-    if (!isLogIn) {
+    if (isLogIn) {
       window.history.pushState({}, '', '/');
     }
-    console.log('Login: ', isLogIn);
   }, [isLogIn]);
 
   return (
