@@ -1,5 +1,5 @@
 import React from 'react';
-import {signup} from '../utils/service';
+// import {signup} from '../utils/service';
 import {useState} from 'react';
 import {BirthdayPicker} from './birthday-picker';
 import {Input} from '@/components/ui/input';
@@ -34,7 +34,7 @@ const formSchema = z.object({
 function Signupform() {
   const [account, setFname] = useState('');
   const [fullname, setLname] = useState('');
-  const [dob, setDob] = useState('');
+  const [dob, setDob] = useState();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
@@ -43,8 +43,8 @@ function Signupform() {
     e.preventDefault();
 
     try {
-      const post = await signup(account, password, fullname, email, dob);
-      console.log('success', post);
+      // const post = await signup(account, password, fullname, email, dob);
+      console.log('success', e);
     } catch (error) {
       console.error('failed', error);
     }
@@ -52,6 +52,13 @@ function Signupform() {
 
   const form = useForm({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      confirm_password: '',
+    },
   });
 
   const onSubmit = () => {
@@ -112,7 +119,9 @@ function Signupform() {
               )}
             />
           </div>
+
           <BirthdayPicker date={dob} setDate={setDob} />
+
           <FormField
             control={form.control}
             name="email"
@@ -124,6 +133,7 @@ function Signupform() {
                     value={email}
                     placeholder={'Email Address'}
                     onChange={(e) => setEmail(e.target.value)}
+                    autoComplete={'email'}
                     className='border border-black/30'
                     {...field}
                   />
@@ -142,6 +152,7 @@ function Signupform() {
                     value={password}
                     placeholder={'Password'}
                     onChange={(e) => setPassword(e.target.value)}
+                    autoComplete={'new-password'}
                     className='border border-black/30'
                     {...field}
                   />
@@ -161,6 +172,7 @@ function Signupform() {
                     placeholder={'Confirm your Password'}
                     onChange={(e) => setCPassword(e.target.value)}
                     className='border border-black/30'
+                    autoComplete={'new-password'}
                     {...field}
                   />
                 </FormControl>

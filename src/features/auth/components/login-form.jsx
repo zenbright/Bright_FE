@@ -28,6 +28,7 @@ const formShcema = z.object({
       .max(50, {message: PASSWORD_INPUT_VALIDATOR.LONG}),
   remember: z.boolean().default(false).optional(),
 });
+
 function Loginform() {
   const dispatch = useDispatch();
   const [account, setEmail] = useState('');
@@ -67,6 +68,10 @@ function Loginform() {
 
   const form = useForm({
     resolver: zodResolver(formShcema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
   });
 
   const onSubmit = () => {

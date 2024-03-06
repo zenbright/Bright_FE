@@ -35,6 +35,6 @@ export const BirthdayPicker = ({date, setDate}) => {
 };
 
 BirthdayPicker.propTypes = {
-  date: PropTypes.date,
+  date: PropTypes.instanceOf(Date),
   setDate: PropTypes.func,
 };
