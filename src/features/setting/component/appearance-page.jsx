@@ -1,6 +1,6 @@
 import catImage from '../asset/cat.jpg';
 import themes from '../test/data/themes';
-import Theme from './theme';
+import Theme from './app-theme';
 
 function Appearance() {
   return (
