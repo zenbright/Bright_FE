@@ -65,13 +65,16 @@ function Account() {
       <div className="z-30 mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-white">
         {'Account'}
       </div>
+
       <div className="flex flex-col">
         <div className="m-3 border-b-[1px] p-2">
           <p className="font-semibold">{'Change Password'}</p>
         </div>
+
         <div className="mx-3 p-2 space-y-4">
           <Form {...form}>
             <form onSubmit={form.handleSubmit({onSubmit, onError})}>
+              {/* To support accesibility */}
               <input hidden type="text" autoComplete="username" />
 
               <FormField
@@ -82,13 +85,18 @@ function Account() {
                     <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
                       <FormLabel className="font-semibold text-base">{'Old password'}</FormLabel>
                       <FormControl>
-                        <Input autoComplete="current-password" placeholder="Old password" {...field} type="password" className="w-[350px]" />
+                        <Input
+                          autoComplete="current-password"
+                          placeholder="Old password" {...field}
+                          type="password"
+                          className="w-[350px]" />
                       </FormControl>
                     </div>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
                 name="new_password"
@@ -97,13 +105,18 @@ function Account() {
                     <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
                       <FormLabel className="font-semibold text-base">{'New password'}</FormLabel>
                       <FormControl>
-                        <Input autoComplete="new-password" placeholder="New password" {...field} type="password" className="w-[350px]" />
+                        <Input
+                          autoComplete="new-password"
+                          placeholder="New password" {...field}
+                          type="password"
+                          className="w-[350px]" />
                       </FormControl>
                     </div>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
                 name="re_confirm_password"
@@ -112,25 +125,34 @@ function Account() {
                     <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
                       <FormLabel className="font-semibold text-base">{'Confirm new password'}</FormLabel>
                       <FormControl>
-                        <Input autoComplete="new-password" placeholder="Confirm new password" {...field} type="password" className="w-[350px]" />
+                        <Input
+                          autoComplete="new-password"
+                          placeholder="Confirm new password" {...field}
+                          type="password"
+                          className="w-[350px]" />
                       </FormControl>
                     </div>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
               <Button className="mt-3">{'Update'}</Button>
             </form>
           </Form>
         </div>
+
         <div className="m-3 border-b-[1px] p-2">
           <p className="font-semibold text-rose-600">{'Delete Account'}</p>
         </div>
+
         <div className="mx-3 p-2 space-y-4">
           <p>{ACCOUNT.DELETE_DESCRIPTION}</p>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button className="bg-white text-red-400 hover:bg-rose-500 hover:text-white">{'Delete your account'}</Button>
+              <Button className="bg-white text-red-400 hover:bg-rose-500 hover:text-white">
+                {'Delete your account'}
+              </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
