@@ -28,6 +28,9 @@ export const BirthdayPicker = ({date, setDate}) => {
           selected={date}
           onSelect={setDate}
           initialFocus
+          disabled={(date) =>
+            date > new Date() || date < new Date('1900-01-01')
+          }
         />
       </PopoverContent>
     </Popover>
