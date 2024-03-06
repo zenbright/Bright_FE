@@ -26,8 +26,7 @@ import {ACCOUNT} from '../test/data/strings';
 
 
 const formShcema = z.object({
-  old_password: z.string().trim()
-      .min(6),
+  old_password: z.string().trim().min(6),
   new_password: z.string({
     required_error: ACCOUNT.NEW_PASSWORD_REQUIRED,
   })
