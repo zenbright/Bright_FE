@@ -16,9 +16,40 @@ export function FileUpload() {
   const fileSelectInput = useRef(null);
 
   const onDrop = useCallback((acceptedFiles) => {
+    const allowedExtensions = [
+    // Image extensions
+      'jpg',
+      'jpeg',
+      'png',
+      'gif',
+      'bmp',
+
+      // Document extensions
+      'pdf',
+      'docx',
+      'xlsx',
+      'pptx',
+      'txt',
+
+      // Video
+      'mp4',
+      'mov',
+      'avi',
+      'wmv',
+    ];
     acceptedFiles.forEach((file) => {
+      const extension = file.name.split('.').pop().toLowerCase();
+
       // Process the dropped files here
-      console.log(file);
+      if (allowedExtensions.includes(extension) && file.size <= 25000000) {
+        console.log(file); // Process the allowed file
+      } else {
+        if (file.size > 25000000) {
+          console.log('File size exceeds limit (25MB): ', file.name);
+        } else {
+          console.log('Not supported file type: ', file.name);
+        }
+      }
     });
   }, []);
 
