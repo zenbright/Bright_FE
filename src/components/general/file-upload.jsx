@@ -9,46 +9,36 @@ import {
 } from '@/components/ui/dialog';
 import {Upload} from 'lucide-react';
 import {useRef} from 'react';
+import {useState} from 'react';
 import {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
+import {FailureAlert} from './alert-failure';
+import {ALLOWED_EXTENSIONS, FILE_SIZE_EXCEED, FILE_UNSUPPORTED} from '../../config/constants/strings.global';
 
 export function FileUpload() {
   const fileSelectInput = useRef(null);
+  const [isUploadFailed, setIsUploadFailed] = useState(false);
+  const [error, setError] = useState();
 
   const onDrop = useCallback((acceptedFiles) => {
-    const allowedExtensions = [
-    // Image extensions
-      'jpg',
-      'jpeg',
-      'png',
-      'gif',
-      'bmp',
-
-      // Document extensions
-      'pdf',
-      'docx',
-      'xlsx',
-      'pptx',
-      'txt',
-
-      // Video
-      'mp4',
-      'mov',
-      'avi',
-      'wmv',
-    ];
     acceptedFiles.forEach((file) => {
       const extension = file.name.split('.').pop().toLowerCase();
-
       // Process the dropped files here
-      if (allowedExtensions.includes(extension) && file.size <= 25000000) {
+      if (ALLOWED_EXTENSIONS.includes(extension) && file.size <= 25000000) {
         console.log(file); // Process the allowed file
       } else {
         if (file.size > 25000000) {
-          console.log('File size exceeds limit (25MB): ', file.name);
+          setError({
+            title: FILE_SIZE_EXCEED.TITLE,
+            des: FILE_SIZE_EXCEED.DES,
+          });
         } else {
-          console.log('Not supported file type: ', file.name);
+          setError({
+            title: FILE_UNSUPPORTED.TITLE,
+            des: FILE_UNSUPPORTED.DES,
+          });
         }
+        setIsUploadFailed(true);
       }
     });
   }, []);
@@ -99,6 +89,14 @@ export function FileUpload() {
         <DialogFooter>
           <Button type="submit">{'Upload'}</Button>
         </DialogFooter>
+
+        {isUploadFailed && (
+          <FailureAlert
+            open={isUploadFailed}
+            setOpen={setIsUploadFailed}
+            title={error.title}
+            des={error.des} />
+        )}
       </DialogContent>
     </Dialog>
   );
