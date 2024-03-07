@@ -8,12 +8,11 @@ import {
 import {LandingPage} from './features/landingPage';
 import {AuthenticationPage} from './features/auth';
 import {LandingAuthLayout} from './layouts/landing-auth-layout';
-import {AppLayout} from './layouts/app-layout';
 import ProjectManagementPage from '@/features/project';
 import {useEffect} from 'react';
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
-
+import {FileUpload} from './components/general/file-upload';
 // Routing from landing page to its child and sign in paage
 const guestRouter = createBrowserRouter(
     createRoutesFromElements(
@@ -28,7 +27,7 @@ const guestRouter = createBrowserRouter(
 // Routing from within the application
 const appRouter = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/' element={<ProjectManagementPage />}>
+        <Route path='/' element={<FileUpload />}>
           <Route path="/dashboard" element={<ProjectManagementPage />} />,
           <Route path="*" element={<h1>404 - Notfound</h1>} />,
         </Route>,
