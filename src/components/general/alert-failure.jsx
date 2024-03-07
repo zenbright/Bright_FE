@@ -11,9 +11,7 @@ import PropTypes from 'prop-types';
 
 export function FailureAlert({open, setOpen, title, des}) {
   return (
-    <AlertDialog
-      open={open}
-    >
+    <AlertDialog open={open}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle className={'text-xl font-bold'}>{title}</AlertDialogTitle>
