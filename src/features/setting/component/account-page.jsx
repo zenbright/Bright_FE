@@ -137,20 +137,20 @@ function Account() {
                 )}
               />
 
-              <Button className="mt-3">{'Update'}</Button>
+              <Button className="mt-6">{'Update'}</Button>
             </form>
           </Form>
         </div>
 
-        <div className="m-3 border-b-[1px] p-2">
-          <p className="font-semibold text-rose-600">{'Delete Account'}</p>
+        <div className="m-3 mt-12 border-b-[1px] p-2">
+          <p className="font-bold text-rose-500">{'Delete Account'}</p>
         </div>
 
         <div className="mx-3 p-2 space-y-4">
           <p>{ACCOUNT.DELETE_DESCRIPTION}</p>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button className="bg-white text-red-400 hover:bg-rose-500 hover:text-white">
+              <Button className="bg-white text-red-400 hover:bg-rose-500 hover:text-white border border-rose-500">
                 {'Delete your account'}
               </Button>
             </AlertDialogTrigger>
