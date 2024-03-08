@@ -1,7 +1,7 @@
 import {User, UserCog, SunMoon, Bell} from 'lucide-react';
-// import {}
 
-const iconStyle = 'w-5 h-5 mt-[3px] group-hover:text-blue-700';
+const iconStyle = 'w-4 h-4 mt-[3px] group-hover:text-blue-700';
+
 const SETTING_TABS = [
   {name: 'Edit Profile', icon: <User className={iconStyle}/>, paragraph: ''},
   {name: 'Account', icon: <UserCog className={iconStyle}/>, paragraph: ''},

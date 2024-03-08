@@ -14,3 +14,18 @@
 .nav-pl {
 	padding-left: calc(3vw - 22px);
 }
+
+@keyframes flyInLeftToRight {
+	0% {
+	  transform: translateX(-10%);
+	  opacity: 0;
+	}
+	100% {
+	  transform: translateX(0);
+	  opacity: 1;
+	}
+}
+  
+.flyInLeftToRight {
+	animation: flyInLeftToRight 0.5s ease forwards; /* Adjust timing as needed */
+}

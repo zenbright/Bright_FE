@@ -15,7 +15,7 @@ function SettingPage() {
     <div className="flex h-dvh ">
       {/* Setting Page Section */}
       <div className='flex h-screen overflow-hidden'>
-        <SettingSideBar />
+        <SettingSideBar/>
         {/* <Profile /> */}
         <Account/>
         {/* <Appearance/> */}
