@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
+  Navigate,
 } from 'react-router-dom';
 import {LandingPage} from './features/landingPage';
 import {AuthenticationPage} from './features/auth';
@@ -13,7 +14,11 @@ import ProjectManagementPage from '@/features/project';
 import {useEffect} from 'react';
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
-import SettingPage from './features/setting/component/page';
+import {SettingLayout} from './layouts/setting-layout';
+import Profile from './features/setting/component/profile-page';
+import Notification from './features/setting/component/notification-page';
+import Appearance from './features/setting/component/appearance-page';
+import Account from './features/setting/component/account-page';
 
 // Routing from landing page to its child and sign in paage
 const guestRouter = createBrowserRouter(
@@ -29,12 +34,19 @@ const guestRouter = createBrowserRouter(
 const appRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<AppLayout />}>
-          <Route path="/settings" element={<SettingPage />} />,
+          <Route path="/settings" element={<SettingLayout/>}>
+            <Route path="" element={<Navigate to="profile" replace/>} />
+            <Route path='profile' element={<Profile/>}/>
+            <Route path='account' element={<Account/>}/>
+            <Route path='appearance' element={<Appearance/>}/>
+            <Route path='notification' element={<Notification/>}/>
+          </Route>,
           <Route path="/dashboard" element={<ProjectManagementPage />} />,
           <Route path="*" element={<h1>404 - Notfound</h1>} />,
         </Route>,
     ),
 );
+
 
 function App() {
   // Check if signed in (will be updated using redux)

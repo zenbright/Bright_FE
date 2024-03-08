@@ -85,14 +85,14 @@ function Profile() {
   }, []);
 
   return (
-    <div className="w-[75vw] overflow-auto">
+    <div className="w-[75vw] overflow-auto no-scrollbar">
       <div className="mx-3 text-lg font-bold p-2 border-b-[1px] border-slate-300 ">
         {'Public Profile'}
       </div>
-      <div className="flex">
-        <div className="w-9/12 px-5 py-2">
+      <div className="flex no-scro">
+        <div className="w-9/12 px-5 py-2 overflow-y-scroll no-scrollbar">
           <Form {...form}>
-            <form ref={ref} className=' overflow-hidden' onSubmit={form.handleSubmit(onSubmit, onError)}>
+            <form ref={ref} className=' overflow-hidden ' onSubmit={form.handleSubmit(onSubmit, onError)}>
               <div id="name-container" className="flex w-full gap-7">
                 {/* Username */}
                 <FormField

@@ -4,9 +4,13 @@ import {Outlet} from 'react-router-dom';
 
 export const AppLayout = () => {
   return (
-    <div className='flex'>
-      <Sidebar/>
-      <Outlet />
+    <div className='flex h-dvh'>
+      <div className='absolute z-40'>
+        <Sidebar className="absolute z-40"/>
+      </div>
+      <div className='flex ml-[6vw] overflow-auto'>
+        <Outlet />
+      </div>
     </div>
   );
 };

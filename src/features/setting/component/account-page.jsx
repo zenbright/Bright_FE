@@ -124,7 +124,7 @@ function Account() {
           <p>{ACCOUNT.DELETE_DESCRIPTION}</p>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button className="bg-rose-600 hover:bg-rose-500">{'Delete your account'}</Button>
+              <Button className="bg-rose-500 hover:bg-rose-400">{'Delete your account'}</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
