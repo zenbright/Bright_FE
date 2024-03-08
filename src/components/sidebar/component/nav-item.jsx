@@ -13,6 +13,7 @@ function NavItem({text, children}) {
           <div className='dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-white '>
             {children}
           </div>
+
           <div className='font-medium mt-0.5 md:text-sm opacity-0 group-hover:opacity-100 duration-0
                 transition-all overflow-hidden invisible group-hover:visible w-0 group-hover:w-full flex items-center
                 group-[.is-hovered]: group-hover/item:text-white

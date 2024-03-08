@@ -34,6 +34,7 @@ const guestRouter = createBrowserRouter(
 const appRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<AppLayout />}>
+          <Route path="" element={<Navigate to="dashboard" replace/>} />
           <Route path="/settings" element={<SettingLayout/>}>
             <Route path="" element={<Navigate to="edit-profile" replace/>} />
             <Route path='edit-profile' element={<Profile/>}/>
