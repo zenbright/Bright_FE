@@ -93,7 +93,7 @@ function Signupform() {
                       value={account}
                       placeholder={'First Name'}
                       onChange={(e) => setFname(e.target.value)}
-                      className='border border-black/30'
+                      className='border border-black/30 focus:border-transparent'
                       {...field}
                     />
                   </FormControl>
@@ -111,7 +111,7 @@ function Signupform() {
                       value={fullname}
                       placeholder={'Last Name'}
                       onChange={(e) => setLname(e.target.value)}
-                      className='border border-black/30'
+                      className='border border-black/30 focus:border-transparent'
                       {...field}
                     />
                   </FormControl>
@@ -134,7 +134,7 @@ function Signupform() {
                     placeholder={'Email Address'}
                     onChange={(e) => setEmail(e.target.value)}
                     autoComplete={'email'}
-                    className='border border-black/30'
+                    className='border border-black/30 focus:border-transparent'
                     {...field}
                   />
                 </FormControl>
@@ -153,7 +153,7 @@ function Signupform() {
                     placeholder={'Password'}
                     onChange={(e) => setPassword(e.target.value)}
                     autoComplete={'new-password'}
-                    className='border border-black/30'
+                    className='border border-black/30 focus:border-transparent'
                     {...field}
                   />
                 </FormControl>
@@ -171,7 +171,7 @@ function Signupform() {
                     value={cpassword}
                     placeholder={'Confirm your Password'}
                     onChange={(e) => setCPassword(e.target.value)}
-                    className='border border-black/30'
+                    className='border border-black/30 focus:border-transparent'
                     autoComplete={'new-password'}
                     {...field}
                   />

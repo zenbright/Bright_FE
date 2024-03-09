@@ -90,7 +90,7 @@ function Profile() {
         {'Public Profile'}
       </div>
 
-      <div>
+      <div className='flex'>
         <div className="w-9/12 px-5 py-2 ">
           <Form {...form}>
             <form ref={ref} onSubmit={form.handleSubmit(onSubmit, onError)}>
@@ -103,7 +103,9 @@ function Profile() {
                     <FormItem className="w-5/12">
                       <FormLabel className="font-semibold text-md">{'Username'}</FormLabel>
                       <FormControl>
-                        <Input placeholder="Username" {...field} className="h-9" />
+                        <Input
+                          placeholder="Username" {...field}
+                          className="h-9 focus:border-transparent" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -118,7 +120,9 @@ function Profile() {
                     <FormItem className="w-5/12">
                       <FormLabel className="font-semibold text-md">{'Nickname'}</FormLabel>
                       <FormControl>
-                        <Input placeholder="Nickname" {...field} className="h-9" />
+                        <Input
+                          placeholder="Nickname" {...field}
+                          className="h-9 focus:border-transparent" />
                       </FormControl>
                       <FormMessage/>
                     </FormItem>
@@ -137,7 +141,7 @@ function Profile() {
                       <FormControl>
                         <Textarea
                           placeholder="Tell us a little about yourself"
-                          className="w-8/12 resize-none"
+                          className="w-8/12 resize-none focus:border-transparent"
                           {...field}
                         />
                       </FormControl>
@@ -156,7 +160,7 @@ function Profile() {
                     <FormItem>
                       <FormLabel className="text-md font-semibold">{'URL'}</FormLabel>
                       <FormControl>
-                        <Input className="w-8/12 h-9" {...field} />
+                        <Input className="w-8/12 h-9 focus:border-transparent" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -176,28 +180,40 @@ function Profile() {
                       <FormControl className="flex flex-row gap-y-1 gap-2 pt-1">
                         <div>
                           <LinkIcon className="w-5 h-5 mt-2 mr-2" />
-                          <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
+                          <Input
+                            placeholder="Link to social profile"
+                            className="w-10/12 h-9 focus:border-transparent"
+                            {...field} />
                         </div>
                       </FormControl>
 
                       <FormControl className="flex flex-row gap-y-2 gap-2 pt-1">
                         <div>
                           <LinkIcon className="w-5 h-5 mt-2 mr-2" />
-                          <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
+                          <Input
+                            placeholder="Link to social profile"
+                            className="w-10/12 h-9 focus:border-transparent"
+                            {...field} />
                         </div>
                       </FormControl>
 
                       <FormControl className="flex flex-row gap-y-2 gap-2 pt-1">
                         <div>
                           <LinkIcon className="w-5 h-5 mt-2 mr-2" />
-                          <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
+                          <Input
+                            placeholder="Link to social profile"
+                            className="w-10/12 h-9 focus:border-transparent"
+                            {...field} />
                         </div>
                       </FormControl>
 
                       <FormControl className="flex flex-row gap-y-2 gap-2 pt-1">
                         <div>
                           <LinkIcon className="w-5 h-5 mt-2 mr-2" />
-                          <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
+                          <Input
+                            placeholder="Link to social profile"
+                            className="w-10/12 h-9 focus:border-transparent"
+                            {...field} />
                         </div>
                       </FormControl>
                     </FormItem>
@@ -219,7 +235,11 @@ function Profile() {
                       <FormItem>
                         <FormLabel className="font-semibold text-md">{'Email Address'}</FormLabel>
                         <FormControl>
-                          <Input placeholder="Email Address" type="email" className="h-9" {...field} />
+                          <Input
+                            placeholder="Email Address"
+                            type="email"
+                            className="h-9 focus:border-transparent"
+                            {...field} />
                         </FormControl>
                       </FormItem>
                     )}
@@ -236,7 +256,7 @@ function Profile() {
                         <FormLabel className="font-semibold text-md">{'Country'}</FormLabel>
                         <Select onValueChange={field.onChange} defaultValues={field.value}>
                           <FormControl>
-                            <SelectTrigger className="w-8/12 h-9">
+                            <SelectTrigger className="w-8/12 h-9 focus:border-transparent">
                               <SelectValue placeholder="Select Your Country" />
                             </SelectTrigger>
                           </FormControl>
@@ -262,7 +282,11 @@ function Profile() {
                       <FormItem>
                         <FormLabel className="font-semibold text-md">{'Phone number'}</FormLabel>
                         <FormControl>
-                          <Input placeholder="Phone number" type="number" className="h-9" {...field} />
+                          <Input
+                            placeholder="Phone number"
+                            type="number"
+                            className="h-9 focus:border-transparent"
+                            {...field} />
                         </FormControl>
                       </FormItem>
                     )}

@@ -107,7 +107,7 @@ function Loginform() {
                     placeholder={'Account Email'}
                     autoComplete='email'
                     onChange={(e) => setEmail(e.target.value)}
-                    className='border border-black/30'
+                    className='border border-black/20 focus:border-transparent'
                     {...field}
                   />
                 </FormControl>
@@ -126,7 +126,7 @@ function Loginform() {
                     autoComplete='current-password'
                     placeholder={'Password'}
                     onChange={(e) => setPassword(e.target.value)}
-                    className='border border-black/30'
+                    className='border border-black/30 focus:border-transparent'
                     {...field}
                   />
                 </FormControl>
