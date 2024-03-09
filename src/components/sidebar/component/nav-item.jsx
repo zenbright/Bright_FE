@@ -16,7 +16,7 @@ function NavItem({text, children, onClick, select = false}) {
             group-hover/item:bg-blue-600 rounded-md group is-hovered ${ select ? 'bg-blue-600 fill-white text-white duration-0' : 'bg-white'} duration-0`}
         >
 
-          <div className='dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-white '>
+          <div className='group-[.is-hovered]: group-hover/item:fill-white'>
             {children}
           </div>
 
