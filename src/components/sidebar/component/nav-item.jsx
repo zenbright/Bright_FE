@@ -1,14 +1,20 @@
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 
-function NavItem({text, children}) {
+function NavItem({text, children, onClick, select = false}) {
   return (
     <NavLink to={`/${text.toLowerCase()}`}>
-      <div id={text} className='dropdown flex w-full items-center nav-pl
+      <div
+        id={text}
+        className='dropdown flex w-full items-center nav-pl
         transition-all relative h-10 cursor-pointer rounded-md group/item'
+        onClick={() => onClick(text)}
       >
-        <div tabIndex="0" className="p-3 transition-all group-hover:w-[95%] h-full flex items-center group-hover:gap-3
-            group-hover/item:bg-blue-600 rounded-md group is-hovered focus:bg-blue-600 focus:fill-white focus/item:text-white duration-0">
+        <div
+          tabIndex="0"
+          className={`p-3 transition-all group-hover:w-[95%] h-full flex items-center group-hover:gap-3
+            group-hover/item:bg-blue-600 rounded-md group is-hovered ${ select ? 'bg-blue-600 fill-white text-white duration-0' : 'bg-white'} duration-0`}
+        >
 
           <div className='dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-white '>
             {children}
@@ -29,6 +35,8 @@ function NavItem({text, children}) {
 NavItem.propTypes = {
   text: PropTypes.string,
   children: PropTypes.node,
+  onClick: PropTypes.func,
+  select: PropTypes.bool,
 };
 
 export default NavItem;
