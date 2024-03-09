@@ -89,11 +89,12 @@ function Profile() {
       <div className="mx-3 text-lg font-bold p-2 border-b-[1px] border-slate-300 ">
         {'Public Profile'}
       </div>
-      <div className="flex no-scro">
-        <div className="w-9/12 px-5 py-2 overflow-y-scroll no-scrollbar">
+
+      <div>
+        <div className="w-9/12 px-5 py-2 ">
           <Form {...form}>
-            <form ref={ref} className=' overflow-hidden ' onSubmit={form.handleSubmit(onSubmit, onError)}>
-              <div id="name-container" className="flex w-full gap-7">
+            <form ref={ref} onSubmit={form.handleSubmit(onSubmit, onError)}>
+              <div id="name-container" className="flex gap-7">
                 {/* Username */}
                 <FormField
                   control={form.control}
@@ -108,6 +109,7 @@ function Profile() {
                     </FormItem>
                   )}
                 />
+
                 {/* Nickname */}
                 <FormField
                   control={form.control}
@@ -123,6 +125,7 @@ function Profile() {
                   )}
                 />
               </div>
+
               <div id="bio" className="mt-3 w-full" >
                 {/* Bio */}
                 <FormField
@@ -143,6 +146,7 @@ function Profile() {
                   )}
                 />
               </div>
+
               <div id="url" className="mt-3 w-full">
                 {/* URL */}
                 <FormField
@@ -159,6 +163,7 @@ function Profile() {
                   )}
                 />
               </div>
+
               <div id="social-account" className="mt-3 w-full">
                 {/* Social Accounts */}
                 <FormField
@@ -167,25 +172,29 @@ function Profile() {
                   render={({field}) => (
                     <FormItem className="space-y-1">
                       <FormLabel className="font-semibold text-md">{'Social Account'}</FormLabel>
-                      <FormControl className="flex flex-row gap-y-1 pt-1">
+
+                      <FormControl className="flex flex-row gap-y-1 gap-2 pt-1">
                         <div>
                           <LinkIcon className="w-5 h-5 mt-2 mr-2" />
                           <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
                         </div>
                       </FormControl>
-                      <FormControl className="flex flex-row gap-y-2 pt-1">
+
+                      <FormControl className="flex flex-row gap-y-2 gap-2 pt-1">
                         <div>
                           <LinkIcon className="w-5 h-5 mt-2 mr-2" />
                           <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
                         </div>
                       </FormControl>
-                      <FormControl className="flex flex-row gap-y-2 pt-1">
+
+                      <FormControl className="flex flex-row gap-y-2 gap-2 pt-1">
                         <div>
                           <LinkIcon className="w-5 h-5 mt-2 mr-2" />
                           <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
                         </div>
                       </FormControl>
-                      <FormControl className="flex flex-row gap-y-2 pt-1">
+
+                      <FormControl className="flex flex-row gap-y-2 gap-2 pt-1">
                         <div>
                           <LinkIcon className="w-5 h-5 mt-2 mr-2" />
                           <Input placeholder="Link to social profile" className="w-10/12 h-9" {...field} />
@@ -195,9 +204,11 @@ function Profile() {
                   )}
                 />
               </div>
+
               <div id="personal" className="my-3 mt-3 border-t-[1px] border-slate-300 text-lg font-semibold">
                 {'Personal Information'}
               </div>
+
               <div id="personal-container-1" className="w-full flex flex-row gap-7 mb-3">
                 {/* Email Address */}
                 <div id="email_address" className="w-5/12">
@@ -214,6 +225,7 @@ function Profile() {
                     )}
                   />
                 </div>
+
                 {/* Country */}
                 <div id='country' className="w-5/12">
                   <FormField
@@ -240,6 +252,7 @@ function Profile() {
                   />
                 </div>
               </div>
+
               <div id="personal-content-2" className="flex flex-row w-full gap-6">
                 <div id="phone_number" className="w-5/12">
                   <FormField
@@ -255,6 +268,7 @@ function Profile() {
                     )}
                   />
                 </div>
+
                 <div id='date-of-birth'>
                   <FormField
                     control={form.control}
@@ -272,15 +286,12 @@ function Profile() {
                                     !field.value && 'text-muted-foreground',
                                 )}
                               >
-                                {field.value ? (
-                                                                    format(field.value, 'PPP')
-                                                                ) : (
-                                                                    <span>{'Pick a date'}</span>
-                                                                )}
+                                {field.value ? (format(field.value, 'PPP') ) : ( <span>{'Pick a date'}</span> )}
                                 <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                               </Button>
                             </FormControl>
                           </PopoverTrigger>
+
                           <PopoverContent className="w-auto p-0" align="start">
                             <Calendar
                               mode="single"
@@ -303,6 +314,7 @@ function Profile() {
             </form>
           </Form>
         </div>
+
         <div className="w-3/12 relative z-0">
           <button className="relative w-[200px] h-[200px] rounded-full text-white overflow-hidden group mt-10"
             onClick={() => setModalOpen(true)}>
@@ -312,6 +324,7 @@ function Profile() {
             </div>
           </button>
         </div>
+
         {modalOpen && <Modal closeModal={() => setModalOpen(false)} />}
       </div>
     </div>
