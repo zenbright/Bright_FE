@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 
 function NavItem({text, children, onClick, select = false}) {
   return (
-    <NavLink to={`/${text.toLowerCase()}`}>
+    <NavLink to={`/user/${text.toLowerCase()}`}>
       <div
         id={text}
         className='dropdown flex w-full items-center nav-pl
