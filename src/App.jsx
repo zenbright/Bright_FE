@@ -12,7 +12,6 @@ import {LandingAuthLayout} from './layouts/landing-auth-layout';
 import {AppLayout} from './layouts/app-layout';
 import ProjectManagementPage from '@/features/project';
 import {useEffect} from 'react';
-import {useState} from 'react';
 import {useSelector} from 'react-redux';
 import {SettingLayout} from './layouts/setting-layout';
 import Profile from './features/setting/component/profile-page';
