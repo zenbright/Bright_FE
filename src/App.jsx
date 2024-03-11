@@ -18,6 +18,7 @@ import Profile from './features/setting/component/profile-page';
 import Notification from './features/setting/component/notification-page';
 import Appearance from './features/setting/component/appearance-page';
 import Account from './features/setting/component/account-page';
+import MessagePage from './features/message';
 
 // Routing from landing page to its child and sign in paage
 const router = createBrowserRouter(
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
 
             {/* Dashboard route */}
             <Route path="/user/dashboard" element={<ProjectManagementPage />} />
+            <Route path="/user/message" element={<MessagePage />} />
             <Route path="*" element={<h1>404 - Notfound</h1>} />
           </Route>
 

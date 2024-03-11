@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
-import {MessagePreviewTab} from '../components/previewTab';
+import {MessagePreviewTab} from './message-preview-tab';
 import image from '../../../assets/images/rmitlogo.png';
 import {useState} from 'react';
 import {MessageContent} from './message-content';
 import messageNew from '../assets/writing.png';
-import {MESSAGE_TAB_WIDTH, NAV_BAR_WIDTH} from '../../../lib/constants/size.global';
+import {MESSAGE_TAB_WIDTH} from '../../../lib/constants/size.global';
 
 export const MessagePage = () => {
   const [selectedMessage, setSelectedMessage] = useState(-1);
@@ -57,9 +57,6 @@ export const MessagePage = () => {
 
   return (
     <div className="flex h-screen w-screen">
-      {/* Nav bar */}
-      <div className="h-screen bg-black" style={{width: `${NAV_BAR_WIDTH}`}} />
-
       {/* Message section */}
       <div className="flex-col border-r h-screen" style={{width: `${MESSAGE_TAB_WIDTH}`}}>
         <div className="text-3xl font-medium p-4 flex items-center justify-between h-20">

@@ -14,7 +14,7 @@ import sendIcon from '../assets/send.png';
 import smileIcon from '../assets/smile.png';
 
 import {MESSAGE_CONTENT_WIDTH} from '../../../lib/constants/size.global';
-import {MessageBubble} from './bubble';
+import {MessageBubble} from './message-bubble';
 import {Message} from '../utils/class';
 import {MESSAGE_HEADER_HEIGHT} from '../../../lib/constants/size.global';
 import {SAMPLE_MESSAGE} from '../test/values';
