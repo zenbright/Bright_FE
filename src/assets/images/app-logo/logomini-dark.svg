@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 27.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 202.9 61.3" style="enable-background:new 0 0 202.9 61.3;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#012940;stroke:#012940;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-</style>
-<g>
-	<path class="st0" d="M50.8,35.3c-2.8-3.4-2.8-8-0.1-10.5c-2.1,1.5-5.1,1.9-8.1,0.7c-3.3-1.4-5.4-4.3-5.4-7.4l0,0l0,0
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	y="0px" viewBox="0 0 202.9 61.3" style="enable-background:new 0 0 202.9 61.3;" xml:space="preserve">
+	<style type="text/css">
+		.st0 {
+			fill: #012940;
+			stroke: #012940;
+			stroke-width: 0.75;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-miterlimit: 10;
+		}
+	</style>
+	<g>
+		<path class="st0" d="M50.8,35.3c-2.8-3.4-2.8-8-0.1-10.5c-2.1,1.5-5.1,1.9-8.1,0.7c-3.3-1.4-5.4-4.3-5.4-7.4l0,0l0,0
 		c0,2.9-2.1,6-5.4,7.4c-3,1.3-6.3,0.8-8.4-0.9c2.9,2.5,3,7.2,0.1,10.8c-1.2,1.5-2.8,2.5-4.3,2.9h9.2c0-0.2,0-0.6,0-0.8
-		c0-4.9,4-8.8,8.8-8.8s8.8,4,8.8,8.8c0,0.2,0,0.6,0,0.8h9.1C53.5,37.7,51.9,36.7,50.8,35.3z"/>
-	
+		c0-4.9,4-8.8,8.8-8.8s8.8,4,8.8,8.8c0,0.2,0,0.6,0,0.8h9.1C53.5,37.7,51.9,36.7,50.8,35.3z" />
+
 		<image style="overflow:visible;" width="505" height="118" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfcAAAB0CAYAAACYJnvlAAAACXBIWXMAAC4jAAAuIwF4pT92AAAI
 JElEQVR4nO3dy3XcRhoG0M9zHAAnAreX2HEyACMYOQKREViMgFYEkiIQHYHoCARHMNz10p3BMIOZ
 BbqPJcom2WQVnveudPT4q9QE8KHQhaoEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIC97775
@@ -47,7 +54,8 @@ q1B5OW9zCHggwr02wV5ejdH7stZUF/CwesK9HsFex/XYHZiFPuDPUn5nvTnzWbAa98O95rKWayLY
 a+kX/rkeuRfzsO26CPiDu/2kTFiF++F+GReClyoZ7F2hOge7wvXG8iFlj9On1Cq9/WwyxM+jD7Sz
 Qdqatssj/u5vhdveFa43pNLH/RRvsHYVata4Xhzlu29+p9/TeWqbRsxF+dFBv4FHqe+Eb/cLwsxf
 P8N9U6RWP8Idts1kN/jyw0t4p/95jv+sy35W8z7v1nANKntue0oEAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU/R/dTEiqyoRuIsAAAAASUVORK5CYII=" transform="matrix(0.24 0 0 0.24 57.36 16.42)">
-	</image>
-</g>
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU/R/dTEiqyoRuIsAAAAASUVORK5CYII="
+			transform="matrix(0.24 0 0 0.24 57.36 16.42)">
+		</image>
+	</g>
 </svg>
