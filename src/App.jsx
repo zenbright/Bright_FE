@@ -19,6 +19,7 @@ import Profile from './features/setting/component/profile-page';
 import Notification from './features/setting/component/notification-page';
 import Appearance from './features/setting/component/appearance-page';
 import Account from './features/setting/component/account-page';
+import Dashboard from './features/dashboard';
 
 // Routing from landing page to its child and sign in paage
 const guestRouter = createBrowserRouter(
@@ -43,6 +44,7 @@ const appRouter = createBrowserRouter(
             <Route path='notification' element={<Notification/>}/>
           </Route>,
           <Route path="/dashboard" element={<ProjectManagementPage />} />,
+          <Route path="/notification" element={<Dashboard />} />,
           <Route path="*" element={<h1>404 - Notfound</h1>} />,
         </Route>,
     ),

@@ -40,6 +40,7 @@
     "cmdk": "^0.2.1",
     "date-fns": "^3.3.1",
     "echarts": "^5.5.0",
+    "embla-carousel-react": "^8.0.0",
     "firebase": "^10.8.0",
     "framer-motion": "^11.0.6",
     "lucide-react": "^0.321.0",
@@ -57,8 +58,8 @@
     "simplex-noise": "^4.0.1",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "tldraw": "^0.0.1",
     "tinycolor2": "^1.6.0",
+    "tldraw": "^0.0.1",
     "uuid": "^9.0.1",
     "vite-plugin-svgr": "^4.2.0",
     "zod": "^3.22.4"
