@@ -1,32 +1,36 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import {Card, CardContent} from '@/components/ui/card';
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 function CardContainer() {
   return (
-    <Carousel className="w-full mx-[60px] my-3" opt={{align: 'start', loop: true}}>
-      <CarouselContent className="-ml-1">
-        {Array.from({length: 5}).map((_, index) => (
-          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
-            <div className="p-1 space-y-3">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6 h-[100px]">
-                  <span className="text-2xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div className='flex justify-between w-full'>
+      <Card className="w-[250px] bg-rose-500 text-white hover:bg-rose-600 cursor-pointer">
+        <CardHeader className="align-middle">
+          <CardTitle className="text-xl">Tasks Completed</CardTitle>
+          <CardDescription className= "text-2xl text-white">8</CardDescription>
+        </CardHeader>
+      </Card>
+      <Card className="w-[250px] bg-green-500 text-white hover:bg-green-600 cursor-pointer">
+        <CardHeader>
+          <CardTitle className="text-xl">Total Projects</CardTitle>
+          <CardDescription className="text-2xl text-white">10</CardDescription>
+        </CardHeader>
+      </Card>
+      <Card className="w-[250px] bg-blue-500 text-white hover:bg-blue-600 cursor-pointer">
+        <CardHeader>
+          <CardTitle className="text-xl">Total Notiftications</CardTitle>
+          <CardDescription className="text-2xl text-white">5 new message</CardDescription>
+        </CardHeader>
+      </Card>
+    </div>
   );
 }
 

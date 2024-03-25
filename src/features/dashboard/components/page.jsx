@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import CardContainer from './card-container';
+import Chart from './chart';
 
 function Dashboard() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -26,13 +27,14 @@ function Dashboard() {
       <div className="w-8/12 p-4">
         <div className='space-y-2'>
           <p>{dateFormatted}</p>
-          <p className='text-3xl'>{greeting}</p>
+          <p className='text-2xl'>{greeting}</p>
         </div>
-        <div className=' place-content-center mt-3 rounded-md'>
+        <div className=' place-content-center mt-7 rounded-md'>
           <div className='flex place-content-center w-full'>
             <CardContainer/>
           </div>
         </div>
+        <Chart/>
       </div>
       {/* Section 2 */}
       <div className="w-4/12 bg-black">
