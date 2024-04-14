@@ -78,7 +78,7 @@ export const TaskContainer = ({task, onDelete}) => {
             ...style,
           }
         }
-        className='bg-gray-300/60 rounded-md mb-2 border-2'
+        className='bg-gray-300/60 rounded-md mb-1 border-2'
       />
     );
   }
