@@ -1,16 +1,16 @@
-import {Button} from '@/components/ui/button';
-import {PlusCircle} from 'lucide-react';
-import {useState} from 'react';
-import {Column, Task} from '../utils/class';
-import {ColumnContainer} from './column/column-container';
+import { Button } from '@/components/ui/button';
+import { PlusCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Column, Task } from '../utils/class';
+import { ColumnContainer } from './column/column-container';
 
 // Drag n drop
-import {DndContext, DragOverlay, useSensors, useSensor, PointerSensor} from '@dnd-kit/core';
-import {SortableContext, arrayMove} from '@dnd-kit/sortable';
-import {useMemo} from 'react';
-import {createPortal} from 'react-dom';
-import {TaskContainer} from './task/task-container';
-import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
+import { DndContext, DragOverlay, useSensors, useSensor, PointerSensor } from '@dnd-kit/core';
+import { SortableContext, arrayMove } from '@dnd-kit/sortable';
+import { useMemo } from 'react';
+import { createPortal } from 'react-dom';
+import { TaskContainer } from './task/task-container';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 export const KanbanBoard = () => {
   const [columns, setColumn] = useState([]);
@@ -22,11 +22,11 @@ export const KanbanBoard = () => {
 
   // Only trigger drag event on desired distance
   const sensors = useSensors(
-      useSensor(PointerSensor, {
-        activationConstraint: {
-          distance: 3,
-        },
-      }),
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 3,
+      },
+    }),
   );
 
   // Columns
@@ -72,12 +72,12 @@ export const KanbanBoard = () => {
     setActiveColumn(null);
     setActiveTask(null);
 
-    const {active, over} = event;
+    const { active, over } = event;
 
     if (!over) return;
 
-    const {id: activeColumnId} = active;
-    const {id: overColumnId} = over;
+    const { id: activeColumnId } = active;
+    const { id: overColumnId } = over;
 
     if (activeColumnId === overColumnId) return;
 
@@ -90,12 +90,12 @@ export const KanbanBoard = () => {
   };
 
   const handleDragOver = (event) => {
-    const {active, over} = event;
+    const { active, over } = event;
 
     if (!over || !active || active.id === over.id) return;
 
-    const {id: activeTaskId} = active;
-    const {id: overTaskId} = over;
+    const { id: activeTaskId } = active;
+    const { id: overTaskId } = over;
 
     const isTaskActive = active.data.current.type === 'Task';
     const isOverTask = over.data.current.type === 'Task';
@@ -143,7 +143,7 @@ export const KanbanBoard = () => {
   return (
     <OverlayScrollbarsComponent
       element="div"
-      options={{scrollbars: {autoHide: 'never'}}}
+      options={{ scrollbars: { autoHide: 'never' } }}
       defer
     >
       <div className="mt-2">
@@ -173,24 +173,24 @@ export const KanbanBoard = () => {
             </div>
 
             <Button className='h-9' onClick={createColumn}>
-              <PlusCircle className='mr-2 h-5'/> Create new column
+              <PlusCircle className='mr-2 h-5' /> Create new column
             </Button>
           </div>
 
           {createPortal(
-              <DragOverlay>
-                {activeColumn && (
-                  <ColumnContainer
-                    col={activeColumn}
-                    deleteColumn={deleteColumn}
-                    taskList={tasks.filter((task) => task.columnId === activeColumn.id)} />
-                )}
+            <DragOverlay>
+              {activeColumn && (
+                <ColumnContainer
+                  col={activeColumn}
+                  deleteColumn={deleteColumn}
+                  taskList={tasks.filter((task) => task.columnId === activeColumn.id)} />
+              )}
 
-                {activeTask && (
-                  <TaskContainer task={activeTask} />
-                )}
-              </DragOverlay>,
-              document.body,
+              {activeTask && (
+                <TaskContainer task={activeTask} />
+              )}
+            </DragOverlay>,
+            document.body,
           )}
         </DndContext>
       </div>

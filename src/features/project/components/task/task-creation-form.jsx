@@ -5,32 +5,32 @@ import {
   END_DATE_INPUT_VALIDATOR,
   TAGS_INPUT_VALIDATOR,
 } from '../../assets/strings';
-import {Button} from '@/components/ui/button';
-import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from '@/components/ui/dialog';
-import {Input} from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 import PropTypes from 'prop-types';
-import {differenceInDays, format} from 'date-fns';
-import {z} from 'zod';
-import {zodResolver} from '@hookform/resolvers/zod';
-import {useForm} from 'react-hook-form';
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form';
-import {Calendar} from '@/components/ui/calendar';
-import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover';
-import {CreatableMultiSelectDropdown} from './creatable-multiselect-menu';
-import {CalendarPlus} from 'lucide-react';
-import {Textarea} from '@/components/ui/textarea';
-import {useState} from 'react';
-import {useEffect} from 'react';
-import {Task, TaskTag} from '../../utils/class';
+import { differenceInDays, format } from 'date-fns';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { CreatableMultiSelectDropdown } from './creatable-multiselect-menu';
+import { CalendarPlus } from 'lucide-react';
+import { Textarea } from '@/components/ui/textarea';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { Task, TaskTag } from '../../utils/class';
 
 // Define form schema
 const formSchema = z.object({
   title: z.string().trim()
-      .min(2, {message: TITLE_INPUT_VALIDATOR.SHORT})
-      .max(50),
+    .min(2, { message: TITLE_INPUT_VALIDATOR.SHORT })
+    .max(50),
   description: z.string()
-      .min(0, {message: TITLE_DES_INPUT_VALIDATOR.SHORT})
-      .max(200, {message: TITLE_DES_INPUT_VALIDATOR.LONG}),
+    .min(0, { message: TITLE_DES_INPUT_VALIDATOR.SHORT })
+    .max(200, { message: TITLE_DES_INPUT_VALIDATOR.LONG }),
   startDate: z.date({
     required_error: 'A start date is required.',
   }),
@@ -40,9 +40,9 @@ const formSchema = z.object({
     return differenceInDays(data.endDate, data.startDate) >= 0;
   }
   return true;
-}, {message: END_DATE_INPUT_VALIDATOR.ERROR});
+}, { message: END_DATE_INPUT_VALIDATOR.ERROR });
 
-const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task, onDelete}) => {
+const TaskCreationForm = ({ isOpen, setIsOpen, onSubmit, colId, task, onDelete }) => {
   const [endDateError, setEndDateError] = useState(null);
   const [tagError, setTagError] = useState(null);
   const initialSelectedTags = task ? task.tags.map((tag) => TaskTag.toString(tag)) : [];
@@ -112,11 +112,11 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task, onDelete}) 
             <FormField
               control={form.control}
               name="title"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Title *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Design homepage" {...field}/>
+                    <Input placeholder="Design homepage" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -127,7 +127,7 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task, onDelete}) 
             <FormField
               control={form.control}
               name="description"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
@@ -143,7 +143,7 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task, onDelete}) 
               <FormField
                 control={form.control}
                 name="startDate"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel>Start Date *</FormLabel>
                     <Popover>
@@ -152,7 +152,7 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task, onDelete}) 
                           <Button
                             className={`w-full pl-3 text-left font-normal ${!field.value && 'text-muted-foreground'}`}
                             variant={'outline'} >
-                            {field.value ? ( format(field.value, 'PPP') ) : ( <span>Pick a date</span> )}
+                            {field.value ? (format(field.value, 'PPP')) : (<span>Pick a date</span>)}
                             <CalendarPlus className="ml-3 h-4 w-4 opacity-50" />
                           </Button>
                         </FormControl>
@@ -177,7 +177,7 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task, onDelete}) 
               <FormField
                 control={form.control}
                 name="endDate"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel>End Date (Optional)</FormLabel>
                     <Popover>
@@ -186,7 +186,7 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task, onDelete}) 
                           <Button
                             className={`w-full pl-3 text-left font-normal ${!field.value && 'text-muted-foreground'}`}
                             variant={'outline'} onClick={() => handleEndDateChange()} >
-                            {field.value ? ( format(field.value, 'PPP') ) : ( <span>Pick a date</span> )}
+                            {field.value ? (format(field.value, 'PPP')) : (<span>Pick a date</span>)}
                             <CalendarPlus className="ml-3 h-4 w-4 opacity-50" />
                           </Button>
                         </FormControl>
@@ -215,7 +215,7 @@ const TaskCreationForm = ({isOpen, setIsOpen, onSubmit, colId, task, onDelete}) 
             <FormField
               control={form.control}
               name="selectedTags"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem className='flex flex-col justify-between'>
                   <FormLabel>Tags</FormLabel>
                   <FormControl>

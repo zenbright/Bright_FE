@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
-import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import PropTypes from 'prop-types';
-import {useEffect} from 'react';
-import {useRef} from 'react';
-import {useState} from 'react';
-import {SAMPLE_ATTACHMENT_LIST} from './test/values';
-import {File, AudioLines} from 'lucide-react';
-import {Input} from '@/components/ui/input';
-import {Plus} from 'lucide-react';
-import {Button} from '@/components/ui/button';
-import {RESULT_NOT_FOUND} from '../../../../../config/constants/strings.global';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { useState } from 'react';
+import { SAMPLE_ATTACHMENT_LIST } from './test/values';
+import { File, AudioLines } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Plus } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { RESULT_NOT_FOUND } from '../../../../../config/constants/strings.global';
 
 // Image preview
-const ImagePreview = ({attachment}) => (
+const ImagePreview = ({ attachment }) => (
   <img src={attachment.url} className='w-28 h-full rounded-md' alt={attachment.title} />
 );
 
 // Video preview
-const VideoPreview = ({attachment}) => (
+const VideoPreview = ({ attachment }) => (
   <video controls className='w-28 h-full rounded-md' preload="metadata">
     <source src={attachment.url} type={attachment.mimeType} />
     Your browser does not support the video tag.
@@ -44,7 +44,7 @@ const AudioPreview = () => {
   );
 };
 
-export const AttachmentList = ({attachments = SAMPLE_ATTACHMENT_LIST}) => {
+export const AttachmentList = ({ attachments = SAMPLE_ATTACHMENT_LIST }) => {
   const attachmentListRef = useRef(null);
   const [maxHeight, setMaxHeight] = useState(window.innerHeight);
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -88,7 +88,7 @@ export const AttachmentList = ({attachments = SAMPLE_ATTACHMENT_LIST}) => {
           value={searchPhrase}
           onChange={(e) => {
             setSearchPhrase(e.target.value);
-          }}/>
+          }} />
 
         <Button className='border-gray-400/80' variant="outline" size="icon">
           <Plus className="h-4 w-4" />
@@ -97,45 +97,45 @@ export const AttachmentList = ({attachments = SAMPLE_ATTACHMENT_LIST}) => {
 
       <OverlayScrollbarsComponent
         element="div"
-        options={{scrollbars: {autoHide: 'move'}}}
-        style={{maxHeight: `${maxHeight}px`}}
+        options={{ scrollbars: { autoHide: 'move' } }}
+        style={{ maxHeight: `${maxHeight}px` }}
         ref={attachmentListRef}
         id="attachment-list"
       >
         <div className='flex flex-col gap-2 mb-2'>
           {
             filteredList.length === 0 &&
-           <div className='flex self-center mt-2 font-semibold text-gray-800'>{RESULT_NOT_FOUND}</div>
+            <div className='flex self-center mt-2 font-semibold text-gray-800'>{RESULT_NOT_FOUND}</div>
           }
 
           {filteredList.length > 0 &&
-          filteredList.map((attachment, index) => (
-            <div
-              onClick={() => {
-                window.location.href = attachment.url;
-              }}
-              key={index}
-              className='hover:bg-slate-100 h-20 rounded-md flex gap-4 font-bold hover:cursor-pointer'>
-              {/* Preview */}
-              {attachment.mimeType.startsWith('image/') ? (
-                <ImagePreview attachment={attachment} />
+            filteredList.map((attachment, index) => (
+              <div
+                onClick={() => {
+                  window.location.href = attachment.url;
+                }}
+                key={index}
+                className='hover:bg-slate-100 h-20 rounded-md flex gap-4 font-bold hover:cursor-pointer'>
+                {/* Preview */}
+                {attachment.mimeType.startsWith('image/') ? (
+                  <ImagePreview attachment={attachment} />
                 ) : attachment.mimeType.startsWith('video/') ? (
-                <VideoPreview attachment={attachment} />
+                  <VideoPreview attachment={attachment} />
                 ) : attachment.mimeType.startsWith('audio/') ? (
-                <AudioPreview />
+                  <AudioPreview />
                 ) : (
-                <DocsPreview />
-                ) }
+                  <DocsPreview />
+                )}
 
-              {/* Metadata */}
-              <div className='text-xs text-gray-400 font-normal'>
-                <div className='font-semibold text-base text-black'>{attachment.title}</div>
-                <div>{attachment.mimeType}</div>
-                <div>Uploaded: {attachment.date}</div>
-                <div>By {attachment.uploadedBy}</div>
+                {/* Metadata */}
+                <div className='text-xs text-gray-400 font-normal'>
+                  <div className='font-semibold text-base text-black'>{attachment.title}</div>
+                  <div>{attachment.mimeType}</div>
+                  <div>Uploaded: {attachment.date}</div>
+                  <div>By {attachment.uploadedBy}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </OverlayScrollbarsComponent>
     </div>

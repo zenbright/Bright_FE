@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProjectBreadCrumbs from './breadcrumbs';
 import Divider from '../../../components/general/divider';
-import {MemberList} from './member-list';
-import {Button} from '@/components/ui/button';
-import {ShieldMinus, Heart, Settings, CircleDot, UserRoundPlus} from 'lucide-react';
+import { MemberList } from './member-list';
+import { Button } from '@/components/ui/button';
+import { ShieldMinus, Heart, Settings, CircleDot, UserRoundPlus } from 'lucide-react';
 import BoardTabGroup from '../../../components/general/tab-group';
 import {
   AlertDialog,
@@ -17,10 +17,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import {useState} from 'react';
-import {KanbanBoard} from './kanban-board';
-import {SYSTEM_ALERT} from '../../../config/constants/strings.global';
-import {UnderDevDialog} from '../../../components/general/under-development-dialog';
+import { useState } from 'react';
+import { KanbanBoard } from './kanban-board';
+import { SYSTEM_ALERT } from '../../../config/constants/strings.global';
+import { UnderDevDialog } from '../../../components/general/under-development-dialog';
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
@@ -84,7 +84,7 @@ export const Page = () => {
             className="h-8 border-black/15"
             variant="outline"
             onClick={() => setIsUnderDevDialogOpen(true)}>
-            <UserRoundPlus className='h-4'/> Invite
+            <UserRoundPlus className='h-4' /> Invite
           </Button>
         </div>
 
@@ -95,7 +95,7 @@ export const Page = () => {
             <Button
               className='text-rose-500 bg-white border-black/15 hover:bg-slate-200/75 h-8'
               variant="outline">
-              <ShieldMinus className='h-4'/>Private
+              <ShieldMinus className='h-4' />Private
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
