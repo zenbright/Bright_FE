@@ -3,14 +3,14 @@ export const weekData = {
   datasets: [{
     labels: 'Your Contribution',
     data: [2, 4, 3, 5, 7, 4, 2],
-    backgroundColor: 'rgb(225,0,113)',
-    borderColor: "rgba(225,0,113)",
-    pointBackgroundColor: 'rgb(225,0,113)',
+    backgroundColor: '#FAB6C4',
+    borderColor: "#FAB6C4",
+    pointBackgroundColor: '#FAB6C4',
     fill: {
       target: "origin", // 3. Set the fill options
       above: ({chart: {ctx}}) => {
         const bg = ctx.createLinearGradient(0, 0, 0, 300);
-        bg.addColorStop(0, "#FF64B2");
+        bg.addColorStop(0, "#F3D0D7");
         bg.addColorStop(1, "white");
         return bg;
       }
