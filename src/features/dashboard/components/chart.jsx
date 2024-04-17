@@ -53,7 +53,7 @@ function Chart() {
         </select>
       </div>
       <div className='mb-1 mt-4'>
-        <Line data={chartData} options={options} height={250}/>
+        <Line data={chartData} options={options} height={280}/>
       </div>
     </div>
   );

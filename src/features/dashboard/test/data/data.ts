@@ -2,13 +2,18 @@ export const weekData = {
   labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
   datasets: [{
     labels: 'Your Contribution',
-    data: [4, 1, 2, 10, 5, 12, 1],
-    backgroundColor: 'aqua',
-    borderColor: "rgb(255, 99, 132)",
-    pointBackgroundColor: 'red',
+    data: [2, 4, 3, 5, 7, 4, 2],
+    backgroundColor: 'rgb(225,0,113)',
+    borderColor: "rgba(225,0,113)",
+    pointBackgroundColor: 'rgb(225,0,113)',
     fill: {
       target: "origin", // 3. Set the fill options
-      above: "rgba(255, 0, 0, 0.3)"
+      above: ({chart: {ctx}}) => {
+        const bg = ctx.createLinearGradient(0, 0, 0, 300);
+        bg.addColorStop(0, "#FF64B2");
+        bg.addColorStop(1, "white");
+        return bg;
+      }
     }
   }],
 };
@@ -51,6 +56,7 @@ export const options = {
       }
     },
     y: {
+      beginAtZero: true,
       border: {
         color: 'black',
       }
