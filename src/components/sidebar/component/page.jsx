@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 import {useState} from 'react';
 import ProjectDashboard from './project-dashboard.jsx';
 
-
 function Sidebar() {
   const [selectedTab, setSelectedTab] = useState('Dashboard');
 
