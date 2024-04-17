@@ -1,37 +1,43 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import '../styles/style.css';
+import {MdOutlineTask} from 'react-icons/md';
+import {HiOutlineUserGroup} from 'react-icons/hi';
+import {IoMdNotificationsOutline} from 'react-icons/io';
 
-function CardContainer() {
+
+const CardContainer= () => {
   return (
     <div className='flex justify-between w-full'>
-      <Card className="w-[250px] bg-rose-500 text-white hover:bg-rose-600 cursor-pointer">
-        <CardHeader className="align-middle">
-          <CardTitle className="text-xl">Tasks Completed</CardTitle>
-          <CardDescription className= "text-2xl text-white">8</CardDescription>
-        </CardHeader>
-      </Card>
-      <Card className="w-[250px] bg-green-500 text-white hover:bg-green-600 cursor-pointer">
-        <CardHeader>
-          <CardTitle className="text-xl">Total Projects</CardTitle>
-          <CardDescription className="text-2xl text-white">10</CardDescription>
-        </CardHeader>
-      </Card>
-      <Card className="w-[250px] bg-blue-500 text-white hover:bg-blue-600 cursor-pointer">
-        <CardHeader>
-          <CardTitle className="text-xl">Total Notiftications</CardTitle>
-          <CardDescription className="text-2xl text-white">5 new message</CardDescription>
-        </CardHeader>
-      </Card>
+      <div className="w-[250px] h-[110px] bg-white text-black cursor-pointer card-hover flex p-3 items-center border-[1px] rounded-md">
+        <div className='px-4 py-5 text-3xl rounded-md bg-green-400 bg-opacity-70'>
+          <MdOutlineTask color="green"/>
+        </div>
+        <div className='p-4'>
+          <h2 className='text-3xl'>10</h2>
+          <p>Tasks Completed</p>
+        </div>
+      </div>
+      <div className="w-[250px] h-[110px] bg-white text-black cursor-pointer card-hover flex p-3 items-center border-[1px] rounded-md">
+        <div className='px-4 py-5 text-3xl rounded-md bg-amber-200 bg-opacity-70'>
+          <HiOutlineUserGroup color='amber'/>
+        </div>
+        <div className='p-4 items-center'>
+          <h2 className='text-3xl'>10</h2>
+          <p>Joined Projects</p>
+        </div>
+      </div>
+      <div className="w-[250px] h-[110px] bg-white text-black cursor-pointer card-hover flex p-3 items-center border-[1px] rounded-md">
+        <div className='px-4 py-5 text-3xl rounded-md bg-blue-400 bg-opacity-70'>
+          <IoMdNotificationsOutline color='blue'/>
+        </div>
+        <div className='p-4 justify-center'>
+          <h2 className='text-3xl'>10</h2>
+          <p>New Notification</p>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default CardContainer;

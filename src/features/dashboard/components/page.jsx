@@ -37,7 +37,7 @@ function Dashboard() {
         <Chart/>
       </div>
       {/* Section 2 */}
-      <div className="w-4/12 bg-black">
+      <div className="w-4/12 bg-white border-[1px] m-5">
         <p>Calendar here</p>
       </div>
     </div>
