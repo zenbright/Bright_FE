@@ -28,7 +28,7 @@ const guestRouter = createBrowserRouter(
 // Routing from within the application
 const appRouter = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/' element={<ProjectManagementPage />}>
+        <Route path='/' element={<FileUpload />}>
           <Route path="/dashboard" element={<ProjectManagementPage />} />,
           <Route path="*" element={<h1>404 - Notfound</h1>} />,
         </Route>,
