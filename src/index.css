@@ -4,7 +4,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -78,34 +77,21 @@
 }
 
 @layer utilities {
+  @variants responsive {
 
-  /* Hide scrollbar for Chrome, Safari, and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+    /* Hide scrollbar for Chrome, Safari, and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
 
-  /* Hide scrollbar for IE, Edge, and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-  }
-}
 
-@layer responsive {
-
-  /* Hide scrollbar for Chrome, Safari, and Opera (responsive) */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge, and Firefox (responsive) */
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
+    /* Hide scrollbar for IE, Edge, and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
   }
 }
 
@@ -117,17 +103,17 @@
   font-family: nunito;
 }
 
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: auto;
-    scrollbar-width: none;
-  }
+@layer utilities{
+    .no-scrollbar::-webkit-scrollbar{
+        display: none;
+    }
+    
+    .no-scrollbar{
+        -ms-overflow-style: auto;
+        scrollbar-width: none;
+    }
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }

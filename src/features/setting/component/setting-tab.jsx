@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 
 function SettingTab({tab, tabIndex, selectedActive, handleSelected}) {
   return (
-    <NavLink to={`/user/settings/${tab.name.toLowerCase().replace(/\s/g, '-')}`}>
+    <NavLink to={`/settings/${tab.name.toLowerCase().replace(/\s/g, '-')}`}>
       <div
         id={tab.name}
         className={
