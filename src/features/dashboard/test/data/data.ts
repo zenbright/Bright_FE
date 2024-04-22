@@ -3,18 +3,7 @@ export const weekData = {
   datasets: [{
     labels: 'Your Contribution',
     data: [2, 4, 3, 5, 7, 4, 2],
-    backgroundColor: '#FAB6C4',
-    borderColor: "#FAB6C4",
-    pointBackgroundColor: '#FAB6C4',
-    fill: {
-      target: "origin", // 3. Set the fill options
-      above: ({chart: {ctx}}) => {
-        const bg = ctx.createLinearGradient(0, 0, 0, 300);
-        bg.addColorStop(0, "#F3D0D7");
-        bg.addColorStop(1, "white");
-        return bg;
-      }
-    }
+    backgroundColor: '#adfa1c',
   }],
 };
 
@@ -23,48 +12,19 @@ export const yearData = {
   datasets: [{
     labels: 'Your Contribution',
     data: [14, 21, 62, 40, 50, 42, 31, 56 , 28, 32, 37, 48],
-    backgroundColor: 'aqua',
-    borderColor: "rgb(255, 99, 132)",
-    pointBackgroundColor: 'red',
-    fill: {
-      target: "origin", // 3. Set the fill options
-      above: "rgba(255, 0, 0, 0.3)"
-    }
+    backgroundColor: '#adfa1c',
   }],
 };
 
 export const options = {
-  tension: 0.3,
   responsive: true,
-  maintainAspectRatio: false,
   plugins: {
-    datalabels: {
-      display: false,
+    legend: {
+      position: 'top' as const,
     },
-    legend: false,
-  },
-  scales: {
-    x: {
-      ticks: {
-        display: false
-      },
-      grid: {
-        drawOnChartArea: false
-      },
-      border: {
-        color: 'black',
-      }
-    },
-    y: {
-      beginAtZero: true,
-      border: {
-        color: 'black',
-      }
+    title: {
+      display: true,
+      text: 'Chart.js Bar Chart',
     },
   },
-  elements: {
-    line: {
-        borderJoinStyle: 'miter'
-    }
-  }
 };

@@ -1,62 +1,57 @@
+import React from 'react';
 import {
   Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-  Legend,
-  LineElement,
   CategoryScale,
   LinearScale,
-  PointElement,
-  Filler} from 'chart.js';
-import {Line} from 'react-chartjs-2';
-import {weekData} from '../test/data/data';
-import {yearData} from '../test/data/data';
-import {options} from '../test/data/data';
-import {useState} from 'react';
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import {Bar} from 'react-chartjs-2';
 
 ChartJS.register(
-    LineElement,
-    Tooltip,
-    Legend,
-    ArcElement,
     CategoryScale,
     LinearScale,
-    PointElement,
-    Filler,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
 );
 
-function Chart() {
-  const [selectedOption, setSelectedOption] = useState('week');
-  const [chartData, setChartData] = useState(weekData);
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'Chart.js Bar Chart',
+    },
+  },
+};
 
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-    // Update chart data based on selected option
-    switch (event.target.value) {
-      case 'week':
-        setChartData(weekData);
-        break;
-      case 'year':
-        setChartData(yearData);
-        break;
-      default:
-        break;
-    }
-  };
-  return (
-    <div className='border-[1px] p-5 border-grey mt-6 rounded-sm'>
-      <div className='flex w-full px-4 justify-between'>
-        <div></div>
-        <select value={selectedOption} onChange={handleChange} className='p-1 border-[1px] rounded-sm w-[80px]'>
-          <option value="week" >Week</option>
-          <option value="year">Year</option>
-        </select>
-      </div>
-      <div className='mb-1 mt-4'>
-        <Line data={chartData} options={options} height={280}/>
-      </div>
-    </div>
-  );
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: [14, 21, 62, 40, 50, 42, 31, 56, 28, 32, 37, 48],
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    },
+    {
+      label: 'Dataset 2',
+      data: [14, 21, 62, 40, 50, 42, 31, 56, 28, 32, 37, 48],
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
+};
+
+function Chart() {
+  return <Bar options={options} data={data} />;
 }
 
 export default Chart;

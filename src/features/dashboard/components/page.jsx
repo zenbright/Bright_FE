@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import CardContainer from './card-container';
 import Chart from './chart';
+import {Calendar} from './calendar';
 
 function Dashboard() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -38,7 +39,7 @@ function Dashboard() {
       </div>
       {/* Section 2 */}
       <div className="w-4/12 bg-white border-[1px] m-5">
-        <p>Calendar here</p>
+        <Calendar/>
       </div>
     </div>
   );
