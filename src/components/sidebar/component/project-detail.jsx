@@ -8,7 +8,7 @@ import {FaUsersViewfinder} from 'react-icons/fa6';
 import {MdOutlineReport} from 'react-icons/md';
 
 function ProjectdDetail({project, onClose}) {
-  const listStyle = 'text-sm font-medium text-black align-middle hover:bg-blue-600 h-8 rounded-md pt-1 hover:text-white flex items-center';
+  const listStyle = 'text-sm font-medium text-black align-middle hover:bg-black h-8 rounded-md pt-1 hover:text-white flex items-center';
   const iconStyle = 'h-5 w-5 mb-[2px] mx-2';
   return (
     <div className=''>

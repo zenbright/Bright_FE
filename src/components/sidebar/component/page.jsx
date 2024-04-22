@@ -20,7 +20,7 @@ function Sidebar() {
 
   return (
     <div className="flex flex-row container-ns">
-      <div className="relative group w-[6vw] hover:w-[18vw] group-hover:w-[18vw] transition-all duration-300 bg-white border-r-2 pt-2 h-screen flex flex-col items-center over">
+      <div className="relative group w-[5.3vw] hover:w-[17vw] group-hover:w-[17vw] transition-all duration-300 bg-white border-r pt-2 h-screen flex flex-col items-center right-1">
         {/* User Information */}
         <UserImageName text={'Username'} image={''} />
 
@@ -33,8 +33,8 @@ function Sidebar() {
             select={selectedTab === 'Dashboard'}
             onClick={setSelectedTab}
           >
-            <DashboardIcon className="w-5 h-5 hover:fill-white"/>
-            <div className="grandchild-content hidden absolute left-[18vw] top-[-77px] h-screen">
+            <DashboardIcon className="w-4 h-4"/>
+            <div className="grandchild-content hidden absolute left-[17vw] top-[-77px] h-screen">
               <ProjectDashboard />
             </div>
           </NavItem>
@@ -44,7 +44,7 @@ function Sidebar() {
             select={selectedTab === 'Notification'}
             onClick={setSelectedTab}
           >
-            <NotificationIcon className="w-5 h-5"/>
+            <NotificationIcon className="w-4 h-4"/>
           </NavItem>
 
           <NavItem
@@ -52,7 +52,7 @@ function Sidebar() {
             select={selectedTab === 'Schedule'}
             onClick={setSelectedTab}
           >
-            <CalendarIcon className="w-5 h-5 "/>
+            <CalendarIcon className="w-4 h-4 "/>
           </NavItem>
 
           <NavItem
@@ -60,7 +60,7 @@ function Sidebar() {
             select={selectedTab === 'Message'}
             onClick={setSelectedTab}
           >
-            <MessageIcon className="w-5 h-5 "/>
+            <MessageIcon className="w-4 h-4 "/>
           </NavItem>
 
           <NavItem
@@ -68,7 +68,7 @@ function Sidebar() {
             select={selectedTab === 'Settings'}
             onClick={setSelectedTab}
           >
-            <SettingIcon className="w-5 h-5 "/>
+            <SettingIcon className="w-4 h-4 "/>
           </NavItem>
 
           <NavItem
@@ -76,14 +76,14 @@ function Sidebar() {
             select={selectedTab === 'About'}
             onClick={setSelectedTab}
           >
-            <AboutIcon className="w-5 h-5 "/>
+            <AboutIcon className="w-4 h-4 "/>
           </NavItem>
         </div>
 
         {/* Logout button */}
         <div className="w-full pb-1">
           <LogoutButton text={'Logout'}>
-            <LogoutIcon className="w-5 h-5 "/>
+            <LogoutIcon className="w-4 h-4 "/>
           </LogoutButton>
         </div>
       </div>
