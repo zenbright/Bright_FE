@@ -90,7 +90,7 @@ function Profile() {
       options={{scrollbars: {autoHide: 'move'}}}
       defer
     >
-      <div className="w-[75vw]">
+      <div className="w-[76vw]">
         <div className="mx-3 text-lg font-bold p-2 border-b-[1px] border-slate-300 ">
           {'Public Profile'}
         </div>
