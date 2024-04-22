@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import {Bar} from 'react-chartjs-2';
+import {data, options} from '../test/data/data';
 
 ChartJS.register(
     CategoryScale,
@@ -19,39 +20,12 @@ ChartJS.register(
     Legend,
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart',
-    },
-  },
-};
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [14, 21, 62, 40, 50, 42, 31, 56, 28, 32, 37, 48],
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: [14, 21, 62, 40, 50, 42, 31, 56, 28, 32, 37, 48],
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-
 function Chart() {
-  return <Bar options={options} data={data} />;
+  return (
+    <div className='h-96 border-[1px] border-grey rounded-md mt-3 p-3'>
+      <Bar options={options} data={data}/>
+    </div>
+  );
 }
 
 export default Chart;

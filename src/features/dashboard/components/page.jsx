@@ -28,7 +28,7 @@ function Dashboard() {
       <div className="w-8/12 p-4">
         <div className='space-y-2'>
           <p>{dateFormatted}</p>
-          <p className='text-2xl'>{greeting}</p>
+          <p className='text-2xl font-semibold'>{greeting}</p>
         </div>
         <div className=' place-content-center mt-7 rounded-md'>
           <div className='flex place-content-center w-full'>

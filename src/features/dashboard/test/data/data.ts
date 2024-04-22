@@ -1,30 +1,35 @@
-export const weekData = {
-  labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-  datasets: [{
-    labels: 'Your Contribution',
-    data: [2, 4, 3, 5, 7, 4, 2],
-    backgroundColor: '#adfa1c',
-  }],
-};
-
-export const yearData = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', "December"],
-  datasets: [{
-    labels: 'Your Contribution',
-    data: [14, 21, 62, 40, 50, 42, 31, 56 , 28, 32, 37, 48],
-    backgroundColor: '#adfa1c',
-  }],
-};
-
 export const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
-    legend: {
-      position: 'top' as const,
+    datalabel: {
+      display: false,
     },
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart',
-    },
+    legend: false,
   },
+  scales: {
+    x: {
+      grid: {
+        drawOnChartArea: false,
+      },
+    },
+    y: {
+      grid: {
+        drawOnChartArea: false,
+      }
+    }
+  },
+};
+
+const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      data: [14, 21, 62, 40, 50, 42, 31, 56, 28, 32, 37, 48],
+      backgroundColor: '#adfa1c',
+      borderRadius: 10,
+    },
+  ],
 };
