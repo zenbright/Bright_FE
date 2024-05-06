@@ -22,7 +22,7 @@ ChartJS.register(
 
 function Chart() {
   return (
-    <div className='h-96 border-[1px] border-grey rounded-md mt-3 p-3'>
+    <div className='h-96 border border-grey rounded-md mt-3 p-2 pl-0.5'>
       <Bar options={options} data={data}/>
     </div>
   );

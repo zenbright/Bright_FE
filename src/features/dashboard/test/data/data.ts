@@ -1,6 +1,7 @@
 export const options = {
   responsive: true,
   maintainAspectRatio: false,
+  barThickness: 38,
   plugins: {
     datalabel: {
       display: false,
@@ -9,12 +10,24 @@ export const options = {
   },
   scales: {
     x: {
+      border: {
+        display: false,
+      },
       grid: {
+        display: false,
         drawOnChartArea: false,
       },
     },
     y: {
+      beginAtZero: true,
+      ticks: {
+        display: false
+      },
+      border: {
+        display: false,
+      },
       grid: {
+        display: false,
         drawOnChartArea: false,
       }
     }
@@ -28,8 +41,9 @@ export const data = {
   datasets: [
     {
       data: [14, 21, 62, 40, 50, 42, 31, 56, 28, 32, 37, 48],
-      backgroundColor: '#adfa1c',
-      borderRadius: 10,
+      // backgroundColor: '#adfa1c',
+      backgroundColor: '#000000',
+      borderRadius: 7,
     },
   ],
 };
