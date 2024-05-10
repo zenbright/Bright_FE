@@ -100,7 +100,7 @@ const TaskCreationForm = ({ isOpen, setIsOpen, onSubmit, colId, task, onDelete }
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-[450px]">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold">Create new task</DialogTitle>
+          <DialogTitle className="text-xl font-bold">{task ? "Update task" : "Create new task"}</DialogTitle>
           <DialogDescription>
             {TASK_CREATION_DES}
           </DialogDescription>
