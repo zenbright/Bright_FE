@@ -18,6 +18,7 @@ import Profile from './features/setting/component/profile-page';
 import Notification from './features/setting/component/notification-page';
 import Appearance from './features/setting/component/appearance-page';
 import Account from './features/setting/component/account-page';
+import Board from './features/board/Board';
 
 // Routing from landing page to its child and sign in paage
 const router = createBrowserRouter(
@@ -60,7 +61,8 @@ function App() {
   }, [isLogIn]);
 
   return (
-    <RouterProvider router={router} />
+    // <RouterProvider router={router} />
+    <Board />
   );
 }
 
