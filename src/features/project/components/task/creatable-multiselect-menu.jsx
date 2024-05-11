@@ -1,14 +1,14 @@
 import * as React from 'react';
-import {Check, ChevronsUpDown, Pencil} from 'lucide-react';
-import {Button} from '@/components/ui/button';
-import {DEFAULT_TASK_TAGS} from '../../assets/values';
-import {useState} from 'react';
-import {getRandomColor} from '@/components/utils/color-generator';
+import { Check, ChevronsUpDown, Pencil } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { DEFAULT_TASK_TAGS } from '../../assets/values';
+import { useState } from 'react';
+import { getRandomColor } from '@/components/utils/color-generator';
 import PropTypes from 'prop-types';
-import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from '@/components/ui/command';
-import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
-export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) => {
+export const CreatableMultiSelectDropdown = ({ selectedTags, setSelectedTags }) => {
   const [open, setOpen] = useState(false);
   const [tagList, setTagList] = useState(DEFAULT_TASK_TAGS);
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -21,7 +21,7 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
       description: `Tasks related to ${title}`,
     };
 
-    setTagList({...tagList, [title]: newTag});
+    setTagList({ ...tagList, [title]: newTag });
     setSearchPhrase('');
   };
 
@@ -34,7 +34,7 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-            Select tags...
+          Select tags...
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -60,9 +60,9 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
                 value={`${tagList[tagKey].value}-${tagList[tagKey].color}`}
                 onSelect={(currentValue) => {
                   setSelectedTags(
-                        selectedTags.findIndex((tag) => tag === currentValue) !== -1 ?
-                            selectedTags.filter((tag) => tag !== currentValue) :
-                            [...selectedTags, currentValue],
+                    selectedTags.findIndex((tag) => tag === currentValue) !== -1 ?
+                      selectedTags.filter((tag) => tag !== currentValue) :
+                      [...selectedTags, currentValue],
                   );
                 }}
               >
@@ -77,7 +77,7 @@ export const CreatableMultiSelectDropdown = ({selectedTags, setSelectedTags}) =>
                 <div
                   className={`w-2 h-2 mr-3 rounded-full`}
                   style={
-                    {background: `${tagList[tagKey].color}`}
+                    { background: `${tagList[tagKey].color}` }
                   }
                 />
 

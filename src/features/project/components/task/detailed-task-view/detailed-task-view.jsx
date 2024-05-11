@@ -6,17 +6,17 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import PropTypes from 'prop-types';
-import {Task} from '../../utils/class';
-import {MemberList} from '../member-list';
-import {format} from 'date-fns';
-import {Badge} from '@/components/ui/badge';
+import { Task } from '../../../utils/class';
+import { MemberList } from '../../member-list';
+import { format } from 'date-fns';
+import { Badge } from '@/components/ui/badge';
 import TabGroup from '@/components/general/tab-group';
-import {TASK_DETAILED_TABS} from '../../assets/values';
-import {useState} from 'react';
-import {AttachmentList} from './detailed-task-view/attachment-list';
+import { TASK_DETAILED_TABS } from '../../../assets/values';
+import { useState } from 'react';
+import { AttachmentList } from './attachment-list';
 import tinycolor from 'tinycolor2';
 
-export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, task}) => {
+export const DetailedTaskView = ({ isShowTaskDetailed, setIsShowTaskDetailed, task }) => {
   const [tabSelected, setTabSelected] = useState(0);
 
   return (
@@ -35,7 +35,7 @@ export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, tas
             {/* Task brief */}
             <div className='flex items-center gap-11'>
               Assignee
-              <MemberList width={6} height={6}/>
+              <MemberList width={6} height={6} />
             </div>
 
             <div className='flex items-center gap-12'>
@@ -66,7 +66,7 @@ export const DetailedTaskView = ({isShowTaskDetailed, setIsShowTaskDetailed, tas
             <TabGroup
               tableNames={TASK_DETAILED_TABS}
               selected={tabSelected}
-              setSelected={setTabSelected}/>
+              setSelected={setTabSelected} />
 
             {tabSelected === 2 && <AttachmentList />}
           </div>
