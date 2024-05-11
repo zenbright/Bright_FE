@@ -1,37 +1,36 @@
 import PropTypes from 'prop-types';
-import {Task} from '../../utils/class';
-import {Badge} from '@/components/ui/badge';
-import {MemberList} from '../member-list';
+import { Task } from '../../utils/class';
+import { Badge } from '@/components/ui/badge';
+import { MemberList } from '../member-list';
 import Divider from '../../../../components/general/divider';
-import {UserRoundPlus, MoreHorizontal, List, Paperclip, Calendar, Flag} from 'lucide-react';
-import {Button} from '@/components/ui/button';
-import {useSortable} from '@dnd-kit/sortable';
-import {CSS} from '@dnd-kit/utilities';
-import {useRef} from 'react';
-import {useLayoutEffect} from 'react';
-import {useState} from 'react';
-import {differenceInDays} from 'date-fns';
-import {DetailedTaskView} from './detailed-task-view';
+import { UserRoundPlus, List, Paperclip, Calendar, Flag, Settings2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import { useRef } from 'react';
+import { useLayoutEffect } from 'react';
+import { useState } from 'react';
+import { differenceInDays } from 'date-fns';
+import { DetailedTaskView } from './detailed-task-view/detailed-task-view';
 import tinycolor from 'tinycolor2';
+import TaskCreationForm from './task-creation-form';
 
-export const TaskContainer = ({task}) => {
+export const TaskContainer = ({ task, onDelete }) => {
   const ref = useRef();
-  const [dimensions, setDimensions] = useState({width: 0, height: 0});
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isShowTaskDetailed, setIsShowTaskDetailed] = useState(false);
   const [remainingDateText, setRemainingDateText] = useState('');
+  const [isEditTask, setIsEditTask] = useState(false);
 
-  const [badgeColor, colorWeight] = task.tags.map((tag) => tag.color.split('-'));
-
-  console.log(badgeColor, ' - ', colorWeight);
   // Calculate current task size
   useLayoutEffect(() => {
     if (ref.current) {
       const newWidth = ref.current.offsetWidth;
       const newHeight = ref.current.offsetHeight;
-      setDimensions({width: newWidth, height: newHeight});
+      setDimensions({ width: newWidth, height: newHeight });
 
       // Prevent value reset
-      sessionStorage.setItem('taskDimensions', JSON.stringify({width: newWidth, height: newHeight}));
+      sessionStorage.setItem('taskDimensions', JSON.stringify({ width: newWidth, height: newHeight }));
     }
   }, [task]);
 
@@ -40,8 +39,8 @@ export const TaskContainer = ({task}) => {
     // Retrieve dimensions from local storage when the component mounts
     const storedDimensions = sessionStorage.getItem('taskDimensions');
     if (storedDimensions) {
-      const {width, height} = JSON.parse(storedDimensions);
-      setDimensions({width, height});
+      const { width, height } = JSON.parse(storedDimensions);
+      setDimensions({ width, height });
     }
     // Calculate due date
     if (task.endDate) {
@@ -50,16 +49,16 @@ export const TaskContainer = ({task}) => {
 
       const differenceDays = differenceInDays(endDate, today);
 
-      const remainingDateText = differenceDays > 0 ? `${differenceDays} days left` : differenceDays == 0 ?'Today' : `${Math.abs(differenceDays)} days ago`;
+      const remainingDateText = differenceDays > 0 ? `${differenceDays} days left` : differenceDays == 0 ? 'Today' : `${Math.abs(differenceDays)} days ago`;
 
       setRemainingDateText(remainingDateText);
     }
   }, []);
 
   // Handle drag n drop
-  const {setNodeRef, attributes, transform, transition, listeners, isDragging} = useSortable({
+  const { setNodeRef, attributes, transform, transition, listeners, isDragging } = useSortable({
     id: task.id,
-    data: {type: 'Task', task},
+    data: { type: 'Task', task },
   });
 
   const style = {
@@ -79,7 +78,7 @@ export const TaskContainer = ({task}) => {
             ...style,
           }
         }
-        className='bg-gray-300/60 rounded-md mb-2 border-2'
+        className='bg-gray-300/60 rounded-md mb-1 border-2'
       />
     );
   }
@@ -94,6 +93,15 @@ export const TaskContainer = ({task}) => {
           task={task}
         />
       }
+
+      {/* Edit task */}
+      {isEditTask && (
+        <TaskCreationForm
+          isOpen={isEditTask}
+          setIsOpen={setIsEditTask}
+          onDelete={onDelete}
+          task={task} />
+      )}
 
       {/* Task Container */}
       <div
@@ -127,11 +135,11 @@ export const TaskContainer = ({task}) => {
 
             <Button
               onClick={() => {
-                console.log('ok');
+                setIsEditTask(true);
               }}
               variant="ghost"
             >
-              <MoreHorizontal />
+              <Settings2 className=' w-4 h-4' />
             </Button>
           </div>
 
@@ -151,7 +159,7 @@ export const TaskContainer = ({task}) => {
 
               {/* prevent on trigger drag event */}
               <Button onClick={(e) => e.stopPropagation()} variant="ghost">
-                <UserRoundPlus className='w-4 h-4'/>
+                <UserRoundPlus className='w-4 h-4' />
               </Button>
             </div>
 
@@ -161,32 +169,32 @@ export const TaskContainer = ({task}) => {
             <div className='flex items-center justify-between'>
               <div className='flex gap-2 text-sm'>
                 <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-                  <List className='w-4 h-5'/>{task.todos.length}
+                  <List className='w-4 h-5' />{task.todos.length}
                 </div>
 
                 <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-                  <Paperclip className='w-4 h-5'/>{task.attachments.length}
+                  <Paperclip className='w-4 h-5' />{task.attachments.length}
                 </div>
 
                 {task.endDate &&
                   <div className='flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2'>
-                    <Calendar className='w-4 h-5'/> {task.endDate && <div>{remainingDateText}</div>}
+                    <Calendar className='w-4 h-5' /> {task.endDate && <div>{remainingDateText}</div>}
                   </div>
                 }
               </div>
 
               <Button variant="ghost">
-                <Flag className='w-4 h-4'/>
+                <Flag className='w-4 h-4' />
               </Button>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   );
 };
 
 TaskContainer.propTypes = {
   task: PropTypes.instanceOf(Task),
+  onDelete: PropTypes.func,
 };
