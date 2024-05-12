@@ -38,7 +38,7 @@ function Dashboard() {
         <Chart/>
       </div>
       {/* Section 2 */}
-      <div className="w-4/12 bg-white border-[1px] m-5">
+      <div className="w-4/12 bg-white border-[1px] my-1 mr-2 px-5 py-2 rounded-md">
         <Calendar/>
       </div>
     </div>
