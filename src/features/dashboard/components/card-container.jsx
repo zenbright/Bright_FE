@@ -8,32 +8,41 @@ import {IoMdNotificationsOutline} from 'react-icons/io';
 
 const CardContainer= () => {
   return (
-    <div className='flex justify-between w-full'>
-      <div className="w-[245px] h-[80px] bg-white cursor-pointer card-hover flex pl-1 pr-3 items-center border-[1px] rounded-md">
-        <div className='px-4 py-5 text-3xl rounded-md bg-black bg-opacity-5'>
-          <MdOutlineTask color='#505050'/>
+    <div className='flex justify-between w-full gap-2'>
+      <div className=" w-1/3 h-27 bg-white cursor-pointer card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
+        <div className='flex w-full items-center justify-between px-3'>
+          <p className='text-sm font-medium'>Tasks Completed</p>
+          <MdOutlineTask color='#505050 ' className='w-4 h-4'/>
         </div>
-        <div className='p-4'>
-          <p>Tasks Completed</p>
-          <h2 className='text-3xl font-semibold'>10</h2>
+        <div className='flex w-full justify-start pl-3 pt-1'>
+          <h2 className='text-3xl font-extrabold'>+10</h2>
         </div>
-      </div>
-      <div className="w-[245px] h-[80px] bg-white cursor-pointer card-hover flex pl-1 pr-3 items-center border-[1px] rounded-md">
-        <div className='px-4 py-5 text-3xl rounded-md bg-black bg-opacity-5'>
-          <MdPeopleOutline color='#505050'/>
-        </div>
-        <div className='pl-4 items-center'>
-          <p>Joined Projects</p>
-          <h2 className='text-3xl font-semibold'>10</h2>
+        <div className='flex w-full justify-start pl-3'>
+          <p className='text-sm font-light'>+18.1% from last month</p>
         </div>
       </div>
-      <div className="w-[245px] h-[80px] bg-white  cursor-pointer card-hover flex pl-1 pr-3 items-center border-[1px] rounded-md">
-        <div className='px-4 py-5 text-3xl rounded-md bg-black bg-opacity-5'>
-          <IoMdNotificationsOutline color='#505050'/>
+      <div className=" w-1/3 h-27 bg-white cursor-pointer card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
+        <div className='flex w-full items-center justify-between px-3'>
+          <p className='text-sm font-medium'>Joined Projects</p>
+          <MdPeopleOutline color='#505050 ' className='w-4 h-4'/>
         </div>
-        <div className='pl-3 justify-center '>
-          <p>New Notification</p>
-          <h2 className='text-3xl font-semibold'>10</h2>
+        <div className='flex w-full justify-start pl-3 pt-1'>
+          <h2 className='text-3xl font-extrabold'>+10</h2>
+        </div>
+        <div className='flex w-full justify-start pl-3'>
+          <p className='text-sm font-light'>+10% from last month</p>
+        </div>
+      </div>
+      <div className=" w-1/3 h-27 bg-white cursor-pointer card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
+        <div className='flex w-full items-center justify-between px-3'>
+          <p className='text-sm font-medium'>New Notification</p>
+          <IoMdNotificationsOutline color='#505050 ' className='w-4 h-4'/>
+        </div>
+        <div className='flex w-full justify-start pl-3 pt-1'>
+          <h2 className='text-3xl font-extrabold'>+99</h2>
+        </div>
+        <div className='flex w-full justify-start pl-3'>
+          <p className='text-sm font-light'>+44% from last month</p>
         </div>
       </div>
     </div>

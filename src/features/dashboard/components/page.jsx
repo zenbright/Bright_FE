@@ -30,7 +30,7 @@ function Dashboard() {
           <p>{dateFormatted}</p>
           <p className='text-2xl font-semibold'>{greeting}</p>
         </div>
-        <div className=' place-content-center mt-7 rounded-md'>
+        <div className=' place-content-center mt-3 rounded-md'>
           <div className='flex place-content-center w-full'>
             <CardContainer/>
           </div>
