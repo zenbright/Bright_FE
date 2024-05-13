@@ -25,7 +25,7 @@ function Dashboard() {
   return (
     <div className="flex h-screen w-screen">
       {/* Section 1 */}
-      <div className="w-8/12 p-4">
+      <div className="w-9/12 p-4">
         <div className='space-y-2'>
           <p>{dateFormatted}</p>
           <p className='text-2xl font-semibold'>{greeting}</p>
@@ -38,7 +38,7 @@ function Dashboard() {
         <Chart/>
       </div>
       {/* Section 2 */}
-      <div className="w-4/12 bg-white border-[1px] my-1 mr-2 px-5 py-2 rounded-md">
+      <div className="w-3/12 bg-white border-[1px] my-1 mr-2 py-2 rounded-md">
         <Calendar/>
       </div>
     </div>
