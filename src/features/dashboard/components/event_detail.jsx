@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import {Calendar} from 'lucide-react';
 
 
-function EventDetail({name, dueTo}) {
+function EventDetail({name, dueTo, description}) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -24,13 +24,15 @@ function EventDetail({name, dueTo}) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Task Specific</DialogTitle>
           <DialogDescription>
             Make changes to your profile here. Click save when you`re done.
           </DialogDescription>
         </DialogHeader>
         <div>
-          <p>Hello Kien</p>
+          <p>Task Name {name}</p>
+          <p>Due to {dueTo}</p>
+          <p>Description {description}</p>
         </div>
       </DialogContent>
     </Dialog>
@@ -40,6 +42,7 @@ function EventDetail({name, dueTo}) {
 EventDetail.propTypes = {
   name: PropTypes.string,
   dueTo: PropTypes.string,
+  description: PropTypes.string,
 };
 
 export default EventDetail;

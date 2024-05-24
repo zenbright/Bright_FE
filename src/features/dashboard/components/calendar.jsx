@@ -24,7 +24,7 @@ export const Calendar = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex flex-col justify-center items-center">
       <div className="w-[80%] h-full flex flex-col justify-start">
         <div className="w-full flex justify-between mb-2 mt-2">
           <h1 className="font-bold">{months[today.month()]}, {today.year()}</h1>
@@ -78,13 +78,15 @@ export const Calendar = () => {
             </div>
           ))}
         </div>
-        <div className="h-fit w-full mt-4 overflow-auto">
+      </div>
+      <div className="h-fit w-full mt-4 overflow-auto px-3">
+        <div className='flex justify-center items-center mb-2'>
           <h1 className="font-semibold">Schedule for {selectDate.toDate().toDateString()}</h1>
-          <div className='w-full flex flex-col gap-2'>
-            {getEventsForDate(selectDate).map((event, index) => (
-              <EventDetail name={event.name} dueTo={event.dueTo} key={index} />
-            ))}
-          </div>
+        </div>
+        <div className='w-full flex flex-col gap-2 h-full'>
+          {getEventsForDate(selectDate).map((event, index) => (
+            <EventDetail name={event.name} dueTo={event.dueTo} description={event.description} key={index} />
+          ))}
         </div>
       </div>
     </div>
