@@ -13,14 +13,57 @@ export const Calendar = () => {
   const [today, setToday] = useState(currentDate);
   const [selectDate, setSelectDate] = useState(currentDate);
 
-  // Function to check if there are events on a given date
-  const hasEvents = (date) => {
-    return events.some((event) => dayjs(event.dueTo).isSame(date, 'day'));
-  };
-
   // Function to get events for the selected date
   const getEventsForDate = (date) => {
     return events.filter((event) => dayjs(event.dueTo).isSame(date, 'day'));
+  };
+
+  // Function to render dots indicating the number of events for each day
+  const renderEventDots = (date) => {
+    const eventList = getEventsForDate(date);
+
+    // Sort events by due date (nearest upcoming event first)
+    const sortedEvents = eventList.sort((a, b) => {
+      return dayjs(a.dueTo).diff(dayjs(b.dueTo));
+    });
+
+    const maxDots = 3;
+    const dotsToShow = Math.min(sortedEvents.length, maxDots);
+    const dots = [];
+
+    for (let i = 0; i < dotsToShow; i++) {
+      dots.push(
+          <span
+            key={i}
+            className={cn(
+                'w-1 h-1 rounded-full mb-2 mr-1',
+          selectDate.toDate().toDateString() === date.toDate().toDateString() ? 'bg-white' : '',
+            )}
+            style={{backgroundColor: sortedEvents[i].color}}
+          />,
+      );
+    }
+
+    if (sortedEvents.length > maxDots) {
+      dots.push(
+          <span
+            key={'more'}
+            className={cn(
+                'w-1 h-1 rounded-full mb-2 mr-1',
+          selectDate.toDate().toDateString() === date.toDate().toDateString() ? 'bg-white' : '',
+            )}
+          >
+        +{sortedEvents.length - maxDots}
+          </span>,
+      );
+    }
+
+    return dots;
+  };
+
+
+  const hasEvents = (date) => {
+    return events.some((event) => dayjs(event.dueTo).isSame(date, 'day'));
   };
 
   return (
@@ -54,27 +97,28 @@ export const Calendar = () => {
         </div>
         <div className="w-full grid grid-cols-7">
           {generateDate(today.month(), today.year()).map(({date, currentMonth, today}, index) => (
-            <div key={index} className="h-9 border-t grid place-content-center text-sm group">
+            <div key={index} className="h-10 border-t grid place-content-center text-sm group">
               <h1
                 className={cn(
                   currentMonth ? '' : 'text-gray-400',
-                  today ? 'bg-red-500 text-white' : '',
-                  selectDate.toDate().toDateString() === date.toDate().toDateString() ? 'bg-black text-white' : '',
-                  'h-7 w-7 grid place-content-center rounded-full group-hover:bg-black group-hover:text-white transition-all cursor-pointer',
+                  today ? 'border border-red-500 text-red-500' : '',
+                  selectDate.toDate().toDateString() === date.toDate().toDateString() ? 'border-black border text-black' : '',
+                  'h-8 w-8 grid place-content-center rounded-lg group-hover:border group-hover:border-black group-hover:bg-black group-hover:text-white transition-all cursor-pointer',
                 )}
                 onClick={() => setSelectDate(date)}
               >
                 {date.date()}
               </h1>
+              {hasEvents(date) &&
               <div className='flex justify-center items-center'>
-                {hasEvents(date) &&
-                  <span
-                    className={cn(
-                      selectDate.toDate().toDateString() === date.toDate().toDateString() ? 'bg-white' : '',
-                      'absolute w-1 h-1 bg-red-500 rounded-full mb-2 group-hover:bg-white',
-                    )}
-                  />}
+                <div className='absolute pl-1 mb-0.5'>
+                  <div className='flex'>
+                    {renderEventDots(date)}
+                  </div>
+                </div>
               </div>
+              }
+
             </div>
           ))}
         </div>
