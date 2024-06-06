@@ -61,8 +61,8 @@ function App() {
   }, [isLogIn]);
 
   return (
-    // <RouterProvider router={router} />
-    <Board />
+    <RouterProvider router={router} />
+    // <Board />
   );
 }
 

@@ -27,7 +27,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {UnderDevDialog} from '../../../../components/general/under-development-dialog';
+import { UnderDevDialog } from '../../../../components/general/under-development-dialog';
 
 import {
   Dialog,
@@ -38,11 +38,11 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 
-import {Button} from '@/components/ui/button';
-import {Input} from '@/components/ui/input';
-import {useState} from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { useState } from 'react';
 
-export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
+export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
   const [selectedDialog, setSelectedDialog] = useState('');
   const [isUnderDevDialogOpen, setIsUnderDevDialogOpen] = useState(false);
 
@@ -60,7 +60,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Menu className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full'/>
+          <Menu className='mr-2 w-5 h-5 hover:bg-slate-100 hover:rounded-full' />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>Action Menu</DropdownMenuLabel>
@@ -78,7 +78,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
                   <DropdownMenuItem
                     onClick={() => {
                       setSelectedDialog('add-mail'),
-                      setIsUnderDevDialogOpen(true);
+                        setIsUnderDevDialogOpen(true);
                     }}>
                     <Mail className="mr-2 h-4 w-4" />
                     <span>Email</span>
@@ -87,7 +87,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
                   <DropdownMenuItem
                     onClick={() => {
                       setSelectedDialog('add-msg'),
-                      setIsUnderDevDialogOpen(true);
+                        setIsUnderDevDialogOpen(true);
                     }}>
                     <MessageSquare className="mr-2 h-4 w-4" />
                     <span>Message</span>
@@ -98,7 +98,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
                   <DropdownMenuItem
                     onClick={() => {
                       setSelectedDialog('add-link'),
-                      setIsUnderDevDialogOpen(true);
+                        setIsUnderDevDialogOpen(true);
                     }}>
                     <PlusCircle className="mr-2 h-4 w-4" />
                     <span>More...</span>
@@ -110,7 +110,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
             <DropdownMenuItem
               onClick={() => {
                 setSelectedDialog('support'),
-                setIsUnderDevDialogOpen(true);
+                  setIsUnderDevDialogOpen(true);
               }}>
               <Clock2 className="mr-2 h-4 w-4" />
               <span>Watch</span>
@@ -125,7 +125,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
                   <DropdownMenuItem
                     onClick={() => {
                       setSelectedDialog('sort-az'),
-                      setIsUnderDevDialogOpen(true);
+                        setIsUnderDevDialogOpen(true);
                     }}>
                     <ArrowDownAz className="mr-2 h-4 w-4" />
                     <span>Newest</span>
@@ -133,7 +133,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
                   <DropdownMenuItem
                     onClick={() => {
                       setSelectedDialog('sort-za'),
-                      setIsUnderDevDialogOpen(true);
+                        setIsUnderDevDialogOpen(true);
                     }}>
                     <ArrowUpZA className="mr-2 h-4 w-4" />
                     <span>Oldest</span>
@@ -152,7 +152,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
 
           <DropdownMenuItem onClick={() => {
             setSelectedDialog('support'),
-            setIsUnderDevDialogOpen(true);
+              setIsUnderDevDialogOpen(true);
           }}>
 
             <LifeBuoy className="mr-2 h-4 w-4" />
@@ -185,7 +185,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
           <DialogHeader>
             <DialogTitle>Edit Title</DialogTitle>
             <DialogDescription>
-                Make changes to your task container here. Click save when done.
+              Make changes to your task container here. Click save when done.
             </DialogDescription>
           </DialogHeader>
 
@@ -213,7 +213,7 @@ export const ColumnDropdownMenu = ({deleteColumn, id, updateColumnTitle}) => {
       {/* Others */}
       {
         isUnderDevDialogOpen && selectedDialog !== 'rename' &&
-      <UnderDevDialog isOpen={isUnderDevDialogOpen} setIsOpen={setIsUnderDevDialogOpen} />
+        <UnderDevDialog isOpen={isUnderDevDialogOpen} setIsOpen={setIsUnderDevDialogOpen} />
       }
     </>
   );
