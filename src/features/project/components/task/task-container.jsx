@@ -28,9 +28,6 @@ export const TaskContainer = ({ task }) => {
   const [isShowTaskDetailed, setIsShowTaskDetailed] = useState(false);
   const [remainingDateText, setRemainingDateText] = useState('');
 
-  const [badgeColor, colorWeight] = task.tags.map(tag => tag.color.split('-'));
-
-  console.log(badgeColor, ' - ', colorWeight);
   // Calculate current task size
   useLayoutEffect(() => {
     if (ref.current) {
@@ -150,7 +147,9 @@ export const TaskContainer = ({ task }) => {
 
             <Button
               onClick={() => {
-                console.log('ok');
+                console.log(
+                  'This button is not implemented yet. It will open a dropdown menu.'
+                );
               }}
               variant="ghost"
             >

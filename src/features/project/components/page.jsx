@@ -32,6 +32,7 @@ import { MemberList } from './member-list';
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
   const [isUnderDevDialogOpen, setIsUnderDevDialogOpen] = useState(false);
+  const [selectedTabIdx, setSelectedTabIdx] = useState(0);
 
   return (
     <div className="px-2 py-1 w-full h-dvh overflow-auto ">
@@ -78,6 +79,8 @@ export const Page = () => {
         {/* Board Tab */}
         <div className="flex items-center pl-4">
           <BoardTabGroup
+            selected={selectedTabIdx}
+            setSelected={setSelectedTabIdx}
             isUnderDevDialogOpen={isUnderDevDialogOpen}
             setIsUnderDevDialogOpen={setIsUnderDevDialogOpen}
           />

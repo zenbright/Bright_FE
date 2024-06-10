@@ -29,7 +29,7 @@ const TabGroup = ({
           className={`flex py-3 hover:bg-slate-100/80 hover:rounded-lg px-2 gap-2 text-md font-semibold items-center
             ${
               selected === index
-                ? 'text-yellow-500/80 bg-slate-100/30 rounded-md'
+                ? 'text-black bg-slate-100/30 rounded-md'
                 : ' text-black/50'
             }`}
           onClick={() => handleButtonClick(index)}

@@ -85,7 +85,6 @@ function Notification() {
     toast({
       title: 'You submitted the following values:',
     });
-    console.log('Hello');
   };
 
   const onError = error => {

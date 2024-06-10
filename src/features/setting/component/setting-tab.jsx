@@ -11,7 +11,7 @@ function SettingTab({ tab, tabIndex, selectedActive, handleSelected }) {
         onClick={handleSelected}
       >
         <div
-          className={`flex flex-row gap-2 ${selectedActive === tabIndex ? 'text-blue-700' : ''}`}
+          className={`flex flex-row gap-2 ${selectedActive === tabIndex ? 'text-z-700' : ''}`}
         >
           {tab.icon}
           <h1 className="text-md group-hover:text-blue-700">{tab.name}</h1>
