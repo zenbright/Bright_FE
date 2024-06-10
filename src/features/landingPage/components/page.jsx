@@ -1,24 +1,25 @@
 /* eslint-disable react/prop-types */
-import { Header } from './header';
-import { TypewriterEffectSmooth } from '@/components/ui/typewriter-effect';
-import { Button } from '@/components/ui/button';
-import Background from '../assets/bg-light.svg';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { MissionGroup } from './mission';
-import Meeting from '../assets/meeting.png';
 import BrightLogo from '@/assets/images/app-logo/logomini-dark.svg';
+import { Button } from '@/components/ui/button';
+import { TypewriterEffectSmooth } from '@/components/ui/typewriter-effect';
+import { BRIGHT_EMAIL } from '@/config/constants/strings.global';
 import { Copyright } from 'lucide-react';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+
+import Background from '../assets/bg-light.svg';
+import Facebook from '../assets/ic_facebook.svg';
+import Github from '../assets/ic_github.svg';
+import Meeting from '../assets/meeting.png';
 import {
-  WELCOME_TEXT,
   INTRODUCTION,
   PROMOTION_TEXT,
   TRADEMARK,
+  WELCOME_TEXT,
 } from '../assets/strings';
-import Github from '../assets/ic_github.svg';
-import Facebook from '../assets/ic_facebook.svg';
-import { BRIGHT_EMAIL } from '@/config/constants/strings.global';
+import { Header } from './header';
+import { MissionGroup } from './mission';
 
 export const Page = () => {
   const headerRef = useRef(null);

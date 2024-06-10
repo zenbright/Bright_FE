@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,6 +9,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import PropTypes from 'prop-types';
 
 function LogoutButton({ text, children }) {
   return (

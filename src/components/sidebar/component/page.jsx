@@ -1,18 +1,19 @@
-import DashboardIcon from '../assets/images/dashboard.svg?react';
-import NotificationIcon from '../assets/images/notification.svg?react';
-import CalendarIcon from '../assets/images/calendar.svg?react';
-import MessageIcon from '../assets/images/message.svg?react';
-import SettingIcon from '../assets/images/settings.svg?react';
-import AboutIcon from '../assets/images/about.svg?react';
-import LogoutIcon from '../assets/images/logout.svg?react';
-import NavItem from './nav-item.jsx';
-import UserImageName from './user-image-name.jsx';
-import LogoutButton from './button-logout.jsx';
-import '../styles/font.css';
-import '../styles/sideBarEffect.css';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+
+import AboutIcon from '../assets/images/about.svg?react';
+import CalendarIcon from '../assets/images/calendar.svg?react';
+import DashboardIcon from '../assets/images/dashboard.svg?react';
+import LogoutIcon from '../assets/images/logout.svg?react';
+import MessageIcon from '../assets/images/message.svg?react';
+import NotificationIcon from '../assets/images/notification.svg?react';
+import SettingIcon from '../assets/images/settings.svg?react';
+import '../styles/font.css';
+import '../styles/sideBarEffect.css';
+import LogoutButton from './button-logout.jsx';
+import NavItem from './nav-item.jsx';
 import ProjectDashboard from './project-dashboard.jsx';
+import UserImageName from './user-image-name.jsx';
 
 function Sidebar() {
   const [selectedTab, setSelectedTab] = useState('Dashboard');

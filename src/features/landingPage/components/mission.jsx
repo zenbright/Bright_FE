@@ -1,5 +1,5 @@
-import React from 'react';
 import Meteors from '@/components/ui/meteors';
+import React from 'react';
 
 export const MissionGroup = () => {
   // eslint-disable-next-line react/prop-types

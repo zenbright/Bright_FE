@@ -1,15 +1,16 @@
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 // import {signup} from '../utils/service';
 import { useState } from 'react';
-import { BirthdayPicker } from './birthday-picker';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+
 import { PASSWORD_INPUT_VALIDATOR, SIGN_UP } from '../assets/strings';
 import { SIGN_UP_VALIDATOR } from '../assets/strings';
-import { z } from 'zod';
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { BirthdayPicker } from './birthday-picker';
 
 const formSchema = z
   .object({

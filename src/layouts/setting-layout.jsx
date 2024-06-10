@@ -1,6 +1,7 @@
 import React from 'react';
-import SettingSideBar from '../features/setting/component/setting-side-bar';
 import { Outlet } from 'react-router-dom';
+
+import SettingSideBar from '../features/setting/component/setting-side-bar';
 
 export const SettingLayout = () => {
   return (

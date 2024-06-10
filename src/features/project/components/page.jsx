@@ -1,17 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ProjectBreadCrumbs from './breadcrumbs';
-import Divider from '../../../components/general/divider';
-import { MemberList } from './member-list';
-import { Button } from '@/components/ui/button';
-import {
-  ShieldMinus,
-  Heart,
-  Settings,
-  CircleDot,
-  UserRoundPlus,
-} from 'lucide-react';
-import BoardTabGroup from '../../../components/general/tab-group';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,10 +9,25 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import {
+  CircleDot,
+  Heart,
+  Settings,
+  ShieldMinus,
+  UserRoundPlus,
+} from 'lucide-react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useState } from 'react';
-import { KanbanBoard } from './kanban-board';
-import { SYSTEM_ALERT } from '../../../config/constants/strings.global';
+
+import Divider from '../../../components/general/divider';
+import BoardTabGroup from '../../../components/general/tab-group';
 import { UnderDevDialog } from '../../../components/general/under-development-dialog';
+import { SYSTEM_ALERT } from '../../../config/constants/strings.global';
+import ProjectBreadCrumbs from './breadcrumbs';
+import { KanbanBoard } from './kanban-board';
+import { MemberList } from './member-list';
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);

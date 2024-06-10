@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import ProjectDetail from './project-detail';
+
 import FilterIcon from '../assets/images/filter.svg?react';
-import ProjectIcon from '../assets/images/picon.svg?react';
 import NotFound from '../assets/images/notfound.svg?react';
+import ProjectIcon from '../assets/images/picon.svg?react';
 import { SAMPLE_PROJECT } from '../test/data/project';
+import ProjectDetail from './project-detail';
+
 const projects = SAMPLE_PROJECT;
 
 function ProjectDashboard() {

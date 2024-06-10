@@ -1,12 +1,13 @@
-import { MessagePreview } from '../components/message/messagePreview';
-import image from '../assets/images/rmitlogo.png';
 import { useState } from 'react';
-import { MessageContent } from '../components/message/messageContent';
-import messageNew from '../assets/images/writing.png';
+
 import {
   MESSAGE_TAB_WIDTH,
   NAV_BAR_WIDTH,
 } from '../../../lib/constants/size.global';
+import image from '../assets/images/rmitlogo.png';
+import messageNew from '../assets/images/writing.png';
+import { MessageContent } from '../components/message/messageContent';
+import { MessagePreview } from '../components/message/messagePreview';
 import Sidebar from '../components/screen/sidebar/Sidebar';
 
 export const MessageView = () => {

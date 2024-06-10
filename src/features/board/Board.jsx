@@ -1,11 +1,11 @@
-import React, { useLayoutEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Tldraw,
   createTLStore,
   defaultShapeUtils,
   throttle,
 } from '@tldraw/tldraw';
-import { Button } from '@/components/ui/button';
+import React, { useLayoutEffect, useState } from 'react';
 
 const PERSISTENCE_KEY = 'example-3';
 

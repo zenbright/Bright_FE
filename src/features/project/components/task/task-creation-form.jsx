@@ -1,11 +1,5 @@
-import {
-  TASK_CREATION_DES,
-  TITLE_INPUT_VALIDATOR,
-  TITLE_DES_INPUT_VALIDATOR,
-  END_DATE_INPUT_VALIDATOR,
-  TAGS_INPUT_VALIDATOR,
-} from '../../assets/strings';
 import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
   Dialog,
   DialogContent,
@@ -13,12 +7,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import PropTypes from 'prop-types';
-import { differenceInDays, format } from 'date-fns';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
 import {
   Form,
   FormControl,
@@ -27,17 +15,30 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Calendar } from '@/components/ui/calendar';
+import { Input } from '@/components/ui/input';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { CreatableMultiSelectDropdown } from './creatable-multiselect-menu';
-import { CalendarPlus } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { differenceInDays, format } from 'date-fns';
+import { CalendarPlus } from 'lucide-react';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+
+import {
+  END_DATE_INPUT_VALIDATOR,
+  TAGS_INPUT_VALIDATOR,
+  TASK_CREATION_DES,
+  TITLE_DES_INPUT_VALIDATOR,
+  TITLE_INPUT_VALIDATOR,
+} from '../../assets/strings';
+import { CreatableMultiSelectDropdown } from './creatable-multiselect-menu';
 
 // Define form schema
 const formSchema = z

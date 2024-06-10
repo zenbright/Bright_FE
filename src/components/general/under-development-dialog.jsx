@@ -7,8 +7,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-
 import PropTypes from 'prop-types';
+
 import { BRIGHT_EMAIL } from '../../config/constants/strings.global';
 
 export function UnderDevDialog({ isOpen = false, setIsOpen }) {

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import PropTypes from 'prop-types';
 
 function UserImageName({ text, image }) {
   return (

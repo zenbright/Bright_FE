@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { AudioLines, File } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
-import { SAMPLE_ATTACHMENT_LIST } from './test/values';
-import { File, AudioLines } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
 import { RESULT_NOT_FOUND } from '../../../../../config/constants/strings.global';
+import { SAMPLE_ATTACHMENT_LIST } from './test/values';
 
 // File type mapping
 const FILE_TYPE_MAPPING = {

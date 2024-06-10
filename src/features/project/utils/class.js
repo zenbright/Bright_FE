@@ -1,7 +1,8 @@
+import { differenceInDays } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
+
 // import userDefaultProfile from '../assets/cat.jpg';
 import { DEFAULT_TASK_TAGS } from '../assets/values';
-import { differenceInDays } from 'date-fns';
 
 export class Column {
   constructor(title) {

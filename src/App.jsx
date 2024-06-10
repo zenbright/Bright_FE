@@ -1,24 +1,25 @@
-import 'overlayscrollbars/styles/overlayscrollbars.css';
-import {
-  Route,
-  createBrowserRouter,
-  RouterProvider,
-  createRoutesFromElements,
-  Navigate,
-} from 'react-router-dom';
-import { LandingPage } from './features/landingPage';
-import { AuthenticationPage } from './features/auth';
-import { LandingAuthLayout } from './layouts/landing-auth-layout';
-import { AppLayout } from './layouts/app-layout';
 import ProjectManagementPage from '@/features/project';
+import 'overlayscrollbars/styles/overlayscrollbars.css';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { SettingLayout } from './layouts/setting-layout';
-import Profile from './features/setting/component/profile-page';
-import Notification from './features/setting/component/notification-page';
-import Appearance from './features/setting/component/appearance-page';
-import Account from './features/setting/component/account-page';
+import {
+  Navigate,
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
+
+import { AuthenticationPage } from './features/auth';
 import Board from './features/board/Board';
+import { LandingPage } from './features/landingPage';
+import Account from './features/setting/component/account-page';
+import Appearance from './features/setting/component/appearance-page';
+import Notification from './features/setting/component/notification-page';
+import Profile from './features/setting/component/profile-page';
+import { AppLayout } from './layouts/app-layout';
+import { LandingAuthLayout } from './layouts/landing-auth-layout';
+import { SettingLayout } from './layouts/setting-layout';
 
 // Routing from landing page to its child and sign in paage
 const router = createBrowserRouter(

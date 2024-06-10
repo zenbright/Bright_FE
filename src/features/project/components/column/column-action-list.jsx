@@ -1,19 +1,13 @@
 /* eslint-disable react/prop-types */
+import { Button } from '@/components/ui/button';
 import {
-  LifeBuoy,
-  Mail,
-  Clock2,
-  MessageSquare,
-  Trash2,
-  PlusCircle,
-  UserPlus,
-  ArrowDownAz,
-  ArrowUpZA,
-  ArrowUpDown,
-  Pencil,
-  Menu,
-} from 'lucide-react';
-
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,20 +21,24 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { UnderDevDialog } from '../../../../components/general/under-development-dialog';
-
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import {
+  ArrowDownAz,
+  ArrowUpDown,
+  ArrowUpZA,
+  Clock2,
+  LifeBuoy,
+  Mail,
+  Menu,
+  MessageSquare,
+  Pencil,
+  PlusCircle,
+  Trash2,
+  UserPlus,
+} from 'lucide-react';
 import { useState } from 'react';
+
+import { UnderDevDialog } from '../../../../components/general/under-development-dialog';
 
 export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
   const [selectedDialog, setSelectedDialog] = useState('');

@@ -1,25 +1,26 @@
-import PropTypes from 'prop-types';
-import { Task } from '../../utils/class';
 import { Badge } from '@/components/ui/badge';
-import { MemberList } from '../member-list';
-import Divider from '../../../../components/general/divider';
-import {
-  UserRoundPlus,
-  MoreHorizontal,
-  List,
-  Paperclip,
-  Calendar,
-  Flag,
-} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { differenceInDays } from 'date-fns';
+import {
+  Calendar,
+  Flag,
+  List,
+  MoreHorizontal,
+  Paperclip,
+  UserRoundPlus,
+} from 'lucide-react';
+import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { useLayoutEffect } from 'react';
 import { useState } from 'react';
-import { differenceInDays } from 'date-fns';
-import { DetailedTaskView } from './detailed-task-view';
 import tinycolor from 'tinycolor2';
+
+import Divider from '../../../../components/general/divider';
+import { Task } from '../../utils/class';
+import { MemberList } from '../member-list';
+import { DetailedTaskView } from './detailed-task-view';
 
 export const TaskContainer = ({ task }) => {
   const ref = useRef();

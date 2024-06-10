@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import BrightLogo from '@/assets/images/app-logo/dark.svg';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -6,9 +7,9 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
-import React from 'react';
 import { cn } from '@/lib/utils';
-import BrightLogo from '@/assets/images/app-logo/dark.svg';
+import React from 'react';
+
 import { INTRODUCTION } from '../assets/strings';
 
 export const NavigationMenuGroup = () => {

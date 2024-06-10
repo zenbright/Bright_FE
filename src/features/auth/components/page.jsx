@@ -1,13 +1,14 @@
-import AuthBackground from '../assets/bgimg.png';
-import Loginform from './login-form';
-import Signupform from './signup-form';
 import logo from '@/assets/images/app-logo/logomini-light.svg';
 import { Button } from '@/components/ui/button';
-import { Mail, Github } from 'lucide-react';
+import { Github, Mail } from 'lucide-react';
 import { useState } from 'react';
-import { WEBSITE_NAME } from '../../../config/constants/strings.global';
-import { QUOTE, WEB_BRIEF_INTRO } from '../assets/strings';
 import { NavLink } from 'react-router-dom';
+
+import { WEBSITE_NAME } from '../../../config/constants/strings.global';
+import AuthBackground from '../assets/bgimg.png';
+import { QUOTE, WEB_BRIEF_INTRO } from '../assets/strings';
+import Loginform from './login-form';
+import Signupform from './signup-form';
 
 export const Page = () => {
   const [isUserLogin, setIsUserLogin] = useState(true);

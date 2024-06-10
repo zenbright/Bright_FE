@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unknown-property */
+
 /* eslint-disable react/prop-types */
-import * as React from 'react';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { cn } from '@/lib/utils';
 import { Command as CommandPrimitive } from 'cmdk';
 import { Search } from 'lucide-react';
-
-import { cn } from '@/lib/utils';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import * as React from 'react';
 
 const Command = React.forwardRef(({ className, ...props }, ref) => (
   <CommandPrimitive

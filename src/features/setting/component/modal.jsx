@@ -1,6 +1,7 @@
 import { XCircle } from 'lucide-react';
-import ImageCropper from './image_cropper';
 import PropTypes from 'prop-types';
+
+import ImageCropper from './image_cropper';
 
 const Modal = ({ closeModal }) => {
   return (

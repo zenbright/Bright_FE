@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
+import '../styles/font.css';
 import SettingSideBar from './setting-side-bar';
 
-import '../styles/font.css';
 function SettingPage() {
   return (
     <div className="flex">

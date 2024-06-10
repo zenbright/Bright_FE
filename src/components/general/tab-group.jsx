@@ -1,5 +1,5 @@
+import { FileSpreadsheet, GanttChartSquare, KanbanSquare } from 'lucide-react';
 import PropTypes from 'prop-types';
-import { KanbanSquare, GanttChartSquare, FileSpreadsheet } from 'lucide-react';
 
 const TableNames = [
   { name: 'Board', icon: KanbanSquare },

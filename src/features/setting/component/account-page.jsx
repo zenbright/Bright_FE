@@ -1,13 +1,3 @@
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,11 +9,22 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+
 import { ACCOUNT } from '../test/data/strings';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const formShcema = z
   .object({

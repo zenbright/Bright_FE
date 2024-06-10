@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
-
 import { FaArrowRight } from 'react-icons/fa';
-import { VscOpenPreview } from 'react-icons/vsc';
-import { MdOutlineDesignServices } from 'react-icons/md';
-import { GiProgression } from 'react-icons/gi';
 import { FaUsersViewfinder } from 'react-icons/fa6';
+import { GiProgression } from 'react-icons/gi';
+import { MdOutlineDesignServices } from 'react-icons/md';
 import { MdOutlineReport } from 'react-icons/md';
+import { VscOpenPreview } from 'react-icons/vsc';
 
 function ProjectdDetail({ project, onClose }) {
   const listStyle =

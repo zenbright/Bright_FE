@@ -1,10 +1,4 @@
-import * as React from 'react';
-import { Check, ChevronsUpDown, Pencil } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { DEFAULT_TASK_TAGS } from '../../assets/values';
-import { useState } from 'react';
-import { getRandomColor } from '@/components/utils/color-generator';
-import PropTypes from 'prop-types';
 import {
   Command,
   CommandEmpty,
@@ -17,6 +11,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import { getRandomColor } from '@/components/utils/color-generator';
+import { Check, ChevronsUpDown, Pencil } from 'lucide-react';
+import PropTypes from 'prop-types';
+import * as React from 'react';
+import { useState } from 'react';
+
+import { DEFAULT_TASK_TAGS } from '../../assets/values';
 
 export const CreatableMultiSelectDropdown = ({
   selectedTags,

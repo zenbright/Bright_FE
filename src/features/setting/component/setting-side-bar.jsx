@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import SETTING_TABS from '../test/data/setting';
 import SettingTab from './setting-tab';
-import { useState } from 'react';
 
 function SettingSideBar() {
   const [selectedActive, setSelectedActive] = useState(0);

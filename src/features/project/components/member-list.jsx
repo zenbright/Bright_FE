@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
-import React from 'react';
-import PropTypes from 'prop-types';
 import userDefaultProfile from '@/assets/images/user-profile-default.svg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const sampleMembers = [
   { name: 'John Doe', imageUrl: userDefaultProfile },

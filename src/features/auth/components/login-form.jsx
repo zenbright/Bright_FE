@@ -1,18 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
-// import {login} from '../utils/service';
-// import {setCookie} from '@/components/config/service/cookie';
-import { Input } from '@/components/ui/input';
-import { Button } from '../../../components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { useEffect } from 'react';
-import { SIGN_IN } from '../assets/strings';
-import { PASSWORD_INPUT_VALIDATOR } from '../assets/strings';
-import { useDispatch } from 'react-redux';
-import { setLoginStatus } from '../utils/authSlice';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import {
   Form,
   FormControl,
@@ -20,6 +7,20 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form';
+// import {login} from '../utils/service';
+// import {setCookie} from '@/components/config/service/cookie';
+import { Input } from '@/components/ui/input';
+import { zodResolver } from '@hookform/resolvers/zod';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { z } from 'zod';
+
+import { Button } from '../../../components/ui/button';
+import { SIGN_IN } from '../assets/strings';
+import { PASSWORD_INPUT_VALIDATOR } from '../assets/strings';
+import { setLoginStatus } from '../utils/authSlice';
 
 const formShcema = z.object({
   email: z.string({ required_error: SIGN_IN.REQUIRED }).email(),
