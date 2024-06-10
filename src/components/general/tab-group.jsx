@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
-import {KanbanSquare, GanttChartSquare, FileSpreadsheet} from 'lucide-react';
+import { KanbanSquare, GanttChartSquare, FileSpreadsheet } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const TableNames = [
-  {name: 'Board', icon: KanbanSquare},
-  {name: 'Timeline', icon: GanttChartSquare},
-  {name: 'Sheet', icon: FileSpreadsheet},
+  { name: 'Board', icon: KanbanSquare },
+  { name: 'Timeline', icon: GanttChartSquare },
+  { name: 'Sheet', icon: FileSpreadsheet },
 ];
 
-const TabGroup = ({tableNames = TableNames, setIsUnderDevDialogOpen, selected, setSelected}) => {
+const TabGroup = ({ tableNames = TableNames, setIsUnderDevDialogOpen, selected, setSelected }) => {
   const handleButtonClick = (buttonIndex) => {
     // if (buttonIndex !== 0) {
     //   setIsUnderDevDialogOpen(true);
@@ -17,21 +18,16 @@ const TabGroup = ({tableNames = TableNames, setIsUnderDevDialogOpen, selected, s
   };
 
   return (
-    <div className='flex gap-7 text-sm'>
+    <div className='flex gap-4 text-sm'>
       {tableNames.map((table, index) => (
         <button
           key={index}
           className={
-            `flex gap-2 transition-all duration-75 items-center font-bold py-1
-            ${selected === index ? 'text-blue-700 border-blue-700' : ' text-black/80'}`
-          }
-          style={
-            {
-              maxWidth: '20rem', boxSizing: 'content-box', boxShadow: selected === index ? '0px 1px 0px 0px blue' : 'none',
-            }
+            `flex py-3 hover:bg-slate-100/80 hover:rounded-lg px-2 gap-2 text-md font-semibold items-center
+            ${selected === index ? 'text-blue-600 bg-slate-100/80 rounded-md' : ' text-black/80'}`
           }
           onClick={() => handleButtonClick(index)} >
-          {table.icon && <table.icon className='h-5 w-5' /> }
+          {table.icon && <table.icon className='h-5 w-5' />}
 
           <div>{table.name}</div>
         </button>
