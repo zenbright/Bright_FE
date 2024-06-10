@@ -1,10 +1,10 @@
 import SETTING_TABS from '../test/data/setting';
 import SettingTab from './setting-tab';
-import {useState} from 'react';
+import { useState } from 'react';
 
 function SettingSideBar() {
   const [selectedActive, setSelectedActive] = useState(0);
-  const handleSelected = (index) => {
+  const handleSelected = index => {
     setSelectedActive(index);
   };
 
@@ -14,12 +14,12 @@ function SettingSideBar() {
         {'Setting'}
       </div>
 
-      <div className='px-2'>
+      <div className="px-2">
         {SETTING_TABS.map((tab, index) => (
           <SettingTab
             key={index}
-            tab = {tab}
-            tabIndex = {index}
+            tab={tab}
+            tabIndex={index}
             selectedActive={selectedActive}
             handleSelected={() => handleSelected(index)}
           />

@@ -1,18 +1,18 @@
 /* eslint-disable max-len */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 // import {login} from '../utils/service';
 // import {setCookie} from '@/components/config/service/cookie';
-import {Input} from '@/components/ui/input';
-import {Button} from '../../../components/ui/button';
-import {Checkbox} from '@/components/ui/checkbox';
-import {useEffect} from 'react';
-import {SIGN_IN} from '../assets/strings';
-import {PASSWORD_INPUT_VALIDATOR} from '../assets/strings';
-import {useDispatch} from 'react-redux';
-import {setLoginStatus} from '../utils/authSlice';
-import {zodResolver} from '@hookform/resolvers/zod';
-import {useForm} from 'react-hook-form';
-import {z} from 'zod';
+import { Input } from '@/components/ui/input';
+import { Button } from '../../../components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { useEffect } from 'react';
+import { SIGN_IN } from '../assets/strings';
+import { PASSWORD_INPUT_VALIDATOR } from '../assets/strings';
+import { useDispatch } from 'react-redux';
+import { setLoginStatus } from '../utils/authSlice';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 import {
   Form,
   FormControl,
@@ -22,10 +22,11 @@ import {
 } from '@/components/ui/form';
 
 const formShcema = z.object({
-  email: z.string({required_error: SIGN_IN.REQUIRED}).email(),
-  password: z.string({required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED})
-      .min(6, {message: PASSWORD_INPUT_VALIDATOR.SHORT})
-      .max(50, {message: PASSWORD_INPUT_VALIDATOR.LONG}),
+  email: z.string({ required_error: SIGN_IN.REQUIRED }).email(),
+  password: z
+    .string({ required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED })
+    .min(6, { message: PASSWORD_INPUT_VALIDATOR.SHORT })
+    .max(50, { message: PASSWORD_INPUT_VALIDATOR.LONG }),
   remember: z.boolean().default(false).optional(),
 });
 
@@ -34,7 +35,7 @@ function Loginform() {
   const [account, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
+  const handleLogin = async e => {
     e.preventDefault();
     try {
       // const response = await login(account, password);
@@ -54,13 +55,15 @@ function Loginform() {
       const onGitHubCallback = async () => {
         const code = codeParam;
         try {
-          const response = await axios.post('http://3.27.142.116:4000/bright-backend/api/auth/git',
-              {code});
+          const response = await axios.post(
+            'http://3.27.142.116:4000/bright-backend/api/auth/git',
+            { code }
+          );
           console.log(response);
           return response.data;
         } catch (error) {
           console.error('failed', error);
-        };
+        }
       };
       onGitHubCallback(codeParam);
     }
@@ -78,36 +81,37 @@ function Loginform() {
     console.log('Sign in complete');
   };
 
-  const onError = (error) => {
+  const onError = error => {
     console.log(error);
   };
 
   return (
     <div className="flex flex-col space-y-2 text-center gap-3">
-      <div className='flex flex-col space-y-2 text-center'>
+      <div className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
           {SIGN_IN.TITLE}
         </h1>
 
-        <p className="text-sm text-muted-foreground">
-          {SIGN_IN.DES}
-        </p>
+        <p className="text-sm text-muted-foreground">{SIGN_IN.DES}</p>
       </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit, onError)} className='flex gap-3 flex-col'>
+        <form
+          onSubmit={form.handleSubmit(onSubmit, onError)}
+          className="flex gap-3 flex-col"
+        >
           <FormField
             control={form.control}
             name="email"
-            render={({field}) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input
                     type="email"
                     value={account}
                     placeholder={'Account Email'}
-                    autoComplete='email'
-                    onChange={(e) => setEmail(e.target.value)}
-                    className='border border-black/20 focus:border-transparent'
+                    autoComplete="email"
+                    onChange={e => setEmail(e.target.value)}
+                    className="border border-black/20 focus:border-transparent"
                     {...field}
                   />
                 </FormControl>
@@ -117,16 +121,16 @@ function Loginform() {
           <FormField
             control={form.control}
             name="password"
-            render={({field}) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input
                     type="password"
                     value={password}
-                    autoComplete='current-password'
+                    autoComplete="current-password"
                     placeholder={'Password'}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className='border border-black/30 focus:border-transparent'
+                    onChange={e => setPassword(e.target.value)}
+                    className="border border-black/30 focus:border-transparent"
                     {...field}
                   />
                 </FormControl>
@@ -147,9 +151,11 @@ function Loginform() {
             <FormField
               control={form.control}
               name="remember"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem className="flex items-center space-x-2">
-                  <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Remember me</FormLabel>
+                  <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    Remember me
+                  </FormLabel>
 
                   <FormItem>
                     <FormControl>
@@ -166,7 +172,8 @@ function Loginform() {
 
           <a
             href="#"
-            className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
+            className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+          >
             {'Forgot password?'}
           </a>
         </div>

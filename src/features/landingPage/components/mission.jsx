@@ -3,7 +3,7 @@ import Meteors from '@/components/ui/meteors';
 
 export const MissionGroup = () => {
   // eslint-disable-next-line react/prop-types
-  const FeaturedButton = ({title, des}) => {
+  const FeaturedButton = ({ title, des }) => {
     return (
       <div>
         <div className=" w-full relative max-w-xs">
@@ -26,9 +26,7 @@ export const MissionGroup = () => {
               </svg>
             </div>
 
-            <h1 className="font-bold text-xl mb-4 relative z-30">
-              {title}
-            </h1>
+            <h1 className="font-bold text-xl mb-4 relative z-30">{title}</h1>
 
             <p className="font-normal text-base text-slate-500 mb-4 relative z-30">
               {des}
@@ -47,26 +45,34 @@ export const MissionGroup = () => {
   };
 
   return (
-    <div className='flex flex-col gap-6 items-center'>
-      <div className='font-bold text-5xl self-center'>Our Missions</div>
-      <div className=' font text-lg font-semibold max-w-xl text-center'>{'Through collaboration and expertise, we provide the tools and resources you need to achieve your goals.'}</div>
+    <div className="flex flex-col gap-6 items-center">
+      <div className="font-bold text-5xl self-center">Our Missions</div>
+      <div className=" font text-lg font-semibold max-w-xl text-center">
+        {
+          'Through collaboration and expertise, we provide the tools and resources you need to achieve your goals.'
+        }
+      </div>
 
-      <div className='flex gap-8 mt-4'>
+      <div className="flex gap-8 mt-4">
         <FeaturedButton
-          title='For Project Managers'
-          des='Seamless management for individuals and enterprises. Achieve peak productivity.' />
-
-        <FeaturedButton
-          title='For Freelancers'
-          des='Work smarter, not harder. Manage your projects efficiently and stay organized with our flexible tools.' />
-
-        <FeaturedButton
-          title='For Educators & Trainers'
-          des='Manage courses effectively and achieve learning goals with our easy-to-use tools.' />
+          title="For Project Managers"
+          des="Seamless management for individuals and enterprises. Achieve peak productivity."
+        />
 
         <FeaturedButton
-          title='For Remote Teams'
-          des='Connect and collaborate effortlessly to stay on top of projects even when working miles apart.' />
+          title="For Freelancers"
+          des="Work smarter, not harder. Manage your projects efficiently and stay organized with our flexible tools."
+        />
+
+        <FeaturedButton
+          title="For Educators & Trainers"
+          des="Manage courses effectively and achieve learning goals with our easy-to-use tools."
+        />
+
+        <FeaturedButton
+          title="For Remote Teams"
+          des="Connect and collaborate effortlessly to stay on top of projects even when working miles apart."
+        />
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 'use client';
-import {cn} from '@/lib/utils';
-import React, {useEffect, useRef} from 'react';
-import {createNoise3D} from 'simplex-noise';
+import { cn } from '@/lib/utils';
+import React, { useEffect, useRef } from 'react';
+import { createNoise3D } from 'simplex-noise';
 
 const WavyBackground = ({
   children,
@@ -17,7 +17,13 @@ const WavyBackground = ({
   ...props
 }) => {
   const noise = createNoise3D();
-  let w; let h; let nt; let i; let x; let ctx; let canvas;
+  let w;
+  let h;
+  let nt;
+  let i;
+  let x;
+  let ctx;
+  let canvas;
   const canvasRef = useRef(null);
   const getSpeed = () => {
     switch (speed) {
@@ -37,7 +43,7 @@ const WavyBackground = ({
     h = ctx.canvas.height = window.innerHeight;
     ctx.filter = `blur(${blur}px)`;
     nt = 0;
-    window.onresize = function() {
+    window.onresize = function () {
       w = ctx.canvas.width = window.innerWidth;
       h = ctx.canvas.height = window.innerHeight;
       ctx.filter = `blur(${blur}px)`;
@@ -52,7 +58,7 @@ const WavyBackground = ({
     '#e879f9',
     '#22d3ee',
   ];
-  const drawWave = (n) => {
+  const drawWave = n => {
     nt += getSpeed();
     for (i = 0; i < n; i++) {
       ctx.beginPath();
@@ -86,8 +92,8 @@ const WavyBackground = ({
   return (
     <div
       className={cn(
-          'h-screen flex flex-col items-center justify-center',
-          containerClassName,
+        'h-screen flex flex-col items-center justify-center',
+        containerClassName
       )}
     >
       <canvas

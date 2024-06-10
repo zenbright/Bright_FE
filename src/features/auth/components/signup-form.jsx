@@ -1,35 +1,32 @@
 import React from 'react';
 // import {signup} from '../utils/service';
-import {useState} from 'react';
-import {BirthdayPicker} from './birthday-picker';
-import {Input} from '@/components/ui/input';
-import {Button} from '@/components/ui/button';
-import {PASSWORD_INPUT_VALIDATOR, SIGN_UP} from '../assets/strings';
-import {SIGN_UP_VALIDATOR} from '../assets/strings';
-import {z} from 'zod';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-} from '@/components/ui/form';
-import {useForm} from 'react-hook-form';
-import {zodResolver} from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { BirthdayPicker } from './birthday-picker';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { PASSWORD_INPUT_VALIDATOR, SIGN_UP } from '../assets/strings';
+import { SIGN_UP_VALIDATOR } from '../assets/strings';
+import { z } from 'zod';
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-const formSchema = z.object({
-  firstname: z.string({required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED}),
-  lastname: z.string({required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED}),
-  email: z.string({required_error: SIGN_UP_VALIDATOR.EMAIL}).email(),
-  password: z.string({required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED})
-      .min(6, {message: PASSWORD_INPUT_VALIDATOR.SHORT})
-      .max(50, {message: PASSWORD_INPUT_VALIDATOR.LONG}),
-  confirm_password: z.string(PASSWORD_INPUT_VALIDATOR.RE_CONFIRM),
-  dob: z.date().optional(),
-}).refine((data) => data.password === data.confirm_password, {
-  message: 'New password and confirm password must be match',
-  path: ['confirm_password'],
-});
-
+const formSchema = z
+  .object({
+    firstname: z.string({ required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED }),
+    lastname: z.string({ required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED }),
+    email: z.string({ required_error: SIGN_UP_VALIDATOR.EMAIL }).email(),
+    password: z
+      .string({ required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED })
+      .min(6, { message: PASSWORD_INPUT_VALIDATOR.SHORT })
+      .max(50, { message: PASSWORD_INPUT_VALIDATOR.LONG }),
+    confirm_password: z.string(PASSWORD_INPUT_VALIDATOR.RE_CONFIRM),
+    dob: z.date().optional(),
+  })
+  .refine(data => data.password === data.confirm_password, {
+    message: 'New password and confirm password must be match',
+    path: ['confirm_password'],
+  });
 
 function Signupform() {
   const [account, setFname] = useState('');
@@ -39,7 +36,7 @@ function Signupform() {
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
 
-  const handleSignUp = async (e) => {
+  const handleSignUp = async e => {
     e.preventDefault();
 
     try {
@@ -65,35 +62,36 @@ function Signupform() {
     console.log('Account created');
   };
 
-  const onError = (error) => {
+  const onError = error => {
     console.log(error);
   };
 
   return (
-    <div className='flex flex-col space-y-2 text-center' >
-      <div className='flex flex-col space-y-2 text-center'>
+    <div className="flex flex-col space-y-2 text-center">
+      <div className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
           {SIGN_UP.TITLE}
         </h1>
-        <p className="text-sm text-muted-foreground">
-          {SIGN_UP.DES}
-        </p>
+        <p className="text-sm text-muted-foreground">{SIGN_UP.DES}</p>
       </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit, onError)} className='space-y-2'>
-          <div className='flex flex-cols-2 gap-2'>
+        <form
+          onSubmit={form.handleSubmit(onSubmit, onError)}
+          className="space-y-2"
+        >
+          <div className="flex flex-cols-2 gap-2">
             <FormField
               control={form.control}
               name="firstname"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
                       type="text"
                       value={account}
                       placeholder={'First Name'}
-                      onChange={(e) => setFname(e.target.value)}
-                      className='border border-black/30 focus:border-transparent'
+                      onChange={e => setFname(e.target.value)}
+                      className="border border-black/30 focus:border-transparent"
                       {...field}
                     />
                   </FormControl>
@@ -103,15 +101,15 @@ function Signupform() {
             <FormField
               control={form.control}
               name="lastname"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
                       type="text"
                       value={fullname}
                       placeholder={'Last Name'}
-                      onChange={(e) => setLname(e.target.value)}
-                      className='border border-black/30 focus:border-transparent'
+                      onChange={e => setLname(e.target.value)}
+                      className="border border-black/30 focus:border-transparent"
                       {...field}
                     />
                   </FormControl>
@@ -125,16 +123,16 @@ function Signupform() {
           <FormField
             control={form.control}
             name="email"
-            render={({field}) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input
                     type="email"
                     value={email}
                     placeholder={'Email Address'}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={e => setEmail(e.target.value)}
                     autoComplete={'email'}
-                    className='border border-black/30 focus:border-transparent'
+                    className="border border-black/30 focus:border-transparent"
                     {...field}
                   />
                 </FormControl>
@@ -144,16 +142,16 @@ function Signupform() {
           <FormField
             control={form.control}
             name="password"
-            render={({field}) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input
                     type="password"
                     value={password}
                     placeholder={'Password'}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={e => setPassword(e.target.value)}
                     autoComplete={'new-password'}
-                    className='border border-black/30 focus:border-transparent'
+                    className="border border-black/30 focus:border-transparent"
                     {...field}
                   />
                 </FormControl>
@@ -163,15 +161,15 @@ function Signupform() {
           <FormField
             control={form.control}
             name="confirm_password"
-            render={({field}) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input
                     type="password"
                     value={cpassword}
                     placeholder={'Confirm your Password'}
-                    onChange={(e) => setCPassword(e.target.value)}
-                    className='border border-black/30 focus:border-transparent'
+                    onChange={e => setCPassword(e.target.value)}
+                    className="border border-black/30 focus:border-transparent"
                     autoComplete={'new-password'}
                     {...field}
                   />

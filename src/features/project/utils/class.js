@@ -1,7 +1,7 @@
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 // import userDefaultProfile from '../assets/cat.jpg';
-import {DEFAULT_TASK_TAGS} from '../assets/values';
-import {differenceInDays} from 'date-fns';
+import { DEFAULT_TASK_TAGS } from '../assets/values';
+import { differenceInDays } from 'date-fns';
 
 export class Column {
   constructor(title) {
@@ -30,9 +30,10 @@ export class Task {
   }
 
   createTags(tags) {
-    return tags.map((tag) => {
+    return tags.map(tag => {
       const tagParts = tag.split('-');
-      const tagTitle = tagParts[0].charAt(0).toUpperCase() + tagParts[0].slice(1);
+      const tagTitle =
+        tagParts[0].charAt(0).toUpperCase() + tagParts[0].slice(1);
       const tagColor = tagParts[1];
 
       return new TaskTag(this.id, tagTitle, tagColor);
@@ -48,6 +49,8 @@ export class TaskTag {
     this.id = uuidv4();
     this.taskId = taskId;
     this.title = title;
-    this.color = color ? color : DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
+    this.color = color
+      ? color
+      : DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
   }
 }

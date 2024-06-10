@@ -11,7 +11,7 @@ import LogoutButton from './button-logout.jsx';
 import '../styles/font.css';
 import '../styles/sideBarEffect.css';
 import PropTypes from 'prop-types';
-import {useState} from 'react';
+import { useState } from 'react';
 import ProjectDashboard from './project-dashboard.jsx';
 
 function Sidebar() {
@@ -32,7 +32,7 @@ function Sidebar() {
             select={selectedTab === 'Dashboard'}
             onClick={setSelectedTab}
           >
-            <DashboardIcon className="w-5 h-5 hover:fill-white"/>
+            <DashboardIcon className="w-5 h-5 hover:fill-white" />
             <div className="grandchild-content hidden absolute left-[18vw] top-[-77px] h-screen">
               <ProjectDashboard />
             </div>
@@ -43,7 +43,7 @@ function Sidebar() {
             select={selectedTab === 'Notification'}
             onClick={setSelectedTab}
           >
-            <NotificationIcon className="w-5 h-5"/>
+            <NotificationIcon className="w-5 h-5" />
           </NavItem>
 
           <NavItem
@@ -51,7 +51,7 @@ function Sidebar() {
             select={selectedTab === 'Schedule'}
             onClick={setSelectedTab}
           >
-            <CalendarIcon className="w-5 h-5 "/>
+            <CalendarIcon className="w-5 h-5 " />
           </NavItem>
 
           <NavItem
@@ -59,7 +59,7 @@ function Sidebar() {
             select={selectedTab === 'Message'}
             onClick={setSelectedTab}
           >
-            <MessageIcon className="w-5 h-5 "/>
+            <MessageIcon className="w-5 h-5 " />
           </NavItem>
 
           <NavItem
@@ -67,7 +67,7 @@ function Sidebar() {
             select={selectedTab === 'Settings'}
             onClick={setSelectedTab}
           >
-            <SettingIcon className="w-5 h-5 "/>
+            <SettingIcon className="w-5 h-5 " />
           </NavItem>
 
           <NavItem
@@ -75,14 +75,14 @@ function Sidebar() {
             select={selectedTab === 'About'}
             onClick={setSelectedTab}
           >
-            <AboutIcon className="w-5 h-5 "/>
+            <AboutIcon className="w-5 h-5 " />
           </NavItem>
         </div>
 
         {/* Logout button */}
         <div className="w-full pb-1">
           <LogoutButton text={'Logout'}>
-            <LogoutIcon className="w-5 h-5 "/>
+            <LogoutIcon className="w-5 h-5 " />
           </LogoutButton>
         </div>
       </div>

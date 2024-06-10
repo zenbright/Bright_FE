@@ -7,7 +7,7 @@ function SettingPage() {
     <div className="flex">
       {/* Setting Page Section */}
       <div>
-        <SettingSideBar/>
+        <SettingSideBar />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
-import {Input} from '@/components/ui/input';
-import {Button} from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -19,29 +19,32 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import {zodResolver} from '@hookform/resolvers/zod';
-import {useForm} from 'react-hook-form';
-import {z} from 'zod';
-import {ACCOUNT} from '../test/data/strings';
-import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { ACCOUNT } from '../test/data/strings';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
-
-const formShcema = z.object({
-  old_password: z.string().trim().min(6),
-  new_password: z.string({
-    required_error: ACCOUNT.NEW_PASSWORD_REQUIRED,
-  })
+const formShcema = z
+  .object({
+    old_password: z.string().trim().min(6),
+    new_password: z
+      .string({
+        required_error: ACCOUNT.NEW_PASSWORD_REQUIRED,
+      })
       .trim()
       .min(6),
-  re_confirm_password: z.string({
-    required_error: ACCOUNT.CONFIRM_PASSWORD_REQUIRED,
-  })
+    re_confirm_password: z
+      .string({
+        required_error: ACCOUNT.CONFIRM_PASSWORD_REQUIRED,
+      })
       .trim()
       .min(6),
-}).refine((data) => data.new_password === data.re_confirm_password, {
-  message: 'New password and confirm password must be match',
-  path: ['re_confirm_password'],
-});
+  })
+  .refine(data => data.new_password === data.re_confirm_password, {
+    message: 'New password and confirm password must be match',
+    path: ['re_confirm_password'],
+  });
 
 function Account() {
   const form = useForm({
@@ -57,14 +60,12 @@ function Account() {
     console.log('Submitted');
   };
 
-  const onError = (error) => {
+  const onError = error => {
     console.log(error);
   };
 
   return (
-
     <OverlayScrollbarsComponent>
-
       <div className="container-ns flex flex-col w-[75vw] overflow-auto">
         <div className="z-30 mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-white">
           {'Account'}
@@ -77,23 +78,27 @@ function Account() {
 
           <div className="mx-3 p-2 space-y-4">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit({onSubmit, onError})}>
+              <form onSubmit={form.handleSubmit({ onSubmit, onError })}>
                 {/* To support accesibility */}
                 <input hidden type="text" autoComplete="username" />
 
                 <FormField
                   control={form.control}
                   name="old_password"
-                  render={({field}) => (
+                  render={({ field }) => (
                     <FormItem className="flex flex-col">
                       <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
-                        <FormLabel className="font-semibold text-base">{'Old password'}</FormLabel>
+                        <FormLabel className="font-semibold text-base">
+                          {'Old password'}
+                        </FormLabel>
                         <FormControl>
                           <Input
                             autoComplete="current-password"
-                            placeholder="Old password" {...field}
+                            placeholder="Old password"
+                            {...field}
                             type="password"
-                            className="w-[350px]" />
+                            className="w-[350px]"
+                          />
                         </FormControl>
                       </div>
                       <FormMessage />
@@ -104,16 +109,20 @@ function Account() {
                 <FormField
                   control={form.control}
                   name="new_password"
-                  render={({field}) => (
+                  render={({ field }) => (
                     <FormItem className="flex flex-col">
                       <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
-                        <FormLabel className="font-semibold text-base">{'New password'}</FormLabel>
+                        <FormLabel className="font-semibold text-base">
+                          {'New password'}
+                        </FormLabel>
                         <FormControl>
                           <Input
                             autoComplete="new-password"
-                            placeholder="New password" {...field}
+                            placeholder="New password"
+                            {...field}
                             type="password"
-                            className="w-[350px]" />
+                            className="w-[350px]"
+                          />
                         </FormControl>
                       </div>
                       <FormMessage />
@@ -124,16 +133,20 @@ function Account() {
                 <FormField
                   control={form.control}
                   name="re_confirm_password"
-                  render={({field}) => (
+                  render={({ field }) => (
                     <FormItem className="flex flex-col">
                       <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
-                        <FormLabel className="font-semibold text-base">{'Confirm new password'}</FormLabel>
+                        <FormLabel className="font-semibold text-base">
+                          {'Confirm new password'}
+                        </FormLabel>
                         <FormControl>
                           <Input
                             autoComplete="new-password"
-                            placeholder="Confirm new password" {...field}
+                            placeholder="Confirm new password"
+                            {...field}
                             type="password"
-                            className="w-[350px]" />
+                            className="w-[350px]"
+                          />
                         </FormControl>
                       </div>
                       <FormMessage />
@@ -160,7 +173,9 @@ function Account() {
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>{'Are you absolutely sure?'}</AlertDialogTitle>
+                  <AlertDialogTitle>
+                    {'Are you absolutely sure?'}
+                  </AlertDialogTitle>
                   <AlertDialogDescription>
                     {ACCOUNT.ALERT}
                   </AlertDialogDescription>

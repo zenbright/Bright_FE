@@ -2,12 +2,12 @@ import AuthBackground from '../assets/bgimg.png';
 import Loginform from './login-form';
 import Signupform from './signup-form';
 import logo from '@/assets/images/app-logo/logomini-light.svg';
-import {Button} from '@/components/ui/button';
-import {Mail, Github} from 'lucide-react';
-import {useState} from 'react';
-import {WEBSITE_NAME} from '../../../config/constants/strings.global';
-import {QUOTE, WEB_BRIEF_INTRO} from '../assets/strings';
-import {NavLink} from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Mail, Github } from 'lucide-react';
+import { useState } from 'react';
+import { WEBSITE_NAME } from '../../../config/constants/strings.global';
+import { QUOTE, WEB_BRIEF_INTRO } from '../assets/strings';
+import { NavLink } from 'react-router-dom';
 
 export const Page = () => {
   const [isUserLogin, setIsUserLogin] = useState(true);
@@ -19,54 +19,54 @@ export const Page = () => {
   };
 
   const redirectGoogleOAuth = () => {
-    window.open('http://127.0.0.1:4000/bright-backend/api/auth/google', '_self');
+    window.open(
+      'http://127.0.0.1:4000/bright-backend/api/auth/google',
+      '_self'
+    );
   };
 
   const redirectGitHubOAuth = () => {
-    window.location.href = 'https://github.com/login/oauth/authorize?client_id=ce0a3e8be7b81c84ee8d';
+    window.location.href =
+      'https://github.com/login/oauth/authorize?client_id=ce0a3e8be7b81c84ee8d';
   };
 
   return (
     <div>
       {/* Side Background */}
-      <div className='md:hidden'>
+      <div className="md:hidden">
         <div style={divStyle} alt="Authentication" className="block" />
       </div>
 
-      <div className='container relative hidden min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0'>
+      <div className="container relative hidden min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Button
           href="/login"
-          className = "absolute right-4 top-4 md:right-8 md:top-8"
+          className="absolute right-4 top-4 md:right-8 md:top-8"
           onClick={() => setIsUserLogin(!isUserLogin)}
         >
           {isUserLogin ? 'Create account' : 'Sign In'}
         </Button>
 
         {/* Side panel */}
-        <div className='relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r'>
-          <div className='absolute inset-0' style={divStyle}/>
+        <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
+          <div className="absolute inset-0" style={divStyle} />
 
-          <div className='relative z-20 flex items-center text-lg font-medium hover:cursor-pointer'>
+          <div className="relative z-20 flex items-center text-lg font-medium hover:cursor-pointer">
             <NavLink to={'/'}>
-              <img src={logo} alt='logo' className='object-contain w-40' />
+              <img src={logo} alt="logo" className="object-contain w-40" />
             </NavLink>
           </div>
 
-          <div className='relative z-20 mt-auto'>
-            <div className='mb-10'>
-              <h1 className='text-4xl font-bold'>
+          <div className="relative z-20 mt-auto">
+            <div className="mb-10">
+              <h1 className="text-4xl font-bold">
                 {WEBSITE_NAME.toUpperCase()}
               </h1>
 
-              <h1 className='text-lg'>
-                {WEB_BRIEF_INTRO}
-              </h1>
+              <h1 className="text-lg">{WEB_BRIEF_INTRO}</h1>
             </div>
 
             <blockquote className="space-y-2">
-              <p className="text-xl italic" >
-                {`“${QUOTE.CONTENT}”`}
-              </p>
+              <p className="text-xl italic">{`“${QUOTE.CONTENT}”`}</p>
 
               <footer className="text-lg font-semibold"> {QUOTE.BY} </footer>
             </blockquote>
@@ -74,9 +74,9 @@ export const Page = () => {
         </div>
 
         {/* Auth Form */}
-        <div className='lg:p-8'>
-          <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
-            { isUserLogin ? <Loginform/> : <Signupform />}
+        <div className="lg:p-8">
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+            {isUserLogin ? <Loginform /> : <Signupform />}
 
             {/* Other login methods */}
             <div className="relative">
