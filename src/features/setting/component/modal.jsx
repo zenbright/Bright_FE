@@ -1,8 +1,9 @@
-import {XCircle} from 'lucide-react';
-import ImageCropper from './image_cropper';
+import { XCircle } from 'lucide-react';
 import PropTypes from 'prop-types';
 
-const Modal = ({closeModal}) => {
+import ImageCropper from './image_cropper';
+
+const Modal = ({ closeModal }) => {
   return (
     <div
       className="relative z-50"
@@ -23,7 +24,7 @@ const Modal = ({closeModal}) => {
                 <span className="sr-only">Close menu</span>
                 <XCircle />
               </button>
-              <ImageCropper/>
+              <ImageCropper />
             </div>
           </div>
         </div>

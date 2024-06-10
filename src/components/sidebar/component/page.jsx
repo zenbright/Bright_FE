@@ -1,18 +1,19 @@
-import DashboardIcon from '../assets/images/dashboard.svg?react';
-import NotificationIcon from '../assets/images/notification.svg?react';
-import CalendarIcon from '../assets/images/calendar.svg?react';
-import MessageIcon from '../assets/images/message.svg?react';
-import SettingIcon from '../assets/images/settings.svg?react';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+
 import AboutIcon from '../assets/images/about.svg?react';
+import CalendarIcon from '../assets/images/calendar.svg?react';
+import DashboardIcon from '../assets/images/dashboard.svg?react';
 import LogoutIcon from '../assets/images/logout.svg?react';
-import NavItem from './nav-item.jsx';
-import UserImageName from './user-image-name.jsx';
-import LogoutButton from './button-logout.jsx';
+import MessageIcon from '../assets/images/message.svg?react';
+import NotificationIcon from '../assets/images/notification.svg?react';
+import SettingIcon from '../assets/images/settings.svg?react';
 import '../styles/font.css';
 import '../styles/sideBarEffect.css';
-import PropTypes from 'prop-types';
-import {useState} from 'react';
+import LogoutButton from './button-logout.jsx';
+import NavItem from './nav-item.jsx';
 import ProjectDashboard from './project-dashboard.jsx';
+import UserImageName from './user-image-name.jsx';
 
 function Sidebar() {
   const [selectedTab, setSelectedTab] = useState('Dashboard');
@@ -32,7 +33,7 @@ function Sidebar() {
             select={selectedTab === 'Dashboard'}
             onClick={setSelectedTab}
           >
-            <DashboardIcon className="w-5 h-5 hover:fill-white"/>
+            <DashboardIcon className="w-5 h-5 hover:fill-white" />
             <div className="grandchild-content hidden absolute left-[18vw] top-[-77px] h-screen">
               <ProjectDashboard />
             </div>
@@ -43,7 +44,7 @@ function Sidebar() {
             select={selectedTab === 'Notification'}
             onClick={setSelectedTab}
           >
-            <NotificationIcon className="w-5 h-5"/>
+            <NotificationIcon className="w-5 h-5" />
           </NavItem>
 
           <NavItem
@@ -51,7 +52,7 @@ function Sidebar() {
             select={selectedTab === 'Schedule'}
             onClick={setSelectedTab}
           >
-            <CalendarIcon className="w-5 h-5 "/>
+            <CalendarIcon className="w-5 h-5 " />
           </NavItem>
 
           <NavItem
@@ -59,7 +60,7 @@ function Sidebar() {
             select={selectedTab === 'Message'}
             onClick={setSelectedTab}
           >
-            <MessageIcon className="w-5 h-5 "/>
+            <MessageIcon className="w-5 h-5 " />
           </NavItem>
 
           <NavItem
@@ -67,7 +68,7 @@ function Sidebar() {
             select={selectedTab === 'Settings'}
             onClick={setSelectedTab}
           >
-            <SettingIcon className="w-5 h-5 "/>
+            <SettingIcon className="w-5 h-5 " />
           </NavItem>
 
           <NavItem
@@ -75,14 +76,14 @@ function Sidebar() {
             select={selectedTab === 'About'}
             onClick={setSelectedTab}
           >
-            <AboutIcon className="w-5 h-5 "/>
+            <AboutIcon className="w-5 h-5 " />
           </NavItem>
         </div>
 
         {/* Logout button */}
         <div className="w-full pb-1">
           <LogoutButton text={'Logout'}>
-            <LogoutIcon className="w-5 h-5 "/>
+            <LogoutIcon className="w-5 h-5 " />
           </LogoutButton>
         </div>
       </div>

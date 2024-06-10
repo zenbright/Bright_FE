@@ -1,5 +1,3 @@
-import { CheckSquare, Folder, BookOpenText } from 'lucide-react'
-
 export const DEFAULT_TASK_TAGS = {
     'Medium': {
         value: 'medium',
@@ -54,8 +52,7 @@ export const DEFAULT_TASK_TAGS = {
 };
 
 export const TASK_DETAILED_TABS = [
-    { name: 'Overview', icon: '' },
-    { name: 'Tasks', icon: '' },
-    { name: 'Files', icon: '' },
-    { name: 'Discussions', icon: '' },
+    { name: 'Overview' },
+    { name: 'To-dos' },
+    { name: 'Files' },
 ];

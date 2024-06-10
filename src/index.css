@@ -1,6 +1,6 @@
-@import "fonts.css";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap");
-@import url("@tldraw/tldraw/tldraw.css");
+@import 'fonts.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap');
+@import url('@tldraw/tldraw/tldraw.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -78,12 +78,10 @@
 
 @layer utilities {
   @variants responsive {
-
     /* Hide scrollbar for Chrome, Safari, and Opera */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
-
 
     /* Hide scrollbar for IE, Edge, and Firefox */
     .no-scrollbar {
@@ -103,17 +101,17 @@
   font-family: nunito;
 }
 
-@layer utilities{
-    .no-scrollbar::-webkit-scrollbar{
-        display: none;
-    }
-    
-    .no-scrollbar{
-        -ms-overflow-style: auto;
-        scrollbar-width: none;
-    }
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: auto;
+    scrollbar-width: none;
+  }
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }

@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 export const LandingAuthLayout = () => {
   return (
-    <div >
+    <div>
       <Outlet />
     </div>
   );

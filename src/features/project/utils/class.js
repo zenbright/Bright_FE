@@ -1,7 +1,8 @@
+import { differenceInDays } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
+
 // import userDefaultProfile from '../assets/cat.jpg';
 import { DEFAULT_TASK_TAGS } from '../assets/values';
-import { differenceInDays } from 'date-fns';
 
 export class Column {
   constructor(title) {
@@ -30,22 +31,17 @@ export class Task {
   }
 
   createTags(tags) {
-    return tags.map((tag) => TaskTag.parseTag(tag));
-  }
+    return tags.map(tag => {
+      const tagParts = tag.split('-');
+      const tagTitle =
+        tagParts[0].charAt(0).toUpperCase() + tagParts[0].slice(1);
+      const tagColor = tagParts[1];
 
+      return new TaskTag(this.id, tagTitle, tagColor);
+    });
+  }
   addTags(newTags) {
     this.tags = [...this.tags, ...this.createTags(newTags)];
-  }
-
-  update(title, des, startDate, endDate, tags) {
-    this.title = title !== undefined ? title : this.title;
-    this.des = des !== undefined ? des : this.des;
-    this.startDate = startDate !== undefined ? startDate : this.startDate;
-    this.endDate = endDate !== undefined ? endDate : this.endDate;
-
-    if (tags !== undefined) {
-      this.tags = this.createTags(tags);
-    }
   }
 }
 
@@ -54,18 +50,8 @@ export class TaskTag {
     this.id = uuidv4();
     this.taskId = taskId;
     this.title = title;
-    this.color = color ? color : DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
-  }
-
-  static parseTag(tag) {
-    const tagParts = tag.split('-');
-    const tagTitle = tagParts[0].charAt(0).toUpperCase() + tagParts[0].slice(1);
-    const tagColor = tagParts[1];
-
-    return new TaskTag(null, tagTitle, tagColor);
-  }
-
-  static toString(tag) {
-    return tag ? `${tag.title.toLowerCase()}-${tag.color}` : '';
+    this.color = color
+      ? color
+      : DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
   }
 }

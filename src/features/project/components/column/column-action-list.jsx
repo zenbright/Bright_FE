@@ -1,19 +1,13 @@
 /* eslint-disable react/prop-types */
+import { Button } from '@/components/ui/button';
 import {
-  LifeBuoy,
-  Mail,
-  Clock2,
-  MessageSquare,
-  Trash2,
-  PlusCircle,
-  UserPlus,
-  ArrowDownAz,
-  ArrowUpZA,
-  ArrowUpDown,
-  Pencil,
-  Menu,
-} from 'lucide-react';
-
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,20 +21,24 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { UnderDevDialog } from '../../../../components/general/under-development-dialog';
-
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import {
+  ArrowDownAz,
+  ArrowUpDown,
+  ArrowUpZA,
+  Clock2,
+  LifeBuoy,
+  Mail,
+  Menu,
+  MessageSquare,
+  Pencil,
+  PlusCircle,
+  Trash2,
+  UserPlus,
+} from 'lucide-react';
 import { useState } from 'react';
+
+import { UnderDevDialog } from '../../../../components/general/under-development-dialog';
 
 export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
   const [selectedDialog, setSelectedDialog] = useState('');
@@ -60,7 +58,7 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Menu className='mr-2 w-5 h-5 hover:bg-slate-200 hover:rounded-full' />
+          <Menu className="mr-2 w-5 h-5 hover:bg-slate-100 hover:rounded-full" />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>Action Menu</DropdownMenuLabel>
@@ -79,7 +77,8 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
                     onClick={() => {
                       setSelectedDialog('add-mail'),
                         setIsUnderDevDialogOpen(true);
-                    }}>
+                    }}
+                  >
                     <Mail className="mr-2 h-4 w-4" />
                     <span>Email</span>
                   </DropdownMenuItem>
@@ -88,7 +87,8 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
                     onClick={() => {
                       setSelectedDialog('add-msg'),
                         setIsUnderDevDialogOpen(true);
-                    }}>
+                    }}
+                  >
                     <MessageSquare className="mr-2 h-4 w-4" />
                     <span>Message</span>
                   </DropdownMenuItem>
@@ -99,19 +99,19 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
                     onClick={() => {
                       setSelectedDialog('add-link'),
                         setIsUnderDevDialogOpen(true);
-                    }}>
+                    }}
+                  >
                     <PlusCircle className="mr-2 h-4 w-4" />
                     <span>More...</span>
                   </DropdownMenuItem>
-
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub>
             <DropdownMenuItem
               onClick={() => {
-                setSelectedDialog('support'),
-                  setIsUnderDevDialogOpen(true);
-              }}>
+                setSelectedDialog('support'), setIsUnderDevDialogOpen(true);
+              }}
+            >
               <Clock2 className="mr-2 h-4 w-4" />
               <span>Watch</span>
             </DropdownMenuItem>
@@ -126,7 +126,8 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
                     onClick={() => {
                       setSelectedDialog('sort-az'),
                         setIsUnderDevDialogOpen(true);
-                    }}>
+                    }}
+                  >
                     <ArrowDownAz className="mr-2 h-4 w-4" />
                     <span>Newest</span>
                   </DropdownMenuItem>
@@ -134,7 +135,8 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
                     onClick={() => {
                       setSelectedDialog('sort-za'),
                         setIsUnderDevDialogOpen(true);
-                    }}>
+                    }}
+                  >
                     <ArrowUpZA className="mr-2 h-4 w-4" />
                     <span>Oldest</span>
                   </DropdownMenuItem>
@@ -150,19 +152,21 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
             <span>Rename</span>
           </DropdownMenuItem>
 
-          <DropdownMenuItem onClick={() => {
-            setSelectedDialog('support'),
-              setIsUnderDevDialogOpen(true);
-          }}>
-
+          <DropdownMenuItem
+            onClick={() => {
+              setSelectedDialog('support'), setIsUnderDevDialogOpen(true);
+            }}
+          >
             <LifeBuoy className="mr-2 h-4 w-4" />
             <span>Support</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => {
-            deleteColumn(id);
-          }}>
-            <div className='hover:text-rose-500 flex w-56'>
+          <DropdownMenuItem
+            onClick={() => {
+              deleteColumn(id);
+            }}
+          >
+            <div className="hover:text-rose-500 flex w-56">
               <Trash2 className="mr-2 h-4 w-4 " />
               <span>Delete</span>
             </div>
@@ -173,10 +177,11 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
       {/* Rename Dialog */}
       <Dialog
         open={selectedDialog === 'rename'}
-        onOpenChange={() => setSelectedDialog('')} >
+        onOpenChange={() => setSelectedDialog('')}
+      >
         <DialogContent
           className="sm:max-w-[425px]"
-          onKeyDown={(e) => {
+          onKeyDown={e => {
             if (e.key === 'Enter') {
               onHandleUpdateTitle();
             }
@@ -192,10 +197,10 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
           <Input
             id="name"
             placeholder="Input a new title here"
-            onChangeCapture={(e) => {
+            onChangeCapture={e => {
               setUpdatedTitle(e.target.value);
             }}
-            onKeyDown={(e) => {
+            onKeyDown={e => {
               if (e.key === 'Enter') {
                 onHandleUpdateTitle();
               }
@@ -203,18 +208,24 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
           />
 
           <DialogFooter>
-            <Button onClick={() => {
-              onHandleUpdateTitle();
-            }}>Save changes</Button>
+            <Button
+              onClick={() => {
+                onHandleUpdateTitle();
+              }}
+            >
+              Save changes
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
       {/* Others */}
-      {
-        isUnderDevDialogOpen && selectedDialog !== 'rename' &&
-        <UnderDevDialog isOpen={isUnderDevDialogOpen} setIsOpen={setIsUnderDevDialogOpen} />
-      }
+      {isUnderDevDialogOpen && selectedDialog !== 'rename' && (
+        <UnderDevDialog
+          isOpen={isUnderDevDialogOpen}
+          setIsOpen={setIsUnderDevDialogOpen}
+        />
+      )}
     </>
   );
 };
