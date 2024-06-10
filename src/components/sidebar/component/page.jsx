@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import AboutIcon from '../assets/images/about.svg?react';
 import CalendarIcon from '../assets/images/calendar.svg?react';
@@ -20,11 +20,11 @@ function Sidebar() {
 
   return (
     <div className="flex flex-row container-ns">
-      <div className="relative group w-[6vw] hover:w-[18vw] group-hover:w-[18vw] transition-all duration-300 bg-white border-r-2 pt-2 h-screen flex flex-col items-center over">
+      <div className="relative group w-[6vw] hover:w-[18vw] group-hover:w-[18vw] transition-all bg-white pt-2 h-screen flex flex-col items-center border-r-[1.5px]">
         {/* User Information */}
         <UserImageName text={'Username'} image={''} />
 
-        <div className="line mt-2 mb-3 p-[0.5px] w-[0vw] opacity-0 group-hover:opacity-100 bg-slate-400 overflow-hidden" />
+        <div className="line mt-2 mb-3 w-[0vw] opacity-0 group-hover:opacity-100 bg-slate-400 overflow-hidden" />
 
         {/* Navigation Content */}
         <div className="flex flex-col relative w-full h-screen space-y-4">
