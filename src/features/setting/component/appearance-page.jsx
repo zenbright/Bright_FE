@@ -12,7 +12,7 @@ function Appearance() {
         <div className="border-b-[1px] py-2 mb-3">
           <p className="font-semibold text-md">{'Theme Preferences'}</p>
         </div>
-        <p >{'Select a single theme'}</p>
+        <p>{'Select a single theme'}</p>
         <div className="my-5">
           <form className="grid grid-cols-3 gap-4">
             {themes.map((theme, index) => (

@@ -1,10 +1,9 @@
-@import "fonts.css";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap");
-@import url("@tldraw/tldraw/tldraw.css");
+@import 'fonts.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap');
+@import url('@tldraw/tldraw/tldraw.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -78,34 +77,19 @@
 }
 
 @layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari, and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
 
-  /* Hide scrollbar for Chrome, Safari, and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge, and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-  }
-}
-
-@layer responsive {
-
-  /* Hide scrollbar for Chrome, Safari, and Opera (responsive) */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge, and Firefox (responsive) */
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
+    /* Hide scrollbar for IE, Edge, and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
   }
 }
 

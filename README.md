@@ -1,4 +1,3 @@
-
 # Bright
 
 Bright is an all-in-one project manangement tool.

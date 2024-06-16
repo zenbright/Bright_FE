@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import {useState} from 'react';
+import { useState } from 'react';
 
-export const MessageBubble = ({content = 'hello', isUserMessage = false}) => {
+export const MessageBubble = ({ content = 'hello', isUserMessage = false }) => {
   const bgColor = isUserMessage ? 'bg-blue-500' : 'bg-gray-500';
   const [isRightClicked, setRightClicked] = useState(false);
   const [isDeleted, setIsDeleteMessage] = useState(false);
@@ -17,20 +17,26 @@ export const MessageBubble = ({content = 'hello', isUserMessage = false}) => {
 
   return (
     <span
-      style={
-        {maxWidth: '300px',
-          wordBreak: 'break-all',
-          overflow: 'hidden',
-          display: 'inline-block', alignSelf: !isUserMessage ? 'flex-start' : 'flex-end',
-        }
-      }
+      style={{
+        maxWidth: '300px',
+        wordBreak: 'break-all',
+        overflow: 'hidden',
+        display: 'inline-block',
+        alignSelf: !isUserMessage ? 'flex-start' : 'flex-end',
+      }}
       className={`mx-4 my-4 p-3 rounded-lg ${bgColor} text-white`}
-      onContextMenu={(e) => {
+      onContextMenu={e => {
         e.preventDefault();
         setRightClicked(true);
         setPoints({
-          x: (e.screenX + 200) >= window.innerWidth ? window.innerWidth - 150 : e.pageX,
-          y: (e.screenY + 200) >= window.innerHeight ? window.innerHeight - 200 : e.pageY,
+          x:
+            e.screenX + 200 >= window.innerWidth
+              ? window.innerWidth - 150
+              : e.pageX,
+          y:
+            e.screenY + 200 >= window.innerHeight
+              ? window.innerHeight - 200
+              : e.pageY,
         });
       }}
     >
@@ -39,14 +45,17 @@ export const MessageBubble = ({content = 'hello', isUserMessage = false}) => {
         <div className="position-relative">
           <div
             className="absolute w-200 bg-gray-800 rounded-lg box-border"
-            style={{top: `${points.y}px`, left: `${points.x}px`}}
-            onMouseLeave={() => setRightClicked(false)}>
+            style={{ top: `${points.y}px`, left: `${points.x}px` }}
+            onMouseLeave={() => setRightClicked(false)}
+          >
             <ul className="p-2 m-0 list-none">
               <li className="p-3 hover:bg-black cursor-pointer">Forward</li>
               <li
                 className="p-3 hover:bg-black cursor-pointer"
                 onClick={() => setIsDeleteMessage(true)}
-              >Delete</li>
+              >
+                Delete
+              </li>
               <li className="p-3 hover:bg-black cursor-pointer">Pin</li>
             </ul>
           </div>

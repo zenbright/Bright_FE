@@ -9,5 +9,5 @@ export const axiosPost = async (endpoint = '', body = {}) => {
     return response.data;
   } catch (error) {
     throw error.response.data;
-  };
+  }
 };

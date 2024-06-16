@@ -8,9 +8,8 @@ https://firebase.google.com/docs/cloud-messaging/js/send-multiple
 
 importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js');
 importScripts(
-    'https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js',
+  'https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js'
 );
-
 
 firebase.initializeApp({
   // TODO: info
@@ -21,8 +20,11 @@ const messaging = firebase.messaging();
 
 // Check if service worker is already initialized
 if (!firebase.apps.length) {
-  messaging.onBackgroundMessage((payload) => {
-    console.log('[firebase-messaging-sw.js] Received background message ', payload);
+  messaging.onBackgroundMessage(payload => {
+    console.log(
+      '[firebase-messaging-sw.js] Received background message ',
+      payload
+    );
 
     const notificationTitle = payload.notification.title;
     const notificationOptions = {
