@@ -20,6 +20,7 @@ import Profile from './features/setting/component/profile-page';
 import { AppLayout } from './layouts/app-layout';
 import { LandingAuthLayout } from './layouts/landing-auth-layout';
 import { SettingLayout } from './layouts/setting-layout';
+import  Notfoundpage  from './layouts/404-page';
 
 // Routing from landing page to its child and sign in paage
 const router = createBrowserRouter(
@@ -41,11 +42,11 @@ const router = createBrowserRouter(
 
         {/* Dashboard route */}
         <Route path="/user/dashboard" element={<ProjectManagementPage />} />
-        <Route path="*" element={<h1>404 - Notfound</h1>} />
+        <Route path="*" element={<Notfoundpage/>} />
       </Route>
 
       {/* 404 route */}
-      <Route path="*" element={<h1>404 - Notfound</h1>} />
+      <Route path="*" element={<Notfoundpage/>} />
     </Route>
   )
 );
@@ -63,6 +64,7 @@ function App() {
   return (
     <RouterProvider router={router} />
     // <Board />
+    // <Notfoundpage/>
   );
 }
 
