@@ -6,6 +6,7 @@ import {months} from '../test/data/month';
 import {GrFormPrevious, GrFormNext} from 'react-icons/gr';
 import {events} from '../test/data/event';
 import EventDetail from './event_detail';
+import {CalendarX2} from 'lucide-react';
 
 export const Calendar = () => {
   const dateInWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -13,16 +14,13 @@ export const Calendar = () => {
   const [today, setToday] = useState(currentDate);
   const [selectDate, setSelectDate] = useState(currentDate);
 
-  // Function to get events for the selected date
   const getEventsForDate = (date) => {
     return events.filter((event) => dayjs(event.dueTo).isSame(date, 'day'));
   };
 
-  // Function to render dots indicating the number of events for each day
   const renderEventDots = (date) => {
     const eventList = getEventsForDate(date);
 
-    // Sort events by due date (nearest upcoming event first)
     const sortedEvents = eventList.sort((a, b) => {
       return dayjs(a.dueTo).diff(dayjs(b.dueTo));
     });
@@ -37,7 +35,7 @@ export const Calendar = () => {
             key={i}
             className={cn(
                 'w-1 h-1 rounded-full mb-2 mr-1',
-          selectDate.toDate().toDateString() === date.toDate().toDateString() ? 'bg-white' : '',
+            selectDate.toDate().toDateString() === date.toDate().toDateString() ? 'bg-white' : '',
             )}
             style={{backgroundColor: sortedEvents[i].color}}
           />,
@@ -50,17 +48,16 @@ export const Calendar = () => {
             key={'more'}
             className={cn(
                 'w-1 h-1 rounded-full mb-2 mr-1',
-          selectDate.toDate().toDateString() === date.toDate().toDateString() ? 'bg-white' : '',
+            selectDate.toDate().toDateString() === date.toDate().toDateString() ? 'bg-white' : '',
             )}
           >
-        +{sortedEvents.length - maxDots}
+          +{sortedEvents.length - maxDots}
           </span>,
       );
     }
 
     return dots;
   };
-
 
   const hasEvents = (date) => {
     return events.some((event) => dayjs(event.dueTo).isSame(date, 'day'));
@@ -110,35 +107,43 @@ export const Calendar = () => {
                 {date.date()}
               </h1>
               {hasEvents(date) &&
-              <div className='flex justify-center items-center'>
-                <div className='absolute pl-1 mb-0.5'>
-                  <div className='flex'>
-                    {renderEventDots(date)}
+                <div className='flex justify-center items-center'>
+                  <div className='absolute pl-1 mb-0.5'>
+                    <div className='flex'>
+                      {renderEventDots(date)}
+                    </div>
                   </div>
                 </div>
-              </div>
               }
-
             </div>
           ))}
         </div>
       </div>
       <div className="h-fit w-full mt-4 px-3">
         <div className='flex justify-center items-center mb-2'>
-          <h1 className="font-semibold">Schedule for {selectDate.toDate().toDateString()}</h1>
+          <h1 className="font-semibold">{selectDate.format('dddd MMMM D YYYY')}</h1>
         </div>
         <div className='w-full flex flex-col gap-2 max-h-52 overflow-auto no-scrollbar'>
-          {getEventsForDate(selectDate).map((event, index) => (
-            <EventDetail
-              name={event.name}
-              endDate={event.dueTo}
-              description={event.description}
-              color={event.color}
-              startDate={event.startDate}
-              value={event.value}
-              key={index}
-            />
-          ))}
+          {getEventsForDate(selectDate).length > 0 ? (
+            getEventsForDate(selectDate).map((event, index) => (
+              <EventDetail
+                name={event.name}
+                endDate={event.dueTo}
+                description={event.description}
+                color={event.color}
+                startDate={event.startDate}
+                value={event.value}
+                key={index}
+              />
+            ))
+          ) : (
+            <div className="flex flex-col justify-center items-center">
+              <div className='w-[80%] flex flex-col justify-center items-center'>
+                <CalendarX2 className='w-20 h-20 opacity-25 stroke-1' />
+                <p className=' mt-3 text-center font-semibold opacity-50'>Oops! Look like no events for this date</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

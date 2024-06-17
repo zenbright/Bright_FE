@@ -7,8 +7,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import PropTypes from 'prop-types';
-import {Calendar} from 'lucide-react';
-
 
 function EventDetail({name, endDate, description, color, startDate, value}) {
   const formatDate = (dateTimeString) => {
@@ -37,11 +35,10 @@ function EventDetail({name, endDate, description, color, startDate, value}) {
             <div className='flex justify-center items-center gap-1'>
               <p className='font-semibold text-md '>{name}</p>
               <p style={{color: color}} className='text-sm'> | </p>
-              <p style={{color: color}} className='text-sm'>{value}</p>
+              <p style={{color: color}} className='text-sm pt-0.5'>{value}</p>
             </div>
             <div className='flex items-center gap-2'>
-              <Calendar className='w-4 h-4 text-slate-500'/>
-              <p className='text-sm text-slate-500 pt-0.5' style={{display: 'flex', alignItems: 'center'}}>{formatDate(endDate)}</p>
+              <p className='text-sm ml-2 text-slate-500 pt-0.5' style={{display: 'flex', alignItems: 'center'}}>{formatDate(endDate)}</p>
             </div>
           </div>
         </div>
