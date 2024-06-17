@@ -72,8 +72,6 @@ export class TaskActivity {
     this.author = author;
     this.activityType = activityType.toLowerCase();
 
-    console.log(this.activityType);
-    console.log(target)
     switch (this.activityType) {
       case 'comment':
         this.comment = comment;
