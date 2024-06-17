@@ -58,19 +58,34 @@ export class TaskTag {
 
 const ActivitySubtitles = {
   create: "created a new task",
-  update: "updated on this task",
+  update: "updated the task status to",
   assign: "assigned to",
-  comment: "commented",
+  comment: "left a comment",
 };
 
 export class TaskActivity {
-  constructor(id, subtitleKey, author, activityType, updatedAt = null, comment = null) {
+  constructor(id, author, activityType, updatedAt = null, comment = null, target = null) {
     this.id = id;
-    this.subtitle = ActivitySubtitles[subtitleKey];
+    this.subtitle = ActivitySubtitles[activityType] || '';
     this.createdAt = new Date();
     this.updatedAt = updatedAt ? new Date(updatedAt) : this.createdAt;
     this.author = author;
     this.activityType = activityType.toLowerCase();
-    this.comment = activityType === 'comment' ? comment : null;
+
+    console.log(this.activityType);
+    console.log(target)
+    switch (this.activityType) {
+      case 'comment':
+        this.comment = comment;
+        break;
+      case 'assign':
+      case 'update':
+        this.target = target;
+        break;
+      default:
+        this.comment = null;
+        this.target = null;
+        break;
+    }
   }
 }
