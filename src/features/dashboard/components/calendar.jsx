@@ -123,13 +123,21 @@ export const Calendar = () => {
           ))}
         </div>
       </div>
-      <div className="h-fit w-full mt-4 overflow-auto px-3">
+      <div className="h-fit w-full mt-4 px-3">
         <div className='flex justify-center items-center mb-2'>
           <h1 className="font-semibold">Schedule for {selectDate.toDate().toDateString()}</h1>
         </div>
-        <div className='w-full flex flex-col gap-2 h-full'>
+        <div className='w-full flex flex-col gap-2 max-h-52 overflow-auto no-scrollbar'>
           {getEventsForDate(selectDate).map((event, index) => (
-            <EventDetail name={event.name} dueTo={event.dueTo} description={event.description} key={index} />
+            <EventDetail
+              name={event.name}
+              endDate={event.dueTo}
+              description={event.description}
+              color={event.color}
+              startDate={event.startDate}
+              value={event.value}
+              key={index}
+            />
           ))}
         </div>
       </div>

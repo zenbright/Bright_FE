@@ -10,15 +10,39 @@ import PropTypes from 'prop-types';
 import {Calendar} from 'lucide-react';
 
 
-function EventDetail({name, dueTo, description}) {
+function EventDetail({name, endDate, description, color, startDate, value}) {
+  const formatDate = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    const formattedDate = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    });
+    const formattedTime = date.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    });
+    return `${formattedDate} at ${formattedTime}`;
+  };
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className='px-2 py-1 flex flex-col items-start justify-start rounded-xl border bg-white h-14 cursor-pointer hover:bg-slate-200/95'>
-          <p className='font-semibold text-md'>{name}</p>
-          <div className='flex items-center gap-2'>
-            <Calendar className='w-4 h-4 text-slate-500'/>
-            <p className='text-sm text-slate-500 pt-0.5' style={{display: 'flex', alignItems: 'center'}}>{dueTo}</p>
+        <div className='flex items-start justify-start rounded-xl border bg-white h-fit cursor-pointer hover:bg-slate-200/95'>
+          <div
+            className='w-[3%] h-14 rounded-s-xl'
+            style={{backgroundColor: color}}
+          />
+          <div className="flex flex-col justify-center pl-2 pr-4 p-1 h-full">
+            <div className='flex justify-center items-center gap-1'>
+              <p className='font-semibold text-md '>{name}</p>
+              <p style={{color: color}} className='text-sm'> | </p>
+              <p style={{color: color}} className='text-sm'>{value}</p>
+            </div>
+            <div className='flex items-center gap-2'>
+              <Calendar className='w-4 h-4 text-slate-500'/>
+              <p className='text-sm text-slate-500 pt-0.5' style={{display: 'flex', alignItems: 'center'}}>{formatDate(endDate)}</p>
+            </div>
           </div>
         </div>
       </DialogTrigger>
@@ -31,7 +55,7 @@ function EventDetail({name, dueTo, description}) {
         </DialogHeader>
         <div>
           <p>Task Name {name}</p>
-          <p>Due to {dueTo}</p>
+          <p>Due to {endDate}</p>
           <p>Description {description}</p>
         </div>
       </DialogContent>
@@ -41,8 +65,11 @@ function EventDetail({name, dueTo, description}) {
 
 EventDetail.propTypes = {
   name: PropTypes.string,
-  dueTo: PropTypes.string,
+  endDate: PropTypes.string,
   description: PropTypes.string,
+  color: PropTypes.string,
+  startDate: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default EventDetail;
