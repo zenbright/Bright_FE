@@ -1,11 +1,14 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowUpFromDot } from 'lucide-react';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { TaskActivity } from '../../../utils/class';
-import { formatDate, timeAgo } from '../../../utils/date-converter';
+import { timeAgo } from '../../../utils/date-converter';
 
 // Sample instances array
 const sampleActivities = [
@@ -39,15 +42,23 @@ const sampleActivities = [
     '2023-06-17T09:00:00Z',
     'I can help with this task.'
   ),
+  new TaskActivity(
+    5,
+    'Alice',
+    'update',
+    '2023-06-17T09:00:00Z',
+    null,
+    'Completed'
+  ),
 ];
 
-const Test = ({ activity, isLastItem }) => {
+const TaskActivityComponent = ({ activity, isLastItem }) => {
   const isComment = activity.comment !== null && activity.comment !== undefined;
 
   return (
-    <ol className="relative border-s border-gray-200 dark:border-gray-700">
+    <ol className="relative border-gray-200 dark:border-gray-700">
       <li className={`${isLastItem ? '' : 'mb-8'} ms-6`}>
-        <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+        <span className="absolute z-50 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
           <img
             className="rounded-full shadow-lg"
             src="https://github.com/shadcn.png"
@@ -82,30 +93,85 @@ const Test = ({ activity, isLastItem }) => {
 
 export const TaskDiscussion = () => {
   const [comment, setComment] = useState('');
+  const [remainingActivitySectionHeight, setRemainingActivitySectionHeight] =
+    useState(0);
+  const [activities, setActivities] = useState(sampleActivities);
+  const inputRef = useRef(null);
+  const activitySectionRef = useRef(null);
+  const parentDivRef = useRef(null);
 
   const onCommentSubmit = () => {
-    console.log('comment', comment);
+    setActivities([
+      ...activities,
+      new TaskActivity(uuidv4(), 'Quoc Doan', 'comment', new Date(), comment),
+    ]);
+
     setComment('');
   };
 
-  return (
-    <div className="flex flex-col h-full justify-between">
-      <div>
-        {sampleActivities.map((activity, index) => (
-          <Test
-            key={activity.id}
-            activity={activity}
-            isLastItem={index === sampleActivities.length - 1}
-          />
-        ))}
-      </div>
+  useEffect(() => {
+    if (!activitySectionRef.current) {
+      return;
+    }
 
-      <div className="h-fit flex-none flex w-full max-w-sm items-center space-x-2">
+    const { viewport } = activitySectionRef.current.osInstance().elements();
+
+    // scroll to bottom
+    viewport.scrollTo({ top: viewport.scrollHeight, behavior: 'smooth' });
+  }, [activities]);
+
+  // Calculate remaining height
+  useEffect(() => {
+    const updateMaxHeight = () => {
+      const remainingActivitySectionHeight =
+        parentDivRef.current.clientHeight - inputRef.current.clientHeight;
+      setRemainingActivitySectionHeight(remainingActivitySectionHeight);
+    };
+
+    updateMaxHeight();
+
+    window.addEventListener('resize', updateMaxHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateMaxHeight);
+    };
+  }, []);
+
+  return (
+    <div ref={parentDivRef} className="flex flex-col h-full justify-between">
+      <OverlayScrollbarsComponent
+        element="div"
+        ref={activitySectionRef}
+        options={{ scrollbars: { autoHide: 'move' } }}
+        style={{ maxHeight: `${remainingActivitySectionHeight}px` }}
+      >
+        <div
+          id="activity-section"
+          className="relative overflow-y-auto pl-3 mb-3"
+        >
+          <div className="absolute left-3 h-full border-s" />
+          {activities.map((activity, index) => (
+            <TaskActivityComponent
+              key={activity.id}
+              activity={activity}
+              isLastItem={index === activities.length - 1}
+            />
+          ))}
+        </div>
+      </OverlayScrollbarsComponent>
+
+      <div className={`flex items-center space-x-2 mb-1 z-0`}>
         <Input
+          ref={inputRef}
           type="text"
           placeholder="Leave a comment..."
           value={comment}
           onChange={e => setComment(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
+              onCommentSubmit();
+            }
+          }}
         />
         <Button onClick={onCommentSubmit}>
           <ArrowUpFromDot className="w-4 h-4" />
