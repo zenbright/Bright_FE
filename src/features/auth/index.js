@@ -1,3 +1,3 @@
-import {Page as AuthenticationPage} from './components/page';
+import { Page as AuthenticationPage } from './components/page';
 
-export {AuthenticationPage};
+export { AuthenticationPage };

@@ -1,19 +1,19 @@
-import DashboardIcon from '../assets/images/dashboard.svg?react';
-import NotificationIcon from '../assets/images/notification.svg?react';
-import CalendarIcon from '../assets/images/calendar.svg?react';
-import MessageIcon from '../assets/images/message.svg?react';
-import SettingIcon from '../assets/images/settings.svg?react';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+
 import AboutIcon from '../assets/images/about.svg?react';
+import CalendarIcon from '../assets/images/calendar.svg?react';
+import DashboardIcon from '../assets/images/dashboard.svg?react';
 import LogoutIcon from '../assets/images/logout.svg?react';
-import NavItem from './nav-item.jsx';
-import UserImageName from './user-image-name.jsx';
-import LogoutButton from './button-logout.jsx';
+import MessageIcon from '../assets/images/message.svg?react';
+import NotificationIcon from '../assets/images/notification.svg?react';
+import SettingIcon from '../assets/images/settings.svg?react';
 import '../styles/font.css';
 import '../styles/sideBarEffect.css';
-import PropTypes from 'prop-types';
-import {useState} from 'react';
+import LogoutButton from './button-logout.jsx';
+import NavItem from './nav-item.jsx';
 import ProjectDashboard from './project-dashboard.jsx';
-
+import UserImageName from './user-image-name.jsx';
 
 function Sidebar() {
   const [selectedTab, setSelectedTab] = useState('Dashboard');
@@ -24,7 +24,7 @@ function Sidebar() {
         {/* User Information */}
         <UserImageName text={'Username'} image={''} />
 
-        <div className="line mt-2 mb-3 p-[0.5px] w-[0vw] opacity-0 group-hover:opacity-100 bg-slate-400 overflow-hidden" />
+        <div className="line mt-2 mb-3 w-[0vw] opacity-0 group-hover:opacity-100 bg-slate-400 overflow-hidden" />
 
         {/* Navigation Content */}
         <div className="flex flex-col relative w-full h-screen space-y-4">

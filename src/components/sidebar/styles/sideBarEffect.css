@@ -1,31 +1,31 @@
-.dropdown:hover .dropdown-content .grandchild-content{
-	display: block;
+.dropdown:hover .dropdown-content .grandchild-content {
+  display: block;
 }
 
-.filteredBar:hover .filterdIcon{
-	fill: white;
+.filteredBar:hover .filterdIcon {
+  fill: white;
 }
 
-.listItem:hover .listIcon{
-	fill: white;
-	color: white;
+.listItem:hover .listIcon {
+  fill: white;
+  color: white;
 }
 
 .nav-pl {
-	padding-left: calc(3vw - 22px);
+  padding-left: calc(3vw - 22px);
 }
 
 @keyframes flyInLeftToRight {
-	0% {
-	  transform: translateX(-10%);
-	  opacity: 0;
-	}
-	70% {
-	  transform: translateX(0);
-	  opacity: 1;
-	}
+  0% {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
-  
+
 .flyInLeftToRight {
-	animation: flyInLeftToRight 0.5s ease forwards; /* Adjust timing as needed */
+  animation: flyInLeftToRight 0.5s ease forwards; /* Adjust timing as needed */
 }

@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
 
-export const MessagePreviewTab = (
-    {profileImage, userName, message, sentTime, isSelected, onClick},
-) => {
+export const MessagePreviewTab = ({
+  profileImage,
+  userName,
+  message,
+  sentTime,
+  isSelected,
+  onClick,
+}) => {
   return (
     <div
-      className={`flex items-start p-4 ${isSelected ? 'bg-gray-500 bg-opacity-20' : ''}`
-      }
+      className={`flex items-start p-4 ${isSelected ? 'bg-gray-500 bg-opacity-20' : ''}`}
       onClick={onClick}
     >
       {/* User Avatar */}

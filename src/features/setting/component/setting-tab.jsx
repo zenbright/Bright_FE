@@ -22,7 +22,7 @@ function SettingTab({tab, tabIndex, selectedActive, handleSelected}) {
           <h1 className='text-sm font-semibold'>{tab.name}</h1>
         </div>
 
-        <div className='ml-8'>
+        <div className="ml-8">
           <p>{tab.paragraph}</p>
         </div>
       </div>

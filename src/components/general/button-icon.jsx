@@ -1,6 +1,13 @@
 import PropTypes from 'prop-types';
 
-const ButtonIcon = ({size, background, action, borderRadius, shape, children}) => {
+const ButtonIcon = ({
+  size,
+  background,
+  action,
+  borderRadius,
+  shape,
+  children,
+}) => {
   const buttonnStyle = {
     width: `w-[${size}]`,
     height: `h-[${size}]`,
