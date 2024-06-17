@@ -55,3 +55,22 @@ export class TaskTag {
       : DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
   }
 }
+
+const ActivitySubtitles = {
+  create: "created a new task",
+  update: "updated on this task",
+  assign: "assigned to",
+  comment: "commented",
+};
+
+export class TaskActivity {
+  constructor(id, subtitleKey, author, activityType, updatedAt = null, comment = null) {
+    this.id = id;
+    this.subtitle = ActivitySubtitles[subtitleKey];
+    this.createdAt = new Date();
+    this.updatedAt = updatedAt ? new Date(updatedAt) : this.createdAt;
+    this.author = author;
+    this.activityType = activityType.toLowerCase();
+    this.comment = activityType === 'comment' ? comment : null;
+  }
+}
