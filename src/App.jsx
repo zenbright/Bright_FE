@@ -13,36 +13,42 @@ import {
 import { AuthenticationPage } from './features/auth';
 import Board from './features/board/Board';
 import { LandingPage } from './features/landingPage';
-import Notification from './features/setting/component/notification-page';
-import Appearance from './features/setting/component/appearance-page';
 import Account from './features/setting/component/account-page';
+import Appearance from './features/setting/component/appearance-page';
+import Notification from './features/setting/component/notification-page';
+import Profile from './features/setting/component/profile-page';
+import Notfoundpage from './layouts/404-page';
+import { AppLayout } from './layouts/app-layout';
+import { LandingAuthLayout } from './layouts/landing-auth-layout';
+import { SettingLayout } from './layouts/setting-layout';
 
 // Routing from landing page to its child and sign in paage
-const guestRouter = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path='/' element={<LandingAuthLayout />}>
-          <Route path="/" element={<LandingPage />} />,
-          <Route path="/auth" element={<AuthenticationPage />} />,
-        </Route>,
-    ),
-);
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<LandingAuthLayout />}>
+      {/* Landing page and authentication routes */}
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/auth" element={<AuthenticationPage />} />
 
-// Routing from within the application
-const appRouter = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path='/' element={<AppLayout />}>
-          <Route path="" element={<Navigate to="dashboard" replace/>} />
-          <Route path="/settings" element={<SettingLayout/>}>
-            <Route path="" element={<Navigate to="edit-profile" replace/>} />
-            <Route path='edit-profile' element={<Profile/>}/>
-            <Route path='account' element={<Account/>}/>
-            <Route path='appearance' element={<Appearance/>}/>
-            <Route path='notification' element={<Notification/>}/>
-          </Route>,
-          <Route path="/dashboard" element={<ProjectManagementPage />} />,
-          <Route path="*" element={<h1>404 - Notfound</h1>} />,
-        </Route>,
-    ),
+      <Route path="/user" element={<AppLayout />}>
+        {/* Settings routes */}
+        <Route path="/user/settings" element={<SettingLayout />}>
+          <Route path="" element={<Navigate to="edit-profile" replace />} />
+          <Route path="edit-profile" element={<Profile />} />
+          <Route path="account" element={<Account />} />
+          <Route path="appearance" element={<Appearance />} />
+          <Route path="notification" element={<Notification />} />
+        </Route>
+
+        {/* Dashboard route */}
+        <Route path="/user/dashboard" element={<ProjectManagementPage />} />
+        <Route path="*" element={<Notfoundpage />} />
+      </Route>
+
+      {/* 404 route */}
+      <Route path="*" element={<Notfoundpage />} />
+    </Route>
+  )
 );
 
 function App() {
