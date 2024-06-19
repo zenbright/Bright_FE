@@ -58,7 +58,7 @@ export class TaskTag {
 
 const ActivitySubtitles = {
   create: "created a new task",
-  update: "updated the task status to",
+  update: "updated the status to",
   assign: "assigned to",
   comment: "left a comment",
 };
