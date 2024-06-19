@@ -57,14 +57,21 @@ export class TaskTag {
 }
 
 const ActivitySubtitles = {
-  create: "created a new task",
-  update: "updated the status to",
-  assign: "assigned to",
-  comment: "left a comment",
+  create: 'created a new task',
+  update: 'updated the status to',
+  assign: 'assigned to',
+  comment: 'left a comment',
 };
 
 export class TaskActivity {
-  constructor(id, author, activityType, updatedAt = null, comment = null, target = null) {
+  constructor(
+    id,
+    author,
+    activityType,
+    updatedAt = null,
+    comment = null,
+    target = null
+  ) {
     this.id = id;
     this.subtitle = ActivitySubtitles[activityType] || '';
     this.createdAt = new Date();
