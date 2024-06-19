@@ -13,8 +13,6 @@ import {
 import { AuthenticationPage } from './features/auth';
 import Board from './features/board/Board';
 import { LandingPage } from './features/landingPage';
-import Account from './features/setting/component/account-page';
-import Appearance from './features/setting/component/appearance-page';
 import Notification from './features/setting/component/notification-page';
 import Appearance from './features/setting/component/appearance-page';
 import Account from './features/setting/component/account-page';
