@@ -1,4 +1,12 @@
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { ArrowUpFromDot } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
@@ -52,8 +60,31 @@ const sampleActivities = [
   ),
 ];
 
-const TaskActivityComponent = ({ activity, isLastItem }) => {
+const TaskActivityComponent = ({
+  activity,
+  isLastItem,
+  isEditCommentContent,
+  setIsEditCommentContent,
+  setDeleteCommentIndex,
+}) => {
   const isComment = activity.comment !== null && activity.comment !== undefined;
+  const [editedComment, setEditedComment] = useState(activity.comment);
+
+  useEffect(() => {
+    if (!editedComment) {
+      setEditedComment(activity.comment);
+    }
+
+    if (isEditCommentContent) {
+      setEditedComment(activity.comment);
+    }
+  }, [isEditCommentContent]);
+
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      setIsEditCommentContent(false);
+    }
+  };
 
   return (
     <ol className="relative border-gray-200 dark:border-gray-700">
@@ -65,7 +96,7 @@ const TaskActivityComponent = ({ activity, isLastItem }) => {
             alt={isComment ? 'Thomas Lean image' : 'Bonnie image'}
           />
         </span>
-        <div className=" flex flex-col p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+        <div className="flex flex-col p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
           <div
             className={`items-center justify-between ${isComment ? 'mb-3' : ''} sm:flex`}
           >
@@ -80,9 +111,45 @@ const TaskActivityComponent = ({ activity, isLastItem }) => {
               </span>
             </div>
           </div>
+
+          {/* Comment Content */}
           {isComment && (
-            <div className="p-3 text-xs italic font-normal text-gray-500 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-300">
-              {activity.comment}
+            <div>
+              {isEditCommentContent ? (
+                <Input
+                  type="text"
+                  value={editedComment}
+                  onChange={e => setEditedComment(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  className="font-normal text-xs"
+                  autoFocus
+                />
+              ) : (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <div className="justify-between p-3 text-xs italic font-normal text-gray-500 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-300 hover:bg-gray-100 hover:cursor-pointer">
+                      {editedComment}
+                    </div>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56">
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem
+                        onClick={() => setIsEditCommentContent(true)}
+                      >
+                        <span>Edit</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem
+                        onClick={() => {
+                          setDeleteCommentIndex(activity.id);
+                        }}
+                      >
+                        <span className="text-rose-500">Delete</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              )}
             </div>
           )}
         </div>
@@ -99,6 +166,21 @@ export const TaskDiscussion = () => {
   const inputRef = useRef(null);
   const activitySectionRef = useRef(null);
   const parentDivRef = useRef(null);
+  const [isEditCommentContent, setIsEditCommentContent] = useState(false);
+  const [deletedCommentIndex, setDeleteCommentIndex] = useState(null);
+
+  useEffect(() => {
+    if (deletedCommentIndex === null) {
+      return;
+    }
+
+    const newActivities = activities.filter(
+      activity => activity.id !== deletedCommentIndex
+    );
+
+    setActivities(newActivities);
+    setDeleteCommentIndex(null);
+  }, [deletedCommentIndex]);
 
   const onCommentSubmit = () => {
     setActivities([
@@ -155,6 +237,9 @@ export const TaskDiscussion = () => {
               key={activity.id}
               activity={activity}
               isLastItem={index === activities.length - 1}
+              isEditCommentContent={isEditCommentContent}
+              setIsEditCommentContent={setIsEditCommentContent}
+              setDeleteCommentIndex={setDeleteCommentIndex}
             />
           ))}
         </div>
@@ -173,6 +258,7 @@ export const TaskDiscussion = () => {
             }
           }}
         />
+
         <Button onClick={onCommentSubmit}>
           <ArrowUpFromDot className="w-4 h-4" />
         </Button>
