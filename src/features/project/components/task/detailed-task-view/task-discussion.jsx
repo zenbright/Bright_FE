@@ -16,7 +16,7 @@ import { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TaskActivity } from '../../../utils/class';
-import { timeAgo } from '../../../utils/date-converter';
+import { timeAgo } from '../../../utils/utils';
 
 // Sample instances array
 const sampleActivities = [

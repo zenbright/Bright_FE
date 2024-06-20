@@ -16,3 +16,14 @@ export const END_DATE_INPUT_VALIDATOR = {
 export const TAGS_INPUT_VALIDATOR = {
     SHORT: 'Please select at least 1 tag'
 }
+
+export const LABEL_CREATION_FORM = {
+    TITLE: 'Create a new label',
+    DESCRIPTION: 'Labels are great start for organizing your tasks.',
+    LABEL_NAME: 'Label name',
+    LABEL_DESCRIPTION: 'Description',
+    COLOR: 'Color',
+    COLOR_CRITERIA: 'Value must be a valid hex color code such as #000000',
+    CREATE: 'Create',
+    CANCEL: 'Cancel'
+}

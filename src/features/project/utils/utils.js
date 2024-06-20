@@ -1,3 +1,15 @@
+import tinycolor from 'tinycolor2';
+
+export const neonColorCreator = (bgColor = '') => {
+  if (bgColor === '') {
+    console.error('Background color is required');
+    return;
+  }
+
+  const foregroundColor = tinycolor(bgColor).lighten(50).toString();
+  return foregroundColor;
+};
+
 export function formatDate(date) {
   // Array of month names
   const monthNames = [
