@@ -4,7 +4,7 @@ import Theme from './app-theme';
 
 function Appearance() {
   return (
-    <div className="container-ns flex flex-col w-[75vw] overflow-auto">
+    <div className="container-ns flex flex-col w-[76vw] overflow-auto">
       <div className="mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-white">
         {'Appearance'}
       </div>

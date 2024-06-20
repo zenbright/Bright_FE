@@ -11,11 +11,8 @@ function NavItem({ text, children, onClick, select = false }) {
       >
         <div
           tabIndex="0"
-          className={`p-3 transition-all group-hover:w-[95%] h-full flex items-center group-hover:gap-3 rounded-md group is-hovered ${
-            select
-              ? 'bg-black fill-white text-white'
-              : 'bg-white group-hover/item:bg-slate-100/90'
-          }`}
+          className={`p-3 transition-all group-hover:w-[95%] h-full flex items-center group-hover:gap-3
+             rounded-md group is-hovered ${select ? 'bg-black fill-white text-white duration-0' : 'bg-white group-hover/item:bg-slate-200/50'} duration-0`}
         >
           <div
             className={`dropdown-content flex transition-all ${select ? 'fill-white' : 'group-[.is-hovered]: group-hover/item:fill-black'}`}
@@ -24,7 +21,9 @@ function NavItem({ text, children, onClick, select = false }) {
           </div>
 
           <div
-            className={`font-medium mt-0.5 md:text-sm opacity-0 group-hover:opacity-100 duration-0 transition-all overflow-hidden invisible group-hover:visible w-0 group-hover:w-full flex items-center ${select ? 'text-white' : 'group-[.is-hovered]: group-hover/item:text-black'}`}
+            className={`font-medium mt-0.5 md:text-sm opacity-0 group-hover:opacity-100 duration-0
+                transition-all overflow-hidden invisible group-hover:visible w-0 group-hover:w-full flex items-center
+                ${select ? 'text-white' : 'group-[.is-hovered]: group-hover/item:text-black'}`}
           >
             {text}
           </div>
