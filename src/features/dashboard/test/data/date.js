@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 
 export const generateDate = (
-    month = dayjs().month(),
-    year = dayjs().year(),
+  month = dayjs().month(),
+  year = dayjs().year()
 ) => {
   const firstDayOfMonth = dayjs().year(year).month(month).startOf('month');
   const lastDayOfMonth = dayjs().year(year).month(month).endOf('month');
@@ -22,14 +22,20 @@ export const generateDate = (
     arrayOfDate.push({
       date: firstDayOfMonth.date(i),
       currentMonth: true,
-      today: firstDayOfMonth.date(i).toDate().toDateString() === dayjs().toDate().toDateString(),
+      today:
+        firstDayOfMonth.date(i).toDate().toDateString() ===
+        dayjs().toDate().toDateString(),
     });
   }
 
   // Postfix days of the next month
   const remaining = 43 - arrayOfDate.length;
 
-  for (let i = lastDayOfMonth.date() + 1; i < lastDayOfMonth.date() + remaining; i ++) {
+  for (
+    let i = lastDayOfMonth.date() + 1;
+    i < lastDayOfMonth.date() + remaining;
+    i++
+  ) {
     arrayOfDate.push({
       date: lastDayOfMonth.date(i),
       currentMonth: false,

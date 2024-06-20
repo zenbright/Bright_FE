@@ -33,7 +33,7 @@ function Sidebar() {
             select={selectedTab === 'Dashboard'}
             onClick={setSelectedTab}
           >
-            <DashboardIcon className="w-4 h-4"/>
+            <DashboardIcon className="w-4 h-4" />
             <div className="grandchild-content hidden absolute left-[17vw] top-[-77px] h-screen">
               <ProjectDashboard />
             </div>
@@ -44,7 +44,7 @@ function Sidebar() {
             select={selectedTab === 'Notification'}
             onClick={setSelectedTab}
           >
-            <NotificationIcon className="w-4 h-4"/>
+            <NotificationIcon className="w-4 h-4" />
           </NavItem>
 
           <NavItem
@@ -52,7 +52,7 @@ function Sidebar() {
             select={selectedTab === 'Schedule'}
             onClick={setSelectedTab}
           >
-            <CalendarIcon className="w-4 h-4 "/>
+            <CalendarIcon className="w-4 h-4 " />
           </NavItem>
 
           <NavItem
@@ -60,7 +60,7 @@ function Sidebar() {
             select={selectedTab === 'Message'}
             onClick={setSelectedTab}
           >
-            <MessageIcon className="w-4 h-4 "/>
+            <MessageIcon className="w-4 h-4 " />
           </NavItem>
 
           <NavItem
@@ -68,7 +68,7 @@ function Sidebar() {
             select={selectedTab === 'Settings'}
             onClick={setSelectedTab}
           >
-            <SettingIcon className="w-4 h-4 "/>
+            <SettingIcon className="w-4 h-4 " />
           </NavItem>
 
           <NavItem
@@ -76,14 +76,14 @@ function Sidebar() {
             select={selectedTab === 'About'}
             onClick={setSelectedTab}
           >
-            <AboutIcon className="w-4 h-4 "/>
+            <AboutIcon className="w-4 h-4 " />
           </NavItem>
         </div>
 
         {/* Logout button */}
         <div className="w-full pb-1">
           <LogoutButton text={'Logout'}>
-            <LogoutIcon className="w-4 h-4 "/>
+            <LogoutIcon className="w-4 h-4 " />
           </LogoutButton>
         </div>
       </div>
