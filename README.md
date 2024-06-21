@@ -56,7 +56,7 @@ pnpm format
 
 ## Contributing
 
-Although the project is open source and allows for all non-commercial use, it does not yet allow direct contribution from people outside of the organization. However, contributors can go through the issues tab, search for tasks that have no assignee, create a new branch starting with `feat/`, and create a pull request to the `development` branch.
+As this project is **open source** and encourages **non-commercial use**, we welcome **community involvement**! If you'd like to contribute, please explore the project's `issues` tab, select an unassigned task, create a new branch named `feat/`, and submit a pull request to the `development` branch for review.
 
 ## Feedback
 
