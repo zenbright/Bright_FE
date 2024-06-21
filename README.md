@@ -34,6 +34,7 @@ To run Bright locally, follow these steps:
    ```
 
 4. Start the development server:
+
    ```bash
    pnpm start
    ```
