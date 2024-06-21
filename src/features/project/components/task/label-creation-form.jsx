@@ -34,15 +34,30 @@ const randomDarkHexColor = () => {
   return color;
 };
 
-export const LabelCreationForm = () => {
+export const LabelCreationForm = ({
+  isOpen = false,
+  onOpenChange,
+  labelTitle = 'hello',
+  tagList,
+  setTagList,
+}) => {
   const [isOpenColorPicker, setIsOpenColorPicker] = useState(false);
   const [labelColor, setLabelColor] = useState(randomDarkHexColor());
 
+  const onHandleSubmit = () => {
+    const newTag = {
+      value: labelTitle,
+      color: labelColor,
+      description: `Tasks related to ${labelTitle}`,
+    };
+
+    setTagList({ ...tagList, [labelTitle]: newTag });
+
+    onOpenChange(false);
+  };
+
   return (
-    <Dialog>
-      <DialogTrigger asChild className="flex w-full items-center h-full">
-        <Button variant="outline">{LABEL_CREATION_FORM.TITLE}</Button>
-      </DialogTrigger>
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>{LABEL_CREATION_FORM.TITLE}</DialogTitle>
@@ -56,11 +71,7 @@ export const LabelCreationForm = () => {
             <Label htmlFor="name" className="text-left">
               {LABEL_CREATION_FORM.LABEL_NAME}
             </Label>
-            <Input
-              id="name"
-              defaultValue="hello world"
-              className="col-span-3"
-            />
+            <Input id="name" defaultValue={labelTitle} className="col-span-3" />
           </div>
 
           <div className="grid grid-cols-4 items-center">
@@ -118,7 +129,9 @@ export const LabelCreationForm = () => {
         </div>
 
         <DialogFooter>
-          <Button type="submit">{'Save changes'}</Button>
+          <Button type="submit" onClick={() => onHandleSubmit()}>
+            {'Save changes'}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -18,25 +18,20 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import { DEFAULT_TASK_TAGS } from '../../assets/values';
+import { LabelCreationForm } from './label-creation-form';
 
 export const CreatableMultiSelectDropdown = ({
   selectedTags,
   setSelectedTags,
 }) => {
   const [open, setOpen] = useState(false);
+  const [isOpenLabelCreationForm, setIsOpenLabelCreationForm] = useState(false);
   const [tagList, setTagList] = useState(DEFAULT_TASK_TAGS);
   const [searchPhrase, setSearchPhrase] = useState('');
 
   // Create new tag
-  const handleAddNewTag = title => {
-    const newTag = {
-      value: title,
-      color: getRandomColor(),
-      description: `Tasks related to ${title}`,
-    };
-
-    setTagList({ ...tagList, [title]: newTag });
-    setSearchPhrase('');
+  const handleOpenLabelCreationForm = () => {
+    setIsOpenLabelCreationForm(true);
   };
 
   return (
@@ -48,7 +43,7 @@ export const CreatableMultiSelectDropdown = ({
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          Select tags...
+          {'Select tags...'}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -64,11 +59,12 @@ export const CreatableMultiSelectDropdown = ({
           <CommandEmpty className="m-1">
             <div
               className="flex items-center hover:bg-slate-300/25 hover:cursor-pointer py-1.5 px-2 text-sm rounded-sm w-full h-full"
-              onClick={() => handleAddNewTag(searchPhrase)}
+              onClick={() => handleOpenLabelCreationForm(searchPhrase)}
             >
               <Pencil className="h-3 w-3 mr-4" /> Add &apos;{searchPhrase}&apos;
             </div>
           </CommandEmpty>
+
           <CommandGroup>
             {Object.keys(tagList).map(tagKey => (
               <CommandItem
@@ -100,6 +96,16 @@ export const CreatableMultiSelectDropdown = ({
           </CommandGroup>
         </Command>
       </PopoverContent>
+
+      {isOpenLabelCreationForm && (
+        <LabelCreationForm
+          isOpen={isOpenLabelCreationForm}
+          onOpenChange={setIsOpenLabelCreationForm}
+          labelTitle={searchPhrase}
+          tagList={tagList}
+          setTagList={setTagList}
+        />
+      )}
     </Popover>
   );
 };
