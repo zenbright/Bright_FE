@@ -14,6 +14,7 @@ import {
 
 import { AuthenticationPage } from './features/auth';
 import Board from './features/board/Board';
+import Dashboard from './features/dashboard';
 import { LandingPage } from './features/landingPage';
 import Account from './features/setting/component/account-page';
 import Appearance from './features/setting/component/appearance-page';
@@ -44,7 +45,11 @@ const router = createBrowserRouter(
         </Route>
 
         {/* Dashboard route */}
-        <Route path="/user/dashboard" element={<ProjectManagementPage />} />
+        <Route path="/user/dashboard" element={<Dashboard />} />
+
+        {/* Project route */}
+        {/* Temporary Only */}
+        <Route path="/user/notification" element={<ProjectManagementPage />} />
 
         {/* Board route */}
         <Route path="/user/board/:id" element={<Board />} />
