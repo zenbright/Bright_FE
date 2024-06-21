@@ -1,7 +1,9 @@
+import { setLoginStatus } from '@/features/auth/utils/authSlice';
 import ProjectManagementPage from '@/features/project';
 import 'overlayscrollbars/styles/overlayscrollbars.css';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   Navigate,
   Route,
@@ -38,10 +40,16 @@ const router = createBrowserRouter(
           <Route path="account" element={<Account />} />
           <Route path="appearance" element={<Appearance />} />
           <Route path="notification" element={<Notification />} />
+          <Route path="*" element={<Notfoundpage />} />
         </Route>
 
         {/* Dashboard route */}
         <Route path="/user/dashboard" element={<ProjectManagementPage />} />
+
+        {/* Board route */}
+        <Route path="/user/board/:id" element={<Board />} />
+
+        {/* 404 route */}
         <Route path="*" element={<Notfoundpage />} />
       </Route>
 
@@ -52,18 +60,28 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  // Check if signed in (will be updated using redux)
-  const isLogIn = useSelector(state => state.auth.isLogin);
+  const dispatch = useDispatch();
+  const isUserAuthenticated = useSelector(
+    state => state.userLoginStatus.isAuthenticated
+  );
 
   useEffect(() => {
-    if (isLogIn) {
-      window.location.replace('/user/dashboard');
+    const storedAuthState = localStorage.getItem('isUserAuthenticated');
+    if (storedAuthState === 'true') {
+      dispatch(setLoginStatus(true)); // Update Redux state
     }
-  }, [isLogIn]);
+  }, [dispatch]);
 
-  return (
-    <RouterProvider router={router} />
-  );
+  useEffect(() => {
+    if (isUserAuthenticated) {
+      localStorage.setItem('isUserAuthenticated', 'true');
+      if (window.location.pathname !== '/user/dashboard') {
+        window.location.replace('/user/dashboard');
+      }
+    }
+  }, [isUserAuthenticated]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
