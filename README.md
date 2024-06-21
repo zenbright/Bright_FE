@@ -1,3 +1,5 @@
+# Bright - Get Things Done
+
 Bright is an all-in-one project management tool designed to streamline and enhance your team's workflow.
 
 ## Table of Contents
