@@ -6,6 +6,7 @@ Bright is an all-in-one project management tool designed to streamline and enhan
 - [Usage](#usage)
 - [Commit Guidelines](#commit-guidelines)
 - [Tech Stack](#tech-stack)
+- [Contributing](#contributing)
 - [Feedback](#feedback)
 
 ## Installation
