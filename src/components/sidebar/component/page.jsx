@@ -21,10 +21,11 @@ function Sidebar() {
   return (
     <div className="flex flex-row container-ns">
       <div className="relative group w-[5.5vw] hover:w-[17vw] group-hover:w-[17vw] transition-all duration-200 bg-white border-r pt-2 h-screen flex flex-col items-center right-1 overflow-hidden">
+
         {/* User Information */}
         <UserImageName text={'Username'} image={''} />
 
-        <div className="line mt-2 mb-3 w-[0vw] opacity-0 group-hover:opacity-100 bg-slate-400 overflow-hidden" />
+        <div className="line mt-6 mb-3 w-[0vw] opacity-0 group-hover:opacity-100 bg-slate-400 overflow-hidden" />
 
         {/* Navigation Content */}
         <div className="flex flex-col relative w-full h-screen space-y-4">
