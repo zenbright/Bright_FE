@@ -9,7 +9,7 @@ export default function Notfoundpage() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 ">
+    <div className="bg-white dark:bg-gray-900 w-full">
       <div className="container flex items-center justify-center min-h-screen px-6 py-12 mx-auto">
         <div className="w-full ">
           <div className="flex flex-col items-center max-w-lg mx-auto text-center">
