@@ -40,6 +40,7 @@ export class Task {
       return new TaskTag(this.id, tagTitle, tagColor);
     });
   }
+
   addTags(newTags) {
     this.tags = [...this.tags, ...this.createTags(newTags)];
   }

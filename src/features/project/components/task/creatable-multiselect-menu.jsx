@@ -11,7 +11,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { getRandomColor } from '@/components/utils/color-generator';
 import { Check, ChevronsUpDown, Pencil } from 'lucide-react';
 import PropTypes from 'prop-types';
 import * as React from 'react';

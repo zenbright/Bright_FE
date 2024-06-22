@@ -121,7 +121,7 @@ export const TaskContainer = ({ task }) => {
         {...attributes}
         {...listeners}
       >
-        <div className="pl-3 pr-1">
+        <div className="pl-3 pr-1" onClick={() => setIsShowTaskDetailed(true)}>
           <div className="flex justify-between items-center">
             <div className="flex gap-1">
               {task.tags &&
@@ -146,18 +146,15 @@ export const TaskContainer = ({ task }) => {
             </div>
 
             <Button
-              onClick={() => {
-                console.log(
-                  'This button is not implemented yet. It will open a dropdown menu.'
-                );
-              }}
               variant="ghost"
+              onClick={e => e.stopPropagation()}
+              className="text-gray-500"
             >
               <MoreHorizontal />
             </Button>
           </div>
 
-          <div onClick={() => setIsShowTaskDetailed(true)}>
+          <div>
             {/* Task Contents */}
             <div className="text-xl font-semibold truncate max-w-52">
               {task.title}
@@ -198,7 +195,12 @@ export const TaskContainer = ({ task }) => {
                 )}
               </div>
 
-              <Button variant="ghost">
+              <Button
+                variant="ghost"
+                onClick={e => {
+                  e.stopPropagation();
+                }}
+              >
                 <Flag className="w-4 h-4" />
               </Button>
             </div>
