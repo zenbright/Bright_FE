@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
+import { CreatableMultiSelectDropdown } from '@/components/ui/creatable-multiselect-menu';
 import {
   Dialog,
   DialogContent,
@@ -38,7 +39,6 @@ import {
   TITLE_DES_INPUT_VALIDATOR,
   TITLE_INPUT_VALIDATOR,
 } from '../../assets/strings';
-import { CreatableMultiSelectDropdown } from './creatable-multiselect-menu';
 
 // Define form schema
 const formSchema = z
@@ -95,10 +95,10 @@ const TaskCreationForm = ({
   // Handle form submit
   const onSubmit = values => {
     // Constraint: must be selected at least 1 tag
-    if (selectedTags.length === 0) {
-      setTagError(TAGS_INPUT_VALIDATOR.SHORT);
-      return;
-    }
+    // if (selectedTags.length === 0) {
+    //   setTagError(TAGS_INPUT_VALIDATOR.SHORT);
+    //   return;
+    // }
 
     createTask(
       colId,
@@ -265,13 +265,13 @@ const TaskCreationForm = ({
             <FormField
               control={form.control}
               name="selectedTags"
-              render={({ field }) => (
+              render={() => (
                 <FormItem className="flex flex-col justify-between">
                   <FormLabel>Tags</FormLabel>
                   <FormControl>
                     <CreatableMultiSelectDropdown
-                      selectedTags={selectedTags}
-                      setSelectedTags={setSelectedTags}
+                      selectedItemList={selectedTags}
+                      onSelectItem={setSelectedTags}
                     />
                   </FormControl>
 

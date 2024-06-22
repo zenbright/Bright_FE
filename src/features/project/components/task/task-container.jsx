@@ -97,7 +97,7 @@ export const TaskContainer = ({ task }) => {
           height: dimensions.height,
           ...style,
         }}
-        className="bg-gray-300/60 rounded-md mb-2 border-2"
+        className="bg-gray-300/60 rounded-md mb-1 border-2"
       />
     );
   }
@@ -148,7 +148,7 @@ export const TaskContainer = ({ task }) => {
             <Button
               variant="ghost"
               onClick={e => e.stopPropagation()}
-              className="text-gray-500"
+              className="text-gray-500/60 hover:bg-transparent hover:text-gray-500/60 hover:cursor-default"
             >
               <MoreHorizontal />
             </Button>
@@ -172,7 +172,7 @@ export const TaskContainer = ({ task }) => {
               </Button>
             </div>
 
-            <Divider width="100%" height="1px" color="rgba(0,0,0,0.20)" />
+            <Divider width="100%" height="1px" color="rgba(0,0,0,0.10)" />
 
             {/* Helper Buttons */}
             <div className="flex items-center justify-between">
@@ -200,6 +200,7 @@ export const TaskContainer = ({ task }) => {
                 onClick={e => {
                   e.stopPropagation();
                 }}
+                className="text-gray-500/60 hover:bg-transparent hover:text-gray-500/60 hover:cursor-default"
               >
                 <Flag className="w-4 h-4" />
               </Button>
