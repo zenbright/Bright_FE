@@ -95,10 +95,10 @@ const TaskCreationForm = ({
   // Handle form submit
   const onSubmit = values => {
     // Constraint: must be selected at least 1 tag
-    // if (selectedTags.length === 0) {
-    //   setTagError(TAGS_INPUT_VALIDATOR.SHORT);
-    //   return;
-    // }
+    if (selectedTags.length === 0) {
+      setTagError(TAGS_INPUT_VALIDATOR.SHORT);
+      return;
+    }
 
     createTask(
       colId,

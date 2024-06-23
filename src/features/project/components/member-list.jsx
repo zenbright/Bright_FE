@@ -42,7 +42,10 @@ export const MemberList = ({
         )}
 
         {members.length == 0 && (
-          <div className="font-light text-sm text-gray-500/80"> No Assignee </div>
+          <div className="font-light text-sm text-gray-500/80">
+            {' '}
+            No Assignee{' '}
+          </div>
         )}
       </div>
     </div>

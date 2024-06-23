@@ -11,7 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { Check, ChevronsUpDown, Pencil } from 'lucide-react';
+import { Check, ChevronsUpDown, Pencil, Plus } from 'lucide-react';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import { useState } from 'react';
@@ -28,68 +28,93 @@ export const CreatableMultiSelectDropdown = ({
   const [searchPhrase, setSearchPhrase] = useState('');
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-[200px] justify-between"
-        >
-          {'Select tags...'}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
-      </PopoverTrigger>
+    <div className="flex items-center">
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="w-[200px] justify-between"
+          >
+            {selectedItemList.length > 0 ? (
+              <div className="flex overflow-hidden gap-2">
+                {selectedItemList.map((tag, index) => (
+                  <div key={index} className="flex items-center">
+                    <div
+                      className="w-2 h-2 mr-2 rounded-full"
+                      style={{ background: `${items[tag].color}` }}
+                    />
+                    {items[tag].title}{' '}
+                    {index !== selectedItemList.length - 1 && ','}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <span className="opacity-50">Select tags...</span>
+            )}
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
 
-      <PopoverContent className="w-[200px] p-0">
-        <Command>
-          <CommandInput
-            onValueChange={txt => setSearchPhrase(txt)}
-            value={searchPhrase}
-            onChange={e => setSearchPhrase(e.target.value)}
-            placeholder="Search tags..."
-          />
-          <CommandEmpty className="m-1">
-            <div
-              className="flex items-center hover:bg-slate-300/25 hover:cursor-pointer py-1.5 px-2 text-sm rounded-sm w-full h-full"
-              onClick={() => onAddMoreItem(searchPhrase)}
-            >
-              <Pencil className="h-3 w-3 mr-4" /> Add &apos;{searchPhrase}&apos;
-            </div>
-          </CommandEmpty>
-
-          <CommandGroup>
-            {Object.keys(items).map(key => (
-              <CommandItem
-                key={key}
-                value={items[key].id}
-                onSelect={currentValue => {
-                  onSelectItem(
-                    selectedItemList.includes(currentValue)
-                      ? selectedItemList.filter(tag => tag !== currentValue)
-                      : [...selectedItemList, currentValue]
-                  );
-                }}
+        <PopoverContent className="w-[200px] p-0">
+          <Command>
+            <CommandInput
+              onValueChange={txt => setSearchPhrase(txt)}
+              value={searchPhrase}
+              onChange={e => setSearchPhrase(e.target.value)}
+              placeholder="Search tags..."
+            />
+            <CommandEmpty className="m-1">
+              <div
+                className="flex items-center hover:bg-slate-300/25 hover:cursor-pointer py-1.5 px-2 text-sm rounded-sm w-full h-full"
+                onClick={() => onAddMoreItem(searchPhrase)}
               >
-                {/* Selected mark */}
-                <Check
-                  className={`mr-2 h-4 w-4  ${selectedItemList.includes(items[key].id) ? 'opacity-100' : 'opacity-0'}`}
-                />
+                <Pencil className="h-3 w-3 mr-4" /> Add &apos;{searchPhrase}
+                &apos;
+              </div>
+            </CommandEmpty>
 
-                {/* Tag Color Dot */}
-                <div
-                  className={`w-2 h-2 mr-3 rounded-full`}
-                  style={{ background: `${items[key].color}` }}
-                />
+            <CommandGroup>
+              {Object.keys(items).map(key => (
+                <CommandItem
+                  key={key}
+                  value={key}
+                  onSelect={currentValue => {
+                    onSelectItem(
+                      selectedItemList.includes(currentValue)
+                        ? selectedItemList.filter(tag => tag !== currentValue)
+                        : [...selectedItemList, currentValue]
+                    );
+                  }}
+                >
+                  {/* Selected mark */}
+                  <Check
+                    className={`mr-2 h-4 w-4  ${selectedItemList.includes(key) ? 'opacity-100' : 'opacity-0'}`}
+                  />
 
-                {/* Title */}
-                {key}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </Command>
-      </PopoverContent>
-    </Popover>
+                  {/* Tag Color Dot */}
+                  <div
+                    className={`w-2 h-2 mr-3 rounded-full`}
+                    style={{ background: `${items[key].color}` }}
+                  />
+
+                  {/* Title */}
+                  {items[key].title}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </Command>
+        </PopoverContent>
+      </Popover>
+
+      {selectedItemList.length > 0 && (
+        <div className="flex items-center text-gray-500 text-sm ml-2">
+          {' '}
+          <Plus className="w-3 h-3" /> {selectedItemList.length}
+        </div>
+      )}
+    </div>
   );
 };
 

@@ -6,7 +6,9 @@ function SettingTab({ tab, tabIndex, selectedActive, handleSelected }) {
   const isSelected = selectedActive === tabIndex;
   const iconStyle = `w-4 h-4 ${isSelected ? '' : 'group-hover:text-black'}`;
   return (
-    <NavLink to={`/user/settings/${tab.name.toLowerCase().replace(/\s/g, '-')}`}>
+    <NavLink
+      to={`/user/settings/${tab.name.toLowerCase().replace(/\s/g, '-')}`}
+    >
       <div
         id={tab.name}
         className={`flex flex-col my-3 p-3 pl-3 group rounded-md cursor-pointer

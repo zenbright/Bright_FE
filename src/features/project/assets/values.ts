@@ -1,51 +1,51 @@
 export const DEFAULT_TASK_TAGS = {
-    'Medium': {
-        id: 'medium',
+    'medium': {
+        title: 'Medium',
         color: '#b45309',
         description: 'Tasks with medium priority'
     },
-    'High': {
-        id: 'high',
+    'high': {
+        title: 'High',
         color: '#be123c',
         description: 'Tasks with high priority'
     },
-    'Low': {
-        id: 'low',
+    'low': {
+        title: 'Low',
         color: '#047857',
         description: 'Tasks with low priority'
     },
-    'Late': {
-        id: 'late',
+    'late': {
+        title: 'Late',
         color: '#9f1239',
         description: 'Tasks that are late'
     },
-    'Urgent': {
-        id: 'urgent',
+    'urgent': {
+        title: 'Urgent',
         color: '#6b21a8',
         description: 'Urgent tasks'
     },
-    'Enhancement': {
-        id: 'enhancement',
+    'enhancement': {
+        title: 'Enhancement',
         color: '#c2410c',
         description: 'Tasks related to enhancements'
     },
-    'Fix': {
-        id: 'fix',
+    'fix': {
+        title: 'Fix',
         color: '#0369a1',
         description: 'Tasks to fix issues'
     },
-    'Maintenance': {
-        id: 'maintenance',
+    'maintenance': {
+        title: 'Maintenance',
         color: '#0f766e',
         description: 'Tasks for maintenance'
     },
-    'Completed': {
-        id: 'completed',
+    'completed': {
+        title: 'Completed',
         color: '#15803d',
         description: 'Completed tasks'
     },
-    'Review': {
-        id: 'review',
+    'review': {
+        title: 'Review',
         color: '#a21caf',
         description: 'Tasks under review'
     },
