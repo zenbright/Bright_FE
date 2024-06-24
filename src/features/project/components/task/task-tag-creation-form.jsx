@@ -33,7 +33,7 @@ const randomDarkHexColor = () => {
   return color;
 };
 
-export const LabelCreationForm = ({
+export const TaskTagCreationForm = ({
   isOpen = false,
   onOpenChange,
   labelTitle = 'hello',
