@@ -13,7 +13,7 @@ import { Label } from '@/components/ui/label';
 import { RefreshCw } from 'lucide-react';
 import { useState } from 'react';
 
-import { LABEL_CREATION_FORM } from '../../assets/strings';
+import { TASKTAG_CREATION_FORM } from '../../assets/strings';
 import { neonColorCreator } from '../../utils/utils';
 
 const randomDarkHexColor = () => {
@@ -41,12 +41,12 @@ export const LabelCreationForm = ({
   setTagList,
 }) => {
   const [isOpenColorPicker, setIsOpenColorPicker] = useState(false);
-  const [labelColor, setLabelColor] = useState(randomDarkHexColor());
+  const [tagColor, setLabelColor] = useState(randomDarkHexColor());
 
   const onHandleSubmit = () => {
     const newTag = {
       value: labelTitle,
-      color: labelColor,
+      color: tagColor,
       description: `Tasks related to ${labelTitle}`,
     };
 
@@ -59,29 +59,29 @@ export const LabelCreationForm = ({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{LABEL_CREATION_FORM.TITLE}</DialogTitle>
+          <DialogTitle>{TASKTAG_CREATION_FORM.TITLE}</DialogTitle>
           <DialogDescription>
-            {LABEL_CREATION_FORM.DESCRIPTION}
+            {TASKTAG_CREATION_FORM.DESCRIPTION}
           </DialogDescription>
         </DialogHeader>
 
         <div className="grid pt-3 py-2">
           <div className="grid grid-cols-4 items-center gap-4 mb-4">
             <Label htmlFor="name" className="text-left">
-              {LABEL_CREATION_FORM.LABEL_NAME}
+              {TASKTAG_CREATION_FORM.TAG_NAME}
             </Label>
             <Input id="name" defaultValue={labelTitle} className="col-span-3" />
           </div>
 
           <div className="grid grid-cols-4 items-center">
             <Label htmlFor="name" className="text-left">
-              {LABEL_CREATION_FORM.COLOR}
+              {TASKTAG_CREATION_FORM.COLOR}
             </Label>
 
             <div className="flex w-full col-span-3 items-center h-full gap-1">
               <Input
                 type="text"
-                value={labelColor} // Use value instead of defaultValue
+                value={tagColor}
                 onChange={e => {
                   setLabelColor(e.target.value);
                   console.log(e.target.value);
@@ -93,18 +93,17 @@ export const LabelCreationForm = ({
                 size="icon"
                 className={`w-14`}
                 onClick={() => setLabelColor(randomDarkHexColor())}
-                style={{ backgroundColor: labelColor }}
+                style={{ backgroundColor: tagColor }}
               >
                 <RefreshCw
                   className="h-4 w-4"
-                  style={{ color: neonColorCreator(labelColor) }}
+                  style={{ color: neonColorCreator(tagColor) }}
                 />
               </Button>
             </div>
 
             <div className="w-full col-span-4 text-black/50 font-semibold text-sm mt-4 italic">
-              {' '}
-              {LABEL_CREATION_FORM.COLOR_CRITERIA}{' '}
+              {TASKTAG_CREATION_FORM.COLOR_CRITERIA}{' '}
             </div>
           </div>
 
@@ -120,7 +119,7 @@ export const LabelCreationForm = ({
               <ColorPicker
                 isOpen={isOpenColorPicker}
                 onOpenChange={setIsOpenColorPicker}
-                color={labelColor}
+                color={tagColor}
                 setColor={setLabelColor}
               />
             )}
