@@ -32,12 +32,17 @@ export class Task {
 
   createTags(tags) {
     return tags.map(tag => {
-      const tagParts = tag.split('-');
-      const tagTitle =
-        tagParts[0].charAt(0).toUpperCase() + tagParts[0].slice(1);
-      const tagColor = tagParts[1];
+      // Split by both '?' delimiters
+      const tagParts = tag.split('?');
 
-      return new TaskTag(this.id, tagTitle, tagColor);
+      // Extract relevant parts using array destructuring
+      const [id, colorPart, titlePart] = tagParts;
+
+      const tagColor = colorPart.split('=')[1];
+      const tagTitle = titlePart.split('=')[1];
+      const tagId = id;
+
+      return new TaskTag(tagId, tagTitle, tagColor);
     });
   }
 

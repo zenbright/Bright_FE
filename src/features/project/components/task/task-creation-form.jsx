@@ -147,7 +147,7 @@ const TaskCreationForm = ({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title *</FormLabel>
+                  <FormLabel>{'Title *'}</FormLabel>
                   <FormControl>
                     <Input placeholder="Design homepage" {...field} />
                   </FormControl>
@@ -162,7 +162,7 @@ const TaskCreationForm = ({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>{'Description'}</FormLabel>
                   <FormControl>
                     <Textarea
                       className="max-h-40"
@@ -182,7 +182,7 @@ const TaskCreationForm = ({
                 name="startDate"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Start Date *</FormLabel>
+                    <FormLabel>{'Start Date *'}</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -193,7 +193,7 @@ const TaskCreationForm = ({
                             {field.value ? (
                               format(field.value, 'PPP')
                             ) : (
-                              <span>Pick a date</span>
+                              <span>{'Pick a date'}</span>
                             )}
                             <CalendarPlus className="ml-3 h-4 w-4 opacity-50" />
                           </Button>
@@ -222,7 +222,7 @@ const TaskCreationForm = ({
                 name="endDate"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>End Date (Optional)</FormLabel>
+                    <FormLabel>{'End Date (Optional'})</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -267,7 +267,7 @@ const TaskCreationForm = ({
               name="selectedTags"
               render={() => (
                 <FormItem className="flex flex-col justify-between">
-                  <FormLabel>Tags</FormLabel>
+                  <FormLabel>{'Tags'}</FormLabel>
                   <FormControl>
                     <CreatableMultiSelectDropdown
                       selectedItemList={selectedTags}
@@ -283,7 +283,7 @@ const TaskCreationForm = ({
             />
 
             <Button className="w-full" type="submit">
-              Submit
+              {'Submit'}
             </Button>
           </form>
         </Form>
