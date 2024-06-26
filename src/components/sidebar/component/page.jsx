@@ -47,21 +47,21 @@ function Sidebar() {
             <NotificationIcon className="w-5 h-5" />
           </NavItem>
 
-          <NavItem
+          {/* <NavItem
             text={'Schedule'}
             select={selectedTab === 'Schedule'}
             onClick={setSelectedTab}
           >
             <CalendarIcon className="w-5 h-5 " />
-          </NavItem>
+          </NavItem> */}
 
-          <NavItem
+          {/* <NavItem
             text={'Message'}
             select={selectedTab === 'Message'}
             onClick={setSelectedTab}
           >
             <MessageIcon className="w-5 h-5 " />
-          </NavItem>
+          </NavItem> */}
 
           <NavItem
             text={'Settings'}
@@ -71,13 +71,13 @@ function Sidebar() {
             <SettingIcon className="w-5 h-5 " />
           </NavItem>
 
-          <NavItem
+          {/* <NavItem
             text={'About'}
             select={selectedTab === 'About'}
             onClick={setSelectedTab}
           >
             <AboutIcon className="w-5 h-5 " />
-          </NavItem>
+          </NavItem> */}
         </div>
 
         {/* Logout button */}

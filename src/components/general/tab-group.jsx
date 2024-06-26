@@ -1,43 +1,32 @@
+import { Button } from '@/components/ui/button';
 import { FileSpreadsheet, GanttChartSquare, KanbanSquare } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const TableNames = [
-  { name: 'Board', icon: KanbanSquare },
-  { name: 'Timeline', icon: GanttChartSquare },
-  { name: 'Sheet', icon: FileSpreadsheet },
+  { name: 'Board', icon: KanbanSquare, isDisabled: false },
+  { name: 'Sketch', icon: GanttChartSquare, isDisabled: true },
+  { name: 'Sheet', icon: FileSpreadsheet, isDisabled: true },
 ];
 
-const TabGroup = ({
-  tableNames = TableNames,
-  setIsUnderDevDialogOpen,
-  selected,
-  setSelected,
-}) => {
+const TabGroup = ({ tableNames = TableNames, selected, setSelected }) => {
   const handleButtonClick = buttonIndex => {
-    // if (buttonIndex !== 0) {
-    //   setIsUnderDevDialogOpen(true);
-    //   return;
-    // }
     setSelected(buttonIndex);
   };
 
   return (
     <div className="flex gap-4 text-sm">
       {tableNames.map((table, index) => (
-        <button
+        <Button
           key={index}
-          className={`flex py-3 hover:bg-slate-100/80 hover:rounded-lg px-2 gap-2 text-md font-semibold items-center
-            ${
-              selected === index
-                ? 'text-black bg-slate-100/30 rounded-md'
-                : ' text-black/50'
-            }`}
+          className={`flex py-3 px-2 gap-2 text-md font-semibold items-center ${selected === index ? 'bg-gray-100' : ''}`}
+          disabled={table.isDisabled}
+          variant="ghost"
           onClick={() => handleButtonClick(index)}
         >
           {table.icon && <table.icon className="h-5 w-5" />}
 
           <div>{table.name}</div>
-        </button>
+        </Button>
       ))}
     </div>
   );
