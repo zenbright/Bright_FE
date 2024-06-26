@@ -1,9 +1,6 @@
 import { differenceInDays } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
 
-// import userDefaultProfile from '../assets/cat.jpg';
-import { DEFAULT_TASK_TAGS } from '../assets/values';
-
 export class Column {
   constructor(title) {
     this.id = uuidv4();
@@ -57,8 +54,7 @@ export class TaskTag {
     this.taskId = taskId;
     this.title = title;
     this.color = color
-      ? color
-      : DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
+      ? color : 'bg-gray-500';
   }
 }
 
