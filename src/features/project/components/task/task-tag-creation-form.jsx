@@ -44,14 +44,9 @@ export const TaskTagCreationForm = ({
   const [tagColor, setLabelColor] = useState(randomDarkHexColor());
 
   const onHandleSubmit = () => {
-    const newTag = {
-      value: labelTitle,
-      color: tagColor,
-      description: `Tasks related to ${labelTitle}`,
-    };
+    const newTag = `${labelTitle}?color=${tagColor}?title=${labelTitle}`;
 
-    setTagList({ ...tagList, [labelTitle]: newTag });
-
+    setTagList([...tagList, newTag]);
     onOpenChange(false);
   };
 

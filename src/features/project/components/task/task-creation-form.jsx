@@ -39,6 +39,7 @@ import {
   TITLE_DES_INPUT_VALIDATOR,
   TITLE_INPUT_VALIDATOR,
 } from '../../assets/strings';
+import { TaskTagCreationForm } from './task-tag-creation-form';
 
 // Define form schema
 const formSchema = z
@@ -76,6 +77,15 @@ const TaskCreationForm = ({
   const [endDateError, setEndDateError] = useState(null);
   const [tagError, setTagError] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [newTagTitle, setNewTagTitle] = useState('');
+  const [isOpenTaskTagCreationForm, setIsOpenTaskTagCreationForm] =
+    useState(false);
+
+  useEffect(() => {
+    if (newTagTitle && newTagTitle !== '') {
+      setIsOpenTaskTagCreationForm(true);
+    }
+  }, [newTagTitle]);
 
   // Create form hook with schema
   const form = useForm({
@@ -108,6 +118,7 @@ const TaskCreationForm = ({
       values.endDate,
       selectedTags
     );
+
     setIsCreateNewTask(false);
   };
 
@@ -131,7 +142,7 @@ const TaskCreationForm = ({
       <DialogContent className="sm:max-w-[450px]">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">
-            Create new task
+            {'Create new task'}
           </DialogTitle>
           <DialogDescription>{TASK_CREATION_DES}</DialogDescription>
         </DialogHeader>
@@ -272,6 +283,7 @@ const TaskCreationForm = ({
                     <CreatableMultiSelectDropdown
                       selectedItemList={selectedTags}
                       onSelectItem={setSelectedTags}
+                      onAddMoreItem={setNewTagTitle}
                     />
                   </FormControl>
 
@@ -287,6 +299,16 @@ const TaskCreationForm = ({
             </Button>
           </form>
         </Form>
+
+        {isOpenTaskTagCreationForm !== '' && (
+          <TaskTagCreationForm
+            isOpen={isOpenTaskTagCreationForm}
+            onOpenChange={setIsOpenTaskTagCreationForm}
+            labelTitle={newTagTitle}
+            tagList={selectedTags}
+            setTagList={setSelectedTags}
+          />
+        )}
       </DialogContent>
     </Dialog>
   );

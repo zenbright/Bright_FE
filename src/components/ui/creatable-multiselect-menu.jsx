@@ -16,10 +16,10 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 import { useState } from 'react';
 
-import { DEFAULT_TASK_TAGS } from '../../features/project/assets/values';
+import { DEFAULT_TASK_TAG_ARRAY } from '../../features/project/assets/values';
 
 export const CreatableMultiSelectDropdown = ({
-  items = DEFAULT_TASK_TAGS,
+  items = DEFAULT_TASK_TAG_ARRAY,
   selectedItemList,
   onSelectItem,
   onAddMoreItem,
@@ -27,8 +27,18 @@ export const CreatableMultiSelectDropdown = ({
   const [open, setOpen] = useState(false);
   const [searchPhrase, setSearchPhrase] = useState('');
 
-  const parseItemId = selectedItemsString => {
-    return selectedItemsString.split('?')[0];
+  const parseItemAttributes = item => {
+    // Split by both '?' delimiters
+    const itemParts = item.split('?');
+
+    // Extract relevant parts using array destructuring
+    const [id, colorPart, titlePart] = itemParts;
+
+    const itemColor = colorPart.split('=')[1];
+    const itemTitle = titlePart.split('=')[1];
+    const itemId = id;
+
+    return { id: itemId, color: itemColor, title: itemTitle };
   };
 
   return (
@@ -48,10 +58,10 @@ export const CreatableMultiSelectDropdown = ({
                     <div
                       className="w-2 h-2 mr-2 rounded-full"
                       style={{
-                        background: `${items[parseItemId(item)].color}`,
+                        background: `${parseItemAttributes(item).color}`,
                       }}
                     />
-                    {items[parseItemId(item)].title}{' '}
+                    {parseItemAttributes(item).title}
                     {index !== selectedItemList.length - 1 && ','}
                   </div>
                 ))}
@@ -85,15 +95,14 @@ export const CreatableMultiSelectDropdown = ({
             <CommandGroup>
               {Object.keys(items).map(key => (
                 <CommandItem
-                  key={items[key].title}
-                  value={`${key}?color=${items[key].color}`}
+                  key={key}
+                  value={`${key}?color=${parseItemAttributes(items[key]).color}`}
                   onSelect={currentValue => {
-                    currentValue += `?title=${items[key].title}`;
+                    const originalTitle = parseItemAttributes(items[key]).title;
+                    currentValue += `?title=${originalTitle}`;
                     onSelectItem(
                       selectedItemList.includes(currentValue)
-                        ? selectedItemList.filter(
-                            item => parseItemId(item) !== key
-                          )
+                        ? selectedItemList.filter(item => item !== currentValue)
                         : [...selectedItemList, currentValue]
                     );
                   }}
@@ -104,15 +113,17 @@ export const CreatableMultiSelectDropdown = ({
                   />
 
                   {/* Tag Color Dot */}
-                  {items[key].color && (
+                  {parseItemAttributes(items[key]).color && (
                     <div
                       className={`w-2 h-2 mr-3 rounded-full`}
-                      style={{ background: `${items[key].color}` }}
+                      style={{
+                        background: `${parseItemAttributes(items[key]).color}`,
+                      }}
                     />
                   )}
 
                   {/* Title */}
-                  {items[key].title}
+                  {parseItemAttributes(items[key]).title}
                 </CommandItem>
               ))}
             </CommandGroup>
