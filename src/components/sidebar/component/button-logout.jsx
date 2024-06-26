@@ -10,8 +10,25 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import { setLoginStatus } from '../../../features/auth/utils/authSlice';
 
 function LogoutButton({ text, children }) {
+  const dispatch = useDispatch();
+  const isUserAuthenticated = useSelector(
+    state => state.userLoginStatus.isAuthenticated
+  );
+
+  const handleLogout = () => {
+    if (isUserAuthenticated) {
+      localStorage.setItem('isUserAuthenticated', 'false');
+      dispatch(setLoginStatus(false));
+      window.location.replace('/auth');
+    }
+  };
+
   return (
     <div
       id={text}
@@ -41,7 +58,13 @@ function LogoutButton({ text, children }) {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogAction
+              onClick={() => {
+                handleLogout();
+              }}
+            >
+              Continue
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
