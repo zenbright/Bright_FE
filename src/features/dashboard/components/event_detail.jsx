@@ -23,6 +23,7 @@ function EventDetail({ name, endDate, description, color, startDate, value }) {
     });
     return `${formattedDate} at ${formattedTime}`;
   };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -60,11 +61,7 @@ function EventDetail({ name, endDate, description, color, startDate, value }) {
             Make changes to your profile here. Click save when you`re done.
           </DialogDescription>
         </DialogHeader>
-        <div>
-          <p>Task Name {name}</p>
-          <p>Due to {endDate}</p>
-          <p>Description {description}</p>
-        </div>
+          <h1>This will hold your task detail</h1>
       </DialogContent>
     </Dialog>
   );

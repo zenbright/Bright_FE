@@ -37,19 +37,19 @@ function Dashboard() {
           <p className="text-2xl font-semibold">{greeting}</p>
         </div>
 
-        <div className=" place-content-center mt-3 rounded-md">
+        <div className=" place-content-center rounded-md">
           <div className="flex place-content-center w-full">
             <CardContainer />
           </div>
         </div>
 
-        <div className="mt-auto">
+        <div className="mt-auto pb-2">
           <Chart />
         </div>
       </div>
 
       {/* Section 2 */}
-      <div className="w-3/12 bg-white border-[1px] my-1 mr-2 py-2 rounded-md">
+      <div className="w-3/12 h-screen bg-white border-[1px] my-1 mr-2 rounded-md">
         <Calendar />
       </div>
     </div>
