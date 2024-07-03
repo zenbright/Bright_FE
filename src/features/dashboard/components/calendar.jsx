@@ -70,8 +70,8 @@ export const Calendar = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="w-[80%] h-full flex flex-col justify-start">
-        <div className="w-full flex justify-between mb-2 mt-2">
+      <div className="w-[80%] h-full flex flex-col justify-start mt-4">
+        <div className="w-full flex justify-between mb-3 mt-2">
           <h1 className="font-bold">
             {months[today.month()]}, {today.year()}
           </h1>
@@ -135,7 +135,7 @@ export const Calendar = () => {
           )}
         </div>
       </div>
-      <div className="h-fit w-full mt-4 px-3">
+      <div className="h-80 w-full mt-5 px-3 ">
         <div className="flex justify-center items-center mb-2">
           <h1 className="font-semibold">
             {selectDate.format('dddd MMMM D YYYY')}

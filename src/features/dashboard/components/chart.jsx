@@ -36,27 +36,27 @@ function Chart() {
   };
 
   return (
-    <div className='border border-grey p-4 rounded-md'>
+    <div className='border border-grey p-4 rounded-md mb-2'>
       <div className="flex justify-between items-center mb-6">
         <div className='text-lg font-semibold'>
           {selectedData === 'data1' ? 'Project 1' : selectedData === 'data2' ? 'Project 2' : 'Project 3'}
         </div>
-        <div className="flex bg-gray-200 h-7 rounded-md gap-2 cursor-pointer">
+        <div className="flex bg-gray-100 h-9 rounded-md gap-2 cursor-pointer">
           <div
             onClick={() => setSelectedData('data1')}
-            className={`px-4 py-2 text-sm flex items-center rounded ${selectedData === 'data1' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={`font-semibold m-1 px-4 py-2 text-sm flex items-center rounded ${selectedData === 'data1' ? 'bg-black text-white' : 'bg-gray-100 hover:bg-gray-200'}`}
           >
             {'Project 1'}
           </div>
           <div
             onClick={() => setSelectedData('data2')}
-            className={`px-3 py-1 text-sm flex items-center rounded ${selectedData === 'data2' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={`font-semibold m-1 px-3 py-1 text-sm flex items-center rounded ${selectedData === 'data2' ? 'bg-black text-white' : 'bg-gray-100 hover:bg-gray-200'}`}
           >
             {'Project 2'}
           </div>
           <div
             onClick={() => setSelectedData('data3')}
-            className={`px-3 py-1 text-sm flex items-center rounded ${selectedData === 'data3' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={`font-semibold m-1 px-3 py-1 text-sm flex items-center rounded ${selectedData === 'data3' ? 'bg-black text-white' : 'bg-gray-100 hover:bg-gray-200'}`}
           >
             {'Project 3'}
           </div>

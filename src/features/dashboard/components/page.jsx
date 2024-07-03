@@ -31,7 +31,7 @@ function Dashboard() {
   return (
     <div className="flex h-screen w-full">
       {/* Section 1 */}
-      <div className="relative w-9/12 p-4 flex flex-col gap-2 h-screen">
+      <div className="relative w-9/12 p-4 flex flex-col gap-2 h-full">
         <div className="space-y-2">
           <p>{dateFormatted}</p>
           <p className="text-2xl font-semibold">{greeting}</p>
@@ -43,13 +43,13 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <Chart />
         </div>
       </div>
 
       {/* Section 2 */}
-      <div className="w-3/12 h-screen bg-white border-[1px] mt-2 mr-2 rounded-md">
+      <div className="w-3/12 h-fit border-[1px] mt-2 mr-2 rounded-md">
         <Calendar />
       </div>
     </div>
