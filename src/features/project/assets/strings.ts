@@ -1,4 +1,7 @@
-export const TASK_CREATION_DES = 'Capture and organize your to-dos with ease.'
+export const TASK_CREATION_DES = {
+    CREATE: 'Capture and organize your to-dos with ease.',
+    EDIT: 'Edit your task details here.'
+}
 export const TITLE_INPUT_VALIDATOR = {
     SHORT: 'Title must be at least 2 characters.',
     LONG: 'The title exceeds the 50-character limit. Please condense it.'

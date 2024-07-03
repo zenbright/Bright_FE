@@ -42,9 +42,10 @@ export const TaskTagCreationForm = ({
 }) => {
   const [isOpenColorPicker, setIsOpenColorPicker] = useState(false);
   const [tagColor, setLabelColor] = useState(randomDarkHexColor());
+  const [tagTitle, setLabelTitle] = useState(labelTitle);
 
   const onHandleSubmit = () => {
-    const newTag = `${labelTitle}?color=${tagColor}?title=${labelTitle}`;
+    const newTag = `${tagTitle}?color=${tagColor}?title=${tagTitle}`;
 
     setTagList([...tagList, newTag]);
     onOpenChange(false);
@@ -65,7 +66,12 @@ export const TaskTagCreationForm = ({
             <Label htmlFor="name" className="text-left">
               {TASKTAG_CREATION_FORM.TAG_NAME}
             </Label>
-            <Input id="name" defaultValue={labelTitle} className="col-span-3" />
+            <Input
+              id="name"
+              value={tagTitle}
+              className="col-span-3"
+              onChange={e => setLabelTitle(e.target.value)}
+            />
           </div>
 
           <div className="grid grid-cols-4 items-center">
