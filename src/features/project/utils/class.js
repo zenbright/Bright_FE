@@ -27,34 +27,49 @@ export class Task {
     }
   }
 
+  createTagfromString(tagString) {
+    // Split by both '?' delimiters
+    const tagParts = tagString.split('?');
+
+    // Extract relevant parts using array destructuring
+    const [_, colorPart, titlePart] = tagParts;
+
+    const tagColor = colorPart.split('=')[1];
+    const tagTitle = titlePart.split('=')[1];
+
+    return new TaskTag(tagTitle, tagColor);
+  }
+
   createTags(tags) {
-    return tags.map(tag => {
-      // Split by both '?' delimiters
-      const tagParts = tag.split('?');
-
-      // Extract relevant parts using array destructuring
-      const [id, colorPart, titlePart] = tagParts;
-
-      const tagColor = colorPart.split('=')[1];
-      const tagTitle = titlePart.split('=')[1];
-      const tagId = id;
-
-      return new TaskTag(tagId, tagTitle, tagColor);
-    });
+    return tags.map(tag => this.createTagfromString(tag));
   }
 
   addTags(newTags) {
+    if (!Array.isArray(newTags)) {
+      newTags = [newTags];
+    }
     this.tags = [...this.tags, ...this.createTags(newTags)];
+  }
+
+  addTag(tag) {
+    this.tags = [...this.tags, tag];
+  }
+
+  removeTag(tagId) {
+    this.tags = this.tags.filter(tag => tag.id !== tagId);
   }
 }
 
 export class TaskTag {
-  constructor(taskId, title, color) {
+  constructor(title, color) {
     this.id = uuidv4();
-    this.taskId = taskId;
     this.title = title;
     this.color = color
       ? color : 'bg-gray-500';
+  }
+
+  toString = () => {
+    return `${this.id}?color=${this.color}?title=${this.title}`;
   }
 }
 
