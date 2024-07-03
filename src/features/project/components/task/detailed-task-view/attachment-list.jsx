@@ -69,8 +69,11 @@ const FilePreview = attachment => {
   );
 };
 
-export const AttachmentList = ({ attachments = SAMPLE_ATTACHMENT_LIST }) => {
-  const attachmentListRef = useRef(null);
+export const AttachmentList = ({
+  attachments = SAMPLE_ATTACHMENT_LIST,
+  isReload,
+  onReloadTrigger,
+}) => {
   const [maxHeight, setMaxHeight] = useState(window.innerHeight);
   const [searchPhrase, setSearchPhrase] = useState('');
   const [filteredList, setFilteredList] = useState(attachments);
@@ -94,6 +97,28 @@ export const AttachmentList = ({ attachments = SAMPLE_ATTACHMENT_LIST }) => {
       window.removeEventListener('resize', updateMaxHeight);
     };
   }, []);
+
+  // Calculate remaining height
+  useEffect(() => {
+    const updateMaxHeight = () => {
+      const attachmentListElement = document.getElementById('attachment-list');
+      if (attachmentListElement) {
+        const rect = attachmentListElement.getBoundingClientRect();
+        const remainingHeight = window.innerHeight - rect.top;
+        setMaxHeight(remainingHeight);
+      }
+    };
+
+    updateMaxHeight();
+
+    window.addEventListener('resize', updateMaxHeight);
+
+    onReloadTrigger(false);
+
+    return () => {
+      window.removeEventListener('resize', updateMaxHeight);
+    };
+  }, [isReload]);
 
   // Searching
   useEffect(() => {
@@ -127,7 +152,6 @@ export const AttachmentList = ({ attachments = SAMPLE_ATTACHMENT_LIST }) => {
         element="div"
         options={{ scrollbars: { autoHide: 'move' } }}
         style={{ maxHeight: `${maxHeight}px` }}
-        ref={attachmentListRef}
         id="attachment-list"
       >
         <div className="flex flex-col gap-2 mb-2">
