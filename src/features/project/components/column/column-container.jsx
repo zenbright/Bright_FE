@@ -115,8 +115,8 @@ export function ColumnContainer({
 
       {isCreateNewTask && (
         <TaskCreationForm
-          isCreateNewTask={isCreateNewTask}
-          setIsCreateNewTask={setIsCreateNewTask}
+          isOpen={isCreateNewTask}
+          onOpenChange={setIsCreateNewTask}
           createTask={createTask}
           colId={col.id}
         />
