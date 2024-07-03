@@ -24,38 +24,38 @@ const CardContainer = () => {
       </div>
       <div className=" w-1/4 h-27 bg-white cursor-auto card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
         <div className="flex w-full items-center justify-between px-3">
-          <p className="text-sm font-medium">Task Assigned</p>
+          <p className="text-sm font-medium">{'Task Assigned'}</p>
           <MdOutlineAssignmentLate color="#505050 " className="w-4 h-4" />
         </div>
         <div className="flex w-full justify-start pl-3 pt-1">
-          <h2 className="text-3xl font-extrabold">+15</h2>
+          <h2 className="text-3xl font-extrabold">{'+15'}</h2>
         </div>
         <div className="flex w-full justify-start pl-3">
-          <p className="text-sm font-light">+15% from last month</p>
+          <p className="text-sm font-light">{'+15% from last month'}</p>
         </div>
       </div>
       <div className=" w-1/4 h-27 bg-white cursor-auto card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
         <div className="flex w-full items-center justify-between px-3">
-          <p className="text-sm font-medium">Joined Projects</p>
+          <p className="text-sm font-medium">{'Joined Projects'}</p>
           <MdPeopleOutline color="#505050 " className="w-4 h-4" />
         </div>
         <div className="flex w-full justify-start pl-3 pt-1">
-          <h2 className="text-3xl font-extrabold">+10</h2>
+          <h2 className="text-3xl font-extrabold">{'+10'}</h2>
         </div>
         <div className="flex w-full justify-start pl-3">
-          <p className="text-sm font-light">+10% from last month</p>
+          <p className="text-sm font-light">{'+10% from last month'}</p>
         </div>
       </div>
       <div className=" w-1/4 h-27 bg-white cursor-auto card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
         <div className="flex w-full items-center justify-between px-3">
-          <p className="text-sm font-medium">New Notification</p>
+          <p className="text-sm font-medium">{'New Notification'}</p>
           <IoMdNotificationsOutline color="#505050 " className="w-4 h-4" />
         </div>
         <div className="flex w-full justify-start pl-3 pt-1">
-          <h2 className="text-3xl font-extrabold">+99</h2>
+          <h2 className="text-3xl font-extrabold">{'+99'}</h2>
         </div>
         <div className="flex w-full justify-start pl-3">
-          <p className="text-sm font-light">+44% from last month</p>
+          <p className="text-sm font-light">{'+44% from last month'}</p>
         </div>
       </div>
     </div>

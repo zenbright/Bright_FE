@@ -29,10 +29,10 @@ function Dashboard() {
   const options = { weekday: 'long', month: 'long', day: 'numeric' };
   const dateFormatted = currentTime.toLocaleDateString(undefined, options);
   return (
-    <div className="flex h-full w-full">
+    <div className="flex h-screen w-full">
       {/* Section 1 */}
-      <div className="relative w-9/12 p-4 flex flex-col gap-4 h-screen">
-        <div className="space-y-2 mt-4">
+      <div className="relative w-9/12 p-4 flex flex-col gap-2 h-screen">
+        <div className="space-y-2">
           <p>{dateFormatted}</p>
           <p className="text-2xl font-semibold">{greeting}</p>
         </div>
@@ -43,13 +43,13 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="mt-auto pb-2">
+        <div className="flex flex-col ">
           <Chart />
         </div>
       </div>
 
       {/* Section 2 */}
-      <div className="w-3/12 h-screen bg-white border-[1px] my-1 mr-2 rounded-md">
+      <div className="w-3/12 h-screen bg-white border-[1px] mt-2 mr-2 rounded-md">
         <Calendar />
       </div>
     </div>
