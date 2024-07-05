@@ -37,7 +37,7 @@
     --radius: 0.5rem;
   }
 
-  .dark {
+  :root[data-theme='dark-default'] {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 

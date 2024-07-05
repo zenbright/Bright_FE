@@ -10,7 +10,6 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
-import { appTheme } from './config/constants/theme';
 import { AuthenticationPage } from './features/auth';
 import Board from './features/board/Board';
 import Dashboard from './features/dashboard';
@@ -65,9 +64,15 @@ const router = createBrowserRouter(
 
 function App() {
   // Global States
+  const currentTheme = useSelector(state => state.currentTheme.value);
   const isUserAuthenticated = useSelector(
     state => state.userLoginStatus.isAuthenticated
   );
+
+  useEffect(() => {
+    console.log(currentTheme);
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  }, [currentTheme]);
 
   useEffect(() => {
     if (isUserAuthenticated !== true) {
