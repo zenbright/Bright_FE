@@ -56,7 +56,7 @@ function ProjectDashboard() {
   const categoryOptions = ['All', ...Object.keys(groupedProjects)];
 
   return (
-    <div className="flyInLeftToRight z-50 px-2 group-none overflow-x-scroll no-scrollbar relative rounded-r-md h-full bg-white border-r-2 w-[19.5vw] pt-2 flex flex-col justify-between">
+    <div className="flyInLeftToRight px-2 group-none overflow-x-scroll no-scrollbar rounded-r-md h-full bg-white border-r-2 w-[19.5vw] pt-2 flex flex-col justify-between">
       {selectedProject === null ? (
         <>
           <div>
