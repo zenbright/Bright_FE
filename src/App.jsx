@@ -1,9 +1,7 @@
-import { setLoginStatus } from '@/features/auth/utils/authSlice';
 import ProjectManagementPage from '@/features/project';
 import 'overlayscrollbars/styles/overlayscrollbars.css';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import {
   Navigate,
   Route,
@@ -12,6 +10,7 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
+import { appTheme } from './config/constants/theme';
 import { AuthenticationPage } from './features/auth';
 import Board from './features/board/Board';
 import Dashboard from './features/dashboard';
@@ -65,24 +64,18 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  const dispatch = useDispatch();
+  // Global States
   const isUserAuthenticated = useSelector(
     state => state.userLoginStatus.isAuthenticated
   );
 
   useEffect(() => {
-    const storedAuthState = localStorage.getItem('isUserAuthenticated');
-    if (storedAuthState === 'true') {
-      dispatch(setLoginStatus(true)); // Update Redux state
+    if (isUserAuthenticated !== true) {
+      return;
     }
-  }, [dispatch]);
 
-  useEffect(() => {
-    if (isUserAuthenticated) {
-      localStorage.setItem('isUserAuthenticated', 'true');
-      if (window.location.pathname !== '/user/dashboard') {
-        window.location.replace('/user/dashboard');
-      }
+    if (window.location.pathname !== '/user/dashboard') {
+      window.location.replace('/user/dashboard');
     }
   }, [isUserAuthenticated]);
 
