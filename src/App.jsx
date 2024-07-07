@@ -70,7 +70,6 @@ function App() {
   );
 
   useEffect(() => {
-    console.log(currentTheme);
     document.documentElement.setAttribute('data-theme', currentTheme);
   }, [currentTheme]);
 
