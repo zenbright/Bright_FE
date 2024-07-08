@@ -16,16 +16,30 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 import { useState } from 'react';
 
-import { DEFAULT_TASK_TAGS } from '../../features/project/assets/values';
+import { DEFAULT_TASK_TAG_ARRAY } from '../../features/project/assets/values';
 
 export const CreatableMultiSelectDropdown = ({
-  items = DEFAULT_TASK_TAGS,
-  selectedItemList = [],
+  items = DEFAULT_TASK_TAG_ARRAY,
+  selectedItemList,
   onSelectItem,
   onAddMoreItem,
 }) => {
   const [open, setOpen] = useState(false);
   const [searchPhrase, setSearchPhrase] = useState('');
+
+  const parseItemAttributes = item => {
+    // Split by both '?' delimiters
+    const itemParts = item.split('?');
+
+    // Extract relevant parts using array destructuring
+    const [id, colorPart, titlePart] = itemParts;
+
+    const itemColor = colorPart.split('=')[1];
+    const itemTitle = titlePart.split('=')[1];
+    const itemId = id;
+
+    return { id: itemId, color: itemColor, title: itemTitle };
+  };
 
   return (
     <div className="flex items-center">
@@ -39,20 +53,23 @@ export const CreatableMultiSelectDropdown = ({
           >
             {selectedItemList.length > 0 ? (
               <div className="flex overflow-hidden gap-2">
-                {selectedItemList.map((tag, index) => (
+                {selectedItemList.map((item, index) => (
                   <div key={index} className="flex items-center">
                     <div
                       className="w-2 h-2 mr-2 rounded-full"
-                      style={{ background: `${items[tag].color}` }}
+                      style={{
+                        background: `${parseItemAttributes(item).color}`,
+                      }}
                     />
-                    {items[tag].title}{' '}
+                    {parseItemAttributes(item).title}
                     {index !== selectedItemList.length - 1 && ','}
                   </div>
                 ))}
               </div>
             ) : (
-              <span className="opacity-50">Select tags...</span>
+              <span className="opacity-50">{'Select tags...'}</span>
             )}
+
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
@@ -79,28 +96,34 @@ export const CreatableMultiSelectDropdown = ({
               {Object.keys(items).map(key => (
                 <CommandItem
                   key={key}
-                  value={key}
+                  value={`${key}?color=${parseItemAttributes(items[key]).color}`}
                   onSelect={currentValue => {
+                    const originalTitle = parseItemAttributes(items[key]).title;
+                    currentValue += `?title=${originalTitle}`;
                     onSelectItem(
                       selectedItemList.includes(currentValue)
-                        ? selectedItemList.filter(tag => tag !== currentValue)
+                        ? selectedItemList.filter(item => item !== currentValue)
                         : [...selectedItemList, currentValue]
                     );
                   }}
                 >
                   {/* Selected mark */}
                   <Check
-                    className={`mr-2 h-4 w-4  ${selectedItemList.includes(key) ? 'opacity-100' : 'opacity-0'}`}
+                    className={`mr-2 h-4 w-4 ${selectedItemList.some(item => item.startsWith(`${key}?color=`)) ? 'opacity-100' : 'opacity-0'}`}
                   />
 
                   {/* Tag Color Dot */}
-                  <div
-                    className={`w-2 h-2 mr-3 rounded-full`}
-                    style={{ background: `${items[key].color}` }}
-                  />
+                  {parseItemAttributes(items[key]).color && (
+                    <div
+                      className={`w-2 h-2 mr-3 rounded-full`}
+                      style={{
+                        background: `${parseItemAttributes(items[key]).color}`,
+                      }}
+                    />
+                  )}
 
                   {/* Title */}
-                  {items[key].title}
+                  {parseItemAttributes(items[key]).title}
                 </CommandItem>
               ))}
             </CommandGroup>

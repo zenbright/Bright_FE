@@ -49,7 +49,7 @@ function Dashboard() {
       </div>
 
       {/* Section 2 */}
-      <div className="w-3/12 h-fit border-[1px] mt-2 mr-2 rounded-md">
+      <div className="w-3/12 border-[1px] my-1 mr-2 py-2 rounded-md">
         <Calendar />
       </div>
     </div>

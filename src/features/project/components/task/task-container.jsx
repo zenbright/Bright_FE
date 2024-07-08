@@ -139,7 +139,7 @@ export const TaskContainer = ({ task }) => {
                 ))}
 
               {task.tags.length > 2 && (
-                <Badge className="bg-slate-200 text-slate-700 h-6 hover:bg-slate-300">
+                <Badge className="bg-slate-100 text-slate-500 h-6 hover:bg-slate-200/80">
                   + {task.tags.length - 2}
                 </Badge>
               )}

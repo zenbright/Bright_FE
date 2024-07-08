@@ -50,6 +50,10 @@ export const theme = {
         DEFAULT: 'hsl(var(--card))',
         foreground: 'hsl(var(--card-foreground))',
       },
+      hovering: {
+        DEFAULT: 'hsl(var(--hovering))',
+        foreground: 'hsl(var(--hovering-foreground))',
+      }
     },
     borderRadius: {
       lg: 'var(--radius)',

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    isAuthenticated: false,
+    isAuthenticated: localStorage.getItem('isAuthenticated') || JSON.stringify(false)
 }
 
 export const authSlice = createSlice({
@@ -10,6 +10,7 @@ export const authSlice = createSlice({
     reducers: {
         setLoginStatus: (state, action) => {
             state.isAuthenticated = action.payload
+            localStorage.setItem('isAuthenticated', JSON.stringify(state.isAuthenticated))
         },
     }
 })

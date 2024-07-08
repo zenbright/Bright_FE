@@ -14,13 +14,25 @@ import LogoutButton from './button-logout.jsx';
 import NavItem from './nav-item.jsx';
 import ProjectDashboard from './project-dashboard.jsx';
 import UserImageName from './user-image-name.jsx';
+import { Switch } from "@/components/ui/switch"
+import { useDispatch, useSelector } from 'react-redux';
+import { setTheme } from '../../../features/theme/utils/themeSlice.ts'
+
 
 function Sidebar() {
   const [selectedTab, setSelectedTab] = useState('Dashboard');
+  const dispatch = useDispatch();
+  const currentTheme = useSelector((state) => state.currentTheme.value);
+
+
+  const handleThemeSwitch = () => {
+    const newTheme = currentTheme === 'light-default' ? 'dark-default' : 'light-default';
+    dispatch(setTheme(newTheme));
+  }
 
   return (
     <div className="flex flex-row container-ns">
-      <div className="group w-[5.5vw] hover:w-[17vw] group-hover:w-[17vw] transition-all duration-200 bg-white border-r pt-2 h-screen flex flex-col items-center right-1 overflow-hidden">
+      <div className="group w-[5.5vw] hover:w-[17vw] group-hover:w-[17vw] transition-all duration-200 bg-background border-r pt-2 h-screen flex flex-col items-center right-1 overflow-hidden">
         {/* User Information */}
         <UserImageName text={'Username'} image={''} />
 
@@ -34,7 +46,7 @@ function Sidebar() {
             onClick={setSelectedTab}
           >
             <DashboardIcon className="w-5 h-5" />
-            <div className="grandchild-content block absolute left-[11vw] top-[-77px] h-screen z-10">
+            <div className="grandchild-content hidden absolute left-[18vw] top-[-77px] h-screen z-10">
               <ProjectDashboard />
             </div>
           </NavItem>
@@ -47,21 +59,21 @@ function Sidebar() {
             <NotificationIcon className="w-5 h-5" />
           </NavItem>
 
-          <NavItem
+          {/* <NavItem
             text={'Schedule'}
             select={selectedTab === 'Schedule'}
             onClick={setSelectedTab}
           >
             <CalendarIcon className="w-5 h-5 " />
-          </NavItem>
+          </NavItem> */}
 
-          <NavItem
+          {/* <NavItem
             text={'Message'}
             select={selectedTab === 'Message'}
             onClick={setSelectedTab}
           >
             <MessageIcon className="w-5 h-5 " />
-          </NavItem>
+          </NavItem> */}
 
           <NavItem
             text={'Settings'}
@@ -71,19 +83,21 @@ function Sidebar() {
             <SettingIcon className="w-5 h-5 " />
           </NavItem>
 
-          <NavItem
+          {/* <NavItem
             text={'About'}
             select={selectedTab === 'About'}
             onClick={setSelectedTab}
           >
             <AboutIcon className="w-5 h-5 " />
-          </NavItem>
+          </NavItem> */}
         </div>
+
+        <Switch className="mb-10" onCheckedChange = {handleThemeSwitch}/>
 
         {/* Logout button */}
         <div className="w-full pb-1">
           <LogoutButton text={'Logout'}>
-            <LogoutIcon className="w-5 h-5 " />
+            <LogoutIcon className=" w-5 h-5 " />
           </LogoutButton>
         </div>
       </div>

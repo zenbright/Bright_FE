@@ -95,6 +95,7 @@ function ProjectDashboard() {
               </div>
             ))}
           </div>
+
           {Object.keys(filteredProjects).length === 0 && (
             <div className="flex place-content-center top-50 flex-col items-center">
               <NotFound className="w-20 h-20 m-5 fill-slate-700 opacity-20"></NotFound>

@@ -39,6 +39,7 @@ import {
   TITLE_DES_INPUT_VALIDATOR,
   TITLE_INPUT_VALIDATOR,
 } from '../../assets/strings';
+import { TaskTagCreationForm } from './task-tag-creation-form';
 
 // Define form schema
 const formSchema = z
@@ -68,22 +69,37 @@ const formSchema = z
   );
 
 const TaskCreationForm = ({
-  isCreateNewTask,
-  setIsCreateNewTask,
+  isOpen,
+  onOpenChange,
   createTask,
   colId,
+  isInEditView,
+  taskToBeEditted,
 }) => {
   const [endDateError, setEndDateError] = useState(null);
   const [tagError, setTagError] = useState(null);
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState(
+    isInEditView ? taskToBeEditted.tags.map(tag => tag.toString()) : []
+  );
+  const [newTagTitle, setNewTagTitle] = useState('');
+  const [isOpenTaskTagCreationForm, setIsOpenTaskTagCreationForm] =
+    useState(false);
+
+  useEffect(() => {
+    if (newTagTitle && newTagTitle !== '') {
+      setIsOpenTaskTagCreationForm(true);
+    }
+  }, [newTagTitle]);
 
   // Create form hook with schema
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: '',
-      description: '',
-      startDate: new Date(),
+      title: isInEditView ? taskToBeEditted.title : '',
+      description: isInEditView ? taskToBeEditted.des : '',
+      startDate: isInEditView
+        ? new Date(taskToBeEditted.startDate)
+        : new Date(),
     },
   });
 
@@ -94,6 +110,17 @@ const TaskCreationForm = ({
 
   // Handle form submit
   const onSubmit = values => {
+    if (isInEditView) {
+      // Update task
+      taskToBeEditted.title = values.title;
+      taskToBeEditted.des = values.description;
+      taskToBeEditted.startDate = values.startDate;
+      taskToBeEditted.endDate = values.endDate;
+      taskToBeEditted.tags = taskToBeEditted.createTags(selectedTags);
+
+      onOpenChange(false);
+      return;
+    }
     // Constraint: must be selected at least 1 tag
     if (selectedTags.length === 0) {
       setTagError(TAGS_INPUT_VALIDATOR.SHORT);
@@ -108,7 +135,8 @@ const TaskCreationForm = ({
       values.endDate,
       selectedTags
     );
-    setIsCreateNewTask(false);
+
+    onOpenChange(false);
   };
 
   // Handle failed to submit
@@ -127,13 +155,15 @@ const TaskCreationForm = ({
   };
 
   return (
-    <Dialog open={isCreateNewTask} onOpenChange={setIsCreateNewTask}>
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[450px]">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">
-            Create new task
+            {isInEditView ? 'Edit Task' : 'Create a new Task'}
           </DialogTitle>
-          <DialogDescription>{TASK_CREATION_DES}</DialogDescription>
+          <DialogDescription>
+            {isInEditView ? TASK_CREATION_DES.EDIT : TASK_CREATION_DES.CREATE}
+          </DialogDescription>
         </DialogHeader>
 
         <Form {...form}>
@@ -147,9 +177,14 @@ const TaskCreationForm = ({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title *</FormLabel>
+                  <FormLabel>{'Title *'}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Design homepage" {...field} />
+                    <Input
+                      placeholder={
+                        isInEditView ? taskToBeEditted.title : 'Task title'
+                      }
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -162,11 +197,13 @@ const TaskCreationForm = ({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>{'Description'}</FormLabel>
                   <FormControl>
                     <Textarea
                       className="max-h-40"
-                      placeholder="Follow design on Figma"
+                      placeholder={
+                        isInEditView ? taskToBeEditted.des : 'Task description'
+                      }
                       {...field}
                     />
                   </FormControl>
@@ -182,7 +219,7 @@ const TaskCreationForm = ({
                 name="startDate"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Start Date *</FormLabel>
+                    <FormLabel>{'Start Date *'}</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -193,7 +230,7 @@ const TaskCreationForm = ({
                             {field.value ? (
                               format(field.value, 'PPP')
                             ) : (
-                              <span>Pick a date</span>
+                              <span>{'Pick a date'}</span>
                             )}
                             <CalendarPlus className="ml-3 h-4 w-4 opacity-50" />
                           </Button>
@@ -222,7 +259,7 @@ const TaskCreationForm = ({
                 name="endDate"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>End Date (Optional)</FormLabel>
+                    <FormLabel>{'End Date (Optional)'}</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -246,9 +283,7 @@ const TaskCreationForm = ({
                           mode="single"
                           selected={field.value}
                           onSelect={field.onChange}
-                          disabled={date =>
-                            date > new Date() || date < new Date('1900-01-01')
-                          }
+                          disabled={date => date < new Date()}
                           initialFocus
                         />
                       </PopoverContent>
@@ -262,31 +297,44 @@ const TaskCreationForm = ({
               />
             </div>
 
-            <FormField
-              control={form.control}
-              name="selectedTags"
-              render={() => (
-                <FormItem className="flex flex-col justify-between">
-                  <FormLabel>Tags</FormLabel>
-                  <FormControl>
-                    <CreatableMultiSelectDropdown
-                      selectedItemList={selectedTags}
-                      onSelectItem={setSelectedTags}
-                    />
-                  </FormControl>
+            {!isInEditView && (
+              <FormField
+                control={form.control}
+                name="selectedTags"
+                render={() => (
+                  <FormItem className="flex flex-col justify-between">
+                    <FormLabel>{'Tags'}</FormLabel>
+                    <FormControl>
+                      <CreatableMultiSelectDropdown
+                        selectedItemList={selectedTags}
+                        onSelectItem={setSelectedTags}
+                        onAddMoreItem={setNewTagTitle}
+                      />
+                    </FormControl>
 
-                  {tagError && (
-                    <FormMessage error="true">{tagError}</FormMessage>
-                  )}
-                </FormItem>
-              )}
-            />
+                    {tagError && (
+                      <FormMessage error="true">{tagError}</FormMessage>
+                    )}
+                  </FormItem>
+                )}
+              />
+            )}
 
             <Button className="w-full" type="submit">
-              Submit
+              {'Submit'}
             </Button>
           </form>
         </Form>
+
+        {isOpenTaskTagCreationForm !== '' && (
+          <TaskTagCreationForm
+            isOpen={isOpenTaskTagCreationForm}
+            onOpenChange={setIsOpenTaskTagCreationForm}
+            labelTitle={newTagTitle}
+            tagList={selectedTags}
+            setTagList={setSelectedTags}
+          />
+        )}
       </DialogContent>
     </Dialog>
   );

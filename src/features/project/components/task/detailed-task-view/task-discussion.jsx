@@ -1,22 +1,18 @@
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
-import { ArrowUpFromDot } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+
+
 import { TaskActivity } from '../../../utils/class';
 import { timeAgo } from '../../../utils/utils';
+
 
 // Sample instances array
 const sampleActivities = [
@@ -158,16 +154,13 @@ const TaskActivityComponent = ({
   );
 };
 
-export const TaskDiscussion = () => {
+export const TaskDiscussion = ({ isReload, onReloadTrigger }) => {
   const [comment, setComment] = useState('');
-  const [remainingActivitySectionHeight, setRemainingActivitySectionHeight] =
-    useState(0);
   const [activities, setActivities] = useState(sampleActivities);
-  const inputRef = useRef(null);
   const activitySectionRef = useRef(null);
-  const parentDivRef = useRef(null);
   const [isEditCommentContent, setIsEditCommentContent] = useState(false);
   const [deletedCommentIndex, setDeleteCommentIndex] = useState(null);
+  const [maxHeight, setMaxHeight] = useState(window.innerHeight);
 
   useEffect(() => {
     if (deletedCommentIndex === null) {
@@ -205,9 +198,13 @@ export const TaskDiscussion = () => {
   // Calculate remaining height
   useEffect(() => {
     const updateMaxHeight = () => {
-      const remainingActivitySectionHeight =
-        parentDivRef.current.clientHeight - inputRef.current.clientHeight;
-      setRemainingActivitySectionHeight(remainingActivitySectionHeight);
+      const activitySectionElement =
+        document.getElementById('activity-section');
+      if (activitySectionElement) {
+        const rect = activitySectionElement.getBoundingClientRect();
+        const remainingHeight = window.innerHeight - rect.top;
+        setMaxHeight(remainingHeight);
+      }
     };
 
     updateMaxHeight();
@@ -219,18 +216,56 @@ export const TaskDiscussion = () => {
     };
   }, []);
 
+  // Calculate remaining height
+  useEffect(() => {
+    const updateMaxHeight = () => {
+      const activitySectionElement = document.getElementById('activity-section');
+      if (activitySectionElement) {
+        const rect = activitySectionElement.getBoundingClientRect();
+        const remainingHeight = window.innerHeight - rect.top;
+        setMaxHeight(remainingHeight);
+      }
+    };
+
+    updateMaxHeight();
+
+    window.addEventListener('resize', updateMaxHeight);
+
+    onReloadTrigger(false);
+
+    return () => {
+      window.removeEventListener('resize', updateMaxHeight);
+    };
+  }, [isReload]);
+
   return (
-    <div ref={parentDivRef} className="flex flex-col h-full justify-between">
+    <div className="flex flex-col h-full justify-between">
+      <div className={`flex items-center space-x-2 mb-3 z-0`}>
+        <Input
+          type="text"
+          placeholder="Leave a comment..."
+          value={comment}
+          onChange={e => setComment(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
+              onCommentSubmit();
+            }
+          }}
+        />
+
+        <Button onClick={onCommentSubmit}>
+          <Send className="w-4 h-4" />
+        </Button>
+      </div>
+
       <OverlayScrollbarsComponent
         element="div"
+        id="activity-section"
         ref={activitySectionRef}
         options={{ scrollbars: { autoHide: 'move' } }}
-        style={{ maxHeight: `${remainingActivitySectionHeight}px` }}
+        style={{ maxHeight: `${maxHeight}px` }}
       >
-        <div
-          id="activity-section"
-          className="relative overflow-y-auto pl-3 mb-3"
-        >
+        <div className="relative overflow-y-auto pl-3 mb-3">
           <div className="absolute left-3 h-full border-s" />
           {activities.map((activity, index) => (
             <TaskActivityComponent
@@ -244,25 +279,6 @@ export const TaskDiscussion = () => {
           ))}
         </div>
       </OverlayScrollbarsComponent>
-
-      <div className={`flex items-center space-x-2 mb-1 z-0`}>
-        <Input
-          ref={inputRef}
-          type="text"
-          placeholder="Leave a comment..."
-          value={comment}
-          onChange={e => setComment(e.target.value)}
-          onKeyDown={e => {
-            if (e.key === 'Enter') {
-              onCommentSubmit();
-            }
-          }}
-        />
-
-        <Button onClick={onCommentSubmit}>
-          <ArrowUpFromDot className="w-4 h-4" />
-        </Button>
-      </div>
     </div>
   );
 };

@@ -10,8 +10,25 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import { setLoginStatus } from '../../../features/auth/utils/authSlice';
 
 function LogoutButton({ text, children }) {
+  const dispatch = useDispatch();
+  const isUserAuthenticated = useSelector(
+    state => state.userLoginStatus.isAuthenticated
+  );
+
+  const handleLogout = () => {
+    if (isUserAuthenticated) {
+      localStorage.setItem('isUserAuthenticated', 'false');
+      dispatch(setLoginStatus(false));
+      window.location.replace('/auth');
+    }
+  };
+
   return (
     <div
       id={text}
@@ -20,13 +37,13 @@ function LogoutButton({ text, children }) {
     >
       <AlertDialog>
         <AlertDialogTrigger className="p-3 transition-all group-hover:w-[90%] h-full flex items-center gap-0 group-hover:gap-3 group-hover/item:bg-rose-500 rounded-md group is-hovered mb-8">
-          <div className="dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-white ">
+          <div className="fill-foreground dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-foreground ">
             {children}
           </div>
           <div
             className="font-medium  md:text-sm opacity-0  group-hover:opacity-100 duration-0
                 transition-all overflow-hidden invisible group-hover:visible w-0 group-hover:w-full flex items-center
-                group-[.is-hovered]: group-hover/item:text-white
+                group-[.is-hovered]: group-hover/item:text-foreground
                 "
           >
             {text}
@@ -41,7 +58,13 @@ function LogoutButton({ text, children }) {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogAction
+              onClick={() => {
+                handleLogout();
+              }}
+            >
+              Continue
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

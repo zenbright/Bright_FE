@@ -9,6 +9,8 @@
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
 
+    --hovering: 0 0% 80%;
+
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
 
@@ -37,9 +39,11 @@
     --radius: 0.5rem;
   }
 
-  .dark {
+  :root[data-theme='dark-default'] {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
+
+    --hovering: 100 10% 90%;
 
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -77,19 +81,17 @@
 }
 
 @layer utilities {
-  @variants responsive {
-    /* Hide scrollbar for Chrome, Safari, and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    /* Hide scrollbar for IE, Edge, and Firefox */
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      /* IE and Edge */
-      scrollbar-width: none;
-      /* Firefox */
-    }
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 }
 
