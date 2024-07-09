@@ -80,13 +80,13 @@ export default function Board() {
 
   return (
     <div>
-      <div className="absolute right-2 inset-y-80 z-10">
-        <Button variant="secondary" onClick={handleExportClick}>
+      <div className="absolute right-2 top-[148px] z-10 bg-transparent">
+        <Button onClick={handleExportClick}>
           Export
         </Button>
       </div>
-      <div style={{ position: 'fixed', inset: 0 }}>
-        <Tldraw store={store}></Tldraw>
+      <div style={{ position: 'fixed', width:'95%', height:'73%'}}>
+        <Tldraw className='absolute inset-x-0 bottom-0' store={store}></Tldraw>
       </div>
     </div>
   );

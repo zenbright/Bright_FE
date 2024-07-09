@@ -15,7 +15,6 @@ import {
   Heart,
   Settings,
   ShieldMinus,
-  UserRoundPlus,
 } from 'lucide-react';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -29,7 +28,7 @@ import ProjectBreadCrumbs from './breadcrumbs';
 import { KanbanBoard } from './kanban-board';
 import { MemberList } from './member-list';
 import AddMember from '../../../layouts/add-member';
-
+import Board from '../../board/Board';
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
@@ -37,7 +36,7 @@ export const Page = () => {
   const [selectedTabIdx, setSelectedTabIdx] = useState(0);
 
   return (
-    <div className="px-2 py-1 w-full h-dvh overflow-auto ">
+    <div className="px-2 py-1 w-full h-dvh overflow-auto">
       <div className="px-4">
         {/* Project Headers */}
         <ProjectBreadCrumbs projectType="SOFTWARE" projectOwner="MUDOKER" />
@@ -78,7 +77,9 @@ export const Page = () => {
 
       {/* Creation Date + Member List + Privacy */}
       <div className="mb-1 flex items-center h-10 gap-4">
-        {/* Board Tab */}
+        <div className='mt-36'>
+          <Board/>
+        </div>
         <div className="flex items-center pl-4">
           <BoardTabGroup
             selected={selectedTabIdx}

@@ -87,7 +87,7 @@ function App() {
 
   return (
     <RouterProvider router={router} />
-    // <AddMember />
+    // <Board/>
   );
 }
 
