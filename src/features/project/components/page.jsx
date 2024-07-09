@@ -28,6 +28,8 @@ import { SYSTEM_ALERT } from '../../../config/constants/strings.global';
 import ProjectBreadCrumbs from './breadcrumbs';
 import { KanbanBoard } from './kanban-board';
 import { MemberList } from './member-list';
+import AddMember from '../../../layouts/add-member';
+
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
@@ -90,14 +92,7 @@ export const Page = () => {
 
         <div className="flex items-center">
           <MemberList width={7} height={7} />
-
-          <Button
-            className="h-8 border-black/15"
-            variant="outline"
-            onClick={() => setIsUnderDevDialogOpen(true)}
-          >
-            <UserRoundPlus className="h-4" /> Invite
-          </Button>
+          <AddMember/>
         </div>
 
         <Divider width="1.5px" height="70%" color="rgba(0,0,0,0.2)" />

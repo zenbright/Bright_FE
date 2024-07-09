@@ -23,6 +23,7 @@ import { AppLayout } from './layouts/app-layout';
 import { LandingAuthLayout } from './layouts/landing-auth-layout';
 import { SettingLayout } from './layouts/setting-layout';
 
+
 // Routing from landing page to its child and sign in paage
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -84,7 +85,10 @@ function App() {
     }
   }, [isUserAuthenticated]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider router={router} />
+    // <AddMember />
+  );
 }
 
 export default App;
