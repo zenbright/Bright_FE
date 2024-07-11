@@ -53,6 +53,10 @@ export const theme = {
       hovering: {
         DEFAULT: 'hsl(var(--hovering))',
         foreground: 'hsl(var(--hovering-foreground))',
+      },
+      project_text: {
+        DEFAULT: 'hsl(var(--project_text))',
+        foreground: 'hsl(var(--project_text-foreground))',
       }
     },
     borderRadius: {

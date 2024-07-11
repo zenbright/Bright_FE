@@ -10,6 +10,7 @@
     --foreground: 240 10% 3.9%;
 
     --hovering: 0 0% 80%;
+    --project_text: 216, 20%, 26%;
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -44,6 +45,7 @@
     --foreground: 0 0% 98%;
 
     --hovering: 100 10% 90%;
+    --project_text: 0, 0%, 100%;
 
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
