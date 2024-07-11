@@ -10,7 +10,7 @@ import '../styles/style.css';
 const CardContainer = () => {
   return (
     <div className="flex justify-between w-full gap-2">
-      <div className=" w-1/4 h-27 bg-white cursor-default flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
+      <div className=" w-1/4 h-27 bg-background cursor-default flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
         <div className="flex w-full items-center justify-between px-3">
           <p className="text-sm font-medium">{'Tasks Completed'}</p>
           <MdOutlineTask color="#505050" className="w-4 h-4" />
@@ -23,7 +23,7 @@ const CardContainer = () => {
         </div>
       </div>
 
-      <div className=" w-1/4 h-27 bg-white card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
+      <div className=" w-1/4 h-27 bg-background cursor-default card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
         <div className="flex w-full items-center justify-between px-3">
           <p className="text-sm font-medium">{'Task Assigned'}</p>
           <MdOutlineAssignmentLate color="#505050 " className="w-4 h-4" />
@@ -36,7 +36,7 @@ const CardContainer = () => {
         </div>
       </div>
 
-      <div className=" w-1/4 h-27 bg-white cursor-pointer card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
+      <div className=" w-1/4 h-27 bg-background cursor-pointer card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
         <div className="flex w-full items-center justify-between px-3">
           <p className="text-sm font-medium">{'Joined Projects'}</p>
           <MdPeopleOutline color="#505050 " className="w-4 h-4" />
@@ -49,7 +49,7 @@ const CardContainer = () => {
         </div>
       </div>
 
-      <div className=" w-1/4 h-27 bg-white cursor-pointer card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
+      <div className=" w-1/4 h-27 bg-background cursor-pointer card-hover flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
         <div className="flex w-full items-center justify-between px-3">
           <p className="text-sm font-medium">{'New Notification'}</p>
           <IoMdNotificationsOutline color="#505050 " className="w-4 h-4" />
