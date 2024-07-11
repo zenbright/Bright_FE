@@ -57,6 +57,10 @@ export const theme = {
       project_text: {
         DEFAULT: 'hsl(var(--project_text))',
         foreground: 'hsl(var(--project_text-foreground))',
+      },
+      tab_group: {
+        DEFAULT: 'hsl(var(--tab_group))',
+        foreground: 'hsl(var(--tab_group-foreground))',
       }
     },
     borderRadius: {
