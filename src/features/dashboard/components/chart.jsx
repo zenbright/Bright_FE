@@ -41,7 +41,7 @@ function Chart() {
       default:
         data = data1;
     }
-    const bgColor = theme === 'light-default' ? '#000000' : '#adfa1c';
+    const bgColor = theme === 'light-def' ? '#000000' : '#adfa1c';
     data.datasets[0].backgroundColor = bgColor;
     return data;
   };
@@ -55,19 +55,19 @@ function Chart() {
         <div className="flex bg-gray-100 h-9 rounded-md gap-2 cursor-pointer">
           <div
             onClick={() => setSelectedData('data1')}
-            className={`font-semibold m-1 px-4 py-2 text-sm flex items-center rounded ${selectedData === 'data1' ? 'bg-black text-white' : 'text-background bg-gray-100 hover:bg-gray-200'}`}
+            className={`font-semibold m-1 px-4 py-2 text-sm flex items-center rounded ${selectedData === 'data1' ? 'bg-black text-white' : 'text-black bg-gray-100 hover:bg-gray-200'}`}
           >
             {'Project 1'}
           </div>
           <div
             onClick={() => setSelectedData('data2')}
-            className={`font-semibold m-1 px-3 py-1 text-sm flex items-center rounded ${selectedData === 'data2' ? 'bg-black text-foreground' : 'text-background bg-gray-100 hover:bg-gray-200'}`}
+            className={`font-semibold m-1 px-3 py-1 text-sm flex items-center rounded ${selectedData === 'data2' ? 'bg-black text-white' : 'text-black bg-gray-100 hover:bg-gray-200'}`}
           >
             {'Project 2'}
           </div>
           <div
             onClick={() => setSelectedData('data3')}
-            className={`font-semibold m-1 px-3 py-1 text-sm flex items-center rounded ${selectedData === 'data3' ? 'bg-black text-white' : 'text-background bg-gray-100 hover:bg-gray-200'}`}
+            className={`font-semibold m-1 px-3 py-1 text-sm flex items-center rounded ${selectedData === 'data3' ? 'bg-black text-white' : 'text-black bg-gray-100 hover:bg-gray-200'}`}
           >
             {'Project 3'}
           </div>
