@@ -93,7 +93,7 @@ function Notification() {
 
   return (
     <div className="container-ns flex flex-col w-[75vw] overflow-auto">
-      <div className=" z-30 mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-white">
+      <div className=" z-30 mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-background">
         {'Notification'}
       </div>
       <div className="flex flex-col">
@@ -137,7 +137,7 @@ function Notification() {
               />
             </div>
             <div className="w-[98%] rounded-md border-[1px] m-3 h-fit">
-              <div className="p-3 border-b-[1px] bg-opacity-50 font-semibold bg-slate-200 rounded-t-md">
+              <div className="p-3 border-b-[1px] bg-opacity-50 font-semibold bg-foreground text-background rounded-t-md">
                 {'Subscription'}
               </div>
               <FormField

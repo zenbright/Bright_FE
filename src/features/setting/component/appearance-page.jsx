@@ -12,7 +12,7 @@ function Appearance() {
         options={{ scrollbars: { autoHide: 'move' } }}
         defer
       >
-        <div className="mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-white">
+        <div className="mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-background">
           {'Appearance'}
         </div>
         <div className="flex flex-col m-4">

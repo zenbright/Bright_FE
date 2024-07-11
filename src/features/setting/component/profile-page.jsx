@@ -249,7 +249,7 @@ function Profile() {
 
                 <div
                   id="personal"
-                  className="my-3 mt-3 border-t-[1px] border-slate-300 text-lg font-semibold"
+                  className="my-3 mt-3 border-t-[1px] border-slate-300 pt-2 text-lg font-semibold"
                 >
                   {'Personal Information'}
                 </div>
