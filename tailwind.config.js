@@ -50,6 +50,18 @@ export const theme = {
         DEFAULT: 'hsl(var(--card))',
         foreground: 'hsl(var(--card-foreground))',
       },
+      hovering: {
+        DEFAULT: 'hsl(var(--hovering))',
+        foreground: 'hsl(var(--hovering-foreground))',
+      },
+      project_text: {
+        DEFAULT: 'hsl(var(--project_text))',
+        foreground: 'hsl(var(--project_text-foreground))',
+      },
+      tab_group: {
+        DEFAULT: 'hsl(var(--tab_group))',
+        foreground: 'hsl(var(--tab_group-foreground))',
+      }
     },
     borderRadius: {
       lg: 'var(--radius)',

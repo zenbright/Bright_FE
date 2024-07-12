@@ -21,6 +21,7 @@ import { Button } from '../../../components/ui/button';
 import { SIGN_IN } from '../assets/strings';
 import { PASSWORD_INPUT_VALIDATOR } from '../assets/strings';
 import { setLoginStatus } from '../utils/authSlice';
+import {setTheme} from '@/features/theme/utils/themeSlice';
 
 const formShcema = z.object({
   email: z.string({ required_error: SIGN_IN.REQUIRED }).email(),

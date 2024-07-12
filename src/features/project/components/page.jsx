@@ -42,7 +42,7 @@ export const Page = () => {
 
         {/* Title + Util Buttons */}
         <div className=" flex justify-between items-center">
-          <h1 className="text-4xl font-bold text-slate-700 mb-3 mt-4">
+          <h1 className="text-4xl font-bold text-project_text mb-3 mt-4">
             Bright
           </h1>
 
@@ -75,7 +75,7 @@ export const Page = () => {
       </div>
 
       {/* Creation Date + Member List + Privacy */}
-      <div className="mb-1 flex items-center h-10 gap-4">
+      <div className="mb-1 flex items-center h-10 gap-4 ">
         {/* Board Tab */}
         <div className="flex items-center pl-4">
           <BoardTabGroup

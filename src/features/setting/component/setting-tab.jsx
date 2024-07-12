@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 function SettingTab({ tab, tabIndex, selectedActive, handleSelected }) {
   const isSelected = selectedActive === tabIndex;
-  const iconStyle = `w-4 h-4 ${isSelected ? '' : 'group-hover:text-black'}`;
+  const iconStyle = `w-4 h-4 ${isSelected ? '' : 'group-hover:text-foreground'}`;
   return (
     <NavLink
       to={`/user/settings/${tab.name.toLowerCase().replace(/\s/g, '-')}`}

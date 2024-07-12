@@ -35,7 +35,7 @@ export const Calendar = () => {
         <span
           key={i}
           className={cn(
-            'w-1 h-1 rounded-full mb-2 mr-1',
+            'w-1 h-1 rounded-full',
             selectDate.toDate().toDateString() === date.toDate().toDateString()
               ? 'bg-white'
               : ''
@@ -50,7 +50,7 @@ export const Calendar = () => {
         <span
           key={'more'}
           className={cn(
-            'w-1 h-1 rounded-full mb-2 mr-1',
+            'w-1 h-1 rounded-full',
             selectDate.toDate().toDateString() === date.toDate().toDateString()
               ? 'bg-white'
               : ''
@@ -70,8 +70,8 @@ export const Calendar = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="w-[80%] h-full flex flex-col justify-start">
-        <div className="w-full flex justify-between mb-2 mt-2">
+      <div className="w-[80%] h-full flex flex-col justify-start mt-4">
+        <div className="w-full flex justify-between mb-3 mt-2">
           <h1 className="font-bold">
             {months[today.month()]}, {today.year()}
           </h1>
@@ -109,7 +109,7 @@ export const Calendar = () => {
                 key={index}
                 className="h-10 border-t grid place-content-center text-sm group"
               >
-                <h1
+                <div
                   className={cn(
                     currentMonth ? '' : 'text-gray-400',
                     today ? 'border border-red-500 text-red-500' : '',
@@ -117,25 +117,25 @@ export const Calendar = () => {
                       date.toDate().toDateString()
                       ? 'border-black border text-black'
                       : '',
-                    'h-8 w-8 grid place-content-center rounded-lg group-hover:border group-hover:border-black group-hover:bg-black group-hover:text-white transition-all cursor-pointer'
+                    'h-8 w-8 relative flex flex-col items-center place-content-center rounded-lg group-hover:border group-hover:border-black group-hover:bg-black group-hover:text-white transition-all cursor-pointer'
                   )}
                   onClick={() => setSelectDate(date)}
                 >
                   {date.date()}
-                </h1>
-                {hasEvents(date) && (
-                  <div className="flex justify-center items-center">
-                    <div className="absolute pl-1 mb-0.5">
-                      <div className="flex">{renderEventDots(date)}</div>
+                  {hasEvents(date) && (
+                  <div className="w-full flex justify-center items-center">
+                    <div className="absolute flex justify-center items-center">
+                      <div className="flex gap-1">{renderEventDots(date)}</div>
                     </div>
                   </div>
                 )}
+                </div>  
               </div>
             )
           )}
         </div>
       </div>
-      <div className="h-fit w-full mt-4 px-3">
+      <div className="h-80 w-full mt-5 px-3 ">
         <div className="flex justify-center items-center mb-2">
           <h1 className="font-semibold">
             {selectDate.format('dddd MMMM D YYYY')}

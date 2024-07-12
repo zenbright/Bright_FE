@@ -23,17 +23,18 @@ function EventDetail({ name, endDate, description, color, startDate, value }) {
     });
     return `${formattedDate} at ${formattedTime}`;
   };
+
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <div className="flex items-start justify-start rounded-xl border bg-white h-fit cursor-pointer hover:bg-slate-200/95">
+      <DialogTrigger asChild className='h-14'>
+        <div className="flex items-start justify-start rounded-xl border bg-background h-14 cursor-pointer hover:bg-slate-100/95">
           <div
             className="w-[3%] h-14 rounded-s-xl"
             style={{ backgroundColor: color }}
           />
           <div className="flex flex-col justify-center pl-2 pr-4 p-1 h-full">
             <div className="flex justify-center items-center gap-1">
-              <p className="font-semibold text-md ">{name}</p>
+              <p className="font-semibold text-md text-foreground">{name}</p>
               <p style={{ color: color }} className="text-sm">
                 {' '}
                 |{' '}
@@ -55,16 +56,12 @@ function EventDetail({ name, endDate, description, color, startDate, value }) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Task Specific</DialogTitle>
+        <DialogTitle>{'Task Specific'}</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you`re done.
+            {'Make changes to your profile here. Click save when you`re done.'}
           </DialogDescription>
         </DialogHeader>
-        <div>
-          <p>Task Name {name}</p>
-          <p>Due to {endDate}</p>
-          <p>Description {description}</p>
-        </div>
+          <h1>{'This will hold your task detail'}</h1>
       </DialogContent>
     </Dialog>
   );
