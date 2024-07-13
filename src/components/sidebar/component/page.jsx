@@ -1,11 +1,8 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import AboutIcon from '../assets/images/about.svg?react';
-import CalendarIcon from '../assets/images/calendar.svg?react';
 import DashboardIcon from '../assets/images/dashboard.svg?react';
 import LogoutIcon from '../assets/images/logout.svg?react';
-import MessageIcon from '../assets/images/message.svg?react';
 import NotificationIcon from '../assets/images/notification.svg?react';
 import SettingIcon from '../assets/images/settings.svg?react';
 import '../styles/font.css';
@@ -14,21 +11,9 @@ import LogoutButton from './button-logout.jsx';
 import NavItem from './nav-item.jsx';
 import ProjectDashboard from './project-dashboard.jsx';
 import UserImageName from './user-image-name.jsx';
-import { Switch } from "@/components/ui/switch"
-// import { useDispatch, useSelector } from 'react-redux';
-// import { setTheme } from '../../../features/theme/utils/themeSlice.ts'
-
 
 function Sidebar() {
   const [selectedTab, setSelectedTab] = useState('Dashboard');
-  // const dispatch = useDispatch();
-  // const currentTheme = useSelector((state) => state.currentTheme.value);
-
-
-  // const handleThemeSwitch = () => {
-  //   const newTheme = currentTheme === 'light-default' ? 'dark-default' : 'light-default';
-  //   dispatch(setTheme(newTheme));
-  // }
 
   return (
     <div className="flex flex-row container-ns">
@@ -59,22 +44,6 @@ function Sidebar() {
             <NotificationIcon className="w-5 h-5" />
           </NavItem>
 
-          {/* <NavItem
-            text={'Schedule'}
-            select={selectedTab === 'Schedule'}
-            onClick={setSelectedTab}
-          >
-            <CalendarIcon className="w-5 h-5 " />
-          </NavItem> */}
-
-          {/* <NavItem
-            text={'Message'}
-            select={selectedTab === 'Message'}
-            onClick={setSelectedTab}
-          >
-            <MessageIcon className="w-5 h-5 " />
-          </NavItem> */}
-
           <NavItem
             text={'Settings'}
             select={selectedTab === 'Settings'}
@@ -82,17 +51,7 @@ function Sidebar() {
           >
             <SettingIcon className="w-5 h-5 " />
           </NavItem>
-
-          {/* <NavItem
-            text={'About'}
-            select={selectedTab === 'About'}
-            onClick={setSelectedTab}
-          >
-            <AboutIcon className="w-5 h-5 " />
-          </NavItem> */}
         </div>
-
-        {/* <Switch className="mb-10" onCheckedChange = {handleThemeSwitch}/> */}
 
         {/* Logout button */}
         <div className="w-full pb-1">

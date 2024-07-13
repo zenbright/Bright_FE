@@ -64,13 +64,12 @@ export class TaskTag {
   constructor(title, color) {
     this.id = uuidv4();
     this.title = title;
-    this.color = color
-      ? color : 'bg-gray-500';
+    this.color = color ? color : 'bg-gray-500';
   }
 
   toString = () => {
     return `${this.id}?color=${this.color}?title=${this.title}`;
-  }
+  };
 }
 
 const ActivitySubtitles = {
