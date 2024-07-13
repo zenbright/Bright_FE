@@ -36,14 +36,14 @@ export const Page = () => {
 
   return (
     <div className="px-2 py-1 w-full h-dvh overflow-auto ">
-      <div className="px-4">
+      <div className="p-4">
         {/* Project Headers */}
         <ProjectBreadCrumbs projectType="SOFTWARE" projectOwner="MUDOKER" />
 
         {/* Title + Util Buttons */}
         <div className=" flex justify-between items-center">
-          <h1 className="text-4xl font-bold text-project_text mb-3 mt-4">
-            Bright
+          <h1 className="text-4xl font-bold text-project_text mb-1 mt-4">
+            {'Bright'}
           </h1>
 
           <div className="flex gap-4">
@@ -109,7 +109,7 @@ export const Page = () => {
               variant="outline"
             >
               <ShieldMinus className="h-4" />
-              Private
+              {'Private'}
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
@@ -122,9 +122,9 @@ export const Page = () => {
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogCancel>{'Cancel'}</AlertDialogCancel>
               <AlertDialogAction onClick={() => setIsUnderDevDialogOpen(true)}>
-                Continue
+                {'Continue'}
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
