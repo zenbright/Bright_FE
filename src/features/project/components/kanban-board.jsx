@@ -179,8 +179,8 @@ export const KanbanBoard = () => {
               </SortableContext>
             </div>
 
-            <Button className="h-9" onClick={createColumn}>
-              <PlusCircle className="mr-2 h-5" /> Create new column
+            <Button onClick={createColumn}>
+              <PlusCircle className="mr-2 h-5" /> {'Create new column'}
             </Button>
           </div>
 
