@@ -87,10 +87,10 @@ function Profile() {
 
   return (
     <OverlayScrollbarsComponent
-      options={{ scrollbars: { autoHide: 'move' } }}
+      options={{ scrollbars: { autoHide: 'move', theme: 'os-theme-dark' } }}
       defer
     >
-      <div className="w-[76vw]">
+      <div className="w-[75.5vw] overflow-x-hidden">
         <div className="mx-3 pt-8 text-2xl font-bold pb-[14px] border-b-[1px] border-slate-300 ">
           {'Public Profile'}
         </div>
