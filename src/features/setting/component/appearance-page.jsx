@@ -12,15 +12,14 @@ function Appearance() {
         options={{ scrollbars: { autoHide: 'move' } }}
         defer
       >
-        <div className="mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-background">
+        <div className="mx-3 text-2xl font-bold pt-8 pb-[14px] border-b-[1px] border-slate-300 group sticky bg-background">
           {'Appearance'}
         </div>
-        <div className="flex flex-col m-4">
+        <div className="flex flex-col m-3">
           <div className="border-b-[1px] py-2 mb-3">
             <p className="font-semibold text-md">{'Theme Preferences'}</p>
           </div>
-          <p>{'Select a single theme'}</p>
-          <div className="my-5">
+          <div className="flex items-center justify-center">
             <form className="grid grid-cols-3 gap-4">
               {themes.map((theme, index) => (
                 <label key={index} className="rounded-md w-fit cursor-pointer">

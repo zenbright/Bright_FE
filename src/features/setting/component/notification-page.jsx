@@ -93,13 +93,13 @@ function Notification() {
 
   return (
     <div className="container-ns flex flex-col w-[75vw] overflow-auto">
-      <div className=" z-30 mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-background">
+      <div className=" z-30 mx-3 text-2xl font-bold pt-8 pb-[14px] border-b-[1px] border-slate-300 group sticky bg-background">
         {'Notification'}
       </div>
       <div className="flex flex-col">
         <Form {...form}>
           <form onSubmit={form.handleSubmit({ onSubmit, onError })}>
-            <div className="w-[98%] rounded-md border-[1px] m-3 h-fit py-3 px-5">
+            <div className="w-[98%] rounded-md border-[1px] m-3 h-fit py-3 px-3">
               <FormField
                 control={form.control}
                 name="email"

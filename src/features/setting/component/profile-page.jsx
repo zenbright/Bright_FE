@@ -91,12 +91,12 @@ function Profile() {
       defer
     >
       <div className="w-[76vw]">
-        <div className="mx-3 text-lg font-bold p-2 border-b-[1px] border-slate-300 ">
+        <div className="mx-3 pt-8 text-2xl font-bold pb-[14px] border-b-[1px] border-slate-300 ">
           {'Public Profile'}
         </div>
 
         <div className="flex">
-          <div className="w-9/12 px-5 py-2 ">
+          <div className="w-9/12 px-5 pt-3 pb-10">
             <Form {...form}>
               <form ref={ref} onSubmit={form.handleSubmit(onSubmit, onError)}>
                 <div id="name-container" className="flex gap-7">
@@ -249,7 +249,7 @@ function Profile() {
 
                 <div
                   id="personal"
-                  className="my-3 mt-3 border-t-[1px] border-slate-300 pt-2 text-lg font-semibold"
+                  className=" mt-10 border-t-[1px] w-[87.7%] border-slate-300 py-4 text-lg font-semibold"
                 >
                   {'Personal Information'}
                 </div>
