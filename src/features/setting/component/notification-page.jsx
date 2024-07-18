@@ -22,6 +22,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { NOTIFICATION } from '../test/data/strings';
+import withScrollbarTheme from '../hoc/scroll-bar';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -92,7 +93,7 @@ function Notification() {
   };
 
   return (
-    <div className="container-ns flex flex-col w-[75vw] overflow-auto">
+    <div className="container-ns flex flex-col w-[75.5vw] overflow-auto pb-10">
       <div className=" z-30 mx-3 text-2xl font-bold pt-8 pb-[14px] border-b-[1px] border-slate-300 group sticky bg-background">
         {'Notification'}
       </div>
@@ -247,4 +248,4 @@ function Notification() {
   );
 }
 
-export default Notification;
+export default withScrollbarTheme(Notification);

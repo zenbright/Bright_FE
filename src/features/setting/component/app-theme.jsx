@@ -14,7 +14,6 @@ function Theme({ name, image }) {
 
   const handleThemeButton = () => {
     const theme = normalizeThemeName(name);
-    console.log(theme)
     dispatch(setTheme(theme));
   }
   return (

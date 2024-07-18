@@ -1,18 +1,12 @@
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-
 import catImage from '../asset/cat.jpg';
 import themes from '../test/data/themes';
 import Theme from './app-theme';
+import withScrollbarTheme from '../hoc/scroll-bar';
 
 function Appearance() {
   return (
-    <div className="container-ns flex flex-col w-[76vw] overflow-auto">
-      <OverlayScrollbarsComponent
-        element="div"
-        options={{ scrollbars: { autoHide: 'move' } }}
-        defer
-      >
-        <div className="mx-3 text-2xl font-bold pt-8 pb-[14px] border-b-[1px] border-slate-300 group sticky bg-background">
+    <div className="container-ns flex flex-col w-[75.5vw] overflow-auto">
+      <div className="mx-3 text-2xl font-bold pt-8 pb-[14px] border-b-[1px] border-slate-300 group sticky bg-background">
           {'Appearance'}
         </div>
         <div className="flex flex-col m-3">
@@ -29,9 +23,8 @@ function Appearance() {
             </form>
           </div>
         </div>
-      </OverlayScrollbarsComponent>
     </div>
   );
 }
 
-export default Appearance;
+export default withScrollbarTheme(Appearance);
