@@ -14,7 +14,8 @@
     /* Project page */
     --project_text: 216, 20%, 26%;
     --tab_group: 220, 14%, 96%;
-    /*  */
+    /* Setting page */
+    --seting_tab: 0, 0%, 100%;
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -53,6 +54,9 @@
     /* Project page */
     --project_text: 0, 0%, 100%;
     --tab_group: 216, 20%, 26%;
+
+    /* Setting page */
+    --seting_tab: 240, 4%, 16%;
 
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;

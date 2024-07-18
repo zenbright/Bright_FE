@@ -61,7 +61,11 @@ export const theme = {
       tab_group: {
         DEFAULT: 'hsl(var(--tab_group))',
         foreground: 'hsl(var(--tab_group-foreground))',
-      }
+      },
+      seting_tab: {
+        DEFAULT: 'hsl(var(--seting_tab))',
+        foreground: 'hsl(var(--seting_tab-foreground))',
+      },
     },
     borderRadius: {
       lg: 'var(--radius)',
