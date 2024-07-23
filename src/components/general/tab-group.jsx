@@ -3,8 +3,8 @@ import { FileSpreadsheet, GanttChartSquare, KanbanSquare } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const TableNames = [
-  { name: 'Board', icon: KanbanSquare, isDisabled: false },
-  { name: 'Sketch', icon: GanttChartSquare, isDisabled: true },
+  { name: 'Kanban', icon: KanbanSquare, isDisabled: false },
+  { name: 'Board', icon: GanttChartSquare, isDisabled: false },
   { name: 'Sheet', icon: FileSpreadsheet, isDisabled: true },
 ];
 

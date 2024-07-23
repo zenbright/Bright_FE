@@ -77,9 +77,6 @@ export const Page = () => {
 
       {/* Creation Date + Member List + Privacy */}
       <div className="mb-1 flex items-center h-10 gap-4">
-        <div className='mt-36'>
-          <Board/>
-        </div>
         <div className="flex items-center pl-4">
           <BoardTabGroup
             selected={selectedTabIdx}
@@ -128,7 +125,8 @@ export const Page = () => {
       </div>
 
       {/* Task Management Board */}
-      <KanbanBoard />
+      {selectedTabIdx === 0 && <KanbanBoard />} 
+      {selectedTabIdx === 1 && <div className='mt-14'><Board/></div>}
 
       {/* Others */}
       {isUnderDevDialogOpen && (
