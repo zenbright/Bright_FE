@@ -17,6 +17,17 @@
     /* Setting page */
     --seting_tab: 0, 0%, 100%;
 
+    /* Project page - task discussion */
+    --discussion_background: 0, 0%, 100%;
+    --discussion_border: 220, 13%, 90%;
+    --comment_text: 216, 9.3%, 45%;
+    --comment_background: 210 20% 98%;
+    --comment_hover: 210, 16%, 96%;
+    --plus_text: 0, 0%, 50%, 0.6;
+    --plus_background: 0, 0%, 75%, 0.4;
+    --plus_text_hover: 240, 10%, 0%;
+    --plus_background_hover:0, 0%, 75%, 0.5;
+
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
 
@@ -57,6 +68,17 @@
 
     /* Setting page */
     --seting_tab: 240, 4%, 16%;
+
+    /* Project page - task discussion */
+    --discussion_background: 216, 19%, 26%;
+    --discussion_border: 220, 14%, 96%;
+    --comment_text: 0, 0%, 100%;
+    --comment_background: 215 13.9% 34.1%;
+    --comment_hover: 216, 19%, 26%;
+    --plus_text: 40, 0%, 100%;
+    --plus_background: 200 10% 20%;
+    --plus_text_hover: 0, 0%, 100%; 
+    --plus_background_hover: 10 0% 10%;
 
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;

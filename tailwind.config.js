@@ -66,6 +66,42 @@ export const theme = {
         DEFAULT: 'hsl(var(--seting_tab))',
         foreground: 'hsl(var(--seting_tab-foreground))',
       },
+      discussion_background: {
+        DEFAULT: 'hsl(var(--discussion_background))',
+        foreground: 'hsl(var(--discussion_background-foreground))',
+      },
+      discussion_border: {
+        DEFAULT: 'hsl(var(--discussion_border))',
+        foreground: 'hsl(var(--discussion_border-foreground))',
+      },
+      comment_text: {
+        DEFAULT: 'hsl(var(--comment_text))',
+        foreground: 'hsl(var(--comment_text-foreground))',
+      },
+      comment_background: {
+        DEFAULT: 'hsl(var(--comment_background))',
+        foreground: 'hsl(var(--comment_background-foreground))',
+      },
+      comment_hover: {
+        DEFAULT: 'hsl(var(--comment_hover))',
+        foreground: 'hsl(var(--comment_hover-foreground))',
+      },
+      plus_text: {
+        DEFAULT: 'hsl(var(--plus_text))',
+        foreground: 'hsl(var(--plus_text-foreground))',
+      },
+      plus_background: {
+        DEFAULT: 'hsl(var(--plus_background))',
+        foreground: 'hsl(var(--plus_background-foreground))',
+      },
+      plus_text_hover: {
+        DEFAULT: 'hsl(var(--plus_text_hover))',
+        foreground: 'hsl(var(--plus_text_hover-foreground))',
+      },
+      plus_background_hover: {
+        DEFAULT: 'hsl(var(--plus_background_hover))',
+        foreground: 'hsl(var(--plus_background_hover-foreground))',
+      },
     },
     borderRadius: {
       lg: 'var(--radius)',
