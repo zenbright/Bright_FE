@@ -35,7 +35,7 @@ export const Page = () => {
   const [selectedTabIdx, setSelectedTabIdx] = useState(0);
 
   return (
-    <div className="px-2 py-1 w-full h-dvh overflow-auto ">
+    <div className="px-2 py-1 w-full h-dvh overflow-auto">
       <div className="px-4">
         {/* Project Headers */}
         <ProjectBreadCrumbs projectType="SOFTWARE" projectOwner="MUDOKER" />

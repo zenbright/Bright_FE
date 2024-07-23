@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
+import { useSelector } from 'react-redux';
 
 
 import { TaskActivity } from '../../../utils/class';
@@ -83,16 +83,16 @@ const TaskActivityComponent = ({
   };
 
   return (
-    <ol className="relative border-gray-200 dark:border-gray-700">
+    <ol className="relative border-gray-200 dark:border-gray-700 pr-3">
       <li className={`${isLastItem ? '' : 'mb-8'} ms-6`}>
-        <span className="absolute z-50 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+        <span className="absolute z-50 flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-background">
           <img
-            className="rounded-full shadow-lg"
+            className="rounded-full shadow-lg "
             src="https://github.com/shadcn.png"
             alt={isComment ? 'Thomas Lean image' : 'Bonnie image'}
           />
         </span>
-        <div className="flex flex-col p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
+        <div className="flex flex-col p-4 bg-discussion-background border border-discussion_border rounded-lg shadow-sm">
           <div
             className={`items-center justify-between ${isComment ? 'mb-3' : ''} sm:flex`}
           >
@@ -123,7 +123,7 @@ const TaskActivityComponent = ({
               ) : (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <div className="justify-between p-3 text-xs italic font-normal text-gray-500 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-300 hover:bg-gray-100 hover:cursor-pointer">
+                    <div className="justify-between p-3 text-xs italic font-normal text-comment_text border border-gray-200 rounded-lg bg-comment_background hover:bg-comment_hover hover:cursor-pointer">
                       {editedComment}
                     </div>
                   </DropdownMenuTrigger>
@@ -161,6 +161,15 @@ export const TaskDiscussion = ({ isReload, onReloadTrigger }) => {
   const [isEditCommentContent, setIsEditCommentContent] = useState(false);
   const [deletedCommentIndex, setDeleteCommentIndex] = useState(null);
   const [maxHeight, setMaxHeight] = useState(window.innerHeight);
+  const currentTheme = useSelector((state) => state.currentTheme.value);
+  const [scrollbarTheme, setScrollbarTheme] = useState(
+    currentTheme === 'dark-default' ? 'os-theme-light' : 'os-theme-dark'
+  );
+
+  useEffect(() => {
+    const theme = currentTheme === 'dark-default' ? 'os-theme-light' : 'os-theme-dark';
+    setScrollbarTheme(theme);
+  }, [currentTheme]);
 
   useEffect(() => {
     if (deletedCommentIndex === null) {
@@ -262,7 +271,7 @@ export const TaskDiscussion = ({ isReload, onReloadTrigger }) => {
         element="div"
         id="activity-section"
         ref={activitySectionRef}
-        options={{ scrollbars: { autoHide: 'move' } }}
+        options={{ scrollbars: { autoHide: 'move', theme: scrollbarTheme } }}
         style={{ maxHeight: `${maxHeight}px` }}
       >
         <div className="relative overflow-y-auto pl-3 mb-3">
