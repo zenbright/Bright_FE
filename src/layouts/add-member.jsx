@@ -28,9 +28,10 @@ import {
 } from "@/components/ui/select"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { UserRoundPlus } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 
-export default function AddMember() {
+export default function AddMember({ open, onOpenChange }) {
     const [members, setMembers] = useState([
         { name: "Cong Dang", email: "dangcongly06@gmail.com", avatar: "https://github.com/shadcn.png", role: "" },
         { name: "Cong Dang", email: "dangcongly06@gmail.com", avatar: "https://github.com/shadcn.png", role: "" },
@@ -45,7 +46,7 @@ export default function AddMember() {
 
     return (
         <div className="items-center">
-            <Dialog>
+            <Dialog open={open} onOpenChange={onOpenChange}>
                 <DialogTrigger asChild>
                     <Button
                         className="h-8 border-black/15"

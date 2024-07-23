@@ -34,6 +34,7 @@ export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
   const [isUnderDevDialogOpen, setIsUnderDevDialogOpen] = useState(false);
   const [selectedTabIdx, setSelectedTabIdx] = useState(0);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="px-2 py-1 w-full h-dvh overflow-auto">
@@ -90,7 +91,7 @@ export const Page = () => {
 
         <div className="flex items-center">
           <MemberList width={7} height={7} />
-          <AddMember/>
+          <AddMember open={open} onOpenChange={setOpen}/>
         </div>
 
         <Divider width="1.5px" height="70%" color="rgba(0,0,0,0.2)" />
