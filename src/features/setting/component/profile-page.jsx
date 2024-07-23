@@ -82,7 +82,7 @@ function Profile() {
   };
 
   return (
-    <div className="w-[75.5vw] overflow-x-hidden">
+    <div className="w-[75.5vw]">
       <div className="mx-3 pt-8 text-2xl font-bold pb-[14px] border-b-[1px] border-slate-300 ">
         {'Public Profile'}
       </div>
@@ -248,7 +248,7 @@ function Profile() {
 
               <div
                 id="personal-container-1"
-                className="w-full flex flex-row gap-7 mb-3"
+                className="w-full flex flex-row gap-6 mb-3"
               >
                 {/* Email Address */}
                 <div id="email_address" className="w-5/12">

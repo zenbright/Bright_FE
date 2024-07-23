@@ -16,8 +16,7 @@ const withScrollbarTheme = (WrappedComponent) => {
 
     return (
       <OverlayScrollbarsComponent
-        options={{ scrollbars: { autoHide: 'move', theme: scrollbarTheme } }}
-        defer
+        options={{ scrollbars: { autoHide: 'never', theme: scrollbarTheme } }}
       >
         <WrappedComponent {...props} />
       </OverlayScrollbarsComponent>

@@ -11,7 +11,7 @@ function SettingSideBar() {
 
   return (
     <div className="h-dvh w-[19vw] bg-seting_tab border-r-[1px] border-slate-300 flex flex-col no-scrollbar overflow-auto">
-      <div className="text-2xl font-boldtop-0 pt-8 pb-[14px] px-2 border-b-[1px] border-slate-300 group w-full">
+      <div className="text-2xl font-bold top-0 pt-8 pb-[14px] px-2 border-b-[1px] border-slate-300 group w-full">
         {'Setting'}
       </div>
 
