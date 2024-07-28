@@ -28,6 +28,9 @@
     --plus_text_hover: 240, 10%, 0%;
     --plus_background_hover:0, 0%, 75%, 0.5;
 
+    /* Auth page */
+    --auth_form_border: 0, 0%, 0%, 0.3;
+
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
 
@@ -79,6 +82,9 @@
     --plus_background: 200 10% 20%;
     --plus_text_hover: 0, 0%, 100%; 
     --plus_background_hover: 10 0% 10%;
+
+    /* Auth page */
+    --auth_form_border: 100, 10%, 90%, 0.7;
 
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
