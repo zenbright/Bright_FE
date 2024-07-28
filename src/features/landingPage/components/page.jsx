@@ -58,7 +58,7 @@ export const Page = () => {
         defer
       >
         <div className=" flex justify-center items-center flex-col gap-5 mt-10">
-          <div className="font-semibold text-3xl">
+          <div className="font-semibold text-3xl text-black">
             {INTRODUCTION.LANDING_PAGE.SHORT}
           </div>
 
@@ -76,10 +76,10 @@ export const Page = () => {
           </div>
 
           <div className="flex gap-3 mt-8">
-            <Button className="p-6 text-md mr-1">Subscribe</Button>
+            <Button className="p-6 text-md mr-1 text-white bg-black hover:bg-gray-800">Subscribe</Button>
             <Button
               variant="ghost"
-              className="p-6 text-md hover:font-semibold hover:underline hover:bg-transparent"
+              className="p-6 text-md hover:font-semibold hover:underline hover:bg-transparent text-black hover:text-black"
             >
               FAQ
             </Button>
@@ -106,11 +106,11 @@ export const Page = () => {
 
           <div className="flex justify-between mx-9  items-center">
             <div className="flex flex-col gap-6">
-              <div className="font-bold text-5xl">
+              <div className="font-bold text-5xl text-black">
                 {PROMOTION_TEXT.FREE_TRIAL_TITLE}
               </div>
 
-              <div className="text-lg max-w-xl font-normal flex flex-col">
+              <div className="text-lg max-w-xl font-normal flex flex-col text-black">
                 <div>{PROMOTION_TEXT.FREE_TRIAL_DES}</div>
               </div>
             </div>

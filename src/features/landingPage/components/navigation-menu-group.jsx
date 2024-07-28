@@ -21,13 +21,13 @@ export const NavigationMenuGroup = () => {
             <a
               ref={ref}
               className={cn(
-                'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+                'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#F4F4F5] hover:text-[#18181B] focus:bg-[#F4F4F5] focus:text-[#18181B]',
                 className
               )}
               {...props}
             >
               <div className="text-sm font-medium leading-none">{title}</div>
-              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+              <p className="line-clamp-2 text-sm leading-snug text-[#71717A]">
                 {children}
               </p>
             </a>
@@ -46,12 +46,12 @@ export const NavigationMenuGroup = () => {
           <NavigationMenuTrigger className="font-bold text-md bg-transparent text-black hover:text-black hover:bg-white focus:bg-white focus:text-black disabled:opacity-50 data-[active]:bg-white/50 data-[state=open]:bg-white/50">
             Getting Started
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="bg-white">
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-[#F4F4F5]/50 to-[#F4F4F5] p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
                     <img src={BrightLogo} className="h-20 w-full" />
@@ -62,13 +62,13 @@ export const NavigationMenuGroup = () => {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
+              <ListItem href="/docs" title="Introduction" className="text-black">
                 {INTRODUCTION.GETTING_STARTED.INTRODUCTION}
               </ListItem>
-              <ListItem href="/docs/sponsor" title="Sponsor">
+              <ListItem href="/docs/sponsor" title="Sponsor" className="text-black">
                 {INTRODUCTION.GETTING_STARTED.SPONSOR}
               </ListItem>
-              <ListItem href="/docs/about" title="About us">
+              <ListItem href="/docs/about" title="About us" className="text-black">
                 {INTRODUCTION.GETTING_STARTED.ABOUT}
               </ListItem>
             </ul>
