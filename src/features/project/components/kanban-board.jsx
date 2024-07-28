@@ -151,6 +151,7 @@ export const KanbanBoard = () => {
       element="div"
       options={{ scrollbars: { autoHide: 'never' } }}
       defer
+      style={{ width: '97.5%', margin: 'auto'}}
     >
       <div className="mt-2">
         <DndContext
@@ -160,7 +161,7 @@ export const KanbanBoard = () => {
           sensors={sensors}
         >
           <div
-            className={`flex ${columns.length === 0 ? 'gap-0 px-4' : 'gap-2 ml-4'}`}
+            className={`flex ${columns.length === 0 ? 'gap-0' : 'gap-2'}`}
           >
             <div className="flex gap-2 ">
               <SortableContext items={columnId}>
@@ -179,7 +180,7 @@ export const KanbanBoard = () => {
               </SortableContext>
             </div>
 
-            <Button className="h-[38px]" onClick={createColumn}>
+            <Button className="h-[38px] right-2" onClick={createColumn}>
               <PlusCircle className="mr-2 h-5" /> Create new column
             </Button>
           </div>
