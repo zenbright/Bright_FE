@@ -106,6 +106,10 @@ export const theme = {
         DEFAULT: 'hsl(var(--auth_form_border))',
         foreground: 'hsl(var(--auth_form_border-foreground))',
       },
+      not_found_background: {
+        DEFAULT: 'hsl(var(--not_found_background))',
+        foreground: 'hsl(var(--not_found_background-foreground))',
+      },
     },
     borderRadius: {
       lg: 'var(--radius)',

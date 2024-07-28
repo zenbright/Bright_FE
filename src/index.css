@@ -31,6 +31,9 @@
     /* Auth page */
     --auth_form_border: 0, 0%, 0%, 0.3;
 
+    /* 404 page */
+    --not_found_background: 0 0% 100%;
+
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
 
@@ -85,6 +88,9 @@
 
     /* Auth page */
     --auth_form_border: 100, 10%, 90%, 0.7;
+
+    /* 404 page */
+    --not_found_background: 0, 0%, 14.1%;
 
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
