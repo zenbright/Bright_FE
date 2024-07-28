@@ -43,7 +43,7 @@ export const NavigationMenuGroup = () => {
     <div className="ml-4 list-none">
       <NavigationMenu>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="font-bold text-md bg-transparent">
+          <NavigationMenuTrigger className="font-bold text-md bg-transparent text-black hover:text-black hover:bg-white focus:bg-white focus:text-black disabled:opacity-50 data-[active]:bg-white/50 data-[state=open]:bg-white/50">
             Getting Started
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -56,7 +56,7 @@ export const NavigationMenuGroup = () => {
                   >
                     <img src={BrightLogo} className="h-20 w-full" />
                     <div className="mb-2 mt-4 text-lg font-medium">Bright</div>
-                    <p className="text-sm leading-tight text-muted-foreground">
+                    <p className="text-sm leading-tight text-[#71717A]">
                       {INTRODUCTION.GETTING_STARTED.OVERVIEW}
                     </p>
                   </a>

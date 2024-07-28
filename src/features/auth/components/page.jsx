@@ -9,6 +9,7 @@ import AuthBackground from '../assets/bgimg.png';
 import { QUOTE, WEB_BRIEF_INTRO } from '../assets/strings';
 import Loginform from './login-form';
 import Signupform from './signup-form';
+import { useEffect } from 'react';
 
 export const Page = () => {
   const [isUserLogin, setIsUserLogin] = useState(true);

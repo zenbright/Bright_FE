@@ -6,7 +6,7 @@ import { BRIGHT_EMAIL } from '@/config/constants/strings.global';
 import { Copyright } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useRef } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Background from '../assets/bg-light.svg';
 import Facebook from '../assets/ic_facebook.svg';
@@ -34,9 +34,10 @@ export const Page = () => {
         contentContainer.style.marginBottom = `${headerHeight}px`;
       }
     }
-  }, []);
+  });
 
   return (
+
     <div
       style={{
         backgroundImage: `url(${Background})`,
@@ -56,7 +57,7 @@ export const Page = () => {
         className={`max-h-screen`}
         defer
       >
-        <div className="flex justify-center items-center flex-col gap-5 mt-10">
+        <div className=" flex justify-center items-center flex-col gap-5 mt-10">
           <div className="font-semibold text-3xl">
             {INTRODUCTION.LANDING_PAGE.SHORT}
           </div>
