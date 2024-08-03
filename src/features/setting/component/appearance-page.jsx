@@ -5,7 +5,7 @@ import withScrollbarTheme from '../hoc/scroll-bar';
 
 function Appearance() {
   return (
-    <div className="container-ns flex flex-col w-[75.5vw] overflow-auto">
+    <div className="container-ns flex flex-col w-[74.5vw] overflow-auto">
       <div className="mx-3 text-2xl font-bold pt-8 pb-[14px] border-b-[1px] border-slate-300 group sticky bg-background">
           {'Appearance'}
         </div>

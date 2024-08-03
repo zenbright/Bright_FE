@@ -67,7 +67,7 @@ function Account() {
 
   return (
     <OverlayScrollbarsComponent>
-      <div className="container-ns flex flex-col w-[75.5vw] overflow-auto">
+      <div className="container-ns flex flex-col w-[74.5vw] overflow-auto">
         <div className="z-30 mx-3 text-2xl font-bold pt-8 pb-[14px]  border-b-[1px] border-slate-300 group sticky bg-background">
           {'Account'}
         </div>
