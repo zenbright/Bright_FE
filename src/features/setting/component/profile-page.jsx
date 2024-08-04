@@ -82,7 +82,7 @@ function Profile() {
   };
 
   return (
-    <div className="w-[74.5vw]">
+    <div className="w-[74.4vw]">
       <div className="mx-3 pt-8 text-2xl font-bold pb-[14px] border-b-[1px] border-slate-300 ">
         {'Public Profile'}
       </div>

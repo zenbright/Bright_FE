@@ -36,7 +36,7 @@ function LogoutButton({ text, children }) {
         transition-all relative h-10 cursor-pointer rounded-md group/item"
     >
       <AlertDialog>
-        <AlertDialogTrigger className="p-3 transition-all group-hover:w-[90%] h-full flex items-center gap-0 group-hover:gap-3 group-hover/item:bg-red-600 rounded-md group is-hovered mb-8">
+        <AlertDialogTrigger className="p-3 transition-all group-hover:w-[90%] h-full flex items-center gap-0 group-hover:gap-3 group-hover/item:bg-rose-600/90 rounded-md group is-hovered mb-8">
           <div className="fill-foreground dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-white ">
             {children}
           </div>
