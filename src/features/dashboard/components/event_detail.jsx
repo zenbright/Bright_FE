@@ -26,7 +26,7 @@ function EventDetail({ name, endDate, description, color, startDate, value }) {
 
   return (
     <Dialog>
-      <DialogTrigger asChild className='h-14'>
+      <DialogTrigger asChild className="h-14">
         <div className="flex items-start justify-start rounded-xl border bg-background h-14 cursor-pointer hover:bg-slate-100/95">
           <div
             className="w-[3%] h-14 rounded-s-xl"
@@ -56,12 +56,12 @@ function EventDetail({ name, endDate, description, color, startDate, value }) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-        <DialogTitle>{'Task Specific'}</DialogTitle>
+          <DialogTitle>{'Task Specific'}</DialogTitle>
           <DialogDescription>
             {'Make changes to your profile here. Click save when you`re done.'}
           </DialogDescription>
         </DialogHeader>
-          <h1>{'This will hold your task detail'}</h1>
+        <h1>{'This will hold your task detail'}</h1>
       </DialogContent>
     </Dialog>
   );

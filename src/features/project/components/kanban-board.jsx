@@ -153,7 +153,7 @@ export const KanbanBoard = () => {
       defer
       style={{ width: '97.5%', margin: 'auto'}}
     >
-      <div className="mt-2">
+      <div className="mt-4">
         <DndContext
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}

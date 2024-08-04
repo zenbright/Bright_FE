@@ -35,8 +35,9 @@ export const options = {
 };
 
 // Chart bar option
-let bg = '#000000';
-let bg2 = '#adfa1c';
+export const chart_light_bg = '#000000';
+export const chart_dark_bg = '#2ecc71';
+
 let br = 7;
 
 // Project 1 data
@@ -47,8 +48,6 @@ export const data1 = {
   datasets: [
     {
       data: [14, 21, 62, 40, 50, 42, 31, 56, 28, 32, 37, 48],
-      // backgroundColor: '#adfa1c',
-      backgroundColor: bg,
       borderRadius: br,
     },
   ],
@@ -60,9 +59,7 @@ export const data2 = {
   labels,
   datasets: [
     {
-      data: [10, 25, 55, 35, 45, 60, 20, 50, 30, 40, 35, 60],
-      // backgroundColor: '#adfa1c',
-      backgroundColor: bg,
+      data: [45, 60, 40, 35, 55, 30, 20, 50, 60, 35, 25, 40],
       borderRadius: br,
     },
   ],
@@ -73,9 +70,7 @@ export const data3 = {
   labels,
   datasets: [
     {
-      data: [20, 30, 45, 50, 60, 70, 80, 55, 40, 35, 45, 55],
-      // backgroundColor: '#adfa1c',
-      backgroundColor: bg,
+      data: [80, 30, 45, 50, 60, 70, 80, 55, 40, 35, 45, 55],
       borderRadius: br,
     },
   ],

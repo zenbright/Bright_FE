@@ -123,13 +123,15 @@ export const Calendar = () => {
                 >
                   {date.date()}
                   {hasEvents(date) && (
-                  <div className="w-full flex justify-center items-center">
-                    <div className="absolute flex justify-center items-center">
-                      <div className="flex gap-1">{renderEventDots(date)}</div>
+                    <div className="w-full flex justify-center items-center">
+                      <div className="absolute flex justify-center items-center">
+                        <div className="flex gap-1">
+                          {renderEventDots(date)}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                )}
-                </div>  
+                  )}
+                </div>
               </div>
             )
           )}

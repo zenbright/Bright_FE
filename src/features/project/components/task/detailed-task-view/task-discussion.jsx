@@ -1,5 +1,12 @@
 import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Send } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
@@ -12,7 +19,6 @@ import { useSelector } from 'react-redux';
 
 import { TaskActivity } from '../../../utils/class';
 import { timeAgo } from '../../../utils/utils';
-
 
 // Sample instances array
 const sampleActivities = [
@@ -228,7 +234,8 @@ export const TaskDiscussion = ({ isReload, onReloadTrigger }) => {
   // Calculate remaining height
   useEffect(() => {
     const updateMaxHeight = () => {
-      const activitySectionElement = document.getElementById('activity-section');
+      const activitySectionElement =
+        document.getElementById('activity-section');
       if (activitySectionElement) {
         const rect = activitySectionElement.getBoundingClientRect();
         const remainingHeight = window.innerHeight - rect.top;
