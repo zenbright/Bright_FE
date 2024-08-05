@@ -39,7 +39,7 @@ function Loginform() {
     e.preventDefault();
     try {
       // set login state to true
-      dispatch(setLoginStatus(true));
+      console.log(account)
     } catch (error) {
       console.error('failed', error);
     }
@@ -107,7 +107,7 @@ function Loginform() {
                     value={account}
                     placeholder={'Account Email'}
                     autoComplete="email"
-                    onChange={e => setEmail(e.target.value)}
+                    onChangeCapture={e => setEmail(e.target.value)}
                     className="border border-auth_form_border focus:border-transparent"
                     {...field}
                   />
@@ -126,7 +126,7 @@ function Loginform() {
                     value={password}
                     autoComplete="current-password"
                     placeholder={'Password'}
-                    onChange={e => setPassword(e.target.value)}
+                    onChangeCapture={e => setPassword(e.target.value)}
                     className="border border-auth_form_border focus:border-transparent"
                     {...field}
                   />

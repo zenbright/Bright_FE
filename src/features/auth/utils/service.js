@@ -1,8 +1,8 @@
-import { axiosPost } from '@/config/service/axios.js';
+import { axiosPost } from '../../../config/service/axios.ts'
 
 export const signup = async (account, password, fname, email, dateOfBirth) => {
   try {
-    const response = await axiosPost('api/auth/bright/signup', {
+    const response = await axiosPost('auth/bright/signup', {
       account,
       password,
       fname,
@@ -17,7 +17,7 @@ export const signup = async (account, password, fname, email, dateOfBirth) => {
 
 export const login = async (account, password) => {
   try {
-    const response = await axiosPost('api/auth/bright/login', {
+    const response = await axiosPost('auth/bright/login', {
       account,
       password,
     });

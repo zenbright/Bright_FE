@@ -11,6 +11,9 @@ import { z } from 'zod';
 import { PASSWORD_INPUT_VALIDATOR, SIGN_UP } from '../assets/strings';
 import { SIGN_UP_VALIDATOR } from '../assets/strings';
 import { BirthdayPicker } from './birthday-picker';
+import { signup }from '../utils/service';
+import { RefreshCw } from 'lucide-react';
+
 
 const formSchema = z
   .object({
@@ -36,15 +39,20 @@ function Signupform() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSignUp = async e => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      // const post = await signup(account, password, fullname, email, dob);
-      console.log('success', e);
+      console.log(account, password, fullname, email, dob);
+      // await signup(account, password, fullname, email, dob);
+      // console.log('success', e);
     } catch (error) {
       console.error('failed', error);
+    } finally {
+      setLoading(false); // Set loading to false when the sign-up process completes
     }
   };
 
@@ -60,7 +68,7 @@ function Signupform() {
   });
 
   const onSubmit = () => {
-    console.log('Account created');
+    console.log(data);
   };
 
   const onError = error => {
@@ -91,7 +99,7 @@ function Signupform() {
                       type="text"
                       value={account}
                       placeholder={'First Name'}
-                      onChange={e => setFname(e.target.value)}
+                      onChangeCapture={e => setFname(e.target.value)}
                       className="border border-auth_form_border focus:border-transparent"
                       {...field}
                     />
@@ -109,7 +117,7 @@ function Signupform() {
                       type="text"
                       value={fullname}
                       placeholder={'Last Name'}
-                      onChange={e => setLname(e.target.value)}
+                      onChangeCapture={e => setLname(e.target.value)}
                       className="border border-auth_form_border focus:border-transparent"
                       {...field}
                     />
@@ -131,7 +139,7 @@ function Signupform() {
                     type="email"
                     value={email}
                     placeholder={'Email Address'}
-                    onChange={e => setEmail(e.target.value)}
+                    onChangeCapture={e => setEmail(e.target.value)}
                     autoComplete={'email'}
                     className="border border-auth_form_border focus:border-transparent"
                     {...field}
@@ -150,7 +158,7 @@ function Signupform() {
                     type="password"
                     value={password}
                     placeholder={'Password'}
-                    onChange={e => setPassword(e.target.value)}
+                    onChangeCapture={e => setPassword(e.target.value)}
                     autoComplete={'new-password'}
                     className="border border-auth_form_border focus:border-transparent"
                     {...field}
@@ -169,7 +177,7 @@ function Signupform() {
                     type="password"
                     value={cpassword}
                     placeholder={'Confirm your Password'}
-                    onChange={e => setCPassword(e.target.value)}
+                    onChangeCapture={e => setCPassword(e.target.value)}
                     className="border border-auth_form_border focus:border-transparent"
                     autoComplete={'new-password'}
                     {...field}
@@ -185,7 +193,8 @@ function Signupform() {
           className=" w-full h-9 rounded px-5 py-2.5 text-black text-sm bg-white font-medium hover:bg-gray-300 text-center inline-flex items-center border border-gray-400"
           onClick={handleSignUp}
         >
-          {'Sign up'}
+          {loading && <RefreshCw className="mr-2 animate-spin" />} 
+          {loading ? 'Loading...' : 'Sign Up'} 
         </Button>
       </Form>
     </div>
