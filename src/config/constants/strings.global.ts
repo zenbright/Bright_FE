@@ -5,6 +5,13 @@ export const SYSTEM_ALERT = {
   PRJ_ALT_ACC_DES:
     'Changing project visibility might affect access and collaboration. Review the changes before confirming.',
   NOTIFICATION: 'SYSTEM NOTIFICATION',
+  SIGNUP_SUCCESS_TITLE: 'Account Created Successfully!',
+  SIGNUP_INVALID_CREDENTIALS: 'Invalid Credentials',
+  SIGNUP_SERVER_ERROR: "Sorry, we're experiencing server issues. Please try again later.",
+  LOGIN_SUCCESS_TITLE: '',
+  LOGIN_SUCCESS_DES: '',
+  LOGIN_FAILED_TITLE: '',
+  LOGIN_FAILED_DES: '',
 };
 
 export const BRIGHT_EMAIL = 'bright-tools-official@gmail.com';

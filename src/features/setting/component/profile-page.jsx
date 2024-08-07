@@ -32,9 +32,9 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import userImage from '../asset/cat.jpg';
+import withScrollbarTheme from '../hoc/scroll-bar';
 import { PROFILE } from '../test/data/strings';
 import Modal from './modal';
-import withScrollbarTheme from '../hoc/scroll-bar';
 
 const formShcema = z.object({
   username: z
@@ -362,10 +362,7 @@ function Profile() {
                             </FormControl>
                           </PopoverTrigger>
 
-                          <PopoverContent
-                            className="w-auto p-0"
-                            align="start"
-                          >
+                          <PopoverContent className="w-auto p-0" align="start">
                             <Calendar
                               mode="single"
                               selected={field.value}

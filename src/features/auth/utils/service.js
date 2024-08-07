@@ -1,17 +1,22 @@
 import { axiosPost } from '../../../config/service/axios.ts';
 
-export const signup = async (account, password, fname, email, dateOfBirth) => {
+export const signup = async (account, password, fname, dateOfBirth) => {
   try {
     const response = await axiosPost('auth/bright/signup', {
       account,
       password,
       fname,
-      email,
       dateOfBirth,
     });
+    console.log(response);
     return response.data;
+
   } catch (error) {
-    throw error.response.data;
+    if (error.response) {
+      throw error.response;
+    } else {
+      throw new Error('Unexpected error');
+    }
   }
 };
 
