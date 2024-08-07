@@ -13,9 +13,8 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { useSelector } from 'react-redux';
-
+import { v4 as uuidv4 } from 'uuid';
 
 import { TaskActivity } from '../../../utils/class';
 import { timeAgo } from '../../../utils/utils';
@@ -167,13 +166,14 @@ export const TaskDiscussion = ({ isReload, onReloadTrigger }) => {
   const [isEditCommentContent, setIsEditCommentContent] = useState(false);
   const [deletedCommentIndex, setDeleteCommentIndex] = useState(null);
   const [maxHeight, setMaxHeight] = useState(window.innerHeight);
-  const currentTheme = useSelector((state) => state.currentTheme.value);
+  const currentTheme = useSelector(state => state.currentTheme.value);
   const [scrollbarTheme, setScrollbarTheme] = useState(
     currentTheme === 'dark-default' ? 'os-theme-light' : 'os-theme-dark'
   );
 
   useEffect(() => {
-    const theme = currentTheme === 'dark-default' ? 'os-theme-light' : 'os-theme-dark';
+    const theme =
+      currentTheme === 'dark-default' ? 'os-theme-light' : 'os-theme-dark';
     setScrollbarTheme(theme);
   }, [currentTheme]);
 

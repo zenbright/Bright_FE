@@ -26,7 +26,7 @@
     --plus_text: 0, 0%, 50%, 0.6;
     --plus_background: 0, 0%, 75%, 0.4;
     --plus_text_hover: 240, 10%, 0%;
-    --plus_background_hover:0, 0%, 75%, 0.5;
+    --plus_background_hover: 0, 0%, 75%, 0.5;
 
     /* Auth page */
     --auth_form_border: 0, 0%, 0%, 0.3;
@@ -83,7 +83,7 @@
     --comment_hover: 216, 19%, 26%;
     --plus_text: 40, 0%, 100%;
     --plus_background: 200 10% 20%;
-    --plus_text_hover: 0, 0%, 100%; 
+    --plus_text_hover: 0, 0%, 100%;
     --plus_background_hover: 10 0% 10%;
 
     /* Auth page */

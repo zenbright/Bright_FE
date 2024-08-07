@@ -151,7 +151,7 @@ export const KanbanBoard = () => {
       element="div"
       options={{ scrollbars: { autoHide: 'never' } }}
       defer
-      style={{ width: '97.5%', margin: 'auto'}}
+      style={{ width: '97.5%', margin: 'auto' }}
     >
       <div className="mt-4">
         <DndContext
@@ -160,9 +160,7 @@ export const KanbanBoard = () => {
           onDragOver={handleDragOver}
           sensors={sensors}
         >
-          <div
-            className={`flex ${columns.length === 0 ? 'gap-0' : 'gap-2'}`}
-          >
+          <div className={`flex ${columns.length === 0 ? 'gap-0' : 'gap-2'}`}>
             <div className="flex gap-2 ">
               <SortableContext items={columnId}>
                 {columns.map((col, index) => (

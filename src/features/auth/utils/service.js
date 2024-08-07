@@ -1,4 +1,4 @@
-import { axiosPost } from '../../../config/service/axios.ts'
+import { axiosPost } from '../../../config/service/axios.ts';
 
 export const signup = async (account, password, fname, email, dateOfBirth) => {
   try {

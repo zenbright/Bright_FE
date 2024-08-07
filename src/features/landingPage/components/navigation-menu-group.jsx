@@ -62,13 +62,25 @@ export const NavigationMenuGroup = () => {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction" className="text-black">
+              <ListItem
+                href="/docs"
+                title="Introduction"
+                className="text-black"
+              >
                 {INTRODUCTION.GETTING_STARTED.INTRODUCTION}
               </ListItem>
-              <ListItem href="/docs/sponsor" title="Sponsor" className="text-black">
+              <ListItem
+                href="/docs/sponsor"
+                title="Sponsor"
+                className="text-black"
+              >
                 {INTRODUCTION.GETTING_STARTED.SPONSOR}
               </ListItem>
-              <ListItem href="/docs/about" title="About us" className="text-black">
+              <ListItem
+                href="/docs/about"
+                title="About us"
+                className="text-black"
+              >
                 {INTRODUCTION.GETTING_STARTED.ABOUT}
               </ListItem>
             </ul>

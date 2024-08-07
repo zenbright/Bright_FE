@@ -37,7 +37,6 @@ export const Page = () => {
   });
 
   return (
-
     <div
       style={{
         backgroundImage: `url(${Background})`,
@@ -76,7 +75,9 @@ export const Page = () => {
           </div>
 
           <div className="flex gap-3 mt-8">
-            <Button className="p-6 text-md mr-1 text-white bg-black hover:bg-gray-800">Subscribe</Button>
+            <Button className="p-6 text-md mr-1 text-white bg-black hover:bg-gray-800">
+              Subscribe
+            </Button>
             <Button
               variant="ghost"
               className="p-6 text-md hover:font-semibold hover:underline hover:bg-transparent text-black hover:text-black"

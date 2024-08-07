@@ -26,7 +26,9 @@ export const MissionGroup = () => {
               </svg>
             </div>
 
-            <h1 className="font-bold text-xl mb-4 relative z-30 text-black">{title}</h1>
+            <h1 className="font-bold text-xl mb-4 relative z-30 text-black">
+              {title}
+            </h1>
 
             <p className="font-normal text-base text-slate-500 mb-4 relative z-30">
               {des}
@@ -46,7 +48,9 @@ export const MissionGroup = () => {
 
   return (
     <div className="flex flex-col gap-6 items-center">
-      <div className="font-bold text-5xl self-center text-black">Our Missions</div>
+      <div className="font-bold text-5xl self-center text-black">
+        Our Missions
+      </div>
       <div className=" font text-lg font-semibold max-w-xl text-center text-black">
         {
           'Through collaboration and expertise, we provide the tools and resources you need to achieve your goals.'

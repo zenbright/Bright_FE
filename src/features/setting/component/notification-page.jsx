@@ -21,8 +21,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { NOTIFICATION } from '../test/data/strings';
 import withScrollbarTheme from '../hoc/scroll-bar';
+import { NOTIFICATION } from '../test/data/strings';
 
 const formSchema = z.object({
   email: z.string().email(),
