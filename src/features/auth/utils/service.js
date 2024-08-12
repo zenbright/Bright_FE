@@ -8,9 +8,7 @@ export const signup = async (account, password, fname, dateOfBirth) => {
       fname,
       dateOfBirth,
     });
-    console.log(response);
-    return response.data;
-
+    return response;
   } catch (error) {
     if (error.response) {
       throw error.response;

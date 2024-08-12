@@ -6,8 +6,8 @@ export const axiosPost = async (endpoint = '', body = {}) => {
   const apiRoute = BE_BASE_PATH + endpoint;
   try {
     const response = await axios.post(apiRoute, body);
-    return response.data;
+    return response;
   } catch (error) {
-    throw error.response.data;
+    return error.response;
   }
 };
