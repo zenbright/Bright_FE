@@ -67,29 +67,28 @@ function Signupform() {
       const formattedDob = DOB.toISOString().slice(0, 10);
       // console.log(data.account, data.password, fullname, formattedDob)
       const response = await signup(data.account, data.password, fullname, formattedDob);
-      console.log(response);
-      toast({
-        className: 'text-green-700',
-        title: SYSTEM_ALERT.SIGNUP_SUCCESS_TITLE ,
-      });
-    } catch (error) {
-      console.error(error);
-      if (error.status === 400) {
+      if(response.status === 200){
+        toast({
+          className: 'text-green-700',
+          title: SYSTEM_ALERT.SIGNUP_SUCCESS_TITLE ,
+        });
+      } else if (response.status === 400) {
+        console.log(response.data);
         toast({
           className: 'text-red-600',
           title: SYSTEM_ALERT.SIGNUP_INVALID_CREDENTIALS,
         });
-      } else if (error.status === 500) {
+      } else if (response.status === 500) {
         toast({
           className: 'text-red-600',
           title: SYSTEM_ALERT.SIGNUP_SERVER_ERROR,
         });
-      } else {
-        toast({
-          className: 'text-red-600',
-          title: SYSTEM_ALERT.SIGNUP_FAILED_TITLE,
-        });
       }
+    } catch (error) {
+      toast({
+        className: 'text-red-600',
+        title: SYSTEM_ALERT.SIGNUP_FAILED_TITLE,
+      });
     } finally {
       setLoading(false);
     }

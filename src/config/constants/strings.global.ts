@@ -8,6 +8,7 @@ export const SYSTEM_ALERT = {
   SIGNUP_SUCCESS_TITLE: 'Account Created Successfully!',
   SIGNUP_INVALID_CREDENTIALS: 'Invalid Credentials',
   SIGNUP_SERVER_ERROR: "Sorry, we're experiencing server issues. Please try again later.",
+  SIGNUP_ANOTHER_FAILED: "Error",
   LOGIN_SUCCESS_TITLE: '',
   LOGIN_SUCCESS_DES: '',
   LOGIN_FAILED_TITLE: '',
