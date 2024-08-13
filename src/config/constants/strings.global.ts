@@ -15,6 +15,12 @@ export const SYSTEM_ALERT = {
   LOGIN_FAILED_DES: '',
 };
 
+export const SYSTEM_COLORS = {
+  SIGN_UP_COMPLETE_COLOR: 'text-signup_complete_text',
+  SIGN_UP_FAILED_COLOR: 'text-red-500',
+}
+
+
 export const BRIGHT_EMAIL = 'bright-tools-official@gmail.com';
 
 export const RESULT_NOT_FOUND = 'No results found.';
