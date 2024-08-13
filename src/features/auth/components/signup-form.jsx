@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
+import { SYSTEM_ALERT } from '@/config/constants/strings.global';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
 import React from 'react';
@@ -22,7 +23,6 @@ import {
 } from '../assets/strings';
 import { signup } from '../utils/service';
 import { BirthdayPicker } from './birthday-picker';
-import {SYSTEM_ALERT} from '@/config/constants/strings.global';
 
 const formSchema = z
   .object({
@@ -66,11 +66,16 @@ function Signupform() {
       const DOB = new Date(data.dob);
       const formattedDob = DOB.toISOString().slice(0, 10);
       // console.log(data.account, data.password, fullname, formattedDob)
-      const response = await signup(data.account, data.password, fullname, formattedDob);
-      if(response.status === 200){
+      const response = await signup(
+        data.account,
+        data.password,
+        fullname,
+        formattedDob
+      );
+      if (response.status === 200) {
         toast({
           className: 'text-green-700',
-          title: SYSTEM_ALERT.SIGNUP_SUCCESS_TITLE ,
+          title: SYSTEM_ALERT.SIGNUP_SUCCESS_TITLE,
         });
       } else if (response.status === 400) {
         console.log(response.data);
