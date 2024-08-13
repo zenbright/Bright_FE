@@ -23,6 +23,7 @@ import {
 } from '../assets/strings';
 import { signup } from '../utils/service';
 import { BirthdayPicker } from './birthday-picker';
+import { SYSTEM_COLORS } from '@/config/constants/strings.global';
 
 const formSchema = z
   .object({
@@ -43,7 +44,7 @@ const formSchema = z
     path: ['confirm_password'],
   });
 
-function Signupform() {
+function Signupform({onSignUpComplete}) {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
@@ -65,7 +66,6 @@ function Signupform() {
       const fullname = `${data.firstname} ${data.lastname}`;
       const DOB = new Date(data.dob);
       const formattedDob = DOB.toISOString().slice(0, 10);
-      // console.log(data.account, data.password, fullname, formattedDob)
       const response = await signup(
         data.account,
         data.password,
@@ -73,34 +73,31 @@ function Signupform() {
         formattedDob
       );
       if (response.status === 200) {
+        console.log(SYSTEM_COLORS.SIGN_UP_COMPLETE_COLOR);
         toast({
-          className: 'text-green-700',
+          className: SYSTEM_COLORS.SIGN_UP_COMPLETE_COLOR,
           title: SYSTEM_ALERT.SIGNUP_SUCCESS_TITLE,
         });
+        onSignUpComplete();
       } else if (response.status === 400) {
-        console.log(response.data);
         toast({
-          className: 'text-red-600',
+          className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
           title: SYSTEM_ALERT.SIGNUP_INVALID_CREDENTIALS,
         });
       } else if (response.status === 500) {
         toast({
-          className: 'text-red-600',
+          className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
           title: SYSTEM_ALERT.SIGNUP_SERVER_ERROR,
         });
       }
     } catch (error) {
       toast({
-        className: 'text-red-600',
+        className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
         title: SYSTEM_ALERT.SIGNUP_FAILED_TITLE,
       });
     } finally {
       setLoading(false);
     }
-  };
-
-  const onSubmit = data => {
-    handleSignUp(data);
   };
 
   const onError = errors => {
@@ -117,7 +114,7 @@ function Signupform() {
       </div>
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit, onError)}
+          onSubmit={form.handleSubmit(handleSignUp, onError)}
           className="space-y-2"
         >
           <div className="flex flex-cols-2 gap-2">
