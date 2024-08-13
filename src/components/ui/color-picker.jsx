@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -17,14 +18,15 @@ import Hue from '@uiw/react-color-hue';
 import Saturation from '@uiw/react-color-saturation';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { memo } from 'react';
+import { useCallback } from 'react';
 
-const ColorInputs = ({ labels, color, setColor }) => {
+const ColorInputs = memo(({ labels, color, setColor }) => {
   const [convertedColor, setConvertedColor] = useState(color);
 
   useEffect(() => {
     const roundedColor = { ...color };
 
-    // Trim leading zeros from the color values
     labels.forEach(label => {
       if (typeof roundedColor[label.toLowerCase()] === 'string') {
         if (
@@ -41,7 +43,7 @@ const ColorInputs = ({ labels, color, setColor }) => {
     setConvertedColor(roundedColor);
   }, [color, labels]);
 
-  const handleChange = (e, label) => {
+  const handleChange = useCallback((e, label) => {
     const { value } = e.target;
 
     // Convert empty string to 0, otherwise parse as float
@@ -87,7 +89,7 @@ const ColorInputs = ({ labels, color, setColor }) => {
     } else {
       setColor(ColorCodeConverter.hslaToHsva(newColor));
     }
-  };
+  }, [convertedColor, setColor, labels]);
 
   return (
     <div className="grid grid-cols-4 gap-2">
@@ -101,7 +103,7 @@ const ColorInputs = ({ labels, color, setColor }) => {
             type="text"
             value={
               typeof convertedColor[label.toLowerCase()] === 'number' &&
-              convertedColor[label.toLowerCase()] % 1 !== 0
+                convertedColor[label.toLowerCase()] % 1 !== 0
                 ? convertedColor[label.toLowerCase()].toFixed(2)
                 : convertedColor[label.toLowerCase()]
             }
@@ -111,7 +113,7 @@ const ColorInputs = ({ labels, color, setColor }) => {
       ))}
     </div>
   );
-};
+});
 
 export const ColorPicker = ({
   color,
@@ -120,25 +122,22 @@ export const ColorPicker = ({
   onOpenChange,
 }) => {
   const [hsva, setHsva] = useState(ColorCodeConverter.hexToHsva(color));
-
   const [colorHexAlpha, setColorHexAlpha] = useState(
     ColorCodeConverter.hsvaToHexa(hsva)
   );
 
-  const handleColorHexChange = hex => {
+  const handleColorHexChange = useCallback(hex => {
     setColorHexAlpha(hex);
 
     if (ColorCodeConverter.validHex(hex)) {
-      return;
+      setHsva(ColorCodeConverter.hexToHsva(hex));
     }
-
-    setHsva(ColorCodeConverter.hexToHsva(hex));
-  };
+  }, [setColor]);
 
   useEffect(() => {
     setColor(ColorCodeConverter.hsvaToHexa(hsva));
     setColorHexAlpha(ColorCodeConverter.hsvaToHexa(hsva));
-  }, [hsva]);
+  }, [hsva, setColor]);
 
   useEffect(() => {
     setHsva(ColorCodeConverter.hexToHsva(color));
@@ -161,7 +160,7 @@ export const ColorPicker = ({
               style={{ width: '100%', height: '200px' }}
               hsva={hsva}
               onChange={newColor => {
-                setHsva({ ...hsva, ...newColor, a: hsva.a });
+                setHsva(prevHsva => ({ ...prevHsva, ...newColor, a: prevHsva.a }));
               }}
               radius={10}
             />
@@ -169,27 +168,26 @@ export const ColorPicker = ({
             <Hue
               hue={hsva.h}
               onChange={newHue => {
-                setHsva({ ...hsva, ...newHue });
+                setHsva(prevHsva => ({ ...prevHsva, ...newHue }));
               }}
               style={{
-                borderRadius: '10px',
                 marginTop: '10px',
-                overflow: 'hidden',
               }}
+              radius={10}
             />
 
-            <Alpha
+            {/* <Alpha
               hsva={hsva}
               onChange={newAlpha => {
-                setHsva({ ...hsva, ...newAlpha });
+                setHsva(prevHsva => ({ ...prevHsva, ...newAlpha }));
               }}
               style={{
                 borderRadius: '10px',
                 marginTop: '10px',
                 overflow: 'hidden',
               }}
-            />
-            <Tabs defaultValue="rgba" className="w-full mt-4">
+            /> */}
+            {/* <Tabs defaultValue="rgba" className="w-full mt-4">
               <TabsList className="grid grid-cols-3 gap-2">
                 <TabsTrigger className="col-span-1" value="rgba">
                   {'RGBA'}
@@ -224,13 +222,11 @@ export const ColorPicker = ({
                   <Input
                     type="text"
                     value={colorHexAlpha}
-                    onChange={e => {
-                      handleColorHexChange(e.target.value);
-                    }}
+                    onChange={e => handleColorHexChange(e.target.value)}
                   />
                 </div>
               </TabsContent>
-            </Tabs>
+            </Tabs> */}
           </div>
 
           <DialogFooter>
