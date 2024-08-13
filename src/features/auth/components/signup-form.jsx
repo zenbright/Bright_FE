@@ -9,6 +9,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import { SYSTEM_ALERT } from '@/config/constants/strings.global';
+import { SYSTEM_COLORS } from '@/config/constants/strings.global';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
 import React from 'react';
@@ -23,7 +24,6 @@ import {
 } from '../assets/strings';
 import { signup } from '../utils/service';
 import { BirthdayPicker } from './birthday-picker';
-import { SYSTEM_COLORS } from '@/config/constants/strings.global';
 
 const formSchema = z
   .object({
@@ -44,7 +44,7 @@ const formSchema = z
     path: ['confirm_password'],
   });
 
-function Signupform({onSignUpComplete}) {
+function Signupform({ onSignUpComplete }) {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
