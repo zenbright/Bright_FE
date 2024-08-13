@@ -99,6 +99,7 @@ export const DetailedTaskView = ({
           taskToBeEditted={task}
         />
       )}
+
       <SheetContent className="h-full flex flex-col">
         <SheetHeader>
           <SheetTitle className="text-2xl font-bold flex items-center justify-between">

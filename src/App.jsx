@@ -39,7 +39,7 @@ const router = createBrowserRouter(
           <Route path="account" element={<Account />} />
           <Route path="appearance" element={<Appearance />} />
           <Route path="notification" element={<Notification />} />
-          <Route path="*" element={<Notfoundpage />} />
+          <Route path="*" element={<Notfoundpage />} />j
         </Route>
 
         {/* Dashboard route */}
