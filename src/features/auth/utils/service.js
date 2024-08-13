@@ -1,21 +1,21 @@
-import { axiosPost } from '@/config/service/axios.js';
+import {useLoginMutation} from 'src/features/auth/api';
 
 export const signup = async (account, password, fname, email, dateOfBirth) => {
   try {
-    const response = await axiosPost('api/auth/bright/signup', {
+    const body = {
       account,
       password,
       fname,
       email,
       dateOfBirth,
-    });
-    return response.data;
+    };
+    return {data}= useLoginMutation(body);
   } catch (error) {
     throw error.response.data;
   }
 };
 
-export const login = async (account, password) => {
+/* export const login = async (account, password) => {
   try {
     const response = await axiosPost('api/auth/bright/login', {
       account,
@@ -34,4 +34,4 @@ export const login = async (account, password) => {
   } catch (error) {
     console.error(error);
   }
-};
+} */;
