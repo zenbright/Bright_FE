@@ -110,6 +110,10 @@ export const theme = {
         DEFAULT: 'hsl(var(--not_found_background))',
         foreground: 'hsl(var(--not_found_background-foreground))',
       },
+      signup_complete_text: {
+        DEFAULT: 'hsl(var(--signup_complete_text))',
+        foreground: 'hsl(var(--signup_complete_text-foreground))',
+      },
     },
     borderRadius: {
       lg: 'var(--radius)',

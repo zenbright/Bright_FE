@@ -30,6 +30,7 @@
 
     /* Auth page */
     --auth_form_border: 0, 0%, 0%, 0.3;
+    --signup_complete_text: 158, 83%, 37%;
 
     /* 404 page */
     --not_found_background: 0 0% 100%;
@@ -88,6 +89,7 @@
 
     /* Auth page */
     --auth_form_border: 100, 10%, 90%, 0.3;
+    --signup_complete_text: 167, 72%, 60%;
 
     /* 404 page */
     --not_found_background: 0, 0%, 14.1%;
