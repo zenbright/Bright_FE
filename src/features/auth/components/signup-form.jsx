@@ -1,70 +1,107 @@
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/components/ui/use-toast';
+import { SYSTEM_ALERT } from '@/config/constants/strings.global';
+import { SYSTEM_COLORS } from '@/config/constants/strings.global';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
 import React from 'react';
-// import {signup} from '../utils/service';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { PASSWORD_INPUT_VALIDATOR, SIGN_UP } from '../assets/strings';
-import { SIGN_UP_VALIDATOR } from '../assets/strings';
+import {
+  PASSWORD_INPUT_VALIDATOR,
+  SIGN_UP,
+  SIGN_UP_VALIDATOR,
+} from '../assets/strings';
+import { signup } from '../utils/service';
 import { BirthdayPicker } from './birthday-picker';
 
 const formSchema = z
   .object({
     firstname: z.string({ required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED }),
     lastname: z.string({ required_error: SIGN_UP_VALIDATOR.NAME_REQUIRED }),
-    email: z.string({ required_error: SIGN_UP_VALIDATOR.EMAIL }).email(),
+    account: z.string({ required_error: SIGN_UP_VALIDATOR.ACCOUNT }),
     password: z
       .string({ required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED })
       .min(6, { message: PASSWORD_INPUT_VALIDATOR.SHORT })
       .max(50, { message: PASSWORD_INPUT_VALIDATOR.LONG }),
-    confirm_password: z.string(PASSWORD_INPUT_VALIDATOR.RE_CONFIRM),
+    confirm_password: z.string({
+      required_error: PASSWORD_INPUT_VALIDATOR.RE_CONFIRM,
+    }),
     dob: z.date().optional(),
   })
   .refine(data => data.password === data.confirm_password, {
-    message: 'New password and confirm password must be match',
+    message: 'New password and confirm password must match',
     path: ['confirm_password'],
   });
 
-function Signupform() {
-  const [account, setFname] = useState('');
-  const [fullname, setLname] = useState('');
-  const [dob, setDob] = useState();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [cpassword, setCPassword] = useState('');
-
-  const handleSignUp = async e => {
-    e.preventDefault();
-
-    try {
-      // const post = await signup(account, password, fullname, email, dob);
-      console.log('success', e);
-    } catch (error) {
-      console.error('failed', error);
-    }
-  };
+function Signupform({ onSignUpComplete }) {
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstname: '',
       lastname: '',
-      email: '',
+      account: '',
       password: '',
       confirm_password: '',
+      dob: null,
     },
   });
 
-  const onSubmit = () => {
-    console.log('Account created');
+  const handleSignUp = async data => {
+    setLoading(true);
+    try {
+      const fullname = `${data.firstname} ${data.lastname}`;
+      const DOB = new Date(data.dob);
+      const formattedDob = DOB.toISOString().slice(0, 10);
+      const response = await signup(
+        data.account,
+        data.password,
+        fullname,
+        formattedDob
+      );
+      if (response.status === 200) {
+        console.log(SYSTEM_COLORS.SIGN_UP_COMPLETE_COLOR);
+        toast({
+          className: SYSTEM_COLORS.SIGN_UP_COMPLETE_COLOR,
+          title: SYSTEM_ALERT.SIGNUP_SUCCESS_TITLE,
+        });
+        onSignUpComplete();
+      } else if (response.status === 400) {
+        toast({
+          className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
+          title: SYSTEM_ALERT.SIGNUP_INVALID_CREDENTIALS,
+        });
+      } else if (response.status === 500) {
+        toast({
+          className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
+          title: SYSTEM_ALERT.SIGNUP_SERVER_ERROR,
+        });
+      }
+    } catch (error) {
+      toast({
+        className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
+        title: SYSTEM_ALERT.SIGNUP_FAILED_TITLE,
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const onError = error => {
-    console.log(error);
+  const onError = errors => {
+    console.log(errors);
   };
 
   return (
@@ -77,7 +114,7 @@ function Signupform() {
       </div>
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit, onError)}
+          onSubmit={form.handleSubmit(handleSignUp, onError)}
           className="space-y-2"
         >
           <div className="flex flex-cols-2 gap-2">
@@ -89,13 +126,14 @@ function Signupform() {
                   <FormControl>
                     <Input
                       type="text"
-                      value={account}
                       placeholder={'First Name'}
-                      onChange={e => setFname(e.target.value)}
-                      className="border border-black/30 focus:border-transparent"
+                      className="border border-auth_form_border focus:border-transparent"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage>
+                    {form.formState.errors.firstname?.message}
+                  </FormMessage>
                 </FormItem>
               )}
             />
@@ -107,36 +145,41 @@ function Signupform() {
                   <FormControl>
                     <Input
                       type="text"
-                      value={fullname}
                       placeholder={'Last Name'}
-                      onChange={e => setLname(e.target.value)}
-                      className="border border-black/30 focus:border-transparent"
+                      className="border border-auth_form_border focus:border-transparent"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage>
+                    {form.formState.errors.lastname?.message}
+                  </FormMessage>
                 </FormItem>
               )}
             />
           </div>
 
-          <BirthdayPicker date={dob} setDate={setDob} />
+          <BirthdayPicker
+            date={form.watch('dob')}
+            setDate={date => form.setValue('dob', date)}
+          />
 
           <FormField
             control={form.control}
-            name="email"
+            name="account"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input
-                    type="email"
-                    value={email}
-                    placeholder={'Email Address'}
-                    onChange={e => setEmail(e.target.value)}
-                    autoComplete={'email'}
-                    className="border border-black/30 focus:border-transparent"
+                    type="text"
+                    placeholder={'Account name'}
+                    autoComplete={'account'}
+                    className="border border-auth_form_border focus:border-transparent"
                     {...field}
                   />
                 </FormControl>
+                <FormMessage>
+                  {form.formState.errors.account?.message}
+                </FormMessage>
               </FormItem>
             )}
           />
@@ -148,14 +191,15 @@ function Signupform() {
                 <FormControl>
                   <Input
                     type="password"
-                    value={password}
                     placeholder={'Password'}
-                    onChange={e => setPassword(e.target.value)}
                     autoComplete={'new-password'}
-                    className="border border-black/30 focus:border-transparent"
+                    className="border border-auth_form_border focus:border-transparent"
                     {...field}
                   />
                 </FormControl>
+                <FormMessage>
+                  {form.formState.errors.password?.message}
+                </FormMessage>
               </FormItem>
             )}
           />
@@ -167,26 +211,28 @@ function Signupform() {
                 <FormControl>
                   <Input
                     type="password"
-                    value={cpassword}
                     placeholder={'Confirm your Password'}
-                    onChange={e => setCPassword(e.target.value)}
-                    className="border border-black/30 focus:border-transparent"
-                    autoComplete={'new-password'}
+                    className="border border-auth_form_border focus:border-transparent"
+                    autoComplete={'confirm-password'}
                     {...field}
                   />
                 </FormControl>
+                <FormMessage>
+                  {form.formState.errors.confirm_password?.message}
+                </FormMessage>
               </FormItem>
             )}
           />
+          <Button
+            type="submit"
+            variant="outline"
+            className="w-full h-9 rounded px-5 py-2.5 text-black text-sm bg-white font-medium hover:bg-gray-300 text-center inline-flex items-center border border-gray-400"
+            disabled={loading}
+          >
+            {loading && <Loader2 className="mr-3 animate-spin h-4 w-4" />}
+            {loading ? 'Signing up...' : 'Sign Up'}
+          </Button>
         </form>
-        <Button
-          type="submit"
-          variant="outline"
-          className=" w-full h-9 rounded px-5 py-2.5 text-black text-sm bg-white font-medium hover:bg-gray-300 text-center inline-flex items-center border border-gray-400"
-          onClick={handleSignUp}
-        >
-          {'Sign up'}
-        </Button>
       </Form>
     </div>
   );

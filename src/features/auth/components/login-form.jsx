@@ -22,7 +22,7 @@ import { PASSWORD_INPUT_VALIDATOR } from '../assets/strings';
 import { setLoginStatus } from '../utils/authSlice';
 
 const formShcema = z.object({
-  email: z.string({ required_error: SIGN_IN.REQUIRED }).email(),
+  account: z.string({ required_error: SIGN_IN.REQUIRED }).email(),
   password: z
     .string({ required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED })
     .min(6, { message: PASSWORD_INPUT_VALIDATOR.SHORT })
@@ -39,7 +39,7 @@ function Loginform() {
     e.preventDefault();
     try {
       // set login state to true
-      dispatch(setLoginStatus(true));
+      console.log(account);
     } catch (error) {
       console.error('failed', error);
     }
@@ -105,10 +105,10 @@ function Loginform() {
                   <Input
                     type="email"
                     value={account}
-                    placeholder={'Account Email'}
+                    placeholder={'Account Name'}
                     autoComplete="email"
-                    onChange={e => setEmail(e.target.value)}
-                    className="border border-black/20 focus:border-transparent"
+                    onChangeCapture={e => setEmail(e.target.value)}
+                    className="border border-auth_form_border focus:border-transparent"
                     {...field}
                   />
                 </FormControl>
@@ -126,8 +126,8 @@ function Loginform() {
                     value={password}
                     autoComplete="current-password"
                     placeholder={'Password'}
-                    onChange={e => setPassword(e.target.value)}
-                    className="border border-black/30 focus:border-transparent"
+                    onChangeCapture={e => setPassword(e.target.value)}
+                    className="border border-auth_form_border focus:border-transparent"
                     {...field}
                   />
                 </FormControl>

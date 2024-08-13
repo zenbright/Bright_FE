@@ -1,23 +1,27 @@
-import {useLoginMutation} from 'src/features/auth/api';
+import { useLoginMutation } from 'src/features/auth/api';
 
-export const signup = async (account, password, fname, email, dateOfBirth) => {
+export const signup = async (account, password, fname, dateOfBirth) => {
   try {
     const body = {
       account,
       password,
       fname,
-      email,
       dateOfBirth,
     };
-    return {data}= useLoginMutation(body);
+
+    return { data } = useLoginMutation(body);
   } catch (error) {
-    throw error.response.data;
+    if (error.response) {
+      throw error.response;
+    } else {
+      throw new Error('Unexpected error');
+    }
   }
 };
 
 /* export const login = async (account, password) => {
   try {
-    const response = await axiosPost('api/auth/bright/login', {
+    const response = await axiosPost('auth/bright/login', {
       account,
       password,
     });
