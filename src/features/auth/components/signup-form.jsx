@@ -22,7 +22,7 @@ import {
   SIGN_UP,
   SIGN_UP_VALIDATOR,
 } from '../assets/strings';
-import { signup } from '../utils/service';
+import { useSignupMutation } from '../utils/authApi';
 import { BirthdayPicker } from './birthday-picker';
 
 const formSchema = z
@@ -47,6 +47,7 @@ const formSchema = z
 function Signupform({ onSignUpComplete }) {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const [signup] = useSignupMutation();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -62,34 +63,40 @@ function Signupform({ onSignUpComplete }) {
 
   const handleSignUp = async data => {
     setLoading(true);
+
     try {
-      const fullname = `${data.firstname} ${data.lastname}`;
-      const DOB = new Date(data.dob);
-      const formattedDob = DOB.toISOString().slice(0, 10);
-      const response = await signup(
-        data.account,
-        data.password,
-        fullname,
-        formattedDob
-      );
-      if (response.status === 200) {
-        console.log(SYSTEM_COLORS.SIGN_UP_COMPLETE_COLOR);
-        toast({
-          className: SYSTEM_COLORS.SIGN_UP_COMPLETE_COLOR,
-          title: SYSTEM_ALERT.SIGNUP_SUCCESS_TITLE,
-        });
-        onSignUpComplete();
-      } else if (response.status === 400) {
-        toast({
-          className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
-          title: SYSTEM_ALERT.SIGNUP_INVALID_CREDENTIALS,
-        });
-      } else if (response.status === 500) {
-        toast({
-          className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
-          title: SYSTEM_ALERT.SIGNUP_SERVER_ERROR,
-        });
+      const body = {
+        account: data.account,
+        password: data.password,
+        fullname: `${data.firstname} ${data.lastname}`,
+        dob: new Date(formattedDob).toISOString().slice(0, 10),
+      };
+
+      const response = await signup(body);
+
+      if (response.error) {
+        const error_code = response.error.status;
+        if (error_code === 400) {
+          toast({
+            className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
+            title: SYSTEM_ALERT.SIGNUP_INVALID_CREDENTIALS,
+          });
+        } else if (error_code === 500) {
+          toast({
+            className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,
+            title: SYSTEM_ALERT.SIGNUP_SERVER_ERROR,
+          });
+        }
+
+        return;
       }
+
+      toast({
+        className: SYSTEM_COLORS.SIGN_UP_COMPLETE_COLOR,
+        title: SYSTEM_ALERT.SIGNUP_SUCCESS_TITLE,
+      });
+
+      onSignUpComplete();
     } catch (error) {
       toast({
         className: SYSTEM_COLORS.SIGN_UP_FAILED_COLOR,

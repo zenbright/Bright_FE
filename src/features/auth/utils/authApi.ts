@@ -5,7 +5,7 @@ import { API_BASE_URL } from '../../../config/constants/strings.global';
 
 export const authApi = createApi({
     reducerPath: 'authApi',
-    baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL + 'auth/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL + 'auth/bright/' }),
     endpoints: (builder) => ({
         login: builder.mutation({
             query: (body) => ({
@@ -15,9 +15,9 @@ export const authApi = createApi({
             }),
         }),
 
-        register: builder.mutation({
+        signup: builder.mutation({
             query: (body) => ({
-                url: 'register',
+                url: 'signup',
                 method: 'POST',
                 body,
             }),
@@ -29,4 +29,4 @@ export const authApi = createApi({
     }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useGetAccessTokenQuery } = authApi;
+export const { useLoginMutation, useSignupMutation, useGetAccessTokenQuery } = authApi;

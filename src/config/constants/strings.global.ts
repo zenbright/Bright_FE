@@ -58,4 +58,4 @@ export const FILE_UNSUPPORTED = {
 };
 
 export const API_BASE_PORT = 5000;
-export const API_BASE_URL = 'http://localhost:' + API_BASE_PORT + '/bright-backend/';
+export const API_BASE_URL = 'http://localhost:' + API_BASE_PORT + '/api/v1/';
