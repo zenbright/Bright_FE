@@ -11,7 +11,7 @@ function NavItem({ text, children, onClick, select = false }) {
       >
         <div
           tabIndex="0"
-          className={`p-3 transition-all group-hover:w-[95%] h-full flex items-center group-hover:gap-3
+          className={`p-3 transition-all group-hover:w-[90%] h-full flex items-center group-hover:gap-3
              rounded-md group is-hovered ${select ? 'bg-foreground fill-white text-white duration-0' : 'bg-background group-hover/item:bg-hovering'} duration-0`}
         >
           <div
