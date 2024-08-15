@@ -10,13 +10,17 @@ import {
 import { Input } from '@/components/ui/input';
 import { setTheme } from '@/features/theme/utils/themeSlice';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
 import React, { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import { Button } from '../../../components/ui/button';
+import axios from '../../../config/service/axios';
+import useAuth from '../../../hooks/useAuth';
 import { SIGN_IN } from '../assets/strings';
 import { PASSWORD_INPUT_VALIDATOR } from '../assets/strings';
 import { setLoginStatus } from '../utils/authSlice';
@@ -32,16 +36,49 @@ const formShcema = z.object({
 
 function Loginform() {
   const dispatch = useDispatch();
-  const [account, setEmail] = useState('');
+  const [account, setAccount] = useState('');
   const [password, setPassword] = useState('');
+
+  // login button spinner
+  const [spinning, setSpinning] = useState(false);
+
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const handleLogin = async e => {
     e.preventDefault();
     try {
+      setSpinning(true);
+      const response = await axios({
+        method: 'post',
+        url: '/auth/bright/login',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          account: account,
+          password: password, // This is the body part
+        },
+      });
+      console.log(JSON.stringify(response?.data));
+      // console.log(JSON.stringify(response));
+      const accessToken = response?.data?.accessToken;
+      const roles = response?.data?.role;
+      setAccount('');
+      setPassword('');
+      setAuth({ account, password, roles, accessToken });
+
+      navigate(from, { replace: true });
       // set login state to true
       dispatch(setLoginStatus(true));
+      setTimeout(() => {
+        setSpinning(false);
+      }, 2000);
     } catch (error) {
       console.error('failed', error);
+      setSpinning(false);
     }
   };
 
@@ -107,7 +144,7 @@ function Loginform() {
                     value={account}
                     placeholder={'Account Email'}
                     autoComplete="email"
-                    onChange={e => setEmail(e.target.value)}
+                    onChangeCapture={e => setAccount(e.currentTarget.value)}
                     className="border border-black/20 focus:border-transparent"
                     {...field}
                   />
@@ -126,7 +163,7 @@ function Loginform() {
                     value={password}
                     autoComplete="current-password"
                     placeholder={'Password'}
-                    onChange={e => setPassword(e.target.value)}
+                    onChangeCapture={e => setPassword(e.currentTarget.value)}
                     className="border border-black/30 focus:border-transparent"
                     {...field}
                   />
@@ -138,8 +175,16 @@ function Loginform() {
             type="submit"
             className="w-full h-8 rounded px-5 py-2.5 text-black text-sm bg-white font-medium  hover:bg-gray-200 text-center inline-flex items-center border border-gray-400"
             onClick={handleLogin}
+            disabled={spinning}
           >
-            {'Sign in'}
+            {spinning ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <span className="please-wait-text">Please wait...</span>
+              </>
+            ) : (
+              'Sign in'
+            )}
           </Button>
         </form>
 
