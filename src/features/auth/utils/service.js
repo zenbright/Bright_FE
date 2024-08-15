@@ -1,4 +1,4 @@
-import { axiosPost } from '@/config/service/axios.js';
+import { axiosPost } from '../../../config/service/axios';
 
 export const signup = async (account, password, fname, email, dateOfBirth) => {
   try {
@@ -17,7 +17,7 @@ export const signup = async (account, password, fname, email, dateOfBirth) => {
 
 export const login = async (account, password) => {
   try {
-    const response = await axiosPost('api/auth/bright/login', {
+    const response = await axiosPost('api/v1/auth/bright/login', {
       account,
       password,
     });
@@ -25,7 +25,7 @@ export const login = async (account, password) => {
     const userId = response.payload.userData._id;
     const deviceToken = await getDeviceToken();
 
-    await axiosPost('api/auth/save-device-token', {
+    await axiosPost('api/v1/auth/save-device-token', {
       deviceToken,
       userId,
     });

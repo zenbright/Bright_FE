@@ -78,9 +78,9 @@ function App() {
       return;
     }
 
-    if (window.location.pathname !== '/user/dashboard') {
-      window.location.replace('/user/dashboard');
-    }
+    // if (window.location.pathname !== '/user/dashboard') {
+    //   window.location.replace('/user/dashboard');
+    // }
   }, [isUserAuthenticated]);
 
   return <RouterProvider router={router} />;

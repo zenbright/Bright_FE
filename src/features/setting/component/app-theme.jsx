@@ -16,7 +16,7 @@ function Theme({ name, image }) {
   const handleThemeButton = () => {
     dispatch(setTheme(normalizeThemeName(name)));
   };
-  
+
   return (
     <div
       className="rounded-md w-full border-[2px] cursor-pointer"
