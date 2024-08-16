@@ -2,6 +2,7 @@ import logo from '@/assets/images/app-logo/logomini-light.svg';
 import { Button } from '@/components/ui/button';
 import { Github, Mail } from 'lucide-react';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { WEBSITE_NAME } from '../../../config/constants/strings.global';
@@ -29,6 +30,10 @@ export const Page = () => {
   const redirectGitHubOAuth = () => {
     window.location.href =
       'https://github.com/login/oauth/authorize?client_id=ce0a3e8be7b81c84ee8d';
+  };
+
+  const handleToggleLoginState = () => {
+    setIsUserLogin(true);
   };
 
   return (
@@ -77,9 +82,11 @@ export const Page = () => {
         {/* Auth Form */}
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-            {isUserLogin ? <Loginform /> : <Signupform />}
-
-            {/* Other login methods */}
+            {isUserLogin ? (
+              <Loginform />
+            ) : (
+              <Signupform onSignUpComplete={handleToggleLoginState} />
+            )}
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t" />

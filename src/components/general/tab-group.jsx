@@ -3,8 +3,8 @@ import { FileSpreadsheet, GanttChartSquare, KanbanSquare } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const TableNames = [
-  { name: 'Board', icon: KanbanSquare, isDisabled: false },
-  { name: 'Sketch', icon: GanttChartSquare, isDisabled: true },
+  { name: 'Kanban', icon: KanbanSquare, isDisabled: false },
+  { name: 'Board', icon: GanttChartSquare, isDisabled: false },
   { name: 'Sheet', icon: FileSpreadsheet, isDisabled: true },
 ];
 
@@ -18,7 +18,7 @@ const TabGroup = ({ tableNames = TableNames, selected, setSelected }) => {
       {tableNames.map((table, index) => (
         <Button
           key={index}
-          className={`flex py-3 px-2 gap-2 text-md font-semibold items-center hover:text-background hover:bg-foreground/95 ${selected === index ? 'bg-tab_group' : ''}`}
+          className={`flex py-3 px-2 gap-2 text-md font-semibold items-center ${selected === index ? 'bg-gray-100' : ''}`}
           disabled={table.isDisabled}
           variant="ghost"
           onClick={() => handleButtonClick(index)}

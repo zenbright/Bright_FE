@@ -5,7 +5,21 @@ export const SYSTEM_ALERT = {
   PRJ_ALT_ACC_DES:
     'Changing project visibility might affect access and collaboration. Review the changes before confirming.',
   NOTIFICATION: 'SYSTEM NOTIFICATION',
+  SIGNUP_SUCCESS_TITLE: 'Account Created Successfully!',
+  SIGNUP_INVALID_CREDENTIALS: 'Invalid Credentials',
+  SIGNUP_SERVER_ERROR: "Sorry, we're experiencing server issues. Please try again later.",
+  SIGNUP_ANOTHER_FAILED: "Error",
+  LOGIN_SUCCESS_TITLE: '',
+  LOGIN_SUCCESS_DES: '',
+  LOGIN_FAILED_TITLE: '',
+  LOGIN_FAILED_DES: '',
 };
+
+export const SYSTEM_COLORS = {
+  SIGN_UP_COMPLETE_COLOR: 'text-signup_complete_text',
+  SIGN_UP_FAILED_COLOR: 'text-red-500',
+}
+
 
 export const BRIGHT_EMAIL = 'bright-tools-official@gmail.com';
 
@@ -42,3 +56,6 @@ export const FILE_UNSUPPORTED = {
   TITLE: 'Unsupported File Type',
   DES: `The uploaded file has an unsupported file type. Please upload files with the following extensions: ${ALLOWED_EXTENSIONS.join(', ')}`,
 };
+
+export const API_BASE_PORT = 5000;
+export const API_BASE_URL = 'http://localhost:' + API_BASE_PORT + '/api/v1/';

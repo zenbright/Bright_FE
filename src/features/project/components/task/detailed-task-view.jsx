@@ -99,14 +99,14 @@ export const DetailedTaskView = ({
           taskToBeEditted={task}
         />
       )}
-      <SheetContent className="h-full flex flex-col">
+      <SheetContent className="pt-10 h-full flex flex-col">
         <SheetHeader>
           <SheetTitle className="text-2xl font-bold flex items-center justify-between">
             <div>{task.title}</div>
             <div>
               <Button
                 variant="ghost"
-                className="flex gap-2 text-black/60"
+                className="flex gap-2 text-foreground"
                 onClick={() => setIsShowTaskEditForm(true)}
               >
                 {'Edit'}
@@ -163,7 +163,7 @@ export const DetailedTaskView = ({
                 ))}
 
               <Plus
-                className="w-6 h-6 text-gray-500/60 bg-gray-300/40 p-1.5 rounded-md hover:bg-gray-300/50 hover:cursor-pointer hover:text-black"
+                className="w-6 h-6 text-plus_text bg-plus_background p-1.5 rounded-md hover:bg-plus_background_hover hover:cursor-pointer hover:text-plus_text_hover"
                 onClick={() => {
                   setIsOpenTaskTagCreationForm(true);
                 }}

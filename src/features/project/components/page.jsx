@@ -15,7 +15,6 @@ import {
   Heart,
   Settings,
   ShieldMinus,
-  UserRoundPlus,
 } from 'lucide-react';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -28,22 +27,25 @@ import { SYSTEM_ALERT } from '../../../config/constants/strings.global';
 import ProjectBreadCrumbs from './breadcrumbs';
 import { KanbanBoard } from './kanban-board';
 import { MemberList } from './member-list';
+import AddMember from '../../../layouts/add-member';
+import Board from '../../board/Board';
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
   const [isUnderDevDialogOpen, setIsUnderDevDialogOpen] = useState(false);
   const [selectedTabIdx, setSelectedTabIdx] = useState(0);
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className="px-2 py-1 w-full h-dvh overflow-auto ">
-      <div className="p-4">
+    <div className="px-2 py-1 w-full h-dvh overflow-auto">
+      <div className="px-4">
         {/* Project Headers */}
         <ProjectBreadCrumbs projectType="SOFTWARE" projectOwner="MUDOKER" />
 
         {/* Title + Util Buttons */}
         <div className=" flex justify-between items-center">
-          <h1 className="text-4xl font-bold text-project_text mb-1 mt-4">
-            {'Bright'}
+          <h1 className="text-4xl font-bold text-slate-700 mb-3 mt-4">
+            Bright
           </h1>
 
           <div className="flex gap-4">
@@ -75,8 +77,7 @@ export const Page = () => {
       </div>
 
       {/* Creation Date + Member List + Privacy */}
-      <div className="mb-1 flex items-center h-10 gap-4 ">
-        {/* Board Tab */}
+      <div className="mb-1 flex items-center h-10 gap-4">
         <div className="flex items-center pl-4">
           <BoardTabGroup
             selected={selectedTabIdx}
@@ -90,14 +91,7 @@ export const Page = () => {
 
         <div className="flex items-center">
           <MemberList width={7} height={7} />
-
-          <Button
-            className="h-8 border-black/15"
-            variant="outline"
-            onClick={() => setIsUnderDevDialogOpen(true)}
-          >
-            <UserRoundPlus className="h-4" /> Invite
-          </Button>
+          <AddMember open={open} onOpenChange={setOpen}/>
         </div>
 
         <Divider width="1.5px" height="70%" color="rgba(0,0,0,0.2)" />
@@ -109,7 +103,7 @@ export const Page = () => {
               variant="outline"
             >
               <ShieldMinus className="h-4" />
-              {'Private'}
+              Private
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
@@ -122,9 +116,9 @@ export const Page = () => {
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>{'Cancel'}</AlertDialogCancel>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction onClick={() => setIsUnderDevDialogOpen(true)}>
-                {'Continue'}
+                Continue
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
@@ -132,7 +126,8 @@ export const Page = () => {
       </div>
 
       {/* Task Management Board */}
-      <KanbanBoard />
+      {selectedTabIdx === 0 && <KanbanBoard />} 
+      {selectedTabIdx === 1 && <Board/>}
 
       {/* Others */}
       {isUnderDevDialogOpen && (

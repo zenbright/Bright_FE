@@ -17,10 +17,10 @@ export default function Notfoundpage() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 w-full">
+    <div className="bg-not_found_background w-full">
       <div className="container flex items-center justify-center min-h-screen px-6 py-12 mx-auto">
         <div className="flex flex-col items-center max-w-lg mx-auto text-center">
-          <p className="p-3 text-sm text-black rounded-full bg-transparent dark:bg-gray-800 mb-4">
+          <p className="p-3 text-sm text-foreground rounded-full bg-transparent dark:bg-gray-800 mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
