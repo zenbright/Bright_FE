@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button';
+import { PackagePlus } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { Calendar } from './calendar';
@@ -17,6 +19,11 @@ function Dashboard() {
     };
   }, []);
 
+  // !TODO: Implement create new project form
+  const handleCreateNewProject = () => {
+    console.log('Create new project');
+  };
+
   const currentHour = currentTime.getHours();
   const user = 'Kien';
   const greeting =
@@ -32,9 +39,18 @@ function Dashboard() {
     <div className="flex w-full p-4 gap-4">
       {/* Section 1 */}
       <div className="w-9/12 flex flex-col mt-4 justify-between gap-8">
-        <div className="space-y-2">
-          <p>{dateFormatted}</p>
-          <p className="text-3xl font-bold">{greeting}</p>
+        <div className="space-y-2 flex justify-between items-center">
+          <div>
+            <p>{dateFormatted}</p>
+            <p className="text-3xl font-bold">{greeting}</p>
+          </div>
+          <div>
+            <div>
+              <Button onClick={handleCreateNewProject}>
+                <PackagePlus size={16} />
+              </Button>
+            </div>
+          </div>
         </div>
 
         <div className=" place-content-center rounded-md">
