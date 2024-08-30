@@ -6,8 +6,9 @@ import {
   throttle,
 } from '@tldraw/tldraw';
 import React, { useLayoutEffect, useState } from 'react';
+import { Expand, Minimize } from 'lucide-react';
 
-const PERSISTENCE_KEY = 'example-3';
+const PERSISTENCE_KEY = 'board';
 
 export default function Board() {
   const [store] = useState(() =>
@@ -16,6 +17,8 @@ export default function Board() {
   const [loadingState, setLoadingState] = useState({
     status: 'loading',
   });
+
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   useLayoutEffect(() => {
     setLoadingState({ status: 'loading' });
@@ -61,6 +64,10 @@ export default function Board() {
     console.log(json);
   };
 
+  const handleFullScreenToggle = () => {
+    setIsFullScreen(!isFullScreen);
+  };
+
   if (loadingState.status === 'loading') {
     return (
       <div>
@@ -77,15 +84,32 @@ export default function Board() {
       </div>
     );
   }
+ 
 
   return (
     <div>
-      <div className="absolute right-2 top-[100px] z-10 bg-transparent">
+      <div className={`absolute ${
+                        isFullScreen ? 'right-0 top-[44%]' : ' right-2 top-[100px]'
+                      } z-30 bg-transparent`}>
         <Button onClick={handleExportClick}>
           Export
         </Button>
       </div>
-      <div style={{ position: 'fixed', width:'95%', height:'85%', insetInline:80}}>
+      <div className={`absolute ${
+                        isFullScreen ? 'right-20 top-[44%]' : 'right-24 top-[100px]'
+                      } z-30 bg-transparent`}>
+        <Button onClick={handleFullScreenToggle}>
+          {isFullScreen ? <Minimize className='h-4' /> : <Expand className='h-4'/>}
+        </Button>
+      </div>
+      <div style={{ 
+              position: 'fixed', 
+              width: isFullScreen ? '95%' : '95%',
+              height: isFullScreen ? '100%' : '85%',
+              insetInline:80,
+              insetBlock:isFullScreen ? 0: '',
+              zIndex: 20,
+      }}>
         <Tldraw store={store}></Tldraw>
       </div>
     </div>
