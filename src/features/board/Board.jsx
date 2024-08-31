@@ -5,8 +5,8 @@ import {
   defaultShapeUtils,
   throttle,
 } from '@tldraw/tldraw';
-import React, { useLayoutEffect, useState } from 'react';
 import { Expand, Minimize } from 'lucide-react';
+import React, { useLayoutEffect, useState } from 'react';
 
 const PERSISTENCE_KEY = 'board';
 
@@ -84,32 +84,34 @@ export default function Board() {
       </div>
     );
   }
- 
 
   return (
     <div>
-      <div className={`absolute ${
-                        isFullScreen ? 'right-0 top-[44%]' : ' right-2 top-[100px]'
-                      } z-30 bg-transparent`}>
-        <Button onClick={handleExportClick}>
-          Export
-        </Button>
-      </div>
-      <div className={`absolute ${
-                        isFullScreen ? 'right-20 top-[44%]' : 'right-24 top-[100px]'
-                      } z-30 bg-transparent`}>
+      <div
+        className={`flex gap-2 absolute ${
+          isFullScreen ? 'right-2 top-[44%]' : ' right-2 top-[100px]'
+        } z-30 bg-transparent`}
+      >
+        <Button onClick={handleExportClick}>Export</Button>
         <Button onClick={handleFullScreenToggle}>
-          {isFullScreen ? <Minimize className='h-4' /> : <Expand className='h-4'/>}
+          {isFullScreen ? (
+            <Minimize className="h-4" />
+          ) : (
+            <Expand className="h-4" />
+          )}
         </Button>
       </div>
-      <div style={{ 
-              position: 'fixed', 
-              width: isFullScreen ? '95%' : '95%',
-              height: isFullScreen ? '100%' : '85%',
-              insetInline:80,
-              insetBlock:isFullScreen ? 0: '',
-              zIndex: 20,
-      }}>
+      <div
+        style={{
+          position: 'fixed',
+          width: isFullScreen ? '95%' : '95%',
+          height: isFullScreen ? '100%' : '85%',
+          insetInline: 80,
+          insetBlock: isFullScreen ? 0 : '',
+          zIndex: 20,
+        }}
+        className="p-3"
+      >
         <Tldraw store={store}></Tldraw>
       </div>
     </div>
