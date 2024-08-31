@@ -39,6 +39,7 @@ function Loginform() {
     e.preventDefault();
     try {
       // set login state to true
+      dispatch(setLoginStatus(true));
       console.log(account);
     } catch (error) {
       console.error('failed', error);
