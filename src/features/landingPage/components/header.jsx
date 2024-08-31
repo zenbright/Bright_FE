@@ -1,11 +1,11 @@
-import BrightLogo from '@/assets/images/app-logo/logomini-dark.svg';
+import BrightLogo from '@/assets/images/app-logo/logomini-light.svg';
 import { Button } from '@/components/ui/button';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { NavigationMenuGroup } from './navigation-menu-group';
 
-export const Header = React.forwardRef((props, ref) => {
+export const Header = React.forwardRef((_, ref) => {
   return (
     <div ref={ref} className="sticky top-0 z-50 ">
       <div className="flex items-center p-2 pt-6 mb-2 justify-between">

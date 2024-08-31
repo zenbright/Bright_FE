@@ -54,7 +54,12 @@ export const NavigationMenuGroup = () => {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-[#F4F4F5]/50 to-[#F4F4F5] p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <img src={BrightLogo} className="h-20 w-full" />
+                    <img
+                      src={BrightLogo}
+                      className="h-20 w-full mix-blend-multiply"
+                      alt="Logo"
+                    />
+
                     <div className="mb-2 mt-4 text-lg font-medium">Bright</div>
                     <p className="text-sm leading-tight text-[#71717A]">
                       {INTRODUCTION.GETTING_STARTED.OVERVIEW}

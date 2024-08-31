@@ -6,7 +6,7 @@ import { BRIGHT_EMAIL } from '@/config/constants/strings.global';
 import { Copyright } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useRef } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 
 import Background from '../assets/bg-light.svg';
 import Facebook from '../assets/ic_facebook.svg';
