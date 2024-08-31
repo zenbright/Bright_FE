@@ -8,11 +8,9 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
-import { SYSTEM_ALERT } from '@/config/constants/strings.global';
-import { SYSTEM_COLORS } from '@/config/constants/strings.global';
+import { SYSTEM_ALERT, SYSTEM_COLORS } from '@/config/constants/strings.global';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
-import React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
