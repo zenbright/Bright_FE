@@ -1,5 +1,5 @@
 export const SIGN_IN = {
-    REQUIRED: "Please fill in your email",
+    REQUIRED: "Please fill in your account",
     TITLE: 'Login to your account',
     DES: 'Enter your credentials below to login to your account'
 }
@@ -11,6 +11,11 @@ export const SIGN_UP = {
 
 export const SIGN_UP_VALIDATOR = {
     NAME_REQUIRED: "Please fill out this field",
+    ACCOUNT: "Please fill out your account name",
+}
+
+export const SIGN_IN_VALIDATOR = {
+    PASSWORD: "Please fill out your password",
     ACCOUNT: "Please fill out your account name",
 }
 

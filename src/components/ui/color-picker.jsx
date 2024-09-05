@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -43,53 +42,56 @@ const ColorInputs = memo(({ labels, color, setColor }) => {
     setConvertedColor(roundedColor);
   }, [color, labels]);
 
-  const handleChange = useCallback((e, label) => {
-    const { value } = e.target;
+  const handleChange = useCallback(
+    (e, label) => {
+      const { value } = e.target;
 
-    // Convert empty string to 0, otherwise parse as float
-    const newValue = value === '' ? 0 : value;
+      // Convert empty string to 0, otherwise parse as float
+      const newValue = value === '' ? 0 : value;
 
-    let minRange, maxRange;
-    const isRGBA = ['r', 'g', 'b'].includes(label.toLowerCase());
+      let minRange, maxRange;
+      const isRGBA = ['r', 'g', 'b'].includes(label.toLowerCase());
 
-    if (isRGBA) {
-      minRange = 0;
-      maxRange = 255;
-    } else {
-      switch (label.toLowerCase()) {
-        case 'h':
-          minRange = 0;
-          maxRange = 360;
-          break;
-        case 's':
-        case 'l':
-          minRange = 0;
-          maxRange = 100;
-          break;
-        case 'a':
-          minRange = 0;
-          maxRange = 1;
-          break;
-        default:
-          return;
+      if (isRGBA) {
+        minRange = 0;
+        maxRange = 255;
+      } else {
+        switch (label.toLowerCase()) {
+          case 'h':
+            minRange = 0;
+            maxRange = 360;
+            break;
+          case 's':
+          case 'l':
+            minRange = 0;
+            maxRange = 100;
+            break;
+          case 'a':
+            minRange = 0;
+            maxRange = 1;
+            break;
+          default:
+            return;
+        }
       }
-    }
 
-    // Validate the new value against the determined range
-    if (isNaN(newValue) || newValue < minRange || newValue > maxRange) {
-      return;
-    }
+      // Validate the new value against the determined range
+      if (isNaN(newValue) || newValue < minRange || newValue > maxRange) {
+        return;
+      }
 
-    const newColor = { ...convertedColor, [label.toLowerCase()]: newValue };
-    setConvertedColor(newColor);
+      const newColor = { ...convertedColor, [label.toLowerCase()]: newValue };
+      setConvertedColor(newColor);
 
-    // Convert and update HSV/HSVA color based on RGB/RGBA changes
-    if (isRGBA) {
-      setColor(ColorCodeConverter.rgbaToHsva(newColor));
-    } else {
-      setColor(ColorCodeConverter.hslaToHsva(newColor));
-    }
-  }, [convertedColor, setColor, labels]);
+      // Convert and update HSV/HSVA color based on RGB/RGBA changes
+      if (isRGBA) {
+        setColor(ColorCodeConverter.rgbaToHsva(newColor));
+      } else {
+        setColor(ColorCodeConverter.hslaToHsva(newColor));
+      }
+    },
+    [convertedColor, setColor, labels]
+  );
 
   return (
     <div className="grid grid-cols-4 gap-2">
@@ -103,7 +105,7 @@ const ColorInputs = memo(({ labels, color, setColor }) => {
             type="text"
             value={
               typeof convertedColor[label.toLowerCase()] === 'number' &&
-                convertedColor[label.toLowerCase()] % 1 !== 0
+              convertedColor[label.toLowerCase()] % 1 !== 0
                 ? convertedColor[label.toLowerCase()].toFixed(2)
                 : convertedColor[label.toLowerCase()]
             }
@@ -126,13 +128,16 @@ export const ColorPicker = ({
     ColorCodeConverter.hsvaToHexa(hsva)
   );
 
-  const handleColorHexChange = useCallback(hex => {
-    setColorHexAlpha(hex);
+  const handleColorHexChange = useCallback(
+    hex => {
+      setColorHexAlpha(hex);
 
-    if (ColorCodeConverter.validHex(hex)) {
-      setHsva(ColorCodeConverter.hexToHsva(hex));
-    }
-  }, [setColor]);
+      if (ColorCodeConverter.validHex(hex)) {
+        setHsva(ColorCodeConverter.hexToHsva(hex));
+      }
+    },
+    [setColor]
+  );
 
   useEffect(() => {
     setColor(ColorCodeConverter.hsvaToHexa(hsva));
@@ -160,7 +165,11 @@ export const ColorPicker = ({
               style={{ width: '100%', height: '200px' }}
               hsva={hsva}
               onChange={newColor => {
-                setHsva(prevHsva => ({ ...prevHsva, ...newColor, a: prevHsva.a }));
+                setHsva(prevHsva => ({
+                  ...prevHsva,
+                  ...newColor,
+                  a: prevHsva.a,
+                }));
               }}
               radius={10}
             />

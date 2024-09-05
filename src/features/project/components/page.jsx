@@ -10,12 +10,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import {
-  CircleDot,
-  Heart,
-  Settings,
-  ShieldMinus,
-} from 'lucide-react';
+import { CircleDot, Heart, Settings, ShieldMinus } from 'lucide-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useState } from 'react';
@@ -24,11 +19,11 @@ import Divider from '../../../components/general/divider';
 import BoardTabGroup from '../../../components/general/tab-group';
 import { UnderDevDialog } from '../../../components/general/under-development-dialog';
 import { SYSTEM_ALERT } from '../../../config/constants/strings.global';
+import AddMember from '../../../layouts/add-member';
+import Board from '../../board/Board';
 import ProjectBreadCrumbs from './breadcrumbs';
 import { KanbanBoard } from './kanban-board';
 import { MemberList } from './member-list';
-import AddMember from '../../../layouts/add-member';
-import Board from '../../board/Board';
 
 export const Page = () => {
   const [isFavoured, setFavourite] = useState(false);
@@ -91,7 +86,7 @@ export const Page = () => {
 
         <div className="flex items-center">
           <MemberList width={7} height={7} />
-          <AddMember open={open} onOpenChange={setOpen}/>
+          <AddMember open={open} onOpenChange={setOpen} />
         </div>
 
         <Divider width="1.5px" height="70%" color="rgba(0,0,0,0.2)" />
@@ -126,8 +121,8 @@ export const Page = () => {
       </div>
 
       {/* Task Management Board */}
-      {selectedTabIdx === 0 && <KanbanBoard />} 
-      {selectedTabIdx === 1 && <Board/>}
+      {selectedTabIdx === 0 && <KanbanBoard />}
+      {selectedTabIdx === 1 && <Board />}
 
       {/* Others */}
       {isUnderDevDialogOpen && (
