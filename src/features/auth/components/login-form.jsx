@@ -19,14 +19,16 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import { Button } from '../../../components/ui/button';
-import axios from '../../../config/service/axios';
-import useAuth from '../../../hooks/useAuth';
-import { SIGN_IN } from '../assets/strings';
-import { PASSWORD_INPUT_VALIDATOR } from '../assets/strings';
+import {
+  PASSWORD_INPUT_VALIDATOR,
+  SIGN_IN,
+  SIGN_IN_VALIDATOR,
+} from '../assets/strings';
+import { useLoginMutation } from '../utils/authApi';
 import { setLoginStatus } from '../utils/authSlice';
 
 const formShcema = z.object({
-  email: z.string({ required_error: SIGN_IN.REQUIRED }).email(),
+  account: z.string({ required_error: SIGN_IN_VALIDATOR.ACCOUNT }),
   password: z
     .string({ required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED })
     .min(6, { message: PASSWORD_INPUT_VALIDATOR.SHORT })
@@ -35,48 +37,48 @@ const formShcema = z.object({
 });
 
 function Loginform() {
-  const dispatch = useDispatch();
-  const [account, setAccount] = useState('');
-  const [password, setPassword] = useState('');
+  // Import necessary hooks and functions
+  const dispatch = useDispatch(); // Hook to dispatch actions to the Redux store
+  const [account, setAccount] = useState(''); // State to hold the account input
+  const [password, setPassword] = useState(''); // State to hold the password input
 
-  // login button spinner
+  // State to manage the spinner for the login button
   const [spinning, setSpinning] = useState(false);
 
-  const { setAuth } = useAuth();
+  // Hook to trigger the login mutation
+  const [login] = useLoginMutation();
+  // Hook to navigate programmatically
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
 
+  // Function to handle the login process
   const handleLogin = async e => {
-    e.preventDefault();
-    try {
-      setSpinning(true);
-      const response = await axios({
-        method: 'post',
-        url: '/auth/bright/login',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: {
-          account: account,
-          password: password, // This is the body part
-        },
-      });
-      console.log(JSON.stringify(response?.data));
-      // console.log(JSON.stringify(response));
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.role;
-      setAccount('');
-      setPassword('');
-      setAuth({ account, password, roles, accessToken });
+    e.preventDefault(); // Prevent the default form submission
 
-      navigate(from, { replace: true });
-      // set login state to true
-      dispatch(setLoginStatus(true));
+    try {
+      setSpinning(true); // Show the spinner when login starts
+
+      // Prepare the request body with account and password
+      const body = {
+        account: account,
+        password: password,
+      };
+
+      // Perform the login mutation
+      const data = await login(body);
+
+      // Dispatch action to update login state in the Redux store
+      dispatch(setLoginStatus(data, account));
+
+      // Log success and navigate to the user dashboard
+      console.log('login success', data);
+      navigate('/welcome');
+
+      // Stop the spinner after a delay
       setTimeout(() => {
         setSpinning(false);
       }, 2000);
     } catch (error) {
+      // Log the error and stop the spinner
       console.error('failed', error);
       setSpinning(false);
     }
