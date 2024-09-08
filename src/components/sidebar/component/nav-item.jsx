@@ -9,7 +9,7 @@ function NavItem({ text, children, onClick, select = false }) {
         className="dropdown flex w-full items-center nav-pl transition-all relative h-10 cursor-pointer rounded-md group/item"
         onClick={() => onClick(text)}
       >
-        <div
+        {/* <div
           tabIndex="0"
           className={`p-3 transition-all group-hover:w-[90%] h-full flex items-center group-hover:gap-3
              rounded-md group is-hovered ${select ? 'bg-foreground fill-white text-white duration-0' : 'bg-background group-hover/item:bg-hovering'} duration-0`}
@@ -24,6 +24,20 @@ function NavItem({ text, children, onClick, select = false }) {
             className={`font-medium mt-0.5 md:text-sm opacity-0 group-hover:opacity-100 duration-0
                 transition-all overflow-hidden invisible group-hover:visible w-0 group-hover:w-full flex items-center
                 ${select ? 'text-muted' : 'group-[.is-hovered]: group-hover/item:text-black'}`}
+          >
+            {text}
+          </div>
+        </div> */}
+        <div
+          className={`flex group-hover:w-[90%] h-[90%] rounded-md w-fit text-sm group is-hovered
+          ${select ? 'bg-foreground fill-white text-white duration-0' : 'bg-background group-hover/item:bg-hovering'}`}
+        >
+          <div className="flex justify-center items-center px-2 py-1.5">
+            {children}
+          </div>
+          <div
+            className={`font-medium  hidden group-hover:flex group-hover:justify-center group-hover:items-center duration-100
+            ${select ? 'text-muted' : 'group-[.is-hovered]: group-hover/item:text-black'}`}
           >
             {text}
           </div>
