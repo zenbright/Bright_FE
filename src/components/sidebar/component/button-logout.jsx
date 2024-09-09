@@ -49,17 +49,17 @@ function LogoutButton({ text, children }) {
             {text}
           </div> */}
           <div
-          className={`flex group-hover:w-[90%] h-[90%] rounded-md w-fit text-sm`}
-        >
-          <div className="flex justify-center items-center px-2 py-1.5 fill-foreground group-[.is-hovered]: group-hover/item:fill-white ">
-            {children}
-          </div>
-          <div
-            className={`font-medium  hidden group-hover:flex group-hover:justify-center group-hover:items-center group-[.is-hovered]: group-hover/item:text-white duration-0`}
+            className={`flex group-hover:w-[90%] h-[90%] rounded-md w-fit text-sm`}
           >
-            {text}
+            <div className="flex justify-center items-center px-2 py-1.5 fill-foreground group-[.is-hovered]: group-hover/item:fill-white ">
+              {children}
+            </div>
+            <div
+              className={`font-medium  hidden group-hover:flex group-hover:justify-center group-hover:items-center group-[.is-hovered]: group-hover/item:text-white duration-0`}
+            >
+              {text}
+            </div>
           </div>
-        </div>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
