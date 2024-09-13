@@ -29,7 +29,7 @@ export const MemberList = ({members = sampleMembers, width = 9, height = 9}) => 
             key={index}
             className={`w-${width} h-${height} rounded-full`} >
             <AvatarImage src={member.imageUrl} alt={member.name} />
-            <AvatarFallback>BR</AvatarFallback>
+            <AvatarFallback></AvatarFallback>
           </Avatar>
         ))}
 
