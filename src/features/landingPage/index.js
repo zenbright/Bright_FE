@@ -1,5 +1,4 @@
-import {Page as LandingPage} from './components/page';
-import {Header} from './components/header';
+import { Header } from './components/header';
+import { Page as LandingPage } from './components/page';
 
-export {LandingPage, Header};
-
+export { LandingPage, Header };

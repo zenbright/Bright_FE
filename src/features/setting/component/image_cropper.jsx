@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import ReactCrop, {centerCrop, makeAspectCrop} from 'react-image-crop';
+import { useState } from 'react';
+import ReactCrop, { centerCrop, makeAspectCrop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 
 const ASPECT_RATIO = 1;
@@ -10,7 +10,7 @@ const ImageCropper = () => {
   const [crop, setCrop] = useState();
   const [error, setError] = useState('');
 
-  const onSelectFile = (e) => {
+  const onSelectFile = e => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -19,9 +19,9 @@ const ImageCropper = () => {
       const imageElement = new Image();
       const imageUrl = reader.result?.toString() || '';
       imageElement.src = imageUrl;
-      imageElement.addEventListener('load', (e) => {
+      imageElement.addEventListener('load', e => {
         if (error) setError('');
-        const {naturalWidth, naturalHeight} = e.currentTarget;
+        const { naturalWidth, naturalHeight } = e.currentTarget;
         if (naturalHeight < MIN_DIMENSION || naturalWidth < MIN_DIMENSION) {
           setError('Image must be at least 150 x 150 pixels');
           return setImageSrc('');
@@ -32,17 +32,17 @@ const ImageCropper = () => {
     reader.readAsDataURL(file);
   };
 
-  const onImageLoad = (e) => {
-    const {width, height} = e.currentTarget;
+  const onImageLoad = e => {
+    const { width, height } = e.currentTarget;
     const cropWidthPercent = (MIN_DIMENSION / width) * 100;
     const crop = makeAspectCrop(
-        {
-          unit: '%',
-          width: cropWidthPercent,
-        },
-        ASPECT_RATIO,
-        width,
-        height,
+      {
+        unit: '%',
+        width: cropWidthPercent,
+      },
+      ASPECT_RATIO,
+      width,
+      height
     );
     const centeredCrop = centerCrop(crop, width, height);
     setCrop(centeredCrop);
@@ -70,16 +70,18 @@ const ImageCropper = () => {
             aspect={1}
             minWidth={150}
           >
-            <img src={imageSrc} alt="" style={{maxHeight: '70vh'}}
+            <img
+              src={imageSrc}
+              alt=""
+              style={{ maxHeight: '70vh' }}
               onLoad={onImageLoad}
             />
           </ReactCrop>
           <button className="text-white font-mono text-xs py-2 px-4 rounded-2xl mt-4 bg-sky-500 hover:bg-sky-600">
-                        Crop Image
+            Crop Image
           </button>
         </div>
-      )
-      }
+      )}
     </>
   );
 };

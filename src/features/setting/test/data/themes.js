@@ -1,13 +1,11 @@
 const themes = [
-    "Light default",
-    "Light high contrast",
-    "Light Protaponia & Deuteranopia",
-    "Light Tritanopia",
-    "Dark default",
-    "Dark high contrast",
-    "Dark Protaponia & Deuteranopia",
-    "Dark Tritanopia",
-    "Dark dimmed",
-]
+  'Light default',
+  'Light high contrast',
+  'Light Tritanopia',
+  'Dark default',
+  'Dark high contrast',
+  'Dark Tritanopia',
+  'Dark dimmed',
+];
 
-export default themes
+export default themes;

@@ -11,7 +11,7 @@ export const SIGN_UP = {
 
 export const SIGN_UP_VALIDATOR = {
     NAME_REQUIRED: "Please fill out this field",
-    EMAIL: "Please fill out your email",
+    ACCOUNT: "Please fill out your account name",
 }
 
 export const WEB_BRIEF_INTRO = 'Where seamless project management meets intuitive task handling'

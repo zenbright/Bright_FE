@@ -1,10 +1,12 @@
+import { Toaster } from '@/components/ui/toaster';
 import React from 'react';
-import {Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 export const LandingAuthLayout = () => {
   return (
-    <div >
+    <div>
       <Outlet />
+      <Toaster />
     </div>
   );
 };

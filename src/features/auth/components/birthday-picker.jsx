@@ -1,21 +1,26 @@
-import * as React from 'react';
-import {format} from 'date-fns';
-import {cn} from '@/lib/utils';
-import {Button} from '../../../components/ui/button';
-import {Calendar} from '../../../components/ui/calendar';
-import {Popover, PopoverContent, PopoverTrigger} from '../../../components/ui/popover';
-import {CalendarDays} from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { format } from 'date-fns';
+import { CalendarDays } from 'lucide-react';
 import PropTypes from 'prop-types';
+import * as React from 'react';
 
-export const BirthdayPicker = ({date, setDate}) => {
+import { Button } from '../../../components/ui/button';
+import { Calendar } from '../../../components/ui/calendar';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '../../../components/ui/popover';
+
+export const BirthdayPicker = ({ date, setDate }) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
           variant={'outline'}
           className={cn(
-              'w-full justify-start border border-gray-400 text-left font-normal',
-              !date && 'text-muted-foreground',
+            'w-full justify-start border border-gray-400 text-left font-normal border-auth_form_border',
+            !date && 'text-muted-foreground'
           )}
         >
           <CalendarDays className="mr-2 h-4 w-4" />
@@ -28,6 +33,7 @@ export const BirthdayPicker = ({date, setDate}) => {
           selected={date}
           onSelect={setDate}
           initialFocus
+          disabled={date => date > new Date() || date < new Date('1900-01-01')}
         />
       </PopoverContent>
     </Popover>
@@ -35,6 +41,6 @@ export const BirthdayPicker = ({date, setDate}) => {
 };
 
 BirthdayPicker.propTypes = {
-  date: PropTypes.date,
+  date: PropTypes.instanceOf(Date),
   setDate: PropTypes.func,
 };

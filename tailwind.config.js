@@ -50,6 +50,74 @@ export const theme = {
         DEFAULT: 'hsl(var(--card))',
         foreground: 'hsl(var(--card-foreground))',
       },
+      hovering: {
+        DEFAULT: 'hsl(var(--hovering))',
+        foreground: 'hsl(var(--hovering-foreground))',
+      },
+      project_text: {
+        DEFAULT: 'hsl(var(--project_text))',
+        foreground: 'hsl(var(--project_text-foreground))',
+      },
+      tab_group: {
+        DEFAULT: 'hsl(var(--tab_group))',
+        foreground: 'hsl(var(--tab_group-foreground))',
+      },
+      seting_tab: {
+        DEFAULT: 'hsl(var(--seting_tab))',
+        foreground: 'hsl(var(--seting_tab-foreground))',
+      },
+      discussion_background: {
+        DEFAULT: 'hsl(var(--discussion_background))',
+        foreground: 'hsl(var(--discussion_background-foreground))',
+      },
+      discussion_border: {
+        DEFAULT: 'hsl(var(--discussion_border))',
+        foreground: 'hsl(var(--discussion_border-foreground))',
+      },
+      comment_text: {
+        DEFAULT: 'hsl(var(--comment_text))',
+        foreground: 'hsl(var(--comment_text-foreground))',
+      },
+      comment_background: {
+        DEFAULT: 'hsl(var(--comment_background))',
+        foreground: 'hsl(var(--comment_background-foreground))',
+      },
+      comment_hover: {
+        DEFAULT: 'hsl(var(--comment_hover))',
+        foreground: 'hsl(var(--comment_hover-foreground))',
+      },
+      plus_text: {
+        DEFAULT: 'hsl(var(--plus_text))',
+        foreground: 'hsl(var(--plus_text-foreground))',
+      },
+      plus_background: {
+        DEFAULT: 'hsl(var(--plus_background))',
+        foreground: 'hsl(var(--plus_background-foreground))',
+      },
+      plus_text_hover: {
+        DEFAULT: 'hsl(var(--plus_text_hover))',
+        foreground: 'hsl(var(--plus_text_hover-foreground))',
+      },
+      plus_background_hover: {
+        DEFAULT: 'hsl(var(--plus_background_hover))',
+        foreground: 'hsl(var(--plus_background_hover-foreground))',
+      },
+      auth_form_border: {
+        DEFAULT: 'hsl(var(--auth_form_border))',
+        foreground: 'hsl(var(--auth_form_border-foreground))',
+      },
+      not_found_background: {
+        DEFAULT: 'hsl(var(--not_found_background))',
+        foreground: 'hsl(var(--not_found_background-foreground))',
+      },
+      signup_complete_text: {
+        DEFAULT: 'hsl(var(--signup_complete_text))',
+        foreground: 'hsl(var(--signup_complete_text-foreground))',
+      },
+      tab_group: {
+        DEFAULT: 'hsl(var(--tab_group))',
+        foreground: 'hsl(var(--tab_group-foreground))',
+      },
     },
     borderRadius: {
       lg: 'var(--radius)',
@@ -58,16 +126,16 @@ export const theme = {
     },
     keyframes: {
       'accordion-down': {
-        from: {height: '0'},
-        to: {height: 'var(--radix-accordion-content-height)'},
+        from: { height: '0' },
+        to: { height: 'var(--radix-accordion-content-height)' },
       },
       'accordion-up': {
-        from: {height: 'var(--radix-accordion-content-height)'},
-        to: {height: '0'},
+        from: { height: 'var(--radix-accordion-content-height)' },
+        to: { height: '0' },
       },
-      'meteor': {
-        '0%': {transform: 'rotate(215deg) translateX(0)', opacity: '1'},
-        '70%': {opacity: '1'},
+      meteor: {
+        '0%': { transform: 'rotate(215deg) translateX(0)', opacity: '1' },
+        '70%': { opacity: '1' },
         '100%': {
           transform: 'rotate(215deg) translateX(-500px)',
           opacity: '0',
@@ -81,5 +149,7 @@ export const theme = {
     },
   },
 };
-export const plugins = [require('tailwindcss-animate'), require('tailwind-scrollbar')({nocompatible: true}),
+export const plugins = [
+  require('tailwindcss-animate'),
+  require('tailwind-scrollbar')({ nocompatible: true }),
 ];

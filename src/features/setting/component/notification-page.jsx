@@ -1,10 +1,4 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -13,13 +7,22 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form';
-import {Switch} from '@/components/ui/switch';
-import {Button} from '@/components/ui/button';
-import {useState} from 'react';
-import {toast} from '@/components/ui/use-toast';
-import {zodResolver} from '@hookform/resolvers/zod';
-import {useForm} from 'react-hook-form';
-import {z} from 'zod';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Switch } from '@/components/ui/switch';
+import { toast } from '@/components/ui/use-toast';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+
+import withScrollbarTheme from '../hoc/scroll-bar';
+import { NOTIFICATION } from '../test/data/strings';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -83,40 +86,50 @@ function Notification() {
     toast({
       title: 'You submitted the following values:',
     });
-    console.log('Hello');
   };
 
-  const onError = (error) => {
+  const onError = error => {
     console.log(error);
   };
 
   return (
-    <div className="container-ns flex flex-col w-[75vw] overflow-auto">
-      <div className=" z-30 mx-3 text-lg font-bold top-0 p-2 border-b-[1px] border-slate-300 group sticky bg-white">
-                Notification
+    <div className="container-ns flex flex-col w-[74.4vw] overflow-auto pb-10">
+      <div className=" z-30 mx-3 text-2xl font-light pt-8 pb-[14px] border-b-[1px] border-slate-300 group sticky bg-background">
+        {'Notification'}
       </div>
       <div className="flex flex-col">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit({onSubmit, onError})}>
-            <div className="w-[98%] rounded-md border-[1px] m-3 h-fit py-3 px-5">
+          <form onSubmit={form.handleSubmit({ onSubmit, onError })}>
+            <div className="w-[98%] rounded-md border-[1px] m-3 h-fit py-3 px-3">
               <FormField
                 control={form.control}
                 name="email"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base font-semibold">Default Notification</FormLabel>
-                    <FormDescription className="text-md w-[90%]">Choose where you`d like emails to be sent. You can add more email addresses.
-                                            Use custom routes to specify different email addresses to be used for individual organizations.
+                    <FormLabel className="text-base font-semibold">
+                      Default Notification
+                    </FormLabel>
+                    <FormDescription className="text-md w-[90%]">
+                      {NOTIFICATION.NOTIFICATION_DESCTIOPTION}
                     </FormDescription>
                     <FormControl>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
                         <SelectTrigger className="w-[180px]">
                           <SelectValue placeholder="Verified email" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="a@gmail.com">a@gmail.com</SelectItem>
-                          <SelectItem value="b@gmail.com">b@gmail.com</SelectItem>
-                          <SelectItem value="c@gmail.com">c@gmail.com</SelectItem>
+                          <SelectItem value="a@gmail.com">
+                            {'a@gmail.com'}
+                          </SelectItem>
+                          <SelectItem value="b@gmail.com">
+                            {'b@gmail.com'}
+                          </SelectItem>
+                          <SelectItem value="c@gmail.com">
+                            {'c@gmail.com'}
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </FormControl>
@@ -125,20 +138,29 @@ function Notification() {
               />
             </div>
             <div className="w-[98%] rounded-md border-[1px] m-3 h-fit">
-              <div className="p-3 border-b-[1px] bg-opacity-50 font-semibold bg-slate-200 rounded-t-md">
-                                Subscription
+              <div className="p-3 border-b-[1px] bg-opacity-50 font-semibold bg-foreground text-background rounded-t-md">
+                {'Subscription'}
               </div>
               <FormField
                 control={form.control}
                 name="community_emails"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem className="p-3 border-b-[1px] flex flex-row justify-between items-center">
                     <div>
-                      <FormLabel className="font-semibold text-base">Communication email</FormLabel>
-                      <FormDescription className="text-md">Receive email about your account activity</FormDescription>
+                      <FormLabel className="font-semibold text-base">
+                        {'Communication email'}
+                      </FormLabel>
+                      <FormDescription className="text-md">
+                        {NOTIFICATION.COMMUNICATION_DESCRIPTION}
+                      </FormDescription>
                     </div>
                     <FormControl>
-                      <Switch className="mt-2" checked={communicationEmail} onCheckedChange={field.onChange} onClick={setCommunicationEmailState}></Switch>
+                      <Switch
+                        className="mt-2"
+                        checked={communicationEmail}
+                        onCheckedChange={field.onChange}
+                        onClick={setCommunicationEmailState}
+                      ></Switch>
                     </FormControl>
                   </FormItem>
                 )}
@@ -146,14 +168,23 @@ function Notification() {
               <FormField
                 control={form.control}
                 name="security_emails"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem className="p-3 border-b-[1px] flex flex-row justify-between items-center">
                     <div>
-                      <FormLabel className="font-semibold text-base">Security email</FormLabel>
-                      <FormDescription className="text-md">Receive email about your account security</FormDescription>
+                      <FormLabel className="font-semibold text-base">
+                        {'Security email'}
+                      </FormLabel>
+                      <FormDescription className="text-md">
+                        {NOTIFICATION.SECURITY_DESCRIPTION}
+                      </FormDescription>
                     </div>
                     <FormControl>
-                      <Switch className="mt-2" checked={securityEmail} onCheckedChange={field.onChange} onClick={setSecurityEmailState}></Switch>
+                      <Switch
+                        className="mt-2"
+                        checked={securityEmail}
+                        onCheckedChange={field.onChange}
+                        onClick={setSecurityEmailState}
+                      ></Switch>
                     </FormControl>
                   </FormItem>
                 )}
@@ -161,14 +192,23 @@ function Notification() {
               <FormField
                 control={form.control}
                 name="social_emails"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem className="p-3 border-b-[1px] flex flex-row justify-between items-center">
                     <div>
-                      <FormLabel className="font-semibold text-base">Social email</FormLabel>
-                      <FormDescription className="text-md">Receive email about friend requests, follows and more</FormDescription>
+                      <FormLabel className="font-semibold text-base">
+                        {'Social email'}
+                      </FormLabel>
+                      <FormDescription className="text-md">
+                        {NOTIFICATION.SOCIAL_DESCRIPTION}
+                      </FormDescription>
                     </div>
                     <FormControl>
-                      <Switch className="mt-2" checked={socialEmail} onCheckedChange={field.onChange} onClick={setSocialEmailState}></Switch>
+                      <Switch
+                        className="mt-2"
+                        checked={socialEmail}
+                        onCheckedChange={field.onChange}
+                        onClick={setSocialEmailState}
+                      ></Switch>
                     </FormControl>
                   </FormItem>
                 )}
@@ -176,21 +216,30 @@ function Notification() {
               <FormField
                 control={form.control}
                 name="notify_me"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem className="p-3 border-b-[1px] flex flex-row justify-between items-center">
                     <div>
-                      <FormLabel className="font-semibold text-base">Don`t notify me</FormLabel>
-                      <FormDescription className="text-md">You won`t be able to receive any more notification</FormDescription>
+                      <FormLabel className="font-semibold text-base">
+                        {'Don`t notify me'}
+                      </FormLabel>
+                      <FormDescription className="text-md">
+                        {NOTIFICATION.DONT_NOTIFY_DESCRIPTION}
+                      </FormDescription>
                     </div>
                     <FormControl>
-                      <Switch className="mt-2" checked={notifyMe} onCheckedChange={field.onChange} onClick={handleDisableAll}></Switch>
+                      <Switch
+                        className="mt-2"
+                        checked={notifyMe}
+                        onCheckedChange={field.onChange}
+                        onClick={handleDisableAll}
+                      ></Switch>
                     </FormControl>
                   </FormItem>
                 )}
               />
             </div>
             <div className="mx-3 mb-2">
-              <Button type="submit">Save changes</Button>
+              <Button type="submit">{'Save changes'}</Button>
             </div>
           </form>
         </Form>
@@ -199,4 +248,4 @@ function Notification() {
   );
 }
 
-export default Notification;
+export default withScrollbarTheme(Notification);

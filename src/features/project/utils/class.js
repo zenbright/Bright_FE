@@ -1,7 +1,5 @@
-import {v4 as uuidv4} from 'uuid';
-// import userDefaultProfile from '../assets/cat.jpg';
-import {DEFAULT_TASK_TAGS} from '../assets/values';
-import {differenceInDays} from 'date-fns';
+import { differenceInDays } from 'date-fns';
+import { v4 as uuidv4 } from 'uuid';
 
 export class Column {
   constructor(title) {
@@ -29,25 +27,86 @@ export class Task {
     }
   }
 
-  createTags(tags) {
-    return tags.map((tag) => {
-      const tagParts = tag.split('-');
-      const tagTitle = tagParts[0].charAt(0).toUpperCase() + tagParts[0].slice(1);
-      const tagColor = tagParts[1];
+  createTagfromString(tagString) {
+    // Split by both '?' delimiters
+    const tagParts = tagString.split('?');
 
-      return new TaskTag(this.id, tagTitle, tagColor);
-    });
+    // Extract relevant parts using array destructuring
+    const [_, colorPart, titlePart] = tagParts;
+
+    const tagColor = colorPart.split('=')[1];
+    const tagTitle = titlePart.split('=')[1];
+
+    return new TaskTag(tagTitle, tagColor);
   }
+
+  createTags(tags) {
+    return tags.map(tag => this.createTagfromString(tag));
+  }
+
   addTags(newTags) {
+    if (!Array.isArray(newTags)) {
+      newTags = [newTags];
+    }
     this.tags = [...this.tags, ...this.createTags(newTags)];
+  }
+
+  addTag(tag) {
+    this.tags = [...this.tags, tag];
+  }
+
+  removeTag(tagId) {
+    this.tags = this.tags.filter(tag => tag.id !== tagId);
   }
 }
 
 export class TaskTag {
-  constructor(taskId, title, color) {
+  constructor(title, color) {
     this.id = uuidv4();
-    this.taskId = taskId;
     this.title = title;
-    this.color = color ? color : DEFAULT_TASK_TAGS[title].color || 'bg-gray-500';
+    this.color = color ? color : 'bg-gray-500';
+  }
+
+  toString = () => {
+    return `${this.id}?color=${this.color}?title=${this.title}`;
+  };
+}
+
+const ActivitySubtitles = {
+  create: 'created a new task',
+  update: 'updated the status to',
+  assign: 'assigned to',
+  comment: 'left a comment',
+};
+
+export class TaskActivity {
+  constructor(
+    id,
+    author,
+    activityType,
+    updatedAt = null,
+    comment = null,
+    target = null
+  ) {
+    this.id = id;
+    this.subtitle = ActivitySubtitles[activityType] || '';
+    this.createdAt = new Date();
+    this.updatedAt = updatedAt ? new Date(updatedAt) : this.createdAt;
+    this.author = author;
+    this.activityType = activityType.toLowerCase();
+
+    switch (this.activityType) {
+      case 'comment':
+        this.comment = comment;
+        break;
+      case 'assign':
+      case 'update':
+        this.target = target;
+        break;
+      default:
+        this.comment = null;
+        this.target = null;
+        break;
+    }
   }
 }

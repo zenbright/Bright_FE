@@ -1,76 +1,18 @@
-import { CheckSquare, Folder, BookOpenText } from 'lucide-react'
-
-export const DEFAULT_TASK_TAGS = {
-    'Medium': {
-        value: 'medium',
-        color: '#f59e0b',
-        description: 'Tasks with medium priority'
-    },
-    'High': {
-        value: 'high',
-        color: '#e11d48',
-        description: 'Tasks with high priority'
-    },
-    'Low': {
-        value: 'low',
-        color: '#4ade80',
-        description: 'Tasks with low priority'
-    },
-    'Late': {
-        value: 'late',
-        color: '#be123c',
-        description: 'Tasks that are late'
-    },
-    'Urgent': {
-        value: 'urgent',
-        color: '#4f46e5',
-        description: 'Urgent tasks'
-    },
-    'Enhancement': {
-        value: 'enhancement',
-        color: '#10b981',
-        description: 'Tasks related to enhancements'
-    },
-    'Fix': {
-        value: 'fix',
-        color: '#0369a1',
-        description: 'Tasks to fix issues'
-    },
-    'Maintenance': {
-        value: 'maintenance',
-        color: '#14b8a6',
-        description: 'Tasks for maintenance'
-    },
-    'Important': {
-        value: 'important',
-        color: '#701a75',
-        description: 'Important tasks'
-    },
-    'Pending': {
-        value: 'pending',
-        color: '#c2410c',
-        description: 'Tasks pending completion'
-    },
-    'Completed': {
-        value: 'completed',
-        color: '#22c55e',
-        description: 'Completed tasks'
-    },
-    'Blocked': {
-        value: 'blocked',
-        color: '#a8a29e',
-        description: 'Tasks that are blocked'
-    },
-    'Review': {
-        value: 'review',
-        color: '#e879f9',
-        description: 'Tasks under review'
-    },
-};
+export const DEFAULT_TASK_TAG_ARRAY = [
+    'medium?color=#b45309?title=Medium?description=Tasks with medium priority',
+    'high?color=#be123c?title=High?description=Tasks with high priority',
+    'low?color=#047857?title=Low?description=Tasks with low priority',
+    'late?color=#9f1239?title=Late?description=Tasks that are late',
+    'urgent?color=#6b21a8?title=Urgent?description=Urgent tasks',
+    'enhancement?color=#c2410c?title=Enhancement?description=Tasks related to enhancements',
+    'fix?color=#0369a1?title=Fix?description=Tasks to fix issues',
+    'maintenance?color=#0f766e?title=Maintenance?description=Tasks for maintenance',
+    'completed?color=#15803d?title=Completed?description=Completed tasks',
+    'review?color=#a21caf?title=Review?description=Tasks under review',
+]
 
 export const TASK_DETAILED_TABS = [
-    { name: 'Overview', icon: '' },
-    { name: 'Tasks', icon: '' },
-    { name: 'Files', icon: '' },
-    { name: 'Discussions', icon: '' },
+    { name: 'Overview' },
+    { name: 'To-dos' },
+    { name: 'Files' },
 ];
