@@ -1,16 +1,35 @@
-.dropdown:hover .dropdown-content .grandchild-content{
-	display: block;
+.grandchild-content {
+  display: none; /* Initially hidden */
 }
 
-.filteredBar:hover .filterdIcon{
-	fill: white;
+.dropdown:hover .dropdown-content .grandchild-content {
+  display: block;
 }
 
-.listItem:hover .listIcon{
-	fill: white;
-	color: white;
+.filteredBar:hover .filterdIcon {
+  fill: white;
+}
+
+.listItem:hover .listIcon {
+  fill: white;
+  color: white;
 }
 
 .nav-pl {
-	padding-left: calc(3vw - 22px);
+  padding-left: calc(3vw - 22px);
+}
+
+@keyframes flyInLeftToRight {
+  0% {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.flyInLeftToRight {
+  animation: flyInLeftToRight 0.5s ease forwards; /* Adjust timing as needed */
 }

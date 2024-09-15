@@ -8,7 +8,7 @@ import {
 
 function UserImageName({text, image}) {
   return (
-    <div id={text} className='pl-4 dropdown flex w-full gap-6 transition-all relative h-12'>
+    <div id={text} className='pl-3 dropdown flex w-full gap-6 transition-all relative h-12'>
       <div className="cursor-pointer h-12 w-[100%] flex justify-items-center align-middle hover/item:bg-slate-300 op hover/item:bg-opacity-20 hover/item:w-[95%] rounded-md group is-hovered">
 
         <div className='fixed top-2 justify-center items-center dropdown-content w-[6vw] place-content-center flex transition-all'>
