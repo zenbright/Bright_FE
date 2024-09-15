@@ -1,19 +1,20 @@
 import { useState } from 'react';
+
 import DashboardIcon from '../assets/images/dashboard.svg?react';
+import LogoutIcon from '../assets/images/logout.svg?react';
 import NotificationIcon from '../assets/images/notification.svg?react';
 import SettingIcon from '../assets/images/settings.svg?react';
-import LogoutIcon from '../assets/images/logout.svg?react';
-import NavItem from './nav-item.jsx';
-import UserImageName from './user-image-name.jsx';
-import ProjectDashboard from './project-dashboard.jsx';
-import LogoutButton from './button-logout.jsx';
 import '../styles/font.css';
 import '../styles/sideBarEffect.css';
+import LogoutButton from './button-logout.jsx';
+import NavItem from './nav-item.jsx';
+import ProjectDashboard from './project-dashboard.jsx';
+import UserImageName from './user-image-name.jsx';
 
 function Sidebar() {
   const [selectedItem, setSelectedItem] = useState('Dashboard');
 
-  const handleNavClick = (text) => {
+  const handleNavClick = text => {
     setSelectedItem(text);
   };
 
@@ -27,29 +28,40 @@ function Sidebar() {
 
         {/* Navigation Content */}
         <div className="flex flex-col relative w-full h-screen space-y-4">
-          <NavItem text={'Dashboard'} onClick={handleNavClick} select={selectedItem === 'Dashboard'}>
+          <NavItem
+            text={'Dashboard'}
+            onClick={handleNavClick}
+            select={selectedItem === 'Dashboard'}
+          >
             <>
-              <DashboardIcon className="w-5 h-5 hover:fill-white"/>
+              <DashboardIcon className="w-5 h-5 hover:fill-white" />
               <div className="grandchild-content absolute left-[18vw] top-[-77px] h-screen">
-                  <ProjectDashboard />
+                <ProjectDashboard />
               </div>
             </>
           </NavItem>
 
-          <NavItem text={'Notification'} onClick={handleNavClick} select={selectedItem === 'Notification'}>
-            <NotificationIcon className="w-5 h-5 hover:fill-white"/>
+          <NavItem
+            text={'Notification'}
+            onClick={handleNavClick}
+            select={selectedItem === 'Notification'}
+          >
+            <NotificationIcon className="w-5 h-5 hover:fill-white" />
           </NavItem>
 
-
-          <NavItem text={'Settings'} onClick={handleNavClick} select={selectedItem === 'Settings'}>
-            <SettingIcon className="w-5 h-5 hover:fill-white"/>
+          <NavItem
+            text={'Settings'}
+            onClick={handleNavClick}
+            select={selectedItem === 'Settings'}
+          >
+            <SettingIcon className="w-5 h-5 hover:fill-white" />
           </NavItem>
         </div>
 
         {/* Logout button */}
         <div className="w-full pb-1">
           <LogoutButton text={'Logout'}>
-            <LogoutIcon className="w-5 h-5 hover:fill-white"/>
+            <LogoutIcon className="w-5 h-5 hover:fill-white" />
           </LogoutButton>
         </div>
       </div>
