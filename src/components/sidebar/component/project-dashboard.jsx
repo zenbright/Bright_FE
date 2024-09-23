@@ -130,9 +130,7 @@ function ProjectDashboard() {
                 onChange={e => setSearchProject(e.target.value)}
               />
             </div>
-            <div 
-              className="relative p-2 flex items-center rounded-lg hover:bg-foreground group/filter"
-            >
+            <div className="relative p-2 flex items-center rounded-lg hover:bg-foreground group/filter">
               <FilterIcon
                 className="fill-foreground cursor-pointer h-5 w-5 group-hover/filter:fill-background"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}

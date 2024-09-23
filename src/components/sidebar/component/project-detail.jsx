@@ -24,7 +24,9 @@ function ProjectdDetail({ project, onClose }) {
         </span>
         All Project
       </button>
-      <h1 className="text-lg font-bold mt-3 mb-3 ml-2 text-foreground">{project}</h1>
+      <h1 className="text-lg font-bold mt-3 mb-3 ml-2 text-foreground">
+        {project}
+      </h1>
       <ul className="space-y-2">
         <li className={listStyle}>
           <span>
