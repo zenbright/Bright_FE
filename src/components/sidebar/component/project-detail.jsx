@@ -8,23 +8,25 @@ import { VscOpenPreview } from 'react-icons/vsc';
 
 function ProjectdDetail({ project, onClose }) {
   const listStyle =
-    'text-sm font-medium text-black align-middle hover:bg-black h-8 rounded-md pt-1 hover:text-white flex items-center';
+    'text-sm font-medium text-foreground align-middle hover:bg-foreground h-8 rounded-md pt-1 hover:text-background flex items-center';
   const iconStyle = 'h-5 w-5 mb-[2px] mx-2';
   return (
     <div className="">
       <button
         onClick={onClose}
-        className="mt-2 font-medium text-sm group/item flex flex-row hover:underline items-center text-black"
+        className="mt-2 font-medium text-sm group/item flex flex-row hover:underline items-center text-foreground"
       >
         <span>
           <FaArrowRight
-            className="flex w-3 h-3 items-center mr-3 fill-black"
+            className="flex w-3 h-3 items-center mr-3 fill-foreground"
             style={{ transform: 'rotate(180deg)' }}
           />
         </span>
         All Project
       </button>
-      <h1 className="text-lg font-bold mt-3 mb-3 ml-2 text-black">{project}</h1>
+      <h1 className="text-lg font-bold mt-3 mb-3 ml-2 text-foreground">
+        {project}
+      </h1>
       <ul className="space-y-2">
         <li className={listStyle}>
           <span>

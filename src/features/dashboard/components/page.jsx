@@ -1,4 +1,15 @@
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { PackagePlus } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -46,9 +57,36 @@ function Dashboard() {
           </div>
           <div>
             <div>
-              <Button onClick={handleCreateNewProject}>
-                <PackagePlus size={16} />
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button onClick={handleCreateNewProject}>
+                    <PackagePlus size={16} />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle>Create new project</DialogTitle>
+                    <DialogDescription>
+                      Choose a name for your brand new project
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Label htmlFor="name" className="text-right">
+                        Project's Name
+                      </Label>
+                      <Input
+                        id="project_name"
+                        defaultValue="Bright"
+                        className="col-span-3"
+                      />
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <Button type="submit">Create</Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>

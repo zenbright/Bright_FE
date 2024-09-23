@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import DashboardIcon from '../assets/images/dashboard.svg?react';
@@ -13,50 +12,56 @@ import ProjectDashboard from './project-dashboard.jsx';
 import UserImageName from './user-image-name.jsx';
 
 function Sidebar() {
-  const [selectedTab, setSelectedTab] = useState('Dashboard');
+  const [selectedItem, setSelectedItem] = useState('Dashboard');
+
+  const handleNavClick = text => {
+    setSelectedItem(text);
+  };
 
   return (
     <div className="flex flex-row container-ns">
-      <div className="group w-[5.5vw] hover:w-[18vw] group-hover:w-[17vw] transition-all duration-200 bg-background border-r pt-2 h-screen flex flex-col  overflow-hidden">
+      <div className="relative group w-[5.5vw] hover:w-[18vw] transition-al duration-200 bg-background border-r-2 pt-2 h-screen flex flex-col items-center">
         {/* User Information */}
         <UserImageName text={'Username'} image={''} />
 
-        <div className="line mt-6 mb-3 w-[0vw] opacity-0 group-hover:opacity-100 bg-slate-400 overflow-hidden" />
+        <div className="line mt-2 mb-3 p-[0.5px] w-[0vw] opacity-0 group-hover:opacity-100 bg-background overflow-hidden" />
 
         {/* Navigation Content */}
-        <div className="flex flex-col w-full h-screen space-y-4">
+        <div className="flex flex-col relative w-full h-screen space-y-4">
           <NavItem
             text={'Dashboard'}
-            select={selectedTab === 'Dashboard'}
-            onClick={setSelectedTab}
+            onClick={handleNavClick}
+            select={selectedItem === 'Dashboard'}
           >
-            <DashboardIcon className="w-5 h-5" />
-            <div className="grandchild-content hidden absolute left-[18vw] top-[-77px] h-screen z-10">
-              <ProjectDashboard />
-            </div>
+            <>
+              <DashboardIcon className="w-5 h-5" />
+              <div className="grandchild-content absolute left-[18vw] top-[-77px] h-screen">
+                <ProjectDashboard />
+              </div>
+            </>
           </NavItem>
 
           <NavItem
             text={'Notification'}
-            select={selectedTab === 'Notification'}
-            onClick={setSelectedTab}
+            onClick={handleNavClick}
+            select={selectedItem === 'Notification'}
           >
             <NotificationIcon className="w-5 h-5" />
           </NavItem>
 
           <NavItem
             text={'Settings'}
-            select={selectedTab === 'Settings'}
-            onClick={setSelectedTab}
+            onClick={handleNavClick}
+            select={selectedItem === 'Settings'}
           >
-            <SettingIcon className="w-5 h-5 " />
+            <SettingIcon className="w-5 h-5" />
           </NavItem>
         </div>
 
         {/* Logout button */}
         <div className="w-full pb-1">
           <LogoutButton text={'Logout'}>
-            <LogoutIcon className=" w-5 h-5 " />
+            <LogoutIcon className="w-5 h-5" />
           </LogoutButton>
         </div>
       </div>
@@ -65,8 +70,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-
-Sidebar.propTypes = {
-  value: PropTypes.string,
-  onClick: PropTypes.func,
-};

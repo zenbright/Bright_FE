@@ -34,8 +34,8 @@ function LogoutButton({ text, children }) {
         transition-all relative h-10 cursor-pointer rounded-md group/item"
     >
       <AlertDialog>
-        <AlertDialogTrigger className="p-3 transition-all group-hover:w-[90%] h-full flex items-center gap-0 group-hover:gap-3 group-hover/item:bg-rose-600/90 rounded-md group is-hovered mb-8">
-          <div className="fill-foreground dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-white ">
+        <AlertDialogTrigger className="p-0.5 group-hover:w-[90%] h-full flex items-center gap-0 group-hover:gap-3 group-hover/item:bg-rose-600/90 rounded-md group is-hovered mb-8">
+          {/* <div className="fill-foreground dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-white ">
             {children}
           </div>
           <div
@@ -45,6 +45,18 @@ function LogoutButton({ text, children }) {
                 "
           >
             {text}
+          </div> */}
+          <div
+            className={`flex group-hover:w-[90%] h-[90%] rounded-md w-fit text-sm`}
+          >
+            <div className="flex justify-center items-center px-2 py-1.5 fill-foreground group-[.is-hovered]: group-hover/item:fill-white ">
+              {children}
+            </div>
+            <div
+              className={`font-medium  hidden group-hover:flex group-hover:justify-center group-hover:items-center group-[.is-hovered]: group-hover/item:text-white duration-0`}
+            >
+              {text}
+            </div>
           </div>
         </AlertDialogTrigger>
         <AlertDialogContent>

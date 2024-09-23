@@ -1,14 +1,9 @@
+.grandchild-content {
+  display: none; /* Initially hidden */
+}
+
 .dropdown:hover .dropdown-content .grandchild-content {
   display: block;
-}
-
-.filteredBar:hover .filterdIcon {
-  fill: white;
-}
-
-.listItem:hover .listIcon {
-  fill: white;
-  color: white;
 }
 
 .nav-pl {

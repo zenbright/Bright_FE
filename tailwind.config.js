@@ -114,6 +114,10 @@ export const theme = {
         DEFAULT: 'hsl(var(--signup_complete_text))',
         foreground: 'hsl(var(--signup_complete_text-foreground))',
       },
+      tab_group: {
+        DEFAULT: 'hsl(var(--tab_group))',
+        foreground: 'hsl(var(--tab_group-foreground))',
+      },
     },
     borderRadius: {
       lg: 'var(--radius)',

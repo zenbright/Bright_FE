@@ -56,13 +56,13 @@ function ProjectDashboard() {
   const categoryOptions = ['All', ...Object.keys(groupedProjects)];
 
   return (
-    <div className="flyInLeftToRight px-2 group-none overflow-x-scroll no-scrollbar rounded-r-md h-full bg-white border-r-2 w-[19.5vw] pt-2 flex flex-col justify-between">
+    <div className="flyInLeftToRight px-2 group-none overflow-x-scroll visible no-scrollbar rounded-r-md h-full bg-background border-r-2 w-[19.5vw] pt-2 flex flex-col justify-between">
       {selectedProject === null ? (
         <>
           <div>
             {Object.entries(filteredProjects).map(([category, items]) => (
               <div key={category} className="group isSelected">
-                <h2 className="top-0 text-base text-black font-semibold ">
+                <h2 className="top-0 text-base text-foreground font-semibold ">
                   {category}
                 </h2>
                 <ul role="list" className="">
@@ -72,13 +72,14 @@ function ProjectDashboard() {
                       <li
                         key={index}
                         onClick={() => handleProjectClick(item)}
-                        className="text-base font-medium align-middle group-[.isSelected]:hover/item:bg-black
-                                            hover/item:text-black h-8 rounded-md pl-3 pt-1 duration-100 flex flex-row listItem"
+                        className="text-base font-medium align-middle group-[.isSelected]:hover/item:bg-foreground
+                                            hover/item:text- h-8 rounded-md pl-3 pt-1 duration-100 flex flex-row listItem
+                                            group/select"
                       >
                         <span className="flex items-center mb-0.5 mr-2">
-                          <ProjectIcon className="w-4 h-4 fill-black listIcon"></ProjectIcon>
+                          <ProjectIcon className="w-4 h-4 fill-foreground group-hover/select:fill-background"></ProjectIcon>
                         </span>
-                        <p className="flex items-center text-sm item text-black listIcon">
+                        <p className="flex items-center text-sm text-foreground item group-hover/select:text-background">
                           {item}
                         </p>
                       </li>
@@ -87,7 +88,7 @@ function ProjectDashboard() {
                 {items.length > 3 && (
                   <button
                     onClick={() => handleShowMoreClick(category)}
-                    className="text-sm text-black block mx-auto mt-2 hover:underline"
+                    className="text-sm text-foreground block mx-auto mt-2 hover:underline"
                   >
                     {showAllCategories[category] ? 'Show Less' : 'Show More'}
                   </button>
@@ -102,7 +103,7 @@ function ProjectDashboard() {
             </div>
           )}
 
-          <div className="space-x-1 sticky bottom-0 p-2 bg-white flex flex-row max-w-full">
+          <div className="space-x-1 sticky bottom-0 p-2 bg-background flex flex-row max-w-full">
             <div className="w-full">
               <div className="absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none">
                 <svg
@@ -129,9 +130,9 @@ function ProjectDashboard() {
                 onChange={e => setSearchProject(e.target.value)}
               />
             </div>
-            <div className="relative p-2 flex items-center rounded-lg hover:bg-black filteredBar">
+            <div className="relative p-2 flex items-center rounded-lg hover:bg-foreground group/filter">
               <FilterIcon
-                className="fill-black cursor-pointer h-5 w-5 filterdIcon"
+                className="fill-foreground cursor-pointer h-5 w-5 group-hover/filter:fill-background"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               />
               {isDropdownOpen && (
