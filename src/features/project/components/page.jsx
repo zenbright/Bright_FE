@@ -121,8 +121,14 @@ export const Page = () => {
       </div>
 
       {/* Task Management Board */}
-      {selectedTabIdx === 0 && <KanbanBoard />}
-      {selectedTabIdx === 1 && <Board />}
+      <div>
+        <div className={`${selectedTabIdx === 0 ? 'block' : 'hidden'}`}>
+          <KanbanBoard />
+        </div>
+        <div className={`${selectedTabIdx === 1 ? 'block' : 'hidden'}`}>
+          <Board />
+        </div>
+      </div>
 
       {/* Others */}
       {isUnderDevDialogOpen && (

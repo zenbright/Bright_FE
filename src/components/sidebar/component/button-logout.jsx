@@ -17,9 +17,7 @@ import { setLoginStatus } from '../../../features/auth/utils/authSlice';
 
 function LogoutButton({ text, children }) {
   const dispatch = useDispatch();
-  const isUserAuthenticated = useSelector(
-    state => state.userLoginStatus.isAuthenticated
-  );
+  const isUserAuthenticated = useSelector(state => state.userLoginStatus.token);
 
   const handleLogout = () => {
     if (isUserAuthenticated) {

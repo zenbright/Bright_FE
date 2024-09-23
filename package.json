@@ -41,6 +41,7 @@
     "@uiw/react-color-hue": "^2.3.0",
     "@uiw/react-color-saturation": "^2.3.0",
     "add": "^2.0.6",
+    "async-mutex": "^0.5.0",
     "axios": "^1.6.7",
     "chart.js": "^4.4.2",
     "class-variance-authority": "^0.7.0",

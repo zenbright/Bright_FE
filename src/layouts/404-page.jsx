@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export default function Notfoundpage() {
-  const isUserAuthenticated = useSelector(
-    state => state.userLoginStatus.isAuthenticated
-  );
+  const isUserAuthenticated = useSelector(state => state.userLoginStatus.token);
 
   const navigate = useNavigate();
 

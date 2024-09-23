@@ -10,19 +10,25 @@ import {
 import { Input } from '@/components/ui/input';
 import { setTheme } from '@/features/theme/utils/themeSlice';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
 import React, { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import { Button } from '../../../components/ui/button';
-import { SIGN_IN } from '../assets/strings';
-import { PASSWORD_INPUT_VALIDATOR } from '../assets/strings';
+import {
+  PASSWORD_INPUT_VALIDATOR,
+  SIGN_IN,
+  SIGN_IN_VALIDATOR,
+} from '../assets/strings';
+import { useLoginMutation } from '../utils/authApi';
 import { setLoginStatus } from '../utils/authSlice';
 
 const formShcema = z.object({
-  account: z.string({ required_error: SIGN_IN.REQUIRED }).email(),
+  account: z.string({ required_error: SIGN_IN_VALIDATOR.ACCOUNT }),
   password: z
     .string({ required_error: PASSWORD_INPUT_VALIDATOR.REQUIRED })
     .min(6, { message: PASSWORD_INPUT_VALIDATOR.SHORT })
@@ -31,17 +37,50 @@ const formShcema = z.object({
 });
 
 function Loginform() {
-  const dispatch = useDispatch();
-  const [account, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // Import necessary hooks and functions
+  const dispatch = useDispatch(); // Hook to dispatch actions to the Redux store
+  const [account, setAccount] = useState(''); // State to hold the account input
+  const [password, setPassword] = useState(''); // State to hold the password input
 
+  // State to manage the spinner for the login button
+  const [spinning, setSpinning] = useState(false);
+
+  // Hook to trigger the login mutation
+  const [login] = useLoginMutation();
+  // Hook to navigate programmatically
+  const navigate = useNavigate();
+
+  // Function to handle the login process
   const handleLogin = async e => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default form submission
+
     try {
-      // set login state to true
-      dispatch(setLoginStatus(true));
+      setSpinning(true); // Show the spinner when login starts
+
+      // Prepare the request body with account and password
+      const body = {
+        account: account,
+        password: password,
+      };
+
+      // Perform the login mutation
+      const data = await login(body);
+
+      // Dispatch action to update login state in the Redux store
+      dispatch(setLoginStatus(data, account));
+
+      // Log success and navigate to the user dashboard
+      console.log('login success', data);
+      navigate('/welcome');
+
+      // Stop the spinner after a delay
+      setTimeout(() => {
+        setSpinning(false);
+      }, 2000);
     } catch (error) {
+      // Log the error and stop the spinner
       console.error('failed', error);
+      setSpinning(false);
     }
   };
 
@@ -105,10 +144,10 @@ function Loginform() {
                   <Input
                     type="email"
                     value={account}
-                    placeholder={'Account Name'}
+                    placeholder={'Account Email'}
                     autoComplete="email"
-                    onChangeCapture={e => setEmail(e.target.value)}
-                    className="border border-auth_form_border focus:border-transparent"
+                    onChangeCapture={e => setAccount(e.currentTarget.value)}
+                    className="border border-black/20 focus:border-transparent"
                     {...field}
                   />
                 </FormControl>
@@ -126,8 +165,8 @@ function Loginform() {
                     value={password}
                     autoComplete="current-password"
                     placeholder={'Password'}
-                    onChangeCapture={e => setPassword(e.target.value)}
-                    className="border border-auth_form_border focus:border-transparent"
+                    onChangeCapture={e => setPassword(e.currentTarget.value)}
+                    className="border border-black/30 focus:border-transparent"
                     {...field}
                   />
                 </FormControl>
@@ -138,8 +177,16 @@ function Loginform() {
             type="submit"
             className="w-full h-8 rounded px-5 py-2.5 text-black text-sm bg-white font-medium  hover:bg-gray-200 text-center inline-flex items-center border border-gray-400"
             onClick={handleLogin}
+            disabled={spinning}
           >
-            {'Sign in'}
+            {spinning ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <span className="please-wait-text">Please wait...</span>
+              </>
+            ) : (
+              'Sign in'
+            )}
           </Button>
         </form>
 

@@ -88,17 +88,11 @@ export default function Board() {
   return (
     <div>
       <div
-        className={`absolute ${
-          isFullScreen ? 'right-0 top-[44%]' : ' right-2 top-[100px]'
+        className={`flex gap-2 absolute ${
+          isFullScreen ? 'right-2 top-[44%]' : ' right-2 top-[100px]'
         } z-30 bg-transparent`}
       >
         <Button onClick={handleExportClick}>Export</Button>
-      </div>
-      <div
-        className={`absolute ${
-          isFullScreen ? 'right-20 top-[44%]' : 'right-24 top-[100px]'
-        } z-30 bg-transparent`}
-      >
         <Button onClick={handleFullScreenToggle}>
           {isFullScreen ? (
             <Minimize className="h-4" />
@@ -116,6 +110,7 @@ export default function Board() {
           insetBlock: isFullScreen ? 0 : '',
           zIndex: 20,
         }}
+        className="p-3"
       >
         <Tldraw store={store}></Tldraw>
       </div>
