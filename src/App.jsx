@@ -26,16 +26,17 @@ import { SettingLayout } from './layouts/setting-layout';
 import { Welcome } from './test/Welcome';
 // test
 import { UsersList } from './test/users/userList';
+import { FileUpload} from './components/general/file-upload';
 
 // Routing from landing page to its child and sign in paage
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<LandingAuthLayout />}>
       {/* Landing page and authentication routes */}
-      <Route path="/" element={<LandingPage />} />
+      <Route path="/" element={<FileUpload />} />
       <Route path="/auth" element={<AuthenticationPage />} />
 
-      <Route element={<RequireAuth />}>
+      {/* <Route element={<RequireAuth />}> */}
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/users" element={<UsersList />} />
 
@@ -65,7 +66,7 @@ const router = createBrowserRouter(
 
           {/* 404 route */}
           <Route path="*" element={<Notfoundpage />} />
-        </Route>
+        {/* </Route> */}
       </Route>
 
       {/* 404 route */}
