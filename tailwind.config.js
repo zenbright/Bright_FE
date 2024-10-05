@@ -118,6 +118,10 @@ export const theme = {
         DEFAULT: 'hsl(var(--tab_group))',
         foreground: 'hsl(var(--tab_group-foreground))',
       },
+      drag_box: {
+        DEFAULT: 'hsl(var(--drag_box))',
+        foreground: 'hsl(var(--drag_box-foreground))',
+      }
     },
     borderRadius: {
       lg: 'var(--radius)',
