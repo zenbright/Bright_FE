@@ -71,7 +71,7 @@ function Loginform() {
 
       // Log success and navigate to the user dashboard
       console.log('login success', data);
-      navigate('/welcome');
+      navigate('/user/dashboard');
 
       // Stop the spinner after a delay
       setTimeout(() => {

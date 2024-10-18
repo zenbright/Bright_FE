@@ -34,8 +34,10 @@ const router = createBrowserRouter(
       {/* Landing page and authentication routes */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/auth" element={<AuthenticationPage />} />
-
+      
       <Route element={<RequireAuth />}>
+        
+        
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/users" element={<UsersList />} />
 
