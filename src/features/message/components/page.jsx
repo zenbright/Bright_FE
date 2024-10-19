@@ -1,13 +1,7 @@
-/* eslint-disable max-len */
 import { useState } from 'react';
 
 import image from '../../../assets/images/rmitlogo.png';
-import {
-  MESSAGE_TAB_WIDTH,
-  NAV_BAR_WIDTH,
-} from '../../../lib/constants/size.global';
-import messageNew from '../assets/writing.png';
-import { MessagePreviewTab } from '../components/previewTab';
+import { MessagePreviewTab } from '../components/message-preview-tab';
 import { MessageContent } from './message-content';
 
 export const MessagePage = () => {
@@ -18,7 +12,6 @@ export const MessagePage = () => {
   const isContain = (str, search) => {
     const normalizedStr = str.toLowerCase();
     const normalizedSearch = search.toLowerCase();
-
     for (const char of normalizedSearch) {
       if (normalizedStr.indexOf(char) === -1) {
         return false;
@@ -64,45 +57,22 @@ export const MessagePage = () => {
   };
 
   return (
-    <div className="flex h-screen w-screen">
-      {/* Nav bar */}
-      <div
-        className="h-screen bg-black"
-        style={{ width: `${NAV_BAR_WIDTH}` }}
-      />
-
+    <div className="flex w-screen overflow-hidden">
       {/* Message section */}
-      <div
-        className="flex-col border-r h-screen"
-        style={{ width: `${MESSAGE_TAB_WIDTH}` }}
-      >
-        <div className="text-3xl font-medium p-4 flex items-center justify-between h-20">
-          <h1>Message</h1>
-          <button type="button" className="w-6 h-6">
-            <img src={messageNew} alt="writing" />
-          </button>
-        </div>
-
-        <div className="relative flex items-center">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-gray-200 h-10 rounded-lg py-2 px-4 outline-none w-full mx-2 mb-1"
-            onChange={handleSearchInputChange}
-          />
-        </div>
-
-        {/* Make the message list scrollable */}
-        <div
-          className="overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200"
-          style={{ maxHeight: 'calc(100vh - 124px)' }}
-        >
+      <div className="flex flex-col border-r h-screen">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="bg-gray-100 h-10 rounded-md mt-5 px-4 outline-none mx-2 mb-1 text-sm"
+          onChange={handleSearchInputChange}
+        />
+        <div className="flex-1 overflow-auto">
           <MessageList />
         </div>
       </div>
-
+      
       {/* Message Content */}
-      <div style={{ width: '72vw' }}>
+      <div className="w-full h-screen overflow-auto">
         <MessageContent
           selectedMessage={selectedMessage}
           onlineStatus={false}
