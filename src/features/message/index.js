@@ -1,3 +1,3 @@
-import { MessagePage } from './components/messagePage';
+import { MessagePage } from './components/page';
 
 export default MessagePage;

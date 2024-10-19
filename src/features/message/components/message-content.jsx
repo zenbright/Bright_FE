@@ -16,7 +16,7 @@ import messageBubbleIcon from '../assets/speech-bubble.png';
 import videoCallIcon from '../assets/video-solid.svg';
 import { SAMPLE_MESSAGE } from '../test/values';
 import { Message } from '../utils/class';
-import { MessageBubble } from './bubble';
+import { MessageBubble } from './message-bubble';
 
 export const MessageContent = ({
   selectedMessage,

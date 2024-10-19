@@ -10,6 +10,7 @@ import LogoutButton from './button-logout.jsx';
 import NavItem from './nav-item.jsx';
 import ProjectDashboard from './project-dashboard.jsx';
 import UserImageName from './user-image-name.jsx';
+import MessageSquare from '../assets/images/message-square.svg?react';
 
 function Sidebar() {
   const [selectedItem, setSelectedItem] = useState('Dashboard');
@@ -47,6 +48,14 @@ function Sidebar() {
             select={selectedItem === 'Notification'}
           >
             <NotificationIcon className="w-5 h-5" />
+          </NavItem>
+
+          <NavItem
+            text={'Inbox'}
+            onClick={handleNavClick}
+            select={selectedItem === 'Inbox'}
+          >
+            <MessageSquare className="w-5 h-5" />
           </NavItem>
 
           <NavItem
