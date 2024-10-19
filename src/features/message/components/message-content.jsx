@@ -84,9 +84,9 @@ export const MessageContent = ({
         <img
           src={messageBubbleIcon}
           alt="Bubble icon"
-          className="w-20 h-20 opacity-20 mb-4"
+          className="w-16 h-16 opacity-20 mb-4"
         />
-        <h1 className="text-3xl opacity-25 font-medium">
+        <h1 className="text-2xl opacity-25 font-medium">
           {'Start a conversation'}
         </h1>
       </div>
