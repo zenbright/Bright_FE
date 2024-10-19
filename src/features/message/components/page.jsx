@@ -1,8 +1,13 @@
+import { faker } from '@faker-js/faker';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useState } from 'react';
 
-import image from '../../../assets/images/rmitlogo.png';
+
+
+import image from '../assets/image.png';
 import { MessagePreviewTab } from '../components/message-preview-tab';
 import { MessageContent } from './message-content';
+
 
 export const MessagePage = () => {
   const [selectedMessage, setSelectedMessage] = useState(-1);
@@ -35,8 +40,8 @@ export const MessagePage = () => {
         }}
         isSelected={selectedMessage === i}
         sentTime={'12:00 PM'}
-        userName={`Mudoker ${i}`}
-        profileImage={image}
+        userName={faker.internet.userName()}
+        profileImage={faker.image.avatar()}
         message={'Helloooooooooooooooooooooooooooooooooo'}
       />
     )).filter(
@@ -48,7 +53,7 @@ export const MessagePage = () => {
       return (
         <div className="flex items-center justify-center">
           <p className="text-center p-5 font-medium opacity-60">
-            No results found
+            {'No results found'}
           </p>
         </div>
       );
@@ -63,14 +68,20 @@ export const MessagePage = () => {
         <input
           type="text"
           placeholder="Search..."
-          className="bg-gray-100 h-10 rounded-md mt-5 px-4 outline-none mx-2 mb-1 text-sm"
+          className="bg-gray-100/80 hover:bg-gray-200/80 h-10 rounded-md mt-5 px-4 outline-none mx-2 mb-1 text-sm"
           onChange={handleSearchInputChange}
         />
-        <div className="flex-1 overflow-auto">
+
+        <OverlayScrollbarsComponent
+          element="div"
+          options={{ scrollbars: { autoHide: 'auto' } }}
+          defer
+          className="flex-1 overflow-auto"
+        >
           <MessageList />
-        </div>
+        </OverlayScrollbarsComponent>
       </div>
-      
+
       {/* Message Content */}
       <div className="w-full h-screen overflow-auto">
         <MessageContent

@@ -86,8 +86,8 @@ export const MessageContent = ({
           alt="Bubble icon"
           className="w-20 h-20 opacity-20 mb-4"
         />
-        <h1 className="text-3xl opacity-20 font-medium">
-          Start a conversation
+        <h1 className="text-3xl opacity-25 font-medium">
+          {"Start a conversation"}
         </h1>
       </div>
     );
