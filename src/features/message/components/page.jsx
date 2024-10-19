@@ -2,12 +2,8 @@ import { faker } from '@faker-js/faker';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useState } from 'react';
 
-
-
-import image from '../assets/image.png';
 import { MessagePreviewTab } from '../components/message-preview-tab';
 import { MessageContent } from './message-content';
-
 
 export const MessagePage = () => {
   const [selectedMessage, setSelectedMessage] = useState(-1);

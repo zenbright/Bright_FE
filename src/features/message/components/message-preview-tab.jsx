@@ -15,7 +15,7 @@ export const MessagePreviewTab = ({
       onClick={onClick}
     >
       {/* User Avatar */}
-      <Avatar className="w-12 h-12">
+      <Avatar className="w-11 h-11">
         <AvatarImage src={profileImage} />
         <AvatarFallback>{userName.slice(0, 2)}</AvatarFallback>
       </Avatar>
