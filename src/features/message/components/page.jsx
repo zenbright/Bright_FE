@@ -1,9 +1,18 @@
 import { faker } from '@faker-js/faker';
+import { format } from 'date-fns';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { MessagePreviewTab } from '../components/message-preview-tab';
 import { MessageContent } from './message-content';
+
+const FakeMessages = Array.from({ length: 10 }, (_, i) => ({
+  id: i,
+  userName: faker.internet.userName(),
+  profileImage: faker.image.avatar(),
+  message: faker.lorem.sentence(),
+  sentTime: faker.date.recent(),
+}));
 
 export const MessagePage = () => {
   const [selectedMessage, setSelectedMessage] = useState(-1);
@@ -26,41 +35,30 @@ export const MessagePage = () => {
     setSearchPhrase(value);
   };
 
-  const MessageList = () => {
-    const filteredList = Array.from({ length: 10 }, (_, i) => (
-      <MessagePreviewTab
-        key={i}
-        onClick={() => {
-          setSelectedMessage(i);
-          setSelectedUserMessage(`Mudoker ${i}`);
-        }}
-        isSelected={selectedMessage === i}
-        sentTime={'12:00 PM'}
-        userName={faker.internet.userName()}
-        profileImage={faker.image.avatar()}
-        message={'Helloooooooooooooooooooooooooooooooooo'}
-      />
-    )).filter(
+  const filteredList = useMemo(() => {
+    return FakeMessages.filter(
       message =>
-        searchPhrase === '' || isContain(message.props.userName, searchPhrase)
-    );
-
-    if (filteredList.length === 0) {
-      return (
-        <div className="flex items-center justify-center">
-          <p className="text-center p-5 font-medium opacity-60">
-            {'No results found'}
-          </p>
-        </div>
-      );
-    }
-    return filteredList;
-  };
+        searchPhrase === '' || isContain(message.userName, searchPhrase)
+    ).map(message => (
+      <MessagePreviewTab
+        key={message.id}
+        onClick={() => {
+          setSelectedMessage(message.id);
+          setSelectedUserMessage(message.userName);
+        }}
+        isSelected={selectedMessage === message.id}
+        sentTime={format(message.sentTime, 'hh:mm a')}
+        userName={message.userName}
+        profileImage={message.profileImage}
+        message={message.message}
+      />
+    ));
+  }, [searchPhrase, selectedMessage]);
 
   return (
     <div className="flex w-screen overflow-hidden">
       {/* Message section */}
-      <div className="flex flex-col border-r h-screen">
+      <div className="flex flex-col border-r h-screen w-1/4">
         <input
           type="text"
           placeholder="Search..."
@@ -74,7 +72,29 @@ export const MessagePage = () => {
           defer
           className="flex-1 overflow-auto"
         >
-          <MessageList />
+          {filteredList.length === 0 ? (
+            <div className="flex items-center justify-center w-full">
+              <p className="text-center font-medium opacity-60 w-full mt-4">
+                {'No results found'}
+
+                {/* Placeholder */}
+                <MessagePreviewTab
+                  key={''}
+                  onClick={() => {
+                    setSelectedMessage('');
+                    setSelectedUserMessage('');
+                  }}
+                  isSelected={''}
+                  sentTime={''}
+                  userName={''}
+                  profileImage={''}
+                  message={''}
+                />
+              </p>
+            </div>
+          ) : (
+            filteredList
+          )}
         </OverlayScrollbarsComponent>
       </div>
 
