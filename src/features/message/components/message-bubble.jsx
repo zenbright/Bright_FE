@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 export const MessageBubble = ({ content = 'hello', isUserMessage = false }) => {
-  const bgColor = isUserMessage ? 'bg-blue-500' : 'bg-gray-500';
+  const bgColor = isUserMessage ? 'bg-black text-white' : 'bg-gray-100';
   const [isRightClicked, setRightClicked] = useState(false);
   const [isDeleted, setIsDeleteMessage] = useState(false);
 
@@ -24,7 +24,7 @@ export const MessageBubble = ({ content = 'hello', isUserMessage = false }) => {
         display: 'inline-block',
         alignSelf: !isUserMessage ? 'flex-start' : 'flex-end',
       }}
-      className={`mx-4 my-4 p-3 rounded-lg ${bgColor} text-white`}
+      className={`mx-4 my-1 p-3 rounded-lg ${bgColor} text-md`}
       onContextMenu={e => {
         e.preventDefault();
         setRightClicked(true);

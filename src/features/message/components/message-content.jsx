@@ -1,19 +1,16 @@
 /* eslint-disable max-len */
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Info } from 'lucide-react';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
-import { MESSAGE_CONTENT_WIDTH } from '../../../lib/constants/size.global';
-import { MESSAGE_HEADER_HEIGHT } from '../../../lib/constants/size.global';
-import informationIcon from '../assets/circle-info-solid.svg';
 import micIcon from '../assets/microphone.png';
-import phoneIcon from '../assets/phone-solid.svg';
 import uploadImageIcon from '../assets/photo.png';
 import plusIcon from '../assets/plus.png';
 import sendIcon from '../assets/send.png';
 import smileIcon from '../assets/smile.png';
 import messageBubbleIcon from '../assets/speech-bubble.png';
-import videoCallIcon from '../assets/video-solid.svg';
 import { SAMPLE_MESSAGE } from '../test/values';
 import { Message } from '../utils/class';
 import { MessageBubble } from './message-bubble';
@@ -115,17 +112,19 @@ export const MessageContent = ({
             </div>
           </div>
           <button className="w-6 h-6">
-            <img src={informationIcon} alt="user avatar" />
+            <Info />
           </button>
         </div>
 
         {/* Message List */}
-        <div
-          className="overflow-auto scrollbar-thin scrollbar-thumb-gray-200"
-          style={{ marginTop: `${MESSAGE_HEADER_HEIGHT}` }}
+        <OverlayScrollbarsComponent
+          element="div"
+          options={{ scrollbars: { autoHide: 'auto' } }}
+          defer
+          className="flex-1 overflow-auto"
         >
           <MessageList />
-        </div>
+        </OverlayScrollbarsComponent>
 
         {/* Control Bar */}
         <div className="flex items-center justify-start mb-3 mt-2 ml-4">
