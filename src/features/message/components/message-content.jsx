@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
-import rmitIcon from '../../../assets/images/rmitlogo.png';
 import { MESSAGE_CONTENT_WIDTH } from '../../../lib/constants/size.global';
 import { MESSAGE_HEADER_HEIGHT } from '../../../lib/constants/size.global';
 import informationIcon from '../assets/circle-info-solid.svg';
@@ -21,7 +21,8 @@ import { MessageBubble } from './message-bubble';
 export const MessageContent = ({
   selectedMessage,
   onlineStatus,
-  userName = 'User 1',
+  userName = 'Unknown',
+  userProfileImage,
 }) => {
   const [userMessageInput, setUserMessageInput] = useState('');
   const [userMessage, setMessageList] = useState([]);
@@ -93,43 +94,29 @@ export const MessageContent = ({
     );
   } else {
     return (
-      <div className="h-screen flex flex-col justify-between">
+      <div className="h-screen flex flex-col justify-between w-full">
         {/* Header */}
-        <div
-          style={{ width: `${MESSAGE_CONTENT_WIDTH}` }}
-          className="flex items-center top-0 absolute border-b ml-4 h-20 align-baseline"
-        >
-          <div className="relative w-12 h-12 rounded-full">
-            <img
-              src={rmitIcon}
-              alt="user avatar"
-              className="w-full h-full object-cover"
-            />
-            <span
-              className={`absolute rounded-full ${onlineStatus ? 'bg-green-400' : 'bg-gray-400'} w-3 h-3 bottom-0 right-0 mb-0.5 mr-1`}
-            />
+        <div className="flex w-full items-center top-0 border-b px-4 py-5 h-20 align-baseline gap-2 justify-between">
+          <div className="flex items-center flex-grow">
+            <div className="relative w-10 h-10 rounded-full">
+              <Avatar>
+                <AvatarImage src={userProfileImage} alt="@shadcn" />
+                <AvatarFallback>{userName.slice(0, 2)}</AvatarFallback>
+              </Avatar>
+              <span
+                className={`absolute rounded-full ${onlineStatus ? 'bg-green-400' : 'bg-gray-400'} w-3 h-3 bottom-0 left-8`}
+              />
+            </div>
+            <div className="ml-2">
+              <h1 className="font-medium">{userName}</h1>
+              <h1 className="flex items-center text-sm">
+                {onlineStatus ? 'Online now' : 'Offline'}
+              </h1>
+            </div>
           </div>
-
-          <div className="h-11 ml-1">
-            <h1 className="text-xl font-medium h-6">{userName}</h1>
-            <h1 className="flex items-center">
-              {onlineStatus ? 'Online now' : 'Offline'}
-            </h1>
-          </div>
-
-          <div className="ml-auto">
-            <button className="w-6 h-6 mr-8">
-              <img src={phoneIcon} alt="user avatar" />
-            </button>
-
-            <button className="w-6 h-6 mr-8">
-              <img src={videoCallIcon} alt="user avatar" />
-            </button>
-
-            <button className="w-6 h-6 mr-2">
-              <img src={informationIcon} alt="user avatar" />
-            </button>
-          </div>
+          <button className="w-6 h-6">
+            <img src={informationIcon} alt="user avatar" />
+          </button>
         </div>
 
         {/* Message List */}

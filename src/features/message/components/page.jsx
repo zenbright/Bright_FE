@@ -16,7 +16,6 @@ const FakeMessages = Array.from({ length: 10 }, (_, i) => ({
 
 export const MessagePage = () => {
   const [selectedMessage, setSelectedMessage] = useState(-1);
-  const [selectedUserMessage, setSelectedUserMessage] = useState('');
   const [searchPhrase, setSearchPhrase] = useState('');
 
   const isContain = (str, search) => {
@@ -43,8 +42,7 @@ export const MessagePage = () => {
       <MessagePreviewTab
         key={message.id}
         onClick={() => {
-          setSelectedMessage(message.id);
-          setSelectedUserMessage(message.userName);
+          setSelectedMessage(message);
         }}
         isSelected={selectedMessage === message.id}
         sentTime={format(message.sentTime, 'hh:mm a')}
@@ -82,7 +80,6 @@ export const MessagePage = () => {
                   key={''}
                   onClick={() => {
                     setSelectedMessage('');
-                    setSelectedUserMessage('');
                   }}
                   isSelected={''}
                   sentTime={''}
@@ -101,9 +98,10 @@ export const MessagePage = () => {
       {/* Message Content */}
       <div className="w-full h-screen overflow-auto">
         <MessageContent
-          selectedMessage={selectedMessage}
+          selectedMessage={selectedMessage.id}
           onlineStatus={false}
-          userName={selectedUserMessage}
+          userName={selectedMessage.userName}
+          userProfileImage={selectedMessage.profileImage}
         />
       </div>
     </div>
