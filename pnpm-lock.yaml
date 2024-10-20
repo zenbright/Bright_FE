@@ -75,7 +75,7 @@ importers:
         specifier: ^2.2.7
         version: 2.2.7(react-redux@9.1.0(@types/react@18.2.58)(react@18.2.0)(redux@5.0.1))(react@18.2.0)
       '@tldraw/tldraw':
-        specifier: ^2.4.4
+        specifier: ^2.4.6
         version: 2.4.6(@types/react-dom@18.2.19)(@types/react@18.2.58)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@uiw/color-convert':
         specifier: ^2.3.0
@@ -99,7 +99,7 @@ importers:
         specifier: ^1.6.7
         version: 1.6.7
       chart.js:
-        specifier: ^4.4.2
+        specifier: ^4.4.3
         version: 4.4.3
       class-variance-authority:
         specifier: ^0.7.0
@@ -117,13 +117,13 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       dayjs:
-        specifier: ^1.11.10
+        specifier: ^1.11.11
         version: 1.11.11
       echarts:
         specifier: ^5.5.0
         version: 5.5.0
       embla-carousel-react:
-        specifier: ^8.0.0
+        specifier: ^8.1.5
         version: 8.1.5(react@18.2.0)
       faker:
         specifier: ^6.6.6
@@ -207,7 +207,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       tw-elements-react:
-        specifier: ^1.0.0-alpha2
+        specifier: 1.0.0-alpha2
         version: 1.0.0-alpha2(@types/node@20.11.20)(typescript@5.4.5)
       uuid:
         specifier: ^9.0.1
@@ -256,7 +256,7 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.57.0)
       eslint-plugin-react-refresh:
-        specifier: ^0.4.3
+        specifier: ^0.4.5
         version: 0.4.5(eslint@8.57.0)
       postcss:
         specifier: ^8.4.35
@@ -2198,8 +2198,8 @@ packages:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
 
-  caniuse-lite@1.0.30001589:
-    resolution: {integrity: sha512-vNQWS6kI+q6sBlHbh71IIeC+sRwK2N3EDySc/updIGhIee2x5z00J4c1242/5/d6EpEMdOnk/m+6tuk4/tcsqg==}
+  caniuse-lite@1.0.30001669:
+    resolution: {integrity: sha512-DlWzFDJqstqtIVx1zeSpIMLjunf5SmwOw0N2Ck/QSQdS8PLS4+9HrLaYei4w8BIAL7IB/UEDu889d8vhCTPA0w==}
 
   canvas-size@1.2.6:
     resolution: {integrity: sha512-x2iVHOrZ5x9V0Hwx6kBz+Yxf/VCAII+jrD6WLjJbytJLozHq/oDJjEva432Os0eHxWMFR0vYlLJwTr6QxyxQqw==}
@@ -6159,7 +6159,7 @@ snapshots:
   autoprefixer@10.4.17(postcss@8.4.35):
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001589
+      caniuse-lite: 1.0.30001669
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -6205,7 +6205,7 @@ snapshots:
 
   browserslist@4.23.0:
     dependencies:
-      caniuse-lite: 1.0.30001589
+      caniuse-lite: 1.0.30001669
       electron-to-chromium: 1.4.681
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
@@ -6229,7 +6229,7 @@ snapshots:
 
   camelcase@6.3.0: {}
 
-  caniuse-lite@1.0.30001589: {}
+  caniuse-lite@1.0.30001669: {}
 
   canvas-size@1.2.6: {}
 
