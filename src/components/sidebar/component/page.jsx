@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import DashboardIcon from '../assets/images/dashboard.svg?react';
 import LogoutIcon from '../assets/images/logout.svg?react';
-import MessageSquare from '../assets/images/message-square.svg?react';
 import NotificationIcon from '../assets/images/notification.svg?react';
 import SettingIcon from '../assets/images/settings.svg?react';
 import '../styles/font.css';
@@ -11,6 +10,7 @@ import LogoutButton from './button-logout.jsx';
 import NavItem from './nav-item.jsx';
 import ProjectDashboard from './project-dashboard.jsx';
 import UserImageName from './user-image-name.jsx';
+import { Mail } from 'lucide-react';
 
 function Sidebar() {
   const [selectedItem, setSelectedItem] = useState('Dashboard');
@@ -55,7 +55,7 @@ function Sidebar() {
             onClick={handleNavClick}
             select={selectedItem === 'Inbox'}
           >
-            <MessageSquare className="w-5 h-5" />
+            <Mail className="w-5 h-5" strokeWidth={1.3} />
           </NavItem>
 
           <NavItem

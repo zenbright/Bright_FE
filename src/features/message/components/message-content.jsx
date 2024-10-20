@@ -1,15 +1,15 @@
 /* eslint-disable max-len */
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import { Info } from 'lucide-react';
+import { PlusCircle } from 'lucide-react';
+import { Image } from 'lucide-react';
+import { SmilePlus } from 'lucide-react';
+import { SendHorizonal } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
-import micIcon from '../assets/microphone.png';
-import uploadImageIcon from '../assets/photo.png';
-import plusIcon from '../assets/plus.png';
-import sendIcon from '../assets/send.png';
-import smileIcon from '../assets/smile.png';
 import messageBubbleIcon from '../assets/speech-bubble.png';
 import { SAMPLE_MESSAGE } from '../test/values';
 import { Message } from '../utils/class';
@@ -128,33 +128,32 @@ export const MessageContent = ({
 
         {/* Control Bar */}
         <div className="flex items-center justify-start mb-3 mt-2 ml-4">
-          <button className="flex items-center">
-            <img src={plusIcon} className="w-5 h-5" />
-          </button>
-          <button className="flex items-center ml-4 mr-4">
-            <img src={uploadImageIcon} className="w-5 h-5" />
-          </button>
-          <button className="flex items-center mr-4">
-            <img src={smileIcon} className="w-5 h-5" />
-          </button>
-          <button className="flex items-center">
-            <img src={micIcon} className="w-5 h-5" />
-          </button>
+          <Button variant="ghost" size="icon">
+            <PlusCircle className="w-6 h-6" strokeWidth={1.5}/>
+          </Button>
+
+          <Button variant="ghost" size="icon">
+            <Image className="w-6 h-6" strokeWidth={1.5}/>
+          </Button>
+
+          <Button variant="ghost" size="icon">
+            <SmilePlus className="w-6 h-6" strokeWidth={1.5}/>
+          </Button>
 
           <input
             type="text"
             placeholder="Aa..."
             value={userMessageInput}
             onChange={e => setUserMessageInput(e.target.value)}
-            className="bg-gray-200 bg-opacity-70 h-9 rounded-lg py-2 px-4 outline-none w-4/5 ml-4"
+            className="ml-2 bg-gray-200/40 hover:bg-gray-200/60 h-10 rounded-full py-6 px-4 w-4/5"
           />
 
-          <button
-            className="flex items-center ml-6"
+          <Button variant="ghost" size="icon"
+            className="ml-4"
             onClick={onHandleSendMessage}
           >
-            <img src={sendIcon} className="w-6 h-6" />
-          </button>
+            <SendHorizonal className="w-6 h-6" strokeWidth={1.5}/>
+          </Button>
         </div>
       </div>
     );
