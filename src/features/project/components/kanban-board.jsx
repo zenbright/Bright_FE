@@ -161,7 +161,7 @@ export const KanbanBoard = () => {
           sensors={sensors}
         >
           <div className={`flex ${columns.length === 0 ? 'gap-0' : 'gap-2'}`}>
-            <div className="flex gap-2 ">
+            <div className="flex gap-2">
               <SortableContext items={columnId}>
                 {columns.map((col, index) => (
                   <div key={index}>
@@ -178,7 +178,7 @@ export const KanbanBoard = () => {
               </SortableContext>
             </div>
 
-            <Button className="h-[38px] right-2" onClick={createColumn}>
+            <Button className="right-2 h-[38px]" onClick={createColumn}>
               <PlusCircle className="mr-2 h-5" /> Create new column
             </Button>
           </div>

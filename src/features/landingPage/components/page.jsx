@@ -56,14 +56,14 @@ export const Page = () => {
         className={`max-h-screen`}
         defer
       >
-        <div className=" flex justify-center items-center flex-col gap-5 mt-10">
-          <div className="font-semibold text-3xl text-black">
+        <div className="mt-10 flex flex-col items-center justify-center gap-5">
+          <div className="text-3xl font-semibold text-black">
             {INTRODUCTION.LANDING_PAGE.SHORT}
           </div>
 
           <TypewriterEffectSmooth words={WELCOME_TEXT} />
 
-          <div className="text-center max-w-[630px] text-xl text-gray-500">
+          <div className="max-w-[630px] text-center text-xl text-gray-500">
             <span
               dangerouslySetInnerHTML={{
                 __html: INTRODUCTION.LANDING_PAGE.LONG.replace(
@@ -74,19 +74,19 @@ export const Page = () => {
             />
           </div>
 
-          <div className="flex gap-3 mt-8">
-            <Button className="p-6 text-md mr-1 text-white bg-black hover:bg-gray-800">
+          <div className="mt-8 flex gap-3">
+            <Button className="text-md mr-1 bg-black p-6 text-white hover:bg-gray-800">
               Subscribe
             </Button>
             <Button
               variant="ghost"
-              className="p-6 text-md hover:font-semibold hover:underline hover:bg-transparent text-black hover:text-black"
+              className="text-md p-6 text-black hover:bg-transparent hover:font-semibold hover:text-black hover:underline"
             >
               FAQ
             </Button>
           </div>
 
-          <div className="flex items-center gap-2 mt-8 font-semibold text-slate-500">
+          <div className="mt-8 flex items-center gap-2 font-semibold text-slate-500">
             {'Contact us at: '}
 
             <div className="font-bold text-black hover:cursor-pointer hover:underline">
@@ -102,16 +102,16 @@ export const Page = () => {
           </div>
         </div>
 
-        <div className="flex mt-48 px-6 flex-col gap-28 mb-20">
+        <div className="mb-20 mt-48 flex flex-col gap-28 px-6">
           <MissionGroup />
 
-          <div className="flex justify-between mx-9  items-center">
+          <div className="mx-9 flex items-center justify-between">
             <div className="flex flex-col gap-6">
-              <div className="font-bold text-5xl text-black">
+              <div className="text-5xl font-bold text-black">
                 {PROMOTION_TEXT.FREE_TRIAL_TITLE}
               </div>
 
-              <div className="text-lg max-w-xl font-normal flex flex-col text-black">
+              <div className="flex max-w-xl flex-col text-lg font-normal text-black">
                 <div>{PROMOTION_TEXT.FREE_TRIAL_DES}</div>
               </div>
             </div>
@@ -119,8 +119,8 @@ export const Page = () => {
             <img className="h-72 rounded-lg" src={Meeting} />
           </div>
 
-          <div className="flex flex-col items-center font-semibold text-slate-400 gap-1 h-48">
-            <img src={BrightLogo} className=" h-20" />
+          <div className="flex h-48 flex-col items-center gap-1 font-semibold text-slate-400">
+            <img src={BrightLogo} className="h-20" />
 
             <div className="flex text-lg font-thin">
               {TRADEMARK.COMPANY}
@@ -128,10 +128,10 @@ export const Page = () => {
             </div>
 
             <div className="flex">
-              <Button variant="ghost" className=" hover:bg-transparent">
+              <Button variant="ghost" className="hover:bg-transparent">
                 Terms & Conditions
               </Button>
-              <Button variant="ghost" className=" hover:bg-transparent">
+              <Button variant="ghost" className="hover:bg-transparent">
                 Privacy Policy
               </Button>
             </div>

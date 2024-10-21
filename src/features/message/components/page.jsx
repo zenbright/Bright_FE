@@ -56,11 +56,11 @@ export const MessagePage = () => {
   return (
     <div className="flex w-screen overflow-hidden">
       {/* Message section */}
-      <div className="flex flex-col border-r h-screen w-1/4">
+      <div className="flex h-screen w-1/4 flex-col border-r">
         <input
           type="text"
           placeholder="Search..."
-          className="bg-gray-100/80 hover:bg-gray-200/80 h-10 rounded-md mt-5 px-4 outline-none mx-2 mb-1 text-sm"
+          className="mx-2 mb-1 mt-5 h-10 rounded-md bg-gray-100/80 px-4 text-sm outline-none hover:bg-gray-200/80"
           onChange={handleSearchInputChange}
         />
 
@@ -71,8 +71,8 @@ export const MessagePage = () => {
           className="flex-1 overflow-auto"
         >
           {filteredList.length === 0 ? (
-            <div className="flex items-center justify-center w-full">
-              <p className="text-center font-medium opacity-60 w-full mt-4">
+            <div className="flex w-full items-center justify-center">
+              <p className="mt-4 w-full text-center font-medium opacity-60">
                 {'No results found'}
 
                 {/* Placeholder */}
@@ -96,7 +96,7 @@ export const MessagePage = () => {
       </div>
 
       {/* Message Content */}
-      <div className="w-full h-screen overflow-auto">
+      <div className="h-screen w-full overflow-auto">
         <MessageContent
           selectedMessage={selectedMessage.id}
           onlineStatus={false}

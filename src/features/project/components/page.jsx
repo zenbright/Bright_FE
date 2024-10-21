@@ -32,14 +32,14 @@ export const Page = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="px-2 py-1 w-full h-dvh overflow-auto">
+    <div className="h-dvh w-full overflow-auto px-2 py-1">
       <div className="px-4">
         {/* Project Headers */}
         <ProjectBreadCrumbs projectType="SOFTWARE" projectOwner="MUDOKER" />
 
         {/* Title + Util Buttons */}
-        <div className=" flex justify-between items-center">
-          <h1 className="text-4xl font-bold text-slate-700 mb-3 mt-4">
+        <div className="flex items-center justify-between">
+          <h1 className="mb-3 mt-4 text-4xl font-bold text-slate-700">
             Bright
           </h1>
 
@@ -72,7 +72,7 @@ export const Page = () => {
       </div>
 
       {/* Creation Date + Member List + Privacy */}
-      <div className="mb-1 flex items-center h-10 gap-4">
+      <div className="mb-1 flex h-10 items-center gap-4">
         <div className="flex items-center pl-4">
           <BoardTabGroup
             selected={selectedTabIdx}
@@ -94,7 +94,7 @@ export const Page = () => {
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button
-              className="text-rose-500 bg-white border-black/15 hover:bg-slate-200/75 h-8"
+              className="h-8 border-black/15 bg-white text-rose-500 hover:bg-slate-200/75"
               variant="outline"
             >
               <ShieldMinus className="h-4" />

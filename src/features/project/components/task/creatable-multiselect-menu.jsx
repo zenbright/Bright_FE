@@ -63,10 +63,10 @@ export const CreatableMultiSelectDropdown = ({
           />
           <CommandEmpty className="m-1">
             <div
-              className="flex items-center hover:bg-slate-300/25 hover:cursor-pointer py-1.5 px-2 text-sm rounded-sm w-full h-full"
+              className="flex h-full w-full items-center rounded-sm px-2 py-1.5 text-sm hover:cursor-pointer hover:bg-slate-300/25"
               onClick={() => handleAddNewTag(searchPhrase)}
             >
-              <Pencil className="h-3 w-3 mr-4" /> Add &apos;{searchPhrase}&apos;
+              <Pencil className="mr-4 h-3 w-3" /> Add &apos;{searchPhrase}&apos;
             </div>
           </CommandEmpty>
           <CommandGroup>
@@ -84,12 +84,12 @@ export const CreatableMultiSelectDropdown = ({
               >
                 {/* Selected mark */}
                 <Check
-                  className={`mr-2 h-4 w-4  ${selectedTags.findIndex(tag => tag.split('-')[0] === tagList[tagKey].value) !== -1 ? 'opacity-100' : 'opacity-0'}`}
+                  className={`mr-2 h-4 w-4 ${selectedTags.findIndex(tag => tag.split('-')[0] === tagList[tagKey].value) !== -1 ? 'opacity-100' : 'opacity-0'}`}
                 />
 
                 {/* Tag Color Dot */}
                 <div
-                  className={`w-2 h-2 mr-3 rounded-full`}
+                  className={`mr-3 h-2 w-2 rounded-full`}
                   style={{ background: `${tagList[tagKey].color}` }}
                 />
 

@@ -7,18 +7,18 @@ const ProjectBreadCrumbs = ({
   projectOwner = 'MUDOKER',
 }) => {
   return (
-    <div className="flex items-center pt-2 text-project_text text-xs font-bold">
+    <div className="flex items-center pt-2 text-xs font-bold text-project_text">
       <button className="text-project_text hover:text-gray-500 focus:outline-none">
         PROJECTS
       </button>
 
-      <ChevronRight className="w-5 h-5" />
+      <ChevronRight className="h-5 w-5" />
 
       <button className="text-project_text hover:text-gray-500 focus:outline-none">
         {projectType}
       </button>
 
-      <ChevronRight className="w-5 h-5" />
+      <ChevronRight className="h-5 w-5" />
 
       <button className="text-project_text hover:text-gray-500 focus:outline-none">
         {projectOwner}

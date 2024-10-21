@@ -122,7 +122,7 @@ function Signupform({ onSignUpComplete }) {
           onSubmit={form.handleSubmit(handleSignUp, onError)}
           className="space-y-2"
         >
-          <div className="flex flex-cols-2 gap-2">
+          <div className="flex-cols-2 flex gap-2">
             <FormField
               control={form.control}
               name="firstname"
@@ -231,10 +231,10 @@ function Signupform({ onSignUpComplete }) {
           <Button
             type="submit"
             variant="outline"
-            className="w-full h-9 rounded px-5 py-2.5 text-black text-sm bg-white font-medium hover:bg-gray-300 text-center inline-flex items-center border border-gray-400"
+            className="inline-flex h-9 w-full items-center rounded border border-gray-400 bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-gray-300"
             disabled={loading}
           >
-            {loading && <Loader2 className="mr-3 animate-spin h-4 w-4" />}
+            {loading && <Loader2 className="mr-3 h-4 w-4 animate-spin" />}
             {loading ? 'Signing up...' : 'Sign Up'}
           </Button>
         </form>

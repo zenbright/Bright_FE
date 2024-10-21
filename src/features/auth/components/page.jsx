@@ -53,12 +53,12 @@ export const Page = () => {
         </Button>
 
         {/* Side panel */}
-        <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
+        <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
           <div className="absolute inset-0" style={divStyle} />
 
           <div className="relative z-20 flex items-center text-lg font-medium hover:cursor-pointer">
             <NavLink to={'/'}>
-              <img src={logo} alt="logo" className="object-contain w-40" />
+              <img src={logo} alt="logo" className="w-40 object-contain" />
             </NavLink>
           </div>
 
@@ -102,7 +102,7 @@ export const Page = () => {
             <div className="flex flex-col space-y-2">
               <Button
                 onClick={redirectGitHubOAuth}
-                className="flex items-center justify-center h-8 px-5 py-2.5 rounded bg-white text-black font-medium hover:bg-gray-300 border border-gray-400"
+                className="flex h-8 items-center justify-center rounded border border-gray-400 bg-white px-5 py-2.5 font-medium text-black hover:bg-gray-300"
               >
                 <Github className="mr-2 h-4 w-4" />
                 {'Sign in with GitHub'}
@@ -110,7 +110,7 @@ export const Page = () => {
 
               <Button
                 onClick={redirectGoogleOAuth}
-                className="flex items-center justify-center h-8 px-5 py-2.5 rounded bg-white text-black font-medium hover:bg-gray-300 border border-gray-400"
+                className="flex h-8 items-center justify-center rounded border border-gray-400 bg-white px-5 py-2.5 font-medium text-black hover:bg-gray-300"
               >
                 <Mail className="mr-2 h-4 w-4" />
                 {'Sign in with Google'}

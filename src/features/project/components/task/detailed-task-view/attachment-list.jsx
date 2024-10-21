@@ -15,19 +15,19 @@ import { SAMPLE_ATTACHMENT_LIST } from './test/values';
 // File type mapping
 const FILE_TYPE_MAPPING = {
   application: {
-    icon: <File className="w-8 h-8 text-gray-400" />,
+    icon: <File className="h-8 w-8 text-gray-400" />,
     text: 'Document',
     show_sub_title: true,
   },
   audio: {
-    icon: <AudioLines className="w-8 h-8 text-gray-400" />,
+    icon: <AudioLines className="h-8 w-8 text-gray-400" />,
     text: 'Audio',
     show_sub_title: true,
   },
   video: {
     text: 'Video',
     icon: (url, mimeType) => (
-      <video controls className="w-28 h-full rounded-md" preload="metadata">
+      <video controls className="h-full w-28 rounded-md" preload="metadata">
         <source src={url} type={mimeType} />
         Your browser does not support the video tag.
       </video>
@@ -37,7 +37,7 @@ const FILE_TYPE_MAPPING = {
   image: {
     text: 'Image',
     icon: (url, title) => (
-      <img src={url} className="w-28 h-full rounded-md" alt={title} />
+      <img src={url} className="h-full w-28 rounded-md" alt={title} />
     ),
     show_sub_title: false,
   },
@@ -60,10 +60,10 @@ const FilePreview = attachment => {
     typeof icon === 'function' ? icon(attachment.url, attachment.title) : icon;
 
   return (
-    <div className="flex flex-col items-center justify-center w-20 h-20 bg-gray-100 rounded-md">
+    <div className="flex h-20 w-20 flex-col items-center justify-center rounded-md bg-gray-100">
       {icon_element}
       {show_sub_title && (
-        <div className="text-xs text-gray-400 font-normal">{text}</div>
+        <div className="text-xs font-normal text-gray-400">{text}</div>
       )}
     </div>
   );
@@ -154,9 +154,9 @@ export const AttachmentList = ({
         style={{ maxHeight: `${maxHeight}px` }}
         id="attachment-list"
       >
-        <div className="flex flex-col gap-2 mb-2">
+        <div className="mb-2 flex flex-col gap-2">
           {filteredList.length === 0 && (
-            <div className="flex self-center mt-2 font-semibold text-gray-800">
+            <div className="mt-2 flex self-center font-semibold text-gray-800">
               {RESULT_NOT_FOUND}
             </div>
           )}
@@ -168,15 +168,15 @@ export const AttachmentList = ({
                   window.location.href = attachment.url;
                 }}
                 key={index}
-                className="hover:bg-slate-100 h-20 rounded-md flex gap-4 font-bold hover:cursor-pointer"
+                className="flex h-20 gap-4 rounded-md font-bold hover:cursor-pointer hover:bg-slate-100"
               >
                 {/* Preview */}
 
                 {FilePreview(attachment)}
 
                 {/* Metadata */}
-                <div className="text-xs text-gray-400 font-normal">
-                  <div className="font-semibold text-base text-black">
+                <div className="text-xs font-normal text-gray-400">
+                  <div className="text-base font-semibold text-black">
                     {attachment.title}
                   </div>
                   <div>{attachment.mimeType}</div>

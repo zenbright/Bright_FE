@@ -78,30 +78,30 @@ export const MessageContent = ({
 
   if (typeof selectedMessage === 'number' && selectedMessage === -1) {
     return (
-      <div className="h-screen flex flex-col items-center justify-center">
+      <div className="flex h-screen flex-col items-center justify-center">
         <img
           src={messageBubbleIcon}
           alt="Bubble icon"
-          className="w-16 h-16 opacity-20 mb-4"
+          className="mb-4 h-16 w-16 opacity-20"
         />
-        <h1 className="text-2xl opacity-25 font-medium">
+        <h1 className="text-2xl font-medium opacity-25">
           {'Start a conversation'}
         </h1>
       </div>
     );
   } else {
     return (
-      <div className="h-screen flex flex-col justify-between w-full">
+      <div className="flex h-screen w-full flex-col justify-between">
         {/* Header */}
-        <div className="flex w-full items-center top-0 border-b px-4 py-5 h-20 align-baseline gap-2 justify-between">
-          <div className="flex items-center flex-grow">
-            <div className="relative w-10 h-10 rounded-full">
+        <div className="top-0 flex h-20 w-full items-center justify-between gap-2 border-b px-4 py-5 align-baseline">
+          <div className="flex flex-grow items-center">
+            <div className="relative h-10 w-10 rounded-full">
               <Avatar>
                 <AvatarImage src={userProfileImage} alt="@shadcn" />
                 <AvatarFallback>{userName.slice(0, 2)}</AvatarFallback>
               </Avatar>
               <span
-                className={`absolute rounded-full ${onlineStatus ? 'bg-green-400' : 'bg-gray-400'} w-3 h-3 bottom-0 left-8`}
+                className={`absolute rounded-full ${onlineStatus ? 'bg-green-400' : 'bg-gray-400'} bottom-0 left-8 h-3 w-3`}
               />
             </div>
             <div className="ml-2">
@@ -111,7 +111,7 @@ export const MessageContent = ({
               </h1>
             </div>
           </div>
-          <button className="w-6 h-6">
+          <button className="h-6 w-6">
             <Info />
           </button>
         </div>
@@ -127,17 +127,17 @@ export const MessageContent = ({
         </OverlayScrollbarsComponent>
 
         {/* Control Bar */}
-        <div className="flex items-center justify-start mb-3 mt-2 ml-4">
+        <div className="mb-3 ml-4 mt-2 flex items-center justify-start">
           <Button variant="ghost" size="icon">
-            <PlusCircle className="w-6 h-6" strokeWidth={1.5}/>
+            <PlusCircle className="h-6 w-6" strokeWidth={1.5} />
           </Button>
 
           <Button variant="ghost" size="icon">
-            <Image className="w-6 h-6" strokeWidth={1.5}/>
+            <Image className="h-6 w-6" strokeWidth={1.5} />
           </Button>
 
           <Button variant="ghost" size="icon">
-            <SmilePlus className="w-6 h-6" strokeWidth={1.5}/>
+            <SmilePlus className="h-6 w-6" strokeWidth={1.5} />
           </Button>
 
           <input
@@ -145,14 +145,16 @@ export const MessageContent = ({
             placeholder="Aa..."
             value={userMessageInput}
             onChange={e => setUserMessageInput(e.target.value)}
-            className="ml-2 bg-gray-200/40 hover:bg-gray-200/60 h-10 rounded-full py-6 px-4 w-4/5"
+            className="ml-2 h-10 w-4/5 rounded-full bg-gray-200/40 px-4 py-6 hover:bg-gray-200/60"
           />
 
-          <Button variant="ghost" size="icon"
+          <Button
+            variant="ghost"
+            size="icon"
             className="ml-4"
             onClick={onHandleSendMessage}
           >
-            <SendHorizonal className="w-6 h-6" strokeWidth={1.5}/>
+            <SendHorizonal className="h-6 w-6" strokeWidth={1.5} />
           </Button>
         </div>
       </div>

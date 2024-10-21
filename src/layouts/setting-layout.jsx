@@ -5,7 +5,7 @@ import SettingSideBar from '../features/setting/component/setting-side-bar';
 
 export const SettingLayout = () => {
   return (
-    <div className="flex h-screen overflow-hidden gap-4">
+    <div className="flex h-screen gap-4 overflow-hidden">
       <SettingSideBar />
       <Outlet />
     </div>

@@ -54,7 +54,7 @@ export const MessageView = () => {
     if (filteredList.length === 0) {
       return (
         <div className="flex items-center justify-center">
-          <p className="text-center p-5 font-medium opacity-60">
+          <p className="p-5 text-center font-medium opacity-60">
             No results found
           </p>
         </div>
@@ -66,7 +66,7 @@ export const MessageView = () => {
   return (
     <div className="flex h-screen w-screen">
       {/* Nav bar */}
-      <div className="z-50 absolute">
+      <div className="absolute z-50">
         <Sidebar></Sidebar>
       </div>
       <div
@@ -76,12 +76,12 @@ export const MessageView = () => {
 
       {/* Message section */}
       <div
-        className="flex-col border-r h-screen"
+        className="h-screen flex-col border-r"
         style={{ width: `${MESSAGE_TAB_WIDTH}` }}
       >
-        <div className="text-3xl font-medium p-4 flex items-center justify-between h-20">
+        <div className="flex h-20 items-center justify-between p-4 text-3xl font-medium">
           <h1>Message</h1>
-          <button type="button" className="w-6 h-6">
+          <button type="button" className="h-6 w-6">
             <img src={messageNew} alt="writing" />
           </button>
         </div>
@@ -90,7 +90,7 @@ export const MessageView = () => {
           <input
             type="text"
             placeholder="Search..."
-            className="bg-gray-200 h-10 rounded-lg py-2 px-4 outline-none w-full mx-2 mb-1"
+            className="mx-2 mb-1 h-10 w-full rounded-lg bg-gray-200 px-4 py-2 outline-none"
             onChange={handleSearchInputChange}
           />
         </div>

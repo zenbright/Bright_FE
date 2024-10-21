@@ -122,7 +122,7 @@ function Loginform() {
   };
 
   return (
-    <div className="flex flex-col space-y-2 text-center gap-3">
+    <div className="flex flex-col gap-3 space-y-2 text-center">
       <div className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
           {SIGN_IN.TITLE}
@@ -133,7 +133,7 @@ function Loginform() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit, onError)}
-          className="flex gap-3 flex-col"
+          className="flex flex-col gap-3"
         >
           <FormField
             control={form.control}
@@ -175,7 +175,7 @@ function Loginform() {
           />
           <Button
             type="submit"
-            className="w-full h-8 rounded px-5 py-2.5 text-black text-sm bg-white font-medium  hover:bg-gray-200 text-center inline-flex items-center border border-gray-400"
+            className="inline-flex h-8 w-full items-center rounded border border-gray-400 bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-gray-200"
             onClick={handleLogin}
             disabled={spinning}
           >
@@ -216,7 +216,7 @@ function Loginform() {
 
           <a
             href="#"
-            className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+            className="text-primary-600 dark:text-primary-500 text-sm font-medium hover:underline"
           >
             {'Forgot password?'}
           </a>

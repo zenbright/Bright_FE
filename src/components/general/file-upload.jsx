@@ -65,16 +65,16 @@ export function FileUpload() {
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div
-            className={`flex flex-col justify-center w-full h-44 items-center border-dashed border-2 border-black/40 font-semibold text-black/60 ${
+            className={`flex h-44 w-full flex-col items-center justify-center border-2 border-dashed border-black/40 font-semibold text-black/60 ${
               isDragActive ? 'border-blue-500' : ''
             }`}
             {...getRootProps()}
           >
             <Upload className="mb-5 h-7 w-7" />
 
-            <div className="flex gap-1 mb-1">
+            <div className="mb-1 flex gap-1">
               <div
-                className={`font-bold hover:cursor-pointer hover:underline text-black/70`}
+                className={`font-bold text-black/70 hover:cursor-pointer hover:underline`}
                 onClick={() => fileSelectInput.current.click()}
               >
                 {'Click to upload'}

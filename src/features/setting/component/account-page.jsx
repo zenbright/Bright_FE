@@ -67,8 +67,8 @@ function Account() {
 
   return (
     <OverlayScrollbarsComponent>
-      <div className="container-ns flex flex-col w-[74.4vw] overflow-auto">
-        <div className="z-30 mx-3 text-2xl font-light pt-8 pb-[14px]  border-b-[1px] border-slate-300 group sticky bg-background">
+      <div className="container-ns flex w-[74.4vw] flex-col overflow-auto">
+        <div className="group sticky z-30 mx-3 border-b-[1px] border-slate-300 bg-background pb-[14px] pt-8 text-2xl font-light">
           {'Account'}
         </div>
 
@@ -77,7 +77,7 @@ function Account() {
             <p className="font-semibold">{'Change Password'}</p>
           </div>
 
-          <div className="mx-3 p-2 space-y-4">
+          <div className="mx-3 space-y-4 p-2">
             <Form {...form}>
               <form onSubmit={form.handleSubmit({ onSubmit, onError })}>
                 {/* To support accesibility */}
@@ -88,8 +88,8 @@ function Account() {
                   name="old_password"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
-                        <FormLabel className="font-semibold text-base">
+                      <div className="mt-2 flex w-[40vw] flex-row items-center justify-between">
+                        <FormLabel className="text-base font-semibold">
                           {'Old password'}
                         </FormLabel>
                         <FormControl>
@@ -112,8 +112,8 @@ function Account() {
                   name="new_password"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
-                        <FormLabel className="font-semibold text-base">
+                      <div className="mt-2 flex w-[40vw] flex-row items-center justify-between">
+                        <FormLabel className="text-base font-semibold">
                           {'New password'}
                         </FormLabel>
                         <FormControl>
@@ -136,8 +136,8 @@ function Account() {
                   name="re_confirm_password"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <div className="flex flex-row items-center justify-between w-[40vw] mt-2">
-                        <FormLabel className="font-semibold text-base">
+                      <div className="mt-2 flex w-[40vw] flex-row items-center justify-between">
+                        <FormLabel className="text-base font-semibold">
                           {'Confirm new password'}
                         </FormLabel>
                         <FormControl>
@@ -164,11 +164,11 @@ function Account() {
             <p className="font-bold text-rose-500">{'Delete Account'}</p>
           </div>
 
-          <div className="mx-3 p-2 space-y-4">
+          <div className="mx-3 space-y-4 p-2">
             <p>{ACCOUNT.DELETE_DESCRIPTION}</p>
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button className="bg-white text-red-400 hover:bg-rose-500 hover:text-white border border-rose-500">
+                <Button className="border border-rose-500 bg-white text-red-400 hover:bg-rose-500 hover:text-white">
                   {'Delete your account'}
                 </Button>
               </AlertDialogTrigger>

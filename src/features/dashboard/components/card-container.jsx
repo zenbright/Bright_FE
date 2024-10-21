@@ -9,7 +9,7 @@ import '../styles/style.css';
 
 const Card = ({ title, icon, count, percentage }) => {
   return (
-    <div className="w-1/4 h-27 bg-background flex flex-col py-4 px-2 items-center border-[1px] rounded-2xl">
+    <div className="h-27 flex w-1/4 flex-col items-center rounded-2xl border-[1px] bg-background px-2 py-4">
       <div className="flex w-full items-center justify-between px-3">
         <p className="text-sm font-medium">{title}</p>
         {icon &&
@@ -27,7 +27,7 @@ const Card = ({ title, icon, count, percentage }) => {
 
 const CardContainer = () => {
   return (
-    <div className="flex justify-between w-full gap-2 cursor-default">
+    <div className="flex w-full cursor-default justify-between gap-2">
       <Card
         title="Tasks Completed"
         icon={MdOutlineTask}

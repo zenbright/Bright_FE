@@ -99,9 +99,9 @@ export const DetailedTaskView = ({
           taskToBeEditted={task}
         />
       )}
-      <SheetContent className="pt-10 h-full flex flex-col">
+      <SheetContent className="flex h-full flex-col pt-10">
         <SheetHeader>
-          <SheetTitle className="text-2xl font-bold flex items-center justify-between">
+          <SheetTitle className="flex items-center justify-between text-2xl font-bold">
             <div>{task.title}</div>
             <div>
               <Button
@@ -110,7 +110,7 @@ export const DetailedTaskView = ({
                 onClick={() => setIsShowTaskEditForm(true)}
               >
                 {'Edit'}
-                <Pencil className="w-4 h-4" />
+                <Pencil className="h-4 w-4" />
               </Button>
             </div>
           </SheetTitle>
@@ -118,7 +118,7 @@ export const DetailedTaskView = ({
         </SheetHeader>
 
         {/* Headers */}
-        <div className="text-sm mt-3 flex flex-col gap-4 flex-1">
+        <div className="mt-3 flex flex-1 flex-col gap-4 text-sm">
           {/* task brief */}
           <div className="flex items-center gap-11">
             {'Assignee'}
@@ -133,16 +133,16 @@ export const DetailedTaskView = ({
             </div>
           </div>
 
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             {'Tags'}
-            <div className="ml-16 gap-2 flex flex-wrap">
+            <div className="ml-16 flex flex-wrap gap-2">
               {tagList &&
                 tagList.map(tag => (
                   <DropdownMenu key={tag.id}>
                     <DropdownMenuTrigger>
                       <Badge
                         key={tag.id}
-                        className={`h-6 mr-1`}
+                        className={`mr-1 h-6`}
                         style={{
                           backgroundColor: tinycolor(tag.color).lighten(50),
                           color: tinycolor(tag.color),
@@ -163,7 +163,7 @@ export const DetailedTaskView = ({
                 ))}
 
               <Plus
-                className="w-6 h-6 text-plus_text bg-plus_background p-1.5 rounded-md hover:bg-plus_background_hover hover:cursor-pointer hover:text-plus_text_hover"
+                className="h-6 w-6 rounded-md bg-plus_background p-1.5 text-plus_text hover:cursor-pointer hover:bg-plus_background_hover hover:text-plus_text_hover"
                 onClick={() => {
                   setIsOpenTaskTagCreationForm(true);
                 }}
@@ -178,7 +178,7 @@ export const DetailedTaskView = ({
             setSelected={setTabSelectedIndex}
           />
 
-          <div className="flex-1 h-full mb-2">
+          <div className="mb-2 h-full flex-1">
             {task_detail_views[tabSelectedIndex]}
           </div>
         </div>

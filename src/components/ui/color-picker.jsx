@@ -35,7 +35,7 @@ export const ColorPicker = ({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogPortal>
         <DialogOverlay className="bg-white/40" />
-        <DialogContent className="sm:max-w-[425px] w-80">
+        <DialogContent className="w-80 sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle className="text-lg">{'Color Picker'}</DialogTitle>
           </DialogHeader>

@@ -16,7 +16,7 @@ export function UnderDevDialog({ isOpen = false, setIsOpen }) {
     <AlertDialog open={isOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle className="font-bold text-2xl">
+          <AlertDialogTitle className="text-2xl font-bold">
             Coming soon!
           </AlertDialogTitle>
           <AlertDialogDescription>
@@ -25,7 +25,7 @@ export function UnderDevDialog({ isOpen = false, setIsOpen }) {
           </AlertDialogDescription>
           <AlertDialogDescription className="flex">
             Contact us at:
-            <span className=" font-bold text-black ml-2 hover:cursor-pointer">
+            <span className="ml-2 font-bold text-black hover:cursor-pointer">
               {BRIGHT_EMAIL}
             </span>
           </AlertDialogDescription>

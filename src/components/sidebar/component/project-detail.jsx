@@ -14,17 +14,17 @@ function ProjectdDetail({ project, onClose }) {
     <div className="">
       <button
         onClick={onClose}
-        className="mt-2 font-medium text-sm group/item flex flex-row hover:underline items-center text-foreground"
+        className="group/item mt-2 flex flex-row items-center text-sm font-medium text-foreground hover:underline"
       >
         <span>
           <FaArrowRight
-            className="flex w-3 h-3 items-center mr-3 fill-foreground"
+            className="mr-3 flex h-3 w-3 items-center fill-foreground"
             style={{ transform: 'rotate(180deg)' }}
           />
         </span>
         All Project
       </button>
-      <h1 className="text-lg font-bold mt-3 mb-3 ml-2 text-foreground">
+      <h1 className="mb-3 ml-2 mt-3 text-lg font-bold text-foreground">
         {project}
       </h1>
       <ul className="space-y-2">

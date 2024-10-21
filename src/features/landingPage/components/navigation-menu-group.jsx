@@ -43,7 +43,7 @@ export const NavigationMenuGroup = () => {
     <div className="ml-4 list-none">
       <NavigationMenu>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="font-bold text-md bg-transparent text-black hover:text-black hover:bg-white focus:bg-white focus:text-black disabled:opacity-50 data-[active]:bg-white/50 data-[state=open]:bg-white/50">
+          <NavigationMenuTrigger className="text-md bg-transparent font-bold text-black data-[active]:bg-white/50 data-[state=open]:bg-white/50 hover:bg-white hover:text-black focus:bg-white focus:text-black disabled:opacity-50">
             Getting Started
           </NavigationMenuTrigger>
           <NavigationMenuContent className="bg-white">

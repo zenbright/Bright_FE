@@ -88,23 +88,23 @@ const TaskActivityComponent = ({
   };
 
   return (
-    <ol className="relative border-gray-200 dark:border-gray-700 pr-3">
+    <ol className="relative border-gray-200 pr-3 dark:border-gray-700">
       <li className={`${isLastItem ? '' : 'mb-8'} ms-6`}>
-        <span className="absolute z-50 flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-background">
+        <span className="absolute -start-3 z-50 flex h-6 w-6 items-center justify-center rounded-full ring-8 ring-background">
           <img
-            className="rounded-full shadow-lg "
+            className="rounded-full shadow-lg"
             src="https://github.com/shadcn.png"
             alt={isComment ? 'Thomas Lean image' : 'Bonnie image'}
           />
         </span>
-        <div className="flex flex-col p-4 bg-discussion-background border border-discussion_border rounded-lg shadow-sm">
+        <div className="bg-discussion-background flex flex-col rounded-lg border border-discussion_border p-4 shadow-sm">
           <div
             className={`items-center justify-between ${isComment ? 'mb-3' : ''} sm:flex`}
           >
             <time className="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">
               {timeAgo(activity.createdAt)}
             </time>
-            <div className="text-sm font-normal text-gray-500 dark:text-gray-300 gap-1 text-left">
+            <div className="gap-1 text-left text-sm font-normal text-gray-500 dark:text-gray-300">
               <span className="font-bold">{activity.author}</span>{' '}
               {activity.subtitle}{' '}
               <span className="italic">
@@ -122,13 +122,13 @@ const TaskActivityComponent = ({
                   value={editedComment}
                   onChange={e => setEditedComment(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="font-normal text-xs"
+                  className="text-xs font-normal"
                   autoFocus
                 />
               ) : (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <div className="justify-between p-3 text-xs italic font-normal text-comment_text border border-gray-200 rounded-lg bg-comment_background hover:bg-comment_hover hover:cursor-pointer">
+                    <div className="justify-between rounded-lg border border-gray-200 bg-comment_background p-3 text-xs font-normal italic text-comment_text hover:cursor-pointer hover:bg-comment_hover">
                       {editedComment}
                     </div>
                   </DropdownMenuTrigger>
@@ -255,8 +255,8 @@ export const TaskDiscussion = ({ isReload, onReloadTrigger }) => {
   }, [isReload]);
 
   return (
-    <div className="flex flex-col h-full justify-between">
-      <div className={`flex items-center space-x-2 mb-3 z-0`}>
+    <div className="flex h-full flex-col justify-between">
+      <div className={`z-0 mb-3 flex items-center space-x-2`}>
         <Input
           type="text"
           placeholder="Leave a comment..."
@@ -270,7 +270,7 @@ export const TaskDiscussion = ({ isReload, onReloadTrigger }) => {
         />
 
         <Button onClick={onCommentSubmit}>
-          <Send className="w-4 h-4" />
+          <Send className="h-4 w-4" />
         </Button>
       </div>
 
@@ -281,7 +281,7 @@ export const TaskDiscussion = ({ isReload, onReloadTrigger }) => {
         options={{ scrollbars: { autoHide: 'move', theme: scrollbarTheme } }}
         style={{ maxHeight: `${maxHeight}px` }}
       >
-        <div className="relative overflow-y-auto pl-3 mb-3">
+        <div className="relative mb-3 overflow-y-auto pl-3">
           <div className="absolute left-3 h-full border-s" />
           {activities.map((activity, index) => (
             <TaskActivityComponent

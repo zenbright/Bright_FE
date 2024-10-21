@@ -15,17 +15,17 @@ export default function Notfoundpage() {
   };
 
   return (
-    <div className="bg-not_found_background w-full">
-      <div className="container flex items-center justify-center min-h-screen px-6 py-12 mx-auto">
-        <div className="flex flex-col items-center max-w-lg mx-auto text-center">
-          <p className="p-3 text-sm text-foreground rounded-full bg-transparent dark:bg-gray-800 mb-4">
+    <div className="w-full bg-not_found_background">
+      <div className="container mx-auto flex min-h-screen items-center justify-center px-6 py-12">
+        <div className="mx-auto flex max-w-lg flex-col items-center text-center">
+          <p className="mb-4 rounded-full bg-transparent p-3 text-sm text-foreground dark:bg-gray-800">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="2"
               stroke="currentColor"
-              className="w-20 h-20"
+              className="h-20 w-20"
             >
               <path
                 strokeLinecap="round"
@@ -35,7 +35,7 @@ export default function Notfoundpage() {
             </svg>
           </p>
 
-          <p className="mb-2 text-4xl tracking-tight font-bold lg:text-4xl text-primary-600 dark:text-primary-500">
+          <p className="text-primary-600 dark:text-primary-500 mb-2 text-4xl font-bold tracking-tight lg:text-4xl">
             {'404 Not found'}
           </p>
 
@@ -45,7 +45,7 @@ export default function Notfoundpage() {
             }
           </p>
 
-          <div className="flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto">
+          <div className="mt-6 flex w-full shrink-0 items-center gap-x-3 sm:w-auto">
             <Button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ export default function Notfoundpage() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-5 h-5 rtl:rotate-180 mr-2"
+                className="mr-2 h-5 w-5 rtl:rotate-180"
               >
                 <path
                   strokeLinecap="round"

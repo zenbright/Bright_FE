@@ -11,27 +11,27 @@ export const MessagePreviewTab = ({
 }) => {
   return (
     <div
-      className={`flex items-center py-2.5 px-3 ${isSelected ? 'bg-gray-500 bg-opacity-20' : ''}`}
+      className={`flex items-center px-3 py-2.5 ${isSelected ? 'bg-gray-500 bg-opacity-20' : ''}`}
       onClick={onClick}
     >
       {/* User Avatar */}
-      <Avatar className="w-11 h-11">
+      <Avatar className="h-11 w-11">
         <AvatarImage src={profileImage} />
         <AvatarFallback>{userName.slice(0, 2)}</AvatarFallback>
       </Avatar>
 
-      <div className="ml-3 flex-1 w-44">
+      <div className="ml-3 w-44 flex-1">
         {/* Username */}
         <div className="flex items-center justify-between">
-          <p className="font-semibold text-black/70 max-w-28 truncate text-sm">
+          <p className="max-w-28 truncate text-sm font-semibold text-black/70">
             {userName}
           </p>
           {/* Time */}
-          <p className="text-black/40 text-xs">{sentTime}</p>
+          <p className="text-xs text-black/40">{sentTime}</p>
         </div>
 
         {/* Message content */}
-        <p className="text-black/40 mt-1 truncate text-xs">{message}</p>
+        <p className="mt-1 truncate text-xs text-black/40">{message}</p>
       </div>
     </div>
   );

@@ -97,7 +97,7 @@ export const TaskContainer = ({ task }) => {
           height: dimensions.height,
           ...style,
         }}
-        className="bg-gray-300/60 rounded-md mb-1 border-2"
+        className="mb-1 rounded-md border-2 bg-gray-300/60"
       />
     );
   }
@@ -117,12 +117,12 @@ export const TaskContainer = ({ task }) => {
       <div
         ref={setNodeRef}
         style={style}
-        className="bg-white rounded-md border-2 border-slate-200 mb-1"
+        className="mb-1 rounded-md border-2 border-slate-200 bg-white"
         {...attributes}
         {...listeners}
       >
         <div className="pl-3 pr-1" onClick={() => setIsShowTaskDetailed(true)}>
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <div className="flex gap-1">
               {task.tags &&
                 task.tags.slice(0, 2).map(tag => (
@@ -139,7 +139,7 @@ export const TaskContainer = ({ task }) => {
                 ))}
 
               {task.tags.length > 2 && (
-                <Badge className="bg-slate-100 text-slate-500 h-6 hover:bg-slate-200/80">
+                <Badge className="h-6 bg-slate-100 text-slate-500 hover:bg-slate-200/80">
                   + {task.tags.length - 2}
                 </Badge>
               )}
@@ -148,7 +148,7 @@ export const TaskContainer = ({ task }) => {
             <Button
               variant="ghost"
               onClick={e => e.stopPropagation()}
-              className="text-gray-500/60 hover:bg-transparent hover:text-gray-500/60 hover:cursor-default"
+              className="text-gray-500/60 hover:cursor-default hover:bg-transparent hover:text-gray-500/60"
             >
               <MoreHorizontal />
             </Button>
@@ -156,19 +156,19 @@ export const TaskContainer = ({ task }) => {
 
           <div>
             {/* Task Contents */}
-            <div className="text-xl font-semibold truncate max-w-52">
+            <div className="max-w-52 truncate text-xl font-semibold">
               {task.title}
             </div>
 
-            <div className="text-sm truncate max-w-60">{task.des}</div>
+            <div className="max-w-60 truncate text-sm">{task.des}</div>
 
             {/* Asignee List */}
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
               <MemberList width={6} height={6} members={task.memList} />
 
               {/* prevent on trigger drag event */}
               <Button onClick={e => e.stopPropagation()} variant="ghost">
-                <UserRoundPlus className="w-4 h-4" />
+                <UserRoundPlus className="h-4 w-4" />
               </Button>
             </div>
 
@@ -177,19 +177,19 @@ export const TaskContainer = ({ task }) => {
             {/* Helper Buttons */}
             <div className="flex items-center justify-between">
               <div className="flex gap-2 text-sm">
-                <div className="flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2">
-                  <List className="w-4 h-5" />
+                <div className="flex items-center gap-1 p-2 hover:rounded-md hover:bg-slate-300/20">
+                  <List className="h-5 w-4" />
                   {task.todos.length}
                 </div>
 
-                <div className="flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2">
-                  <Paperclip className="w-4 h-5" />
+                <div className="flex items-center gap-1 p-2 hover:rounded-md hover:bg-slate-300/20">
+                  <Paperclip className="h-5 w-4" />
                   {task.attachments.length}
                 </div>
 
                 {task.endDate && (
-                  <div className="flex items-center gap-1 hover:bg-slate-300/20 hover:rounded-md p-2">
-                    <Calendar className="w-4 h-5" />{' '}
+                  <div className="flex items-center gap-1 p-2 hover:rounded-md hover:bg-slate-300/20">
+                    <Calendar className="h-5 w-4" />{' '}
                     {task.endDate && <div>{remainingDateText}</div>}
                   </div>
                 )}
@@ -200,9 +200,9 @@ export const TaskContainer = ({ task }) => {
                 onClick={e => {
                   e.stopPropagation();
                 }}
-                className="text-gray-500/60 hover:bg-transparent hover:text-gray-500/60 hover:cursor-default"
+                className="text-gray-500/60 hover:cursor-default hover:bg-transparent hover:text-gray-500/60"
               >
-                <Flag className="w-4 h-4" />
+                <Flag className="h-4 w-4" />
               </Button>
             </div>
           </div>
