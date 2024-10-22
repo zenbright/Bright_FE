@@ -2,15 +2,22 @@
 import BrightLogo from '@/assets/images/app-logo/logomini-dark.svg';
 import { Button } from '@/components/ui/button';
 import { Compare } from '@/components/ui/compare';
+import { Input } from '@/components/ui/input';
+import { TextHoverEffect } from '@/components/ui/text-hover-effect';
 import { TypewriterEffectSmooth } from '@/components/ui/typewriter-effect';
 import { BRIGHT_EMAIL } from '@/config/constants/strings.global';
 import { AuroraBackground } from '@components/ui/aurora-background';
 import { FlipWords } from '@components/ui/flip-words';
+import { LampContainer } from '@components/ui/lamp';
 import { PlaceholdersAndVanishInput } from '@components/ui/placeholders-and-vanish-input';
 import { DiscordLogoIcon } from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
 import { Copyright } from 'lucide-react';
 import { GithubIcon } from 'lucide-react';
+import { Fingerprint } from 'lucide-react';
+import { LockKeyhole } from 'lucide-react';
+import { Headset } from 'lucide-react';
+import { Siren } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
@@ -44,6 +51,7 @@ const placeholders = [
 
 export const Page = () => {
   const headerRef = useRef(null);
+  const Dot = () => <span>&#8226;</span>;
 
   const handleChange = e => {
     console.log(e.target.value);
@@ -200,7 +208,66 @@ export const Page = () => {
             </div>
           </div>
 
-          <div className="mt-5 flex h-[400px] flex-col items-center gap-5" />
+          <div className="mt-32 flex w-full flex-col items-center font-monument text-2xl text-neutral-200">
+            <LampContainer>
+              <motion.h1
+                initial={{ opacity: 0.5, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.8,
+                  ease: 'easeInOut',
+                }}
+                className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-center font-monument text-4xl font-medium tracking-tight text-transparent md:text-4xl"
+              >
+                Your data is safe <br /> with multi-factor authentication.
+                <div className="mt-10 flex flex-col items-center gap-6 text-xl">
+                  We are committed to protecting your data and privacy.
+                  <div className="grid grid-cols-2 gap-12 text-neutral-300">
+                    <div className="flex gap-2">
+                      <Fingerprint /> Multi-factor authentication
+                    </div>
+
+                    <div className="flex gap-2">
+                      <LockKeyhole />
+                      End-to-end encryption
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-12 text-neutral-300">
+                    <div className="flex gap-2">
+                      <Headset /> 24/7 Monitoring & Support
+                    </div>
+
+                    <div className="flex gap-2">
+                      <Siren />
+                      Regular Security Audits
+                    </div>
+                  </div>
+                </div>
+              </motion.h1>
+            </LampContainer>
+          </div>
+
+          <div className="-mt-40 flex w-full flex-col items-center px-32 font-monument text-2xl text-neutral-200">
+            <div className="flex flex-col items-center gap-6 text-center font-monument text-4xl text-neutral-200">
+              <div className="font-monument">{'Join the waitlist'}</div>
+
+              <div className="text-xl font-semibold italic text-neutral-300">
+                {
+                  'Be the first to know when we launch! Sign up now and secure your spot for exclusive early access and updates.'
+                }
+              </div>
+
+              <div className="flex max-w-lg items-center space-x-2">
+                <Input type="email" placeholder="Email" />
+                <Button type="submit">Subscribe</Button>
+              </div>
+            </div>
+          </div>
+
+          <TextHoverEffect text="COMING SOON 2025" />
+
+          <div className="mt-5 grid h-[400px] grid-cols-3 items-center gap-5"></div>
         </div>
       </div>
     </div>
