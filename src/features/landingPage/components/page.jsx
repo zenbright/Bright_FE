@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import BrightLogo from '@/assets/images/app-logo/logomini-dark.svg';
+import BrightLogo from '@/assets/images/app-logo/logomini-light.svg';
 import { Button } from '@/components/ui/button';
 import { Compare } from '@/components/ui/compare';
 import { Input } from '@/components/ui/input';
@@ -48,6 +48,11 @@ const placeholders = [
   'Automate workflows with ease.',
   'Seamless remote team collaboration.',
 ];
+
+const buttonFeatureLabels = ['Features', 'Pricing', 'Security'];
+const buttonCompanyLabels = ['About', 'Careers', 'Partners'];
+const buttonResourcesLabels = ['Blog', 'Help Center', 'Status'];
+const buttonLegalLabels = ['Privacy', 'Terms', 'Cookies'];
 
 export const Page = () => {
   const headerRef = useRef(null);
@@ -266,8 +271,93 @@ export const Page = () => {
           </div>
 
           <TextHoverEffect text="COMING SOON 2025" />
+        </div>
+      </div>
 
-          <div className="mt-5 grid h-[400px] grid-cols-3 items-center gap-5"></div>
+      <div className="grid grid-cols-5 items-center gap-5 border-t border-neutral-800 py-8 pl-16 text-neutral-300">
+        <div className="mt-4 flex flex-col gap-2 py-4">
+          <img src={BrightLogo} alt="Bright Logo" className="w-40" />
+          <div className="flex items-center">
+            <div className="mr-2 text-md">Zen Bright @2024</div>
+
+            <Button
+              className="hover:bg-white/10 hover:text-white"
+              size="icon"
+              variant="ghost"
+              onClick={() => {
+                window.open('https://github.com/zenbright/');
+              }}
+            >
+              <GithubIcon />
+            </Button>
+
+            <Button
+              className="hover:bg-white/10 hover:text-white"
+              size="icon"
+              variant="ghost"
+              onClick={() => {
+                window.open('https://www.facebook.com/zenbright/');
+              }}
+            >
+              <DiscordLogoIcon className="h-6 w-6" />
+            </Button>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-start gap-2">
+          <div className="font-monument text-white">{'Product'}</div>
+
+          {buttonFeatureLabels.map(label => (
+            <Button
+              key={label}
+              variant="link"
+              className="px-0 text-neutral-300"
+            >
+              {label}
+            </Button>
+          ))}
+        </div>
+
+        <div className="flex flex-col items-start gap-2">
+          <div className="font-monument text-white">{'Company'}</div>
+
+          {buttonCompanyLabels.map(label => (
+            <Button
+              key={label}
+              variant="link"
+              className="px-0 text-neutral-300"
+            >
+              {label}
+            </Button>
+          ))}
+        </div>
+
+        <div className="flex flex-col items-start gap-2">
+          <div className="font-monument text-white">{'Resources'}</div>
+
+          {buttonResourcesLabels.map(label => (
+            <Button
+              key={label}
+              variant="link"
+              className="px-0 text-neutral-300"
+            >
+              {label}
+            </Button>
+          ))}
+        </div>
+
+        <div className="flex flex-col items-start gap-2">
+          <div className="font-monument text-white">{'Legal'}</div>
+
+          {buttonLegalLabels.map(label => (
+            <Button
+              key={label}
+              variant="link"
+              className="px-0 text-neutral-300"
+            >
+              {label}
+            </Button>
+          ))}
         </div>
       </div>
     </div>
