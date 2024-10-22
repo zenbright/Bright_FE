@@ -8,91 +8,78 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Progress } from '@/components/ui/progress';
-import { Upload } from 'lucide-react';
+import { Upload, X } from 'lucide-react';
 import { useRef } from 'react';
-import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Check } from 'lucide-react';
-
-import {
-  ALLOWED_EXTENSIONS,
-  FILE_SIZE_EXCEED,
-  FILE_UNSUPPORTED,
-} from '../../config/constants/strings.global';
 import { FailureAlert } from './alert-failure';
+import { useFileUpload } from '@/lib/system-service/file-upload';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFile, selectFileQueue, clearFiles } from '@/config/slice/file-slice';
+import { useFileSelection } from '@/hooks/file-upload/file-selection';
+import { useUploadStatuses } from '@/hooks/file-upload/upload-status';
+import { useState } from 'react';
 
 export function FileUpload() {
+  const dispatch = useDispatch();
+  const fileQueue = useSelector(selectFileQueue);
   const fileSelectInput = useRef(null);
-  const [isUploadFailed, setIsUploadFailed] = useState(false);
-  const [error, setError] = useState();
-  const [selectedFiles, setSelectedFiles] = useState([]); // Array for multiple files
-  const [uploadStatuses, setUploadStatuses] = useState({}); // Track each file's upload status
+  const {
+    selectedFiles,
+    error,
+    isUploadFailed,
+    onDrop,
+    setError,
+    setIsUploadFailed,
+  } = useFileSelection();
+  const {
+    uploadStatuses,
+    handleProgress,
+    markAsComplete,
+    removeStatus,
+    clearStatuses,
+  } = useUploadStatuses();
   const [isUploading, setIsUploading] = useState(false);
 
-  const onDrop = useCallback(acceptedFiles => {
-    const newFiles = [];
-    const newUploadStatuses = {};
-
-    acceptedFiles.forEach(file => {
-      const extension = file.name.split('.').pop().toLowerCase();
-
-      if (ALLOWED_EXTENSIONS.includes(extension) && file.size <= 25000000) {
-        newFiles.push(file);
-        newUploadStatuses[file.name] = { progress: 0, status: 'ready' }; // Initialize each file's status
-        setError(null);
-        setIsUploadFailed(false);
-      } else {
-        if (file.size > 25000000) {
-          setError({
-            title: FILE_SIZE_EXCEED.TITLE,
-            des: FILE_SIZE_EXCEED.DES,
-          });
-        } else {
-          setError({
-            title: FILE_UNSUPPORTED.TITLE,
-            des: FILE_UNSUPPORTED.DES,
-          });
-        }
-        setIsUploadFailed(true);
-      }
-    });
-
-    setSelectedFiles(prevFiles => [...prevFiles, ...newFiles]); // Add new files to the array
-    setUploadStatuses(prevStatuses => ({
-      ...prevStatuses,
-      ...newUploadStatuses,
-    }));
-  }, []);
+  const { mutateAsync } = useFileUpload(handleProgress); // Use the custom hook
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
+    onDrop: (acceptedFiles) => {
+      onDrop(acceptedFiles); // Use the onDrop function from useFileSelection
+    },
     multiple: true, // Allow multiple files to be dropped
   });
 
-  const handleUpload = () => {
-    if (!selectedFiles.length) return;
+  const handleUpload = async () => {
+    if (!fileQueue.length) return;
 
     setIsUploading(true);
 
-    selectedFiles.forEach((file, index) => {
-      const fakeUpload = setInterval(() => {
-        setUploadStatuses(prevStatuses => {
-          const newProgress = prevStatuses[file.name].progress + 10;
-          if (newProgress >= 100) {
-            clearInterval(fakeUpload);
-            return {
-              ...prevStatuses,
-              [file.name]: { progress: 100, status: 'complete' },
-            };
-          }
-          return {
-            ...prevStatuses,
-            [file.name]: { progress: newProgress, status: 'uploading' },
-          };
-        });
-      }, 500);
-    });
+    try {
+      await mutateAsync(fileQueue.map(file => ({ file })));
+
+      fileQueue.forEach((file) => {
+        markAsComplete(file.name);
+      });
+    } catch (uploadError) {
+      setIsUploadFailed(true);
+      setError({ title: 'Upload Failed', des: uploadError.message });
+    } finally {
+      setIsUploading(false);
+    }
   };
+
+  const handleRemoveFile = (fileName) => {
+    dispatch(removeFile(fileName)); // Remove file from Redux store
+    removeStatus(fileName); // Remove status from local state
+  };
+
+  const handleClose = () => {
+    dispatch(clearFiles()); // Clear all files from Redux store
+    clearStatuses(); // Clear all upload statuses
+  };
+
+  const allFilesUploaded = fileQueue.length > 0 && fileQueue.every(file => uploadStatuses[file.name]?.status === 'complete');
 
   return (
     <Dialog open={true}>
@@ -138,20 +125,29 @@ export function FileUpload() {
           </div>
 
           {/* Show selected files */}
-          {selectedFiles.length > 0 && (
-            <div className="font-semibold text-sm text-foreground max-w-[375px]">
-              {selectedFiles.map((file, index) => (
+          {fileQueue.length > 0 && (
+            <div className="font-semibold text-sm overflow-auto max-h-[300px] text-foreground max-w-[375px]">
+              {fileQueue.map((file, index) => (
                 <div key={index} className="pt-2">
                   <div className='border rounded-xl px-2 py-3'>
                     {/* Show file name and status */}
                     <div className="flex justify-between items-center mb-2">
-                      <p className="text-ellipsis truncate w-[80%]">
+                      <p className="text-ellipsis truncate w-[70%]">
                         {file.name}
                       </p>
-                      <div className="text-sm ">
-                        {uploadStatuses[file.name]?.status === 'complete'
-                          ? <Check className='w-4 h-4'/>
-                          : `${uploadStatuses[file.name]?.progress}%`}
+                      <div className="flex items-center gap-2">
+                        <div className="text-sm ">
+                          {uploadStatuses[file.name]?.status === 'complete'
+                            ? <Check className='w-4 h-4'/>
+                            : `${uploadStatuses[file.name]?.progress || 0}%`}
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => handleRemoveFile(file.name)}
+                        >
+                          <X className="w-4 h-4" />
+                        </Button>
                       </div>
                     </div>
                     {/* Show progress bar */}
@@ -168,10 +164,10 @@ export function FileUpload() {
         <DialogFooter>
           <Button
             type="submit"
-            onClick={handleUpload}
-            disabled={selectedFiles.length === 0 || isUploading}
+            onClick={allFilesUploaded ? handleClose : handleUpload}
+            disabled={isUploading || fileQueue.length === 0}
           >
-            {isUploading ? 'Uploading...' : 'Upload'}
+            {isUploading ? 'Uploading...' : allFilesUploaded ? 'Close' : 'Upload'}
           </Button>
         </DialogFooter>
 
