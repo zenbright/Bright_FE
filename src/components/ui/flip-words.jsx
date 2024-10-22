@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export const FlipWords = ({
   words,
-  duration = 3000,
+  duration = 5000,
   className
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
@@ -77,7 +77,7 @@ export const FlipWords = ({
                   delay: wordIndex * 0.3 + letterIndex * 0.05,
                   duration: 0.2,
                 }}
-                className="inline-block font-monument">
+                className="inline-block">
                 {letter}
               </motion.span>
             ))}
