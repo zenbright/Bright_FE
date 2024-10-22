@@ -167,6 +167,12 @@ module.exports = {
         'meteor-effect': 'meteor 5s linear infinite',
         aurora: "aurora 60s linear infinite",
       },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+        monument: ['Monument Extended Regular', 'sans-serif'],
+        'monument-bold': ['Monument Extended Ultrabold', 'sans-serif'],
+      },
     },
   },
   plugins: [
