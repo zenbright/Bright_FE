@@ -137,7 +137,7 @@ export const Page = () => {
                 size="icon"
                 variant="ghost"
                 onClick={() => {
-                  window.open('https://www.facebook.com/zenbright/');
+                  window.open('https://discord.gg/ysX3vSsS');
                 }}
               >
                 <DiscordLogoIcon className="h-6 w-6" />
@@ -289,7 +289,7 @@ export const Page = () => {
               size="icon"
               variant="ghost"
               onClick={() => {
-                window.open('https://www.facebook.com/zenbright/');
+                window.open('https://discord.gg/ysX3vSsS');
               }}
             >
               <DiscordLogoIcon className="h-6 w-6" />
