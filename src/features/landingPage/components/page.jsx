@@ -22,6 +22,7 @@ import {
   TRADEMARK,
   WELCOME_TEXT,
 } from '../assets/strings';
+import AICard from './ai-integration';
 import { Header } from './header';
 import { MissionGroup } from './mission';
 
@@ -185,6 +186,20 @@ export const Page = () => {
               </div>
             </div>
           </div>
+
+          <div className="grid w-full grid-cols-2 items-center px-32 font-monument text-2xl text-neutral-200">
+            <AICard />
+            <div className="font-monument text-2xl text-neutral-200">
+              {'AI-Powered Insights'}
+
+              <div className="mt-7 text-neutral-300">
+                {
+                  'Automate your workflows and receive intelligent project recommendations with integrated AI.'
+                }
+              </div>
+            </div>
+          </div>
+
           <div className="mt-5 flex h-[400px] flex-col items-center gap-5" />
         </div>
       </div>
