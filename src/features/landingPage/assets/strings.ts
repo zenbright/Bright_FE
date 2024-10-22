@@ -20,7 +20,7 @@ export const WELCOME_TEXT = [
 export const INTRODUCTION = {
   LANDING_PAGE: {
     SHORT: 'The complete project management solution',
-    LONG: 'Streamline communication, boost productivity, and deliver projects on time with our powerful collaboration suite.',
+    LONG: 'Streamline communication, boost productivity.',
   },
   GETTING_STARTED: {
     OVERVIEW:
