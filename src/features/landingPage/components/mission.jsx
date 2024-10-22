@@ -6,10 +6,10 @@ export const MissionGroup = () => {
   const FeaturedButton = ({ title, des }) => {
     return (
       <div>
-        <div className=" w-full relative max-w-xs">
-          <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
-          <div className="relative shadow-xl bg-slate-100 border border-slate-200  px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start">
-            <div className="h-5 w-5 rounded-full border flex items-center justify-center mb-4 border-gray-500">
+        <div className="relative w-full max-w-xs">
+          <div className="absolute inset-0 h-full w-full scale-[0.80] transform rounded-full bg-red-500 bg-gradient-to-r from-blue-500 to-teal-500 blur-3xl" />
+          <div className="relative flex h-full flex-col items-start justify-end overflow-hidden rounded-2xl border border-slate-200 bg-neutral-900 px-4 py-8 shadow-xl">
+            <div className="mb-4 flex h-5 w-5 items-center justify-center rounded-full border border-gray-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -26,15 +26,15 @@ export const MissionGroup = () => {
               </svg>
             </div>
 
-            <h1 className="font-bold text-xl mb-4 relative z-30 text-black">
+            <h1 className="relative z-30 mb-4 font-monument text-xl font-bold text-neutral-200">
               {title}
             </h1>
 
-            <p className="font-normal text-base text-slate-500 mb-4 relative z-30">
+            <p className="relative z-30 mb-4 text-base font-normal italic text-neutral-100">
               {des}
             </p>
 
-            <button className="border px-4 py-1 rounded-lg  border-gray-500 text-black">
+            <button className="rounded-lg border border-gray-500 px-4 py-2 text-white hover:bg-black">
               Explore
             </button>
 
@@ -47,30 +47,16 @@ export const MissionGroup = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 items-center">
-      <div className="font-bold text-5xl self-center text-black">
-        Our Missions
-      </div>
-      <div className=" font text-lg font-semibold max-w-xl text-center text-black">
-        {
-          'Through collaboration and expertise, we provide the tools and resources you need to achieve your goals.'
-        }
-      </div>
-
-      <div className="flex gap-8 mt-4">
+    <div className="flex flex-col items-center gap-6">
+      <div className="mt-4 flex gap-8">
         <FeaturedButton
-          title="For Project Managers"
+          title="For Managers"
           des="Seamless management for individuals and enterprises. Achieve peak productivity."
         />
 
         <FeaturedButton
           title="For Freelancers"
           des="Work smarter, not harder. Manage your projects efficiently and stay organized with our flexible tools."
-        />
-
-        <FeaturedButton
-          title="For Educators & Trainers"
-          des="Manage courses effectively and achieve learning goals with our easy-to-use tools."
         />
 
         <FeaturedButton

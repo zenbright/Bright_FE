@@ -10,8 +10,8 @@ function SettingSideBar() {
   };
 
   return (
-    <div className="h-dvh w-[16vw] bg-background flex flex-col no-scrollbar overflow-auto mr-[3vw]">
-      <div className="text-2xl font-light top-0 pt-8 pb-[14px] px-2 border-b-[1px] border-slate-300/30 group w-full">
+    <div className="no-scrollbar mr-[3vw] flex h-dvh w-[16vw] flex-col overflow-auto bg-background">
+      <div className="group top-0 w-full border-b-[1px] border-slate-300/30 px-2 pb-[14px] pt-8 text-2xl font-light">
         {'Setting'}
       </div>
 

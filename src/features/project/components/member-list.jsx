@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import userDefaultProfile from '@/assets/images/user-profile-default.svg';
+import userDefaultProfile from '@/assets/images/defaults/user-profile.svg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -23,7 +23,7 @@ export const MemberList = ({
 
   return (
     <div className="flex">
-      <div className="flex -space-x-4 rtl:space-x-reverse mr-3">
+      <div className="mr-3 flex -space-x-4 rtl:space-x-reverse">
         {members.slice(0, 3).map((member, index) => (
           <Avatar key={index} className={`w-${width} h-${height} rounded-full`}>
             <AvatarImage src={member.imageUrl} alt={member.name} />
@@ -33,8 +33,7 @@ export const MemberList = ({
 
         {shouldRenderLink && (
           <a
-            className={`flex items-center justify-center w-${width} h-${height} text-xs font-medium text-white bg-gray-600
-            rounded-full hover:bg-gray-600 z-10`}
+            className={`flex items-center justify-center w-${width} h-${height} z-10 rounded-full bg-gray-600 text-xs font-medium text-white hover:bg-gray-600`}
             href="#"
           >
             +{members.length - 3}
@@ -42,7 +41,7 @@ export const MemberList = ({
         )}
 
         {members.length == 0 && (
-          <div className="font-light text-sm text-gray-500/80">
+          <div className="text-sm font-light text-gray-500/80">
             {' '}
             No Assignee{' '}
           </div>

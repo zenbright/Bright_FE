@@ -169,7 +169,7 @@ const TaskCreationForm = ({
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit, onError)}
-            className=" space-y-4"
+            className="space-y-4"
           >
             {/* Task title */}
             <FormField
@@ -213,7 +213,7 @@ const TaskCreationForm = ({
             />
 
             {/* Date Seletection */}
-            <div className="flex justify-between w-full gap-2">
+            <div className="flex w-full justify-between gap-2">
               <FormField
                 control={form.control}
                 name="startDate"

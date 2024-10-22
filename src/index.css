@@ -152,8 +152,17 @@
   }
 }
 
+/* Define @font-face rules */
 .nunito {
   font-family: nunito, sans-serif;
+}
+
+.font-monument {
+  font-family: 'Monument Extended Regular', sans-serif;
+}
+
+.font-monument-bold {
+  font-family: 'Monument Extended Ultrabold', sans-serif;
 }
 
 * {

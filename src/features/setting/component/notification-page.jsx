@@ -93,14 +93,14 @@ function Notification() {
   };
 
   return (
-    <div className="container-ns flex flex-col w-[74.4vw] overflow-auto pb-10">
-      <div className=" z-30 mx-3 text-2xl font-light pt-8 pb-[14px] border-b-[1px] border-slate-300 group sticky bg-background">
+    <div className="container-ns flex w-[74.4vw] flex-col overflow-auto pb-10">
+      <div className="group sticky z-30 mx-3 border-b-[1px] border-slate-300 bg-background pb-[14px] pt-8 text-2xl font-light">
         {'Notification'}
       </div>
       <div className="flex flex-col">
         <Form {...form}>
           <form onSubmit={form.handleSubmit({ onSubmit, onError })}>
-            <div className="w-[98%] rounded-md border-[1px] m-3 h-fit py-3 px-3">
+            <div className="m-3 h-fit w-[98%] rounded-md border-[1px] px-3 py-3">
               <FormField
                 control={form.control}
                 name="email"
@@ -137,17 +137,17 @@ function Notification() {
                 )}
               />
             </div>
-            <div className="w-[98%] rounded-md border-[1px] m-3 h-fit">
-              <div className="p-3 border-b-[1px] bg-opacity-50 font-semibold bg-foreground text-background rounded-t-md">
+            <div className="m-3 h-fit w-[98%] rounded-md border-[1px]">
+              <div className="rounded-t-md border-b-[1px] bg-foreground bg-opacity-50 p-3 font-semibold text-background">
                 {'Subscription'}
               </div>
               <FormField
                 control={form.control}
                 name="community_emails"
                 render={({ field }) => (
-                  <FormItem className="p-3 border-b-[1px] flex flex-row justify-between items-center">
+                  <FormItem className="flex flex-row items-center justify-between border-b-[1px] p-3">
                     <div>
-                      <FormLabel className="font-semibold text-base">
+                      <FormLabel className="text-base font-semibold">
                         {'Communication email'}
                       </FormLabel>
                       <FormDescription className="text-md">
@@ -169,9 +169,9 @@ function Notification() {
                 control={form.control}
                 name="security_emails"
                 render={({ field }) => (
-                  <FormItem className="p-3 border-b-[1px] flex flex-row justify-between items-center">
+                  <FormItem className="flex flex-row items-center justify-between border-b-[1px] p-3">
                     <div>
-                      <FormLabel className="font-semibold text-base">
+                      <FormLabel className="text-base font-semibold">
                         {'Security email'}
                       </FormLabel>
                       <FormDescription className="text-md">
@@ -193,9 +193,9 @@ function Notification() {
                 control={form.control}
                 name="social_emails"
                 render={({ field }) => (
-                  <FormItem className="p-3 border-b-[1px] flex flex-row justify-between items-center">
+                  <FormItem className="flex flex-row items-center justify-between border-b-[1px] p-3">
                     <div>
-                      <FormLabel className="font-semibold text-base">
+                      <FormLabel className="text-base font-semibold">
                         {'Social email'}
                       </FormLabel>
                       <FormDescription className="text-md">
@@ -217,9 +217,9 @@ function Notification() {
                 control={form.control}
                 name="notify_me"
                 render={({ field }) => (
-                  <FormItem className="p-3 border-b-[1px] flex flex-row justify-between items-center">
+                  <FormItem className="flex flex-row items-center justify-between border-b-[1px] p-3">
                     <div>
-                      <FormLabel className="font-semibold text-base">
+                      <FormLabel className="text-base font-semibold">
                         {'Don`t notify me'}
                       </FormLabel>
                       <FormDescription className="text-md">

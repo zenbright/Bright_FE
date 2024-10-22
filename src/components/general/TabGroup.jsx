@@ -13,12 +13,11 @@ const TabGroup = ({ tableNames }) => {
   };
 
   return (
-    <div className="flex gap-10 mt-2">
+    <div className="mt-2 flex gap-10">
       {tableNames.map((tableName, index) => (
         <button
           key={index}
-          className={`text-left overflow-hidden text-ellipsis whitespace-nowrap transition-all duration-75 font-semibold
-            ${selectedButton === index ? 'text-blue-700 border-blue-700' : ''}`}
+          className={`overflow-hidden text-ellipsis whitespace-nowrap text-left font-semibold transition-all duration-75 ${selectedButton === index ? 'border-blue-700 text-blue-700' : ''}`}
           style={{
             maxWidth: '20rem',
             boxSizing: 'content-box',

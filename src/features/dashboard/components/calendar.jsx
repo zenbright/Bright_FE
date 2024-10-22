@@ -35,7 +35,7 @@ export const Calendar = () => {
         <span
           key={i}
           className={cn(
-            'w-1 h-1 rounded-full',
+            'h-1 w-1 rounded-full',
             selectDate.toDate().toDateString() === date.toDate().toDateString()
               ? 'bg-white'
               : ''
@@ -50,7 +50,7 @@ export const Calendar = () => {
         <span
           key={'more'}
           className={cn(
-            'w-1 h-1 rounded-full',
+            'h-1 w-1 rounded-full',
             selectDate.toDate().toDateString() === date.toDate().toDateString()
               ? 'bg-white'
               : ''
@@ -69,15 +69,15 @@ export const Calendar = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="w-[80%] h-full flex flex-col justify-start mt-4">
-        <div className="w-full flex justify-between mb-3 mt-2">
+    <div className="flex flex-col items-center justify-center">
+      <div className="mt-4 flex h-full w-[80%] flex-col justify-start">
+        <div className="mb-3 mt-2 flex w-full justify-between">
           <h1 className="font-bold">
             {months[today.month()]}, {today.year()}
           </h1>
           <div className="flex items-center justify-center gap-2">
             <GrFormPrevious
-              className="text-xl cursor-pointer"
+              className="cursor-pointer text-xl"
               onClick={() => setToday(today.subtract(1, 'month'))}
             />
             <h1
@@ -87,27 +87,27 @@ export const Calendar = () => {
               Today
             </h1>
             <GrFormNext
-              className="text-xl cursor-pointer"
+              className="cursor-pointer text-xl"
               onClick={() => setToday(today.add(1, 'month'))}
             />
           </div>
         </div>
-        <div className="w-full grid grid-cols-7">
+        <div className="grid w-full grid-cols-7">
           {dateInWeek.map((date, index) => (
             <div
               key={index}
-              className="h-8 grid place-content-center text-sm font-semibold"
+              className="grid h-8 place-content-center text-sm font-semibold"
             >
               <h1>{date}</h1>
             </div>
           ))}
         </div>
-        <div className="w-full grid grid-cols-7">
+        <div className="grid w-full grid-cols-7">
           {generateDate(today.month(), today.year()).map(
             ({ date, currentMonth, today }, index) => (
               <div
                 key={index}
-                className="h-10 border-t grid place-content-center text-sm group"
+                className="group grid h-10 place-content-center border-t text-sm"
               >
                 <div
                   className={cn(
@@ -115,16 +115,16 @@ export const Calendar = () => {
                     today ? 'border border-red-500 text-red-500' : '',
                     selectDate.toDate().toDateString() ===
                       date.toDate().toDateString()
-                      ? 'border-black border text-black'
+                      ? 'border border-black text-black'
                       : '',
-                    'h-8 w-8 relative flex flex-col items-center place-content-center rounded-lg group-hover:border group-hover:border-black group-hover:bg-black group-hover:text-white transition-all cursor-pointer'
+                    'relative flex h-8 w-8 cursor-pointer flex-col place-content-center items-center rounded-lg transition-all group-hover:border group-hover:border-black group-hover:bg-black group-hover:text-white'
                   )}
                   onClick={() => setSelectDate(date)}
                 >
                   {date.date()}
                   {hasEvents(date) && (
-                    <div className="w-full flex justify-center items-center">
-                      <div className="absolute flex justify-center items-center">
+                    <div className="flex w-full items-center justify-center">
+                      <div className="absolute flex items-center justify-center">
                         <div className="flex gap-1">
                           {renderEventDots(date)}
                         </div>
@@ -137,13 +137,13 @@ export const Calendar = () => {
           )}
         </div>
       </div>
-      <div className="h-80 w-full mt-5 px-3 ">
-        <div className="flex justify-center items-center mb-2">
+      <div className="mt-5 h-80 w-full px-3">
+        <div className="mb-2 flex items-center justify-center">
           <h1 className="font-semibold">
             {selectDate.format('dddd MMMM D YYYY')}
           </h1>
         </div>
-        <div className="w-full flex flex-col gap-2 max-h-52 overflow-auto no-scrollbar">
+        <div className="no-scrollbar flex max-h-52 w-full flex-col gap-2 overflow-auto">
           {getEventsForDate(selectDate).length > 0 ? (
             getEventsForDate(selectDate).map((event, index) => (
               <EventDetail
@@ -157,10 +157,10 @@ export const Calendar = () => {
               />
             ))
           ) : (
-            <div className="flex flex-col justify-center items-center">
-              <div className="w-[80%] flex flex-col justify-center items-center">
-                <CalendarX2 className="w-20 h-20 opacity-25 stroke-1" />
-                <p className=" mt-3 text-center font-semibold opacity-50">
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex w-[80%] flex-col items-center justify-center">
+                <CalendarX2 className="h-20 w-20 stroke-1 opacity-25" />
+                <p className="mt-3 text-center font-semibold opacity-50">
                   Oops! Look like no events for this date
                 </p>
               </div>

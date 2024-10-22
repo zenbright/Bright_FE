@@ -49,7 +49,7 @@ export function ColumnContainer({
     return (
       <div
         ref={setNodeRef}
-        className="w-fit h-auto overflow-hidden bg-gray-300/60 rounded-md mb-1"
+        className="mb-1 h-auto w-fit overflow-hidden rounded-md bg-gray-300/60"
         style={style}
       >
         <div>
@@ -58,7 +58,7 @@ export function ColumnContainer({
           </Button>
         </div>
 
-        <div className=" h-[70vh] bg-transparent w-80 rounded-md mt-1"></div>
+        <div className="mt-1 h-[70vh] w-80 rounded-md bg-transparent"></div>
       </div>
     );
   }
@@ -66,21 +66,21 @@ export function ColumnContainer({
   return (
     <div
       ref={setNodeRef}
-      className="w-fit h-auto text-black rounded-md mb-1"
+      className="mb-1 h-auto w-fit rounded-md text-black"
       style={style}
     >
       <div {...attributes} {...listeners}>
-        <div className="bg-white p-2 border-2 border-slate-200 text-sm rounded-md w-80 max-w-80 overflow-hidden flex justify-between ">
-          <div className="flex font-bold h-5 items-center">
+        <div className="flex w-80 max-w-80 justify-between overflow-hidden rounded-md border-2 border-slate-200 bg-white p-2 text-sm">
+          <div className="flex h-5 items-center font-bold">
             <ListTodo className="mr-1 h-5" />
-            <span className="truncate max-w-36 mr-1">{col.title}</span>(
+            <span className="mr-1 max-w-36 truncate">{col.title}</span>(
             {taskList ? taskList.length : 0})
           </div>
 
           {/* Helper buttons */}
           <div className="flex items-center">
             <Plus
-              className="mr-2 w-5 h-5 hover:bg-slate-100 hover:rounded-full"
+              className="mr-2 h-5 w-5 hover:rounded-full hover:bg-slate-100"
               onClick={() => {
                 setIsCreateNewTask(true);
               }}
@@ -101,7 +101,7 @@ export function ColumnContainer({
         defer
       >
         {/* Task Containers */}
-        <div className="h-[70vh] w-80 rounded-md mt-1">
+        <div className="mt-1 h-[70vh] w-80 rounded-md">
           <SortableContext items={taskId}>
             {taskList &&
               taskList.map((task, index) => (

@@ -52,11 +52,11 @@ export const CreatableMultiSelectDropdown = ({
             className="w-[200px] justify-between"
           >
             {selectedItemList.length > 0 ? (
-              <div className="flex overflow-hidden gap-2">
+              <div className="flex gap-2 overflow-hidden">
                 {selectedItemList.map((item, index) => (
                   <div key={index} className="flex items-center">
                     <div
-                      className="w-2 h-2 mr-2 rounded-full"
+                      className="mr-2 h-2 w-2 rounded-full"
                       style={{
                         background: `${parseItemAttributes(item).color}`,
                       }}
@@ -84,10 +84,10 @@ export const CreatableMultiSelectDropdown = ({
             />
             <CommandEmpty className="m-1">
               <div
-                className="flex items-center hover:bg-slate-300/25 hover:cursor-pointer py-1.5 px-2 text-sm rounded-sm w-full h-full"
+                className="flex h-full w-full items-center rounded-sm px-2 py-1.5 text-sm hover:cursor-pointer hover:bg-slate-300/25"
                 onClick={() => onAddMoreItem(searchPhrase)}
               >
-                <Pencil className="h-3 w-3 mr-4" /> Add &apos;{searchPhrase}
+                <Pencil className="mr-4 h-3 w-3" /> Add &apos;{searchPhrase}
                 &apos;
               </div>
             </CommandEmpty>
@@ -115,7 +115,7 @@ export const CreatableMultiSelectDropdown = ({
                   {/* Tag Color Dot */}
                   {parseItemAttributes(items[key]).color && (
                     <div
-                      className={`w-2 h-2 mr-3 rounded-full`}
+                      className={`mr-3 h-2 w-2 rounded-full`}
                       style={{
                         background: `${parseItemAttributes(items[key]).color}`,
                       }}
@@ -132,9 +132,9 @@ export const CreatableMultiSelectDropdown = ({
       </Popover>
 
       {selectedItemList.length > 0 && (
-        <div className="flex items-center text-gray-500 text-sm ml-2">
+        <div className="ml-2 flex items-center text-sm text-gray-500">
           {' '}
-          <Plus className="w-3 h-3" /> {selectedItemList.length}
+          <Plus className="h-3 w-3" /> {selectedItemList.length}
         </div>
       )}
     </div>

@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import PropTypes from 'prop-types';
 
 export const MessagePreviewTab = ({
@@ -10,28 +11,27 @@ export const MessagePreviewTab = ({
 }) => {
   return (
     <div
-      className={`flex items-start p-4 ${isSelected ? 'bg-gray-500 bg-opacity-20' : ''}`}
+      className={`flex items-center px-3 py-2.5 ${isSelected ? 'bg-gray-500 bg-opacity-20' : ''}`}
       onClick={onClick}
     >
       {/* User Avatar */}
-      <div className="flex-shrink-0 w-10 h-10 rounded-full overflow-hidden">
-        <img
-          className="w-full h-full object-cover"
-          src={profileImage}
-          alt="User Avatar"
-        />
-      </div>
+      <Avatar className="h-11 w-11">
+        <AvatarImage src={profileImage} />
+        <AvatarFallback>{userName.slice(0, 2)}</AvatarFallback>
+      </Avatar>
 
-      <div className="ml-3 flex-1 w-60">
+      <div className="ml-3 w-44 flex-1">
         {/* Username */}
         <div className="flex items-center justify-between">
-          <p className="font-bold text-lg">{userName}</p>
+          <p className="max-w-28 truncate text-sm font-semibold text-black/70">
+            {userName}
+          </p>
           {/* Time */}
-          <p className="text-gray-500">{sentTime}</p>
+          <p className="text-xs text-black/40">{sentTime}</p>
         </div>
 
         {/* Message content */}
-        <p className="text-gray-800 mt-1 truncate">{message}</p>
+        <p className="mt-1 truncate text-xs text-black/40">{message}</p>
       </div>
     </div>
   );

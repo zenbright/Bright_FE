@@ -70,7 +70,7 @@ export default function AddMember({ open, onOpenChange }) {
           </DialogHeader>
           <div className="items-center space-x-2">
             Invite Members
-            <div className="mt-2 grid flex-1 grid-cols-4 gap-2 ">
+            <div className="mt-2 grid flex-1 grid-cols-4 gap-2">
               <Input
                 className="col-span-3"
                 id="email"
@@ -89,7 +89,7 @@ export default function AddMember({ open, onOpenChange }) {
               </Button>
             </div>
           </div>
-          <div className="mt-4 ">
+          <div className="mt-4">
             Members ({members.length})
             <ScrollArea className="h-56">
               <Table>
@@ -106,12 +106,12 @@ export default function AddMember({ open, onOpenChange }) {
                       </TableCell>
                       <TableCell>
                         <div>{member.name}</div>
-                        <div className="text-gray-500 text-sm overflow-hidden text-ellipsis whitespace-nowrap max-w-[160px]">
+                        <div className="max-w-[160px] overflow-hidden text-ellipsis whitespace-nowrap text-sm text-gray-500">
                           {member.email}
                         </div>
                       </TableCell>
                       <TableCell>
-                        <div className="flex flex-cols-2 gap-2">
+                        <div className="flex-cols-2 flex gap-2">
                           <Select
                             value={member.role}
                             onValueChange={value => {
@@ -147,7 +147,7 @@ export default function AddMember({ open, onOpenChange }) {
               </Table>
             </ScrollArea>
           </div>
-          <div className="items-center space-x-2 mt-4">
+          <div className="mt-4 items-center space-x-2">
             Copy Link
             <div className="mt-2 grid grid-cols-4 gap-2">
               <Input

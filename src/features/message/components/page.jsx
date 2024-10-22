@@ -1,24 +1,26 @@
-/* eslint-disable max-len */
-import { useState } from 'react';
+import { faker } from '@faker-js/faker';
+import { format } from 'date-fns';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { useMemo, useState } from 'react';
 
-import image from '../../../assets/images/rmitlogo.png';
-import {
-  MESSAGE_TAB_WIDTH,
-  NAV_BAR_WIDTH,
-} from '../../../lib/constants/size.global';
-import messageNew from '../assets/writing.png';
-import { MessagePreviewTab } from '../components/previewTab';
+import { MessagePreviewTab } from '../components/message-preview-tab';
 import { MessageContent } from './message-content';
+
+const FakeMessages = Array.from({ length: 10 }, (_, i) => ({
+  id: i,
+  userName: faker.internet.userName(),
+  profileImage: faker.image.avatar(),
+  message: faker.lorem.sentence(),
+  sentTime: faker.date.recent(),
+}));
 
 export const MessagePage = () => {
   const [selectedMessage, setSelectedMessage] = useState(-1);
-  const [selectedUserMessage, setSelectedUserMessage] = useState('');
   const [searchPhrase, setSearchPhrase] = useState('');
 
   const isContain = (str, search) => {
     const normalizedStr = str.toLowerCase();
     const normalizedSearch = search.toLowerCase();
-
     for (const char of normalizedSearch) {
       if (normalizedStr.indexOf(char) === -1) {
         return false;
@@ -32,81 +34,74 @@ export const MessagePage = () => {
     setSearchPhrase(value);
   };
 
-  const MessageList = () => {
-    const filteredList = Array.from({ length: 10 }, (_, i) => (
-      <MessagePreviewTab
-        key={i}
-        onClick={() => {
-          setSelectedMessage(i);
-          setSelectedUserMessage(`Mudoker ${i}`);
-        }}
-        isSelected={selectedMessage === i}
-        sentTime={'12:00 PM'}
-        userName={`Mudoker ${i}`}
-        profileImage={image}
-        message={'Helloooooooooooooooooooooooooooooooooo'}
-      />
-    )).filter(
+  const filteredList = useMemo(() => {
+    return FakeMessages.filter(
       message =>
-        searchPhrase === '' || isContain(message.props.userName, searchPhrase)
-    );
-
-    if (filteredList.length === 0) {
-      return (
-        <div className="flex items-center justify-center">
-          <p className="text-center p-5 font-medium opacity-60">
-            No results found
-          </p>
-        </div>
-      );
-    }
-    return filteredList;
-  };
+        searchPhrase === '' || isContain(message.userName, searchPhrase)
+    ).map(message => (
+      <MessagePreviewTab
+        key={message.id}
+        onClick={() => {
+          setSelectedMessage(message);
+        }}
+        isSelected={selectedMessage === message.id}
+        sentTime={format(message.sentTime, 'hh:mm a')}
+        userName={message.userName}
+        profileImage={message.profileImage}
+        message={message.message}
+      />
+    ));
+  }, [searchPhrase, selectedMessage]);
 
   return (
-    <div className="flex h-screen w-screen">
-      {/* Nav bar */}
-      <div
-        className="h-screen bg-black"
-        style={{ width: `${NAV_BAR_WIDTH}` }}
-      />
-
+    <div className="flex w-screen overflow-hidden">
       {/* Message section */}
-      <div
-        className="flex-col border-r h-screen"
-        style={{ width: `${MESSAGE_TAB_WIDTH}` }}
-      >
-        <div className="text-3xl font-medium p-4 flex items-center justify-between h-20">
-          <h1>Message</h1>
-          <button type="button" className="w-6 h-6">
-            <img src={messageNew} alt="writing" />
-          </button>
-        </div>
+      <div className="flex h-screen w-1/4 flex-col border-r">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="mx-2 mb-1 mt-5 h-10 rounded-md bg-gray-100/80 px-4 text-sm outline-none hover:bg-gray-200/80"
+          onChange={handleSearchInputChange}
+        />
 
-        <div className="relative flex items-center">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-gray-200 h-10 rounded-lg py-2 px-4 outline-none w-full mx-2 mb-1"
-            onChange={handleSearchInputChange}
-          />
-        </div>
-
-        {/* Make the message list scrollable */}
-        <div
-          className="overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200"
-          style={{ maxHeight: 'calc(100vh - 124px)' }}
+        <OverlayScrollbarsComponent
+          element="div"
+          options={{ scrollbars: { autoHide: 'auto' } }}
+          defer
+          className="flex-1 overflow-auto"
         >
-          <MessageList />
-        </div>
+          {filteredList.length === 0 ? (
+            <div className="flex w-full items-center justify-center">
+              <p className="mt-4 w-full text-center font-medium opacity-60">
+                {'No results found'}
+
+                {/* Placeholder */}
+                <MessagePreviewTab
+                  key={''}
+                  onClick={() => {
+                    setSelectedMessage('');
+                  }}
+                  isSelected={''}
+                  sentTime={''}
+                  userName={''}
+                  profileImage={''}
+                  message={''}
+                />
+              </p>
+            </div>
+          ) : (
+            filteredList
+          )}
+        </OverlayScrollbarsComponent>
       </div>
 
       {/* Message Content */}
-      <div style={{ width: '72vw' }}>
+      <div className="h-screen w-full overflow-auto">
         <MessageContent
-          selectedMessage={selectedMessage}
+          selectedMessage={selectedMessage.id}
           onlineStatus={false}
-          userName={selectedUserMessage}
+          userName={selectedMessage.userName}
+          userProfileImage={selectedMessage.profileImage}
         />
       </div>
     </div>

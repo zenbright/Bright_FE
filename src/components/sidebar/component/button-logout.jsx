@@ -30,11 +30,10 @@ function LogoutButton({ text, children }) {
   return (
     <div
       id={text}
-      className="dropdown flex w-full items-center nav-pl
-        transition-all relative h-10 cursor-pointer rounded-md group/item"
+      className="dropdown nav-pl group/item relative flex h-10 w-full cursor-pointer items-center rounded-md transition-all"
     >
       <AlertDialog>
-        <AlertDialogTrigger className="p-0.5 group-hover:w-[90%] h-full flex items-center gap-0 group-hover:gap-3 group-hover/item:bg-rose-600/90 rounded-md group is-hovered mb-8">
+        <AlertDialogTrigger className="is-hovered group mb-8 flex h-full items-center gap-0 rounded-md p-0.5 group-hover:w-[90%] group-hover:gap-3 group-hover/item:bg-rose-600/90">
           {/* <div className="fill-foreground dropdown-content flex transition-all group-[.is-hovered]: group-hover/item:fill-white ">
             {children}
           </div>
@@ -47,13 +46,13 @@ function LogoutButton({ text, children }) {
             {text}
           </div> */}
           <div
-            className={`flex group-hover:w-[90%] h-[90%] rounded-md w-fit text-sm`}
+            className={`flex h-[90%] w-fit rounded-md text-sm group-hover:w-[90%]`}
           >
-            <div className="flex justify-center items-center px-2 py-1.5 fill-foreground group-[.is-hovered]: group-hover/item:fill-white ">
+            <div className="group-[.is-hovered]: flex items-center justify-center fill-foreground px-2 py-1.5 group-hover/item:fill-white">
               {children}
             </div>
             <div
-              className={`font-medium  hidden group-hover:flex group-hover:justify-center group-hover:items-center group-[.is-hovered]: group-hover/item:text-white duration-0`}
+              className={`group-[.is-hovered]: hidden font-medium duration-0 group-hover:flex group-hover:items-center group-hover:justify-center group-hover/item:text-white`}
             >
               {text}
             </div>

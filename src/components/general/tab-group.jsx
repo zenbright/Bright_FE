@@ -18,7 +18,7 @@ const TabGroup = ({ tableNames = TableNames, selected, setSelected }) => {
       {tableNames.map((table, index) => (
         <Button
           key={index}
-          className={`flex py-3 px-2 gap-2 text-md font-semibold items-center ${selected === index ? 'bg-tab_group' : ''}`}
+          className={`text-md flex items-center gap-2 px-2 py-3 font-semibold ${selected === index ? 'bg-tab_group' : ''}`}
           disabled={table.isDisabled}
           variant="ghost"
           onClick={() => handleButtonClick(index)}

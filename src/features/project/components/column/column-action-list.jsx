@@ -58,7 +58,7 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Menu className="mr-2 w-5 h-5 hover:bg-slate-100 hover:rounded-full" />
+          <Menu className="mr-2 h-5 w-5 hover:rounded-full hover:bg-slate-100" />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>Action Menu</DropdownMenuLabel>
@@ -166,8 +166,8 @@ export const ColumnDropdownMenu = ({ deleteColumn, id, updateColumnTitle }) => {
               deleteColumn(id);
             }}
           >
-            <div className="hover:text-rose-500 flex w-56">
-              <Trash2 className="mr-2 h-4 w-4 " />
+            <div className="flex w-56 hover:text-rose-500">
+              <Trash2 className="mr-2 h-4 w-4" />
               <span>Delete</span>
             </div>
           </DropdownMenuItem>

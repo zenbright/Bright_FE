@@ -61,8 +61,8 @@ export const TaskTagCreationForm = ({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="grid pt-3 py-2">
-          <div className="grid grid-cols-4 items-center gap-4 mb-4">
+        <div className="grid py-2 pt-3">
+          <div className="mb-4 grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-left">
               {TASKTAG_CREATION_FORM.TAG_NAME}
             </Label>
@@ -79,7 +79,7 @@ export const TaskTagCreationForm = ({
               {TASKTAG_CREATION_FORM.COLOR}
             </Label>
 
-            <div className="flex w-full col-span-3 items-center h-full gap-1">
+            <div className="col-span-3 flex h-full w-full items-center gap-1">
               <Input
                 type="text"
                 value={tagColor}
@@ -103,14 +103,14 @@ export const TaskTagCreationForm = ({
               </Button>
             </div>
 
-            <div className="w-full col-span-4 text-black/50 font-semibold text-sm mt-4 italic">
+            <div className="col-span-4 mt-4 w-full text-sm font-semibold italic text-black/50">
               {TASKTAG_CREATION_FORM.COLOR_CRITERIA}{' '}
             </div>
           </div>
 
-          <div className="flex justify-end items-end relative pt-2">
+          <div className="relative flex items-end justify-end pt-2">
             <div
-              className="cursor-pointer hover:underline text-sm px-2 mt-1 rounded"
+              className="mt-1 cursor-pointer rounded px-2 text-sm hover:underline"
               onClick={() => setIsOpenColorPicker(true)}
             >
               {'More options'}

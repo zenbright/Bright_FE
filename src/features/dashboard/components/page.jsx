@@ -47,10 +47,10 @@ function Dashboard() {
   const options = { weekday: 'long', month: 'long', day: 'numeric' };
   const dateFormatted = currentTime.toLocaleDateString(undefined, options);
   return (
-    <div className="flex w-full p-4 gap-4">
+    <div className="flex w-full gap-4 p-4">
       {/* Section 1 */}
-      <div className="w-9/12 flex flex-col mt-4 justify-between gap-8">
-        <div className="space-y-2 flex justify-between items-center">
+      <div className="mt-4 flex w-9/12 flex-col justify-between gap-8">
+        <div className="flex items-center justify-between space-y-2">
           <div>
             <p>{dateFormatted}</p>
             <p className="text-3xl font-bold">{greeting}</p>
@@ -91,19 +91,19 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className=" place-content-center rounded-md">
-          <div className="flex place-content-center w-full">
+        <div className="place-content-center rounded-md">
+          <div className="flex w-full place-content-center">
             <CardContainer />
           </div>
         </div>
 
-        <div className="text-xl font-semibold h-full">
+        <div className="h-full text-xl font-semibold">
           <Chart />
         </div>
       </div>
 
       {/* Section 2 */}
-      <div className="w-3/12 border-[1px] mr-2 rounded-md">
+      <div className="mr-2 w-3/12 rounded-md border-[1px]">
         <Calendar />
       </div>
     </div>

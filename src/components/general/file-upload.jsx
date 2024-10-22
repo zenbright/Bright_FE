@@ -104,7 +104,7 @@ export function FileUpload() {
           >
             <Upload className="mb-5 h-7 w-7" />
 
-            <div className="flex gap-1 mb-1">
+            <div className="mb-1 flex gap-1">
               <div
                 className={`font-bold hover:cursor-pointer hover:underline text-foreground/70`}
                 onClick={() => fileSelectInput.current.click()}

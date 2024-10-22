@@ -18,6 +18,7 @@ import { RequireAuth } from './features/auth/components/RequireAuth';
 import Board from './features/board/Board';
 import Dashboard from './features/dashboard';
 import { LandingPage } from './features/landingPage';
+import MessagePage from './features/message';
 import Account from './features/setting/component/account-page';
 import Appearance from './features/setting/component/appearance-page';
 import Notification from './features/setting/component/notification-page';
@@ -40,37 +41,42 @@ const router = createBrowserRouter(
       <Route path="/auth" element={<AuthenticationPage />} />
 
       {/* <Route element={<RequireAuth />}> */}
+      <Route path="/welcome" element={<Welcome />} />
+      <Route path="/users" element={<UsersList />} />
+      {/* <Route element={<RequireAuth />}> */}
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/users" element={<UsersList />} />
 
-        <Route path="/user" element={<AppLayout />}>
-          {/* Settings routes */}
-          <Route path="/user/settings" element={<SettingLayout />}>
-            <Route path="" element={<Navigate to="edit-profile" replace />} />
-            <Route path="edit-profile" element={<Profile />} />
-            <Route path="account" element={<Account />} />
-            <Route path="appearance" element={<Appearance />} />
-            <Route path="notification" element={<Notification />} />
-            <Route path="*" element={<Notfoundpage />} />j
-          </Route>
+      <Route path="/user" element={<AppLayout />}>
+        {/* Settings routes */}
+        <Route path="/user/settings" element={<SettingLayout />}>
+          <Route path="" element={<Navigate to="edit-profile" replace />} />
+          <Route path="edit-profile" element={<Profile />} />
+          <Route path="account" element={<Account />} />
+          <Route path="appearance" element={<Appearance />} />
+          <Route path="notification" element={<Notification />} />
+          <Route path="*" element={<Notfoundpage />} />j
+        </Route>
 
-          {/* Dashboard route */}
-          <Route path="/user/dashboard" element={<Dashboard />} />
+        {/* Dashboard route */}
+        <Route path="/user/dashboard" element={<Dashboard />} />
 
-          {/* Project route */}
-          {/* Temporary Only */}
-          <Route
-            path="/user/notification"
-            element={<ProjectManagementPage />}
-          />
+        {/* Project route */}
+        {/* Temporary Only */}
+        <Route path="/user/notification" element={<ProjectManagementPage />} />
 
-          {/* Board route */}
-          <Route path="/user/board/:id" element={<Board />} />
+        {/* Board route */}
+        <Route path="/user/board/:id" element={<Board />} />
 
+        {/*Message route */}
+        <Route path="/user/inbox" element={<MessagePage />} />
+        {/* 404 route */}
+        <Route path="*" element={<Notfoundpage />} />
           {/* 404 route */}
           <Route path="*" element={<Notfoundpage />} />
         {/* </Route> */}
       </Route>
+      {/* </Route>j */}
 
       {/* 404 route */}
       <Route path="*" element={<Notfoundpage />} />

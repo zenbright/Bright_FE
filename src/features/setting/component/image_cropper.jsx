@@ -50,16 +50,16 @@ const ImageCropper = () => {
 
   return (
     <>
-      <label className="block mb-3 w-fit">
+      <label className="mb-3 block w-fit">
         <span className="sr-only">Choose profile photo</span>
         <input
           type="file"
           accept="image/*"
           onChange={onSelectFile}
-          className="block w-full text-sm text-slate-500 file:mr-4 file:py-1 file:px-2 file:rounded-full file:border-0 file:text-xs file:bg-gray-700 file:text-sky-300 hover:file:bg-gray-600"
+          className="block w-full text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:bg-gray-700 file:px-2 file:py-1 file:text-xs file:text-sky-300 hover:file:bg-gray-600"
         />
       </label>
-      {error && <p className="text-rose-600 text-md">{error}</p>}
+      {error && <p className="text-md text-rose-600">{error}</p>}
       {imageSrc && (
         <div className="flex flex-col items-center">
           <ReactCrop
@@ -77,7 +77,7 @@ const ImageCropper = () => {
               onLoad={onImageLoad}
             />
           </ReactCrop>
-          <button className="text-white font-mono text-xs py-2 px-4 rounded-2xl mt-4 bg-sky-500 hover:bg-sky-600">
+          <button className="mt-4 rounded-2xl bg-sky-500 px-4 py-2 font-mono text-xs text-white hover:bg-sky-600">
             Crop Image
           </button>
         </div>

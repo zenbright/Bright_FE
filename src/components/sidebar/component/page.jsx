@@ -1,3 +1,4 @@
+import { Mail } from 'lucide-react';
 import { useState } from 'react';
 
 import DashboardIcon from '../assets/images/dashboard.svg?react';
@@ -19,22 +20,22 @@ function Sidebar() {
   };
 
   return (
-    <div className="flex flex-row container-ns">
-      <div className="relative group w-[5.5vw] hover:w-[18vw] transition-al duration-200 bg-background border-r-2 pt-2 h-screen flex flex-col items-center">
+    <div className="container-ns flex flex-row">
+      <div className="transition-al group relative flex h-screen w-[5.5vw] flex-col items-center border-r-2 bg-background pt-2 duration-200 hover:w-[18vw]">
         {/* User Information */}
         <UserImageName text={'Username'} image={''} />
 
-        <div className="line mt-2 mb-3 p-[0.5px] w-[0vw] opacity-0 group-hover:opacity-100 bg-background overflow-hidden" />
+        <div className="line mb-3 mt-2 w-[0vw] overflow-hidden bg-background p-[0.5px] opacity-0 group-hover:opacity-100" />
 
         {/* Navigation Content */}
-        <div className="flex flex-col relative w-full h-screen space-y-4">
+        <div className="relative flex h-screen w-full flex-col space-y-4">
           <NavItem
             text={'Dashboard'}
             onClick={handleNavClick}
             select={selectedItem === 'Dashboard'}
           >
             <>
-              <DashboardIcon className="w-5 h-5" />
+              <DashboardIcon className="h-5 w-5" />
               <div className="grandchild-content absolute left-[18vw] top-[-77px] h-screen">
                 <ProjectDashboard />
               </div>
@@ -46,7 +47,15 @@ function Sidebar() {
             onClick={handleNavClick}
             select={selectedItem === 'Notification'}
           >
-            <NotificationIcon className="w-5 h-5" />
+            <NotificationIcon className="h-5 w-5" />
+          </NavItem>
+
+          <NavItem
+            text={'Inbox'}
+            onClick={handleNavClick}
+            select={selectedItem === 'Inbox'}
+          >
+            <Mail className="h-5 w-5" strokeWidth={1.3} />
           </NavItem>
 
           <NavItem
@@ -54,14 +63,14 @@ function Sidebar() {
             onClick={handleNavClick}
             select={selectedItem === 'Settings'}
           >
-            <SettingIcon className="w-5 h-5" />
+            <SettingIcon className="h-5 w-5" />
           </NavItem>
         </div>
 
         {/* Logout button */}
         <div className="w-full pb-1">
           <LogoutButton text={'Logout'}>
-            <LogoutIcon className="w-5 h-5" />
+            <LogoutIcon className="h-5 w-5" />
           </LogoutButton>
         </div>
       </div>

@@ -27,25 +27,25 @@ function EventDetail({ name, endDate, description, color, startDate, value }) {
   return (
     <Dialog>
       <DialogTrigger asChild className="h-14">
-        <div className="flex items-start justify-start rounded-xl border bg-background h-14 cursor-pointer hover:bg-slate-100/95">
+        <div className="flex h-14 cursor-pointer items-start justify-start rounded-xl border bg-background hover:bg-slate-100/95">
           <div
-            className="w-[3%] h-14 rounded-s-xl"
+            className="h-14 w-[3%] rounded-s-xl"
             style={{ backgroundColor: color }}
           />
-          <div className="flex flex-col justify-center pl-2 pr-4 p-1 h-full">
-            <div className="flex justify-center items-center gap-1">
-              <p className="font-semibold text-md text-foreground">{name}</p>
+          <div className="flex h-full flex-col justify-center p-1 pl-2 pr-4">
+            <div className="flex items-center justify-center gap-1">
+              <p className="text-md font-semibold text-foreground">{name}</p>
               <p style={{ color: color }} className="text-sm">
                 {' '}
                 |{' '}
               </p>
-              <p style={{ color: color }} className="text-sm pt-0.5">
+              <p style={{ color: color }} className="pt-0.5 text-sm">
                 {value}
               </p>
             </div>
             <div className="flex items-center gap-2">
               <p
-                className="text-sm ml-2 text-slate-500 pt-0.5"
+                className="ml-2 pt-0.5 text-sm text-slate-500"
                 style={{ display: 'flex', alignItems: 'center' }}
               >
                 {formatDate(endDate)}

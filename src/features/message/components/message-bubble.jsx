@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 export const MessageBubble = ({ content = 'hello', isUserMessage = false }) => {
-  const bgColor = isUserMessage ? 'bg-blue-500' : 'bg-gray-500';
+  const bgColor = isUserMessage ? 'bg-black text-white' : 'bg-gray-100';
   const [isRightClicked, setRightClicked] = useState(false);
   const [isDeleted, setIsDeleteMessage] = useState(false);
 
@@ -24,7 +24,7 @@ export const MessageBubble = ({ content = 'hello', isUserMessage = false }) => {
         display: 'inline-block',
         alignSelf: !isUserMessage ? 'flex-start' : 'flex-end',
       }}
-      className={`mx-4 my-4 p-3 rounded-lg ${bgColor} text-white`}
+      className={`mx-4 my-1 rounded-lg p-3 ${bgColor} text-md`}
       onContextMenu={e => {
         e.preventDefault();
         setRightClicked(true);
@@ -44,19 +44,19 @@ export const MessageBubble = ({ content = 'hello', isUserMessage = false }) => {
       {isRightClicked && (
         <div className="position-relative">
           <div
-            className="absolute w-200 bg-gray-800 rounded-lg box-border"
+            className="w-200 absolute box-border rounded-lg bg-gray-800"
             style={{ top: `${points.y}px`, left: `${points.x}px` }}
             onMouseLeave={() => setRightClicked(false)}
           >
-            <ul className="p-2 m-0 list-none">
-              <li className="p-3 hover:bg-black cursor-pointer">Forward</li>
+            <ul className="m-0 list-none p-2">
+              <li className="cursor-pointer p-3 hover:bg-black">Forward</li>
               <li
-                className="p-3 hover:bg-black cursor-pointer"
+                className="cursor-pointer p-3 hover:bg-black"
                 onClick={() => setIsDeleteMessage(true)}
               >
                 Delete
               </li>
-              <li className="p-3 hover:bg-black cursor-pointer">Pin</li>
+              <li className="cursor-pointer p-3 hover:bg-black">Pin</li>
             </ul>
           </div>
         </div>

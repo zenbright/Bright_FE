@@ -51,7 +51,7 @@ function Chart() {
     <div className="h-full">
       <Tabs
         defaultValue="bright"
-        className="flex flex-col w-full relative h-full"
+        className="relative flex h-full w-full flex-col"
       >
         <div className="flex items-center gap-1">
           {'Recent Activities'}
@@ -107,7 +107,7 @@ function Chart() {
         </TabsContent>
 
         <TabsContent value="grokai" className="h-full">
-          <div className="flex flex-col items-center h-full justify-center gap-8 text-2xl font-semibold">
+          <div className="flex h-full flex-col items-center justify-center gap-8 text-2xl font-semibold">
             <BarChart size={64} />
             <div>{'No data available'}</div>
             <Button onClick={() => setSpinning(true)} className="flex gap-2">

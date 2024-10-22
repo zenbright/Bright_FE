@@ -56,13 +56,13 @@ function ProjectDashboard() {
   const categoryOptions = ['All', ...Object.keys(groupedProjects)];
 
   return (
-    <div className="flyInLeftToRight px-2 group-none overflow-x-scroll visible no-scrollbar rounded-r-md h-full bg-background border-r-2 w-[19.5vw] pt-2 flex flex-col justify-between">
+    <div className="flyInLeftToRight group-none no-scrollbar visible flex h-full w-[19.5vw] flex-col justify-between overflow-x-scroll rounded-r-md border-r-2 bg-background px-2 pt-2">
       {selectedProject === null ? (
         <>
           <div>
             {Object.entries(filteredProjects).map(([category, items]) => (
-              <div key={category} className="group isSelected">
-                <h2 className="top-0 text-base text-foreground font-semibold ">
+              <div key={category} className="isSelected group">
+                <h2 className="top-0 text-base font-semibold text-foreground">
                   {category}
                 </h2>
                 <ul role="list" className="">
@@ -72,14 +72,12 @@ function ProjectDashboard() {
                       <li
                         key={index}
                         onClick={() => handleProjectClick(item)}
-                        className="text-base font-medium align-middle group-[.isSelected]:hover/item:bg-foreground
-                                            hover/item:text- h-8 rounded-md pl-3 pt-1 duration-100 flex flex-row listItem
-                                            group/select"
+                        className="hover/item:text- listItem group/select flex h-8 flex-row rounded-md pl-3 pt-1 align-middle text-base font-medium duration-100 group-[.isSelected]:hover/item:bg-foreground"
                       >
-                        <span className="flex items-center mb-0.5 mr-2">
-                          <ProjectIcon className="w-4 h-4 fill-foreground group-hover/select:fill-background"></ProjectIcon>
+                        <span className="mb-0.5 mr-2 flex items-center">
+                          <ProjectIcon className="h-4 w-4 fill-foreground group-hover/select:fill-background"></ProjectIcon>
                         </span>
-                        <p className="flex items-center text-sm text-foreground item group-hover/select:text-background">
+                        <p className="item flex items-center text-sm text-foreground group-hover/select:text-background">
                           {item}
                         </p>
                       </li>
@@ -88,7 +86,7 @@ function ProjectDashboard() {
                 {items.length > 3 && (
                   <button
                     onClick={() => handleShowMoreClick(category)}
-                    className="text-sm text-foreground block mx-auto mt-2 hover:underline"
+                    className="mx-auto mt-2 block text-sm text-foreground hover:underline"
                   >
                     {showAllCategories[category] ? 'Show Less' : 'Show More'}
                   </button>
@@ -98,16 +96,16 @@ function ProjectDashboard() {
           </div>
 
           {Object.keys(filteredProjects).length === 0 && (
-            <div className="flex place-content-center top-50 flex-col items-center">
-              <NotFound className="w-20 h-20 m-5 fill-slate-700 opacity-20"></NotFound>
+            <div className="top-50 flex flex-col place-content-center items-center">
+              <NotFound className="m-5 h-20 w-20 fill-slate-700 opacity-20"></NotFound>
             </div>
           )}
 
-          <div className="space-x-1 sticky bottom-0 p-2 bg-background flex flex-row max-w-full">
+          <div className="sticky bottom-0 flex max-w-full flex-row space-x-1 bg-background p-2">
             <div className="w-full">
-              <div className="absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none">
+              <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-4">
                 <svg
-                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  className="h-4 w-4 text-gray-500 dark:text-gray-400"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -122,17 +120,15 @@ function ProjectDashboard() {
               <input
                 type="search"
                 id="default-search"
-                className="block h-[35px] p-1 indent-7 text-sm
-                            text-gray-900 border border-gray-300 rounded-lg bg-gray-50 w-full
-                             focus:outline-none"
+                className="block h-[35px] w-full rounded-lg border border-gray-300 bg-gray-50 p-1 indent-7 text-sm text-gray-900 focus:outline-none"
                 placeholder="Search"
                 required
                 onChange={e => setSearchProject(e.target.value)}
               />
             </div>
-            <div className="relative p-2 flex items-center rounded-lg hover:bg-foreground group/filter">
+            <div className="group/filter relative flex items-center rounded-lg p-2 hover:bg-foreground">
               <FilterIcon
-                className="fill-foreground cursor-pointer h-5 w-5 group-hover/filter:fill-background"
+                className="h-5 w-5 cursor-pointer fill-foreground group-hover/filter:fill-background"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               />
               {isDropdownOpen && (
@@ -142,7 +138,7 @@ function ProjectDashboard() {
                     setSelectedCategory(e.target.value);
                     setIsDropdownOpen(false);
                   }}
-                  className="text-sm text-black absolute right-0 mb-[70px] backdrop-blur-sm rounded-sm h-6 bg-slate-200"
+                  className="absolute right-0 mb-[70px] h-6 rounded-sm bg-slate-200 text-sm text-black backdrop-blur-sm"
                 >
                   {categoryOptions.map((category, index) => (
                     <option key={index} value={category}>

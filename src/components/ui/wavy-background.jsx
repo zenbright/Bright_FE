@@ -11,6 +11,18 @@ import { createNoise3D } from 'simplex-noise';
 
 /* eslint-disable react/prop-types */
 
+/* eslint-disable react/prop-types */
+
+/* eslint-disable react/prop-types */
+
+/* eslint-disable react/prop-types */
+
+/* eslint-disable react/prop-types */
+
+/* eslint-disable react/prop-types */
+
+/* eslint-disable react/prop-types */
+
 const WavyBackground = ({
   children,
   className,
@@ -99,7 +111,7 @@ const WavyBackground = ({
   return (
     <div
       className={cn(
-        'h-screen flex flex-col items-center justify-center',
+        'flex h-screen flex-col items-center justify-center',
         containerClassName
       )}
     >

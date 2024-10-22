@@ -19,11 +19,11 @@ function Theme({ name, image }) {
   };
   return (
     <div
-      className="rounded-md w-full border-[2px] cursor-pointer"
+      className="w-full cursor-pointer rounded-md border-[2px]"
       onClick={handleThemeButton}
     >
-      <img src={image} alt="" className="w-[300px] h-[180px] object-fill" />
-      <div className="flex flex-row p-2 gap-2">
+      <img src={image} alt="" className="h-[180px] w-[300px] object-fill" />
+      <div className="flex flex-row gap-2 p-2">
         <input
           type="radio"
           name="theme"

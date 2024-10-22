@@ -1,27 +1,25 @@
 /* eslint-disable max-len */
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import { Info } from 'lucide-react';
+import { PlusCircle } from 'lucide-react';
+import { Image } from 'lucide-react';
+import { SmilePlus } from 'lucide-react';
+import { SendHorizonal } from 'lucide-react';
+import { MessageCircleCode } from 'lucide-react';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
-import rmitIcon from '../../../assets/images/rmitlogo.png';
-import { MESSAGE_CONTENT_WIDTH } from '../../../lib/constants/size.global';
-import { MESSAGE_HEADER_HEIGHT } from '../../../lib/constants/size.global';
-import informationIcon from '../assets/circle-info-solid.svg';
-import micIcon from '../assets/microphone.png';
-import phoneIcon from '../assets/phone-solid.svg';
-import uploadImageIcon from '../assets/photo.png';
-import plusIcon from '../assets/plus.png';
-import sendIcon from '../assets/send.png';
-import smileIcon from '../assets/smile.png';
-import messageBubbleIcon from '../assets/speech-bubble.png';
-import videoCallIcon from '../assets/video-solid.svg';
 import { SAMPLE_MESSAGE } from '../test/values';
 import { Message } from '../utils/class';
-import { MessageBubble } from './bubble';
+import { MessageBubble } from './message-bubble';
 
 export const MessageContent = ({
   selectedMessage,
   onlineStatus,
-  userName = 'User 1',
+  userName = 'Unknown',
+  userProfileImage,
 }) => {
   const [userMessageInput, setUserMessageInput] = useState('');
   const [userMessage, setMessageList] = useState([]);
@@ -80,95 +78,83 @@ export const MessageContent = ({
 
   if (typeof selectedMessage === 'number' && selectedMessage === -1) {
     return (
-      <div className="h-screen flex flex-col items-center justify-center">
-        <img
-          src={messageBubbleIcon}
+      <div className="flex h-screen flex-col items-center justify-center">
+        <MessageCircleCode
           alt="Bubble icon"
-          className="w-20 h-20 opacity-20 mb-4"
+          className="mb-4 h-16 w-16 opacity-20"
         />
-        <h1 className="text-3xl opacity-20 font-medium">
-          Start a conversation
+        <h1 className="text-2xl font-medium opacity-25">
+          {'Start a conversation'}
         </h1>
       </div>
     );
   } else {
     return (
-      <div className="h-screen flex flex-col justify-between">
+      <div className="flex h-screen w-full flex-col justify-between">
         {/* Header */}
-        <div
-          style={{ width: `${MESSAGE_CONTENT_WIDTH}` }}
-          className="flex items-center top-0 absolute border-b ml-4 h-20 align-baseline"
-        >
-          <div className="relative w-12 h-12 rounded-full">
-            <img
-              src={rmitIcon}
-              alt="user avatar"
-              className="w-full h-full object-cover"
-            />
-            <span
-              className={`absolute rounded-full ${onlineStatus ? 'bg-green-400' : 'bg-gray-400'} w-3 h-3 bottom-0 right-0 mb-0.5 mr-1`}
-            />
+        <div className="top-0 flex h-20 w-full items-center justify-between gap-2 border-b px-4 py-5 align-baseline">
+          <div className="flex flex-grow items-center">
+            <div className="relative h-10 w-10 rounded-full">
+              <Avatar src={aaa}>
+                <AvatarImage src={userProfileImage} alt="@shadcn" />
+                <AvatarFallback>{userName.slice(0, 2)}</AvatarFallback>
+              </Avatar>
+              <span
+                className={`absolute rounded-full ${onlineStatus ? 'bg-green-400' : 'bg-gray-400'} bottom-0 left-8 h-3 w-3`}
+              />
+            </div>
+            <div className="ml-2">
+              <h1 className="font-medium">{userName}</h1>
+              <h1 className="flex items-center text-sm">
+                {onlineStatus ? 'Online now' : 'Offline'}
+              </h1>
+            </div>
           </div>
-
-          <div className="h-11 ml-1">
-            <h1 className="text-xl font-medium h-6">{userName}</h1>
-            <h1 className="flex items-center">
-              {onlineStatus ? 'Online now' : 'Offline'}
-            </h1>
-          </div>
-
-          <div className="ml-auto">
-            <button className="w-6 h-6 mr-8">
-              <img src={phoneIcon} alt="user avatar" />
-            </button>
-
-            <button className="w-6 h-6 mr-8">
-              <img src={videoCallIcon} alt="user avatar" />
-            </button>
-
-            <button className="w-6 h-6 mr-2">
-              <img src={informationIcon} alt="user avatar" />
-            </button>
-          </div>
+          <button className="h-6 w-6">
+            <Info />
+          </button>
         </div>
 
         {/* Message List */}
-        <div
-          className="overflow-auto scrollbar-thin scrollbar-thumb-gray-200"
-          style={{ marginTop: `${MESSAGE_HEADER_HEIGHT}` }}
+        <OverlayScrollbarsComponent
+          element="div"
+          options={{ scrollbars: { autoHide: 'auto' } }}
+          defer
+          className="flex-1 overflow-auto"
         >
           <MessageList />
-        </div>
+        </OverlayScrollbarsComponent>
 
         {/* Control Bar */}
-        <div className="flex items-center justify-start mb-3 mt-2 ml-4">
-          <button className="flex items-center">
-            <img src={plusIcon} className="w-5 h-5" />
-          </button>
-          <button className="flex items-center ml-4 mr-4">
-            <img src={uploadImageIcon} className="w-5 h-5" />
-          </button>
-          <button className="flex items-center mr-4">
-            <img src={smileIcon} className="w-5 h-5" />
-          </button>
-          <button className="flex items-center">
-            <img src={micIcon} className="w-5 h-5" />
-          </button>
+        <div className="mb-3 ml-4 mt-2 flex items-center justify-start">
+          <Button variant="ghost" size="icon">
+            <PlusCircle className="h-6 w-6" strokeWidth={1.5} />
+          </Button>
+
+          <Button variant="ghost" size="icon">
+            <Image className="h-6 w-6" strokeWidth={1.5} />
+          </Button>
+
+          <Button variant="ghost" size="icon">
+            <SmilePlus className="h-6 w-6" strokeWidth={1.5} />
+          </Button>
 
           <input
             type="text"
             placeholder="Aa..."
             value={userMessageInput}
             onChange={e => setUserMessageInput(e.target.value)}
-            className="bg-gray-200 bg-opacity-70 h-9 rounded-lg py-2 px-4 outline-none w-4/5 ml-4"
+            className="ml-2 h-10 w-4/5 rounded-full bg-gray-200/40 px-4 py-6 hover:bg-gray-200/60"
           />
 
-          <button
-            className="flex items-center ml-6"
+          <Button
+            variant="ghost"
+            size="icon"
+            className="ml-4"
             onClick={onHandleSendMessage}
           >
-            <img src={sendIcon} className="w-6 h-6" />
-          </button>
+            <SendHorizonal className="h-6 w-6" strokeWidth={1.5} />
+          </Button>
         </div>
       </div>
     );
