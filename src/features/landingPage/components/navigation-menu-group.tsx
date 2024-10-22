@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { cn } from '@/lib/utils';
 import BrightLogo from '@assets/images/app-logo/logomini-dark.svg';
 import {
   NavigationMenu,
@@ -8,7 +9,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@components/ui/navigation-menu';
-import { cn } from '@/lib/utils';
 import React from 'react';
 
 interface Component {
@@ -18,12 +18,36 @@ interface Component {
 }
 
 const components: Component[] = [
-  { title: "Bright - Project Management", href: "/docs/features/project-management", description: "Organize tasks and track progress with customizable boards." },
-  { title: "AI-Powered Insights", href: "/docs/features/ai-support", description: "Automate workflows and receive intelligent recommendations." },
-  { title: "GitHub Integration", href: "/docs/features/github-integration", description: "Sync repositories and manage pull requests directly." },
-  { title: "Real-Time Collaboration", href: "/docs/features/collaboration", description: "Work together in real-time with shared workspaces." },
-  { title: "Customizable Workspaces", href: "/docs/features/custom-workspaces", description: "Tailor your workspace to fit your project needs." },
-  { title: "Integrated API Management", href: "/docs/features/api-management", description: "Monitor and manage APIs within your project." },
+  {
+    title: 'Bright - Project Management',
+    href: '/docs/features/project-management',
+    description: 'Organize tasks and track progress with customizable boards.',
+  },
+  {
+    title: 'AI-Powered Insights',
+    href: '/docs/features/ai-support',
+    description: 'Automate workflows and receive intelligent recommendations.',
+  },
+  {
+    title: 'GitHub Integration',
+    href: '/docs/features/github-integration',
+    description: 'Sync repositories and manage pull requests directly.',
+  },
+  {
+    title: 'Real-Time Collaboration',
+    href: '/docs/features/collaboration',
+    description: 'Work together in real-time with shared workspaces.',
+  },
+  {
+    title: 'Customizable Workspaces',
+    href: '/docs/features/custom-workspaces',
+    description: 'Tailor your workspace to fit your project needs.',
+  },
+  {
+    title: 'Integrated API Management',
+    href: '/docs/features/api-management',
+    description: 'Monitor and manage APIs within your project.',
+  },
 ];
 
 interface ListItemProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -56,10 +80,12 @@ ListItem.displayName = 'ListItem';
 
 export const NavigationMenuGroup: React.FC = () => {
   return (
-    <NavigationMenu >
+    <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent">{"Getting started"}</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent">
+            {'Getting started'}
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-">
@@ -68,33 +94,43 @@ export const NavigationMenuGroup: React.FC = () => {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <img src={BrightLogo} alt="Bright Logo" className='' />
+                    <img src={BrightLogo} alt="Bright Logo" className="" />
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      {"Zen Bright"}
+                      {'Zen Bright'}
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      {"A project management and coding platform with AI insights, GitHub integration, and real-time collaboration to boost productivity."}
+                      {
+                        'A project management and coding platform with AI insights, GitHub integration, and real-time collaboration to boost productivity.'
+                      }
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/docs" title="Introduction">
-                {"Tools to organize tasks, deadlines, and team workflows effectively."}
+                {
+                  'Tools to organize tasks, deadlines, and team workflows effectively.'
+                }
               </ListItem>
               <ListItem href="/docs/installation" title="Installation">
-                {"Steps to install necessary packages and configure our product."}
+                {
+                  'Steps to install necessary packages and configure our product.'
+                }
               </ListItem>
               <ListItem href="/docs/primitives/typography" title="Sponsor">
-                {"Support our development and help us create more features for the community."}
+                {
+                  'Support our development and help us create more features for the community.'
+                }
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent">Features</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent">
+            Features
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
+              {components.map(component => (
                 <ListItem
                   key={component.title}
                   title={component.title}
