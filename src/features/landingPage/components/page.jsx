@@ -253,7 +253,7 @@ export const Page = () => {
             </LampContainer>
           </div>
 
-          <div className="-mt-40 flex w-full flex-col items-center px-32 font-monument text-2xl text-neutral-200">
+          <div className="-mt-36 flex w-full flex-col items-center px-32 font-monument text-2xl text-neutral-200">
             <div className="flex flex-col items-center gap-6 text-center font-monument text-4xl text-neutral-200">
               <div className="font-monument">{'Join the waitlist'}</div>
 
@@ -278,7 +278,7 @@ export const Page = () => {
         <div className="mt-4 flex flex-col gap-2 py-4">
           <img src={BrightLogo} alt="Bright Logo" className="w-40" />
           <div className="flex items-center">
-            <div className="mr-2 text-md">Zen Bright @2024</div>
+            <div className="text-md mr-2">Zen Bright @2024</div>
 
             <Button
               className="hover:bg-white/10 hover:text-white"
@@ -359,6 +359,10 @@ export const Page = () => {
             </Button>
           ))}
         </div>
+      </div>
+
+      <div className="w-full pb-8 pr-12 pt-2 text-end font-semibold text-neutral-200">
+        Zen Bright, Open Source. All rights reserved.{' '}
       </div>
     </div>
   );
