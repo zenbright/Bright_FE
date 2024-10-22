@@ -8,10 +8,11 @@ import { FlipWords } from '@components/ui/flip-words';
 import { PlaceholdersAndVanishInput } from '@components/ui/placeholders-and-vanish-input';
 import { motion } from 'framer-motion';
 import { Copyright } from 'lucide-react';
+import { GithubIcon } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-
+import { DiscordLogoIcon } from '@radix-ui/react-icons';
 import Background from '../assets/bg-light.svg';
 import Facebook from '../assets/ic_facebook.svg';
 import Github from '../assets/ic_github.svg';
@@ -39,8 +40,6 @@ const placeholders = [
   'Streamline your project management.',
   'Automate workflows with ease.',
   'Seamless remote team collaboration.',
-  'Integrate coding with project management.',
-  'Maximize efficiency with automation.',
 ];
 
 export const Page = () => {
@@ -81,7 +80,7 @@ export const Page = () => {
         <Header ref={headerRef} />
 
         <div className="mt-20 flex flex-col items-center gap-2 font-extralight text-neutral-200 md:text-4xl lg:text-xl">
-          <div className="mx-auto font-monument text-base font-normal text-neutral-500">
+          <div className="mx-auto text-xl font-normal text-neutral-500">
             {'The complete'}
             <FlipWords words={words} />
             {'for developers.'}
@@ -89,23 +88,22 @@ export const Page = () => {
 
           <TypewriterEffectSmooth words={WELCOME_TEXT} />
 
-          <div className="mt-1 max-w-[630px] text-center font-monument text-base text-neutral-500">
+          <div className="mt-1 max-w-[630px] text-center text-xl font-semibold text-neutral-500">
             <span
-              className="font-monument" // Ensuring font applies directly
               dangerouslySetInnerHTML={{
                 __html: INTRODUCTION.LANDING_PAGE.LONG.replace(
                   /(Streamline|boost|deliver)/g,
                   match =>
-                    `<span class='text-[#ffda7d] font-monument'>${match}</span>`
+                    `<span class='text-[#ffda7d] font-bold'>${match}</span>`
                 ),
               }}
             />
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col items-center font-monument text-white">
+        <div className="mt-20 flex flex-col items-center font-monument text-neutral-200">
           <div className="mb-5 font-monument">
-            {"Be part of the world's most innovative platform"}
+            {"Enter your email to join our innovative platform"}
           </div>
 
           <PlaceholdersAndVanishInput
@@ -113,6 +111,31 @@ export const Page = () => {
             onChange={handleChange}
             onSubmit={onSubmit}
           />
+
+          <div className="relative mt-5 flex items-center gap-2 font-monument text-sm text-neutral-200">
+            {'Connect with us at: '}
+            <Button
+              className="hover:bg-white/10 hover:text-white"
+              size="icon"
+              variant="ghost"
+              onClick={() => {
+                window.open('https://github.com/zenbright/');
+              }}
+            >
+              <GithubIcon />
+            </Button>
+
+            <Button
+              className="hover:bg-white/10 hover:text-white"
+              size="icon"
+              variant="ghost"
+              onClick={() => {
+                window.open('https://www.facebook.com/zenbright/');
+              }}
+            >
+              <DiscordLogoIcon className='w-6 h-6' />
+            </Button>
+          </div>
         </div>
       </motion.div>
     </AuroraBackground>
