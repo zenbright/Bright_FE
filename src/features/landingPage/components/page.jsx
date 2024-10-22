@@ -3,6 +3,8 @@ import BrightLogo from '@/assets/images/app-logo/logomini-dark.svg';
 import { Button } from '@/components/ui/button';
 import { TypewriterEffectSmooth } from '@/components/ui/typewriter-effect';
 import { BRIGHT_EMAIL } from '@/config/constants/strings.global';
+import { AuroraBackground } from '@components/ui/aurora-background';
+import { motion } from 'framer-motion';
 import { Copyright } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useRef } from 'react';
@@ -37,97 +39,118 @@ export const Page = () => {
   });
 
   return (
-    <div className='bg-black'>
-      <Header ref={headerRef} />
+    // <div className='bg-black'>
+    //   <Header ref={headerRef} />
 
-      {/* Contents */}
-      <OverlayScrollbarsComponent
-        id="content-container"
-        className={`max-h-screen`}
-        defer
+    //   {/* Contents */}
+    //   <OverlayScrollbarsComponent
+    //     id="content-container"
+    //     className={`max-h-screen`}
+    //     defer
+    //   >
+    //     <div className="mt-10 flex flex-col items-center justify-center gap-5">
+    //       <div className="text-3xl font-semibold text-black">
+    //         {INTRODUCTION.LANDING_PAGE.SHORT}
+    //       </div>
+
+    //       <TypewriterEffectSmooth words={WELCOME_TEXT} />
+
+    //       <div className="max-w-[630px] text-center text-xl text-gray-500">
+    //         <span
+    //           dangerouslySetInnerHTML={{
+    //             __html: INTRODUCTION.LANDING_PAGE.LONG.replace(
+    //               /(Streamline|boost|deliver)/g,
+    //               "<span class='font-bold text-black'>$1</span>"
+    //             ),
+    //           }}
+    //         />
+    //       </div>
+
+    //       <div className="mt-8 flex gap-3">
+    //         <Button className="text-md mr-1 bg-black p-6 text-white hover:bg-gray-800">
+    //           Subscribe
+    //         </Button>
+    //         <Button
+    //           variant="ghost"
+    //           className="text-md p-6 text-black hover:bg-transparent hover:font-semibold hover:text-black hover:underline"
+    //         >
+    //           FAQ
+    //         </Button>
+    //       </div>
+
+    //       <div className="mt-8 flex items-center gap-2 font-semibold text-slate-500">
+    //         {'Contact us at: '}
+
+    //         <div className="font-bold text-black hover:cursor-pointer hover:underline">
+    //           {`${BRIGHT_EMAIL}`}
+    //         </div>
+
+    //         {'/'}
+
+    //         <div className="flex gap-4">
+    //           <img src={Github} className="w-6 hover:cursor-pointer" />
+    //           <img src={Facebook} className="w-6 hover:cursor-pointer" />
+    //         </div>
+    //       </div>
+    //     </div>
+
+    //     <div className="mb-20 mt-48 flex flex-col gap-28 px-6">
+    //       <MissionGroup />
+
+    //       <div className="mx-9 flex items-center justify-between">
+    //         <div className="flex flex-col gap-6">
+    //           <div className="text-5xl font-bold text-black">
+    //             {PROMOTION_TEXT.FREE_TRIAL_TITLE}
+    //           </div>
+
+    //           <div className="flex max-w-xl flex-col text-lg font-normal text-black">
+    //             <div>{PROMOTION_TEXT.FREE_TRIAL_DES}</div>
+    //           </div>
+    //         </div>
+
+    //         <img className="h-72 rounded-lg" src={Meeting} />
+    //       </div>
+
+    //       <div className="flex h-48 flex-col items-center gap-1 font-semibold text-slate-400">
+    //         <img src={BrightLogo} className="h-20" />
+
+    //         <div className="flex text-lg font-thin">
+    //           {TRADEMARK.COMPANY}
+    //           <Copyright className="h-3 w-3" />
+    //         </div>
+
+    //         <div className="flex">
+    //           <Button variant="ghost" className="hover:bg-transparent">
+    //             Terms & Conditions
+    //           </Button>
+    //           <Button variant="ghost" className="hover:bg-transparent">
+    //             Privacy Policy
+    //           </Button>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </OverlayScrollbarsComponent>
+    // </div>
+    <AuroraBackground>
+      <motion.div
+        initial={{ opacity: 0.0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.3,
+          duration: 0.8,
+          ease: 'easeInOut',
+        }}
+        className="h-full"
       >
-        <div className="mt-10 flex flex-col items-center justify-center gap-5">
-          <div className="text-3xl font-semibold text-black">
-            {INTRODUCTION.LANDING_PAGE.SHORT}
-          </div>
+        <Header ref={headerRef}/>
 
-          <TypewriterEffectSmooth words={WELCOME_TEXT} />
-
-          <div className="max-w-[630px] text-center text-xl text-gray-500">
-            <span
-              dangerouslySetInnerHTML={{
-                __html: INTRODUCTION.LANDING_PAGE.LONG.replace(
-                  /(Streamline|boost|deliver)/g,
-                  "<span class='font-bold text-black'>$1</span>"
-                ),
-              }}
-            />
-          </div>
-
-          <div className="mt-8 flex gap-3">
-            <Button className="text-md mr-1 bg-black p-6 text-white hover:bg-gray-800">
-              Subscribe
-            </Button>
-            <Button
-              variant="ghost"
-              className="text-md p-6 text-black hover:bg-transparent hover:font-semibold hover:text-black hover:underline"
-            >
-              FAQ
-            </Button>
-          </div>
-
-          <div className="mt-8 flex items-center gap-2 font-semibold text-slate-500">
-            {'Contact us at: '}
-
-            <div className="font-bold text-black hover:cursor-pointer hover:underline">
-              {`${BRIGHT_EMAIL}`}
-            </div>
-
-            {'/'}
-
-            <div className="flex gap-4">
-              <img src={Github} className="w-6 hover:cursor-pointer" />
-              <img src={Facebook} className="w-6 hover:cursor-pointer" />
-            </div>
-          </div>
+        <div className="py-4 text-base font-extralight text-neutral-200 md:text-4xl">
+          And this, is chemical burn.
         </div>
-
-        <div className="mb-20 mt-48 flex flex-col gap-28 px-6">
-          <MissionGroup />
-
-          <div className="mx-9 flex items-center justify-between">
-            <div className="flex flex-col gap-6">
-              <div className="text-5xl font-bold text-black">
-                {PROMOTION_TEXT.FREE_TRIAL_TITLE}
-              </div>
-
-              <div className="flex max-w-xl flex-col text-lg font-normal text-black">
-                <div>{PROMOTION_TEXT.FREE_TRIAL_DES}</div>
-              </div>
-            </div>
-
-            <img className="h-72 rounded-lg" src={Meeting} />
-          </div>
-
-          <div className="flex h-48 flex-col items-center gap-1 font-semibold text-slate-400">
-            <img src={BrightLogo} className="h-20" />
-
-            <div className="flex text-lg font-thin">
-              {TRADEMARK.COMPANY}
-              <Copyright className="h-3 w-3" />
-            </div>
-
-            <div className="flex">
-              <Button variant="ghost" className="hover:bg-transparent">
-                Terms & Conditions
-              </Button>
-              <Button variant="ghost" className="hover:bg-transparent">
-                Privacy Policy
-              </Button>
-            </div>
-          </div>
-        </div>
-      </OverlayScrollbarsComponent>
-    </div>
+        <button className="w-fit rounded-full bg-white px-4 py-2 text-black">
+          Debug now
+        </button>
+      </motion.div>
+    </AuroraBackground>
   );
 };
