@@ -37,17 +37,7 @@ export const Page = () => {
   });
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${Background})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        width: '100%',
-        height: '100vh',
-        overflow: 'hidden',
-      }}
-    >
+    <div className='bg-black'>
       <Header ref={headerRef} />
 
       {/* Contents */}
