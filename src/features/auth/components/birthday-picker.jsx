@@ -1,16 +1,15 @@
 import { cn } from '@/lib/utils';
-import { format } from 'date-fns';
-import { CalendarDays } from 'lucide-react';
-import PropTypes from 'prop-types';
-import * as React from 'react';
-
-import { Button } from '../../../components/ui/button';
-import { Calendar } from '../../../components/ui/calendar';
+import { Button } from '@components/ui/button';
+import { Calendar } from '@components/ui/calendar';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '../../../components/ui/popover';
+} from '@components/ui/popover';
+import { format } from 'date-fns';
+import { CalendarDays } from 'lucide-react';
+import PropTypes from 'prop-types';
+import * as React from 'react';
 
 export const BirthdayPicker = ({ date, setDate }) => {
   return (

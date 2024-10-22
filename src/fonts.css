@@ -19,3 +19,14 @@
   font-family: 'nunitosans-italic';
   src: url('@/assets/fonts/nunitosans/NunitoSans-Italic.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Monument Extended Regular';
+  src: url('@/assets/fonts/monument/MonumentExtended-Regular.otf')
+    format('opentype');
+}
+@font-face {
+  font-family: 'Monument Extended Ultrabold';
+  src: url('@/assets/fonts/monument/MonumentExtended-Ultrabold.otf')
+    format('opentype');
+}

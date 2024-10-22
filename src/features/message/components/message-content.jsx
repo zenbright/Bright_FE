@@ -6,11 +6,11 @@ import { PlusCircle } from 'lucide-react';
 import { Image } from 'lucide-react';
 import { SmilePlus } from 'lucide-react';
 import { SendHorizonal } from 'lucide-react';
+import { MessageCircleCode } from 'lucide-react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
-import messageBubbleIcon from '../assets/speech-bubble.png';
 import { SAMPLE_MESSAGE } from '../test/values';
 import { Message } from '../utils/class';
 import { MessageBubble } from './message-bubble';
@@ -79,8 +79,7 @@ export const MessageContent = ({
   if (typeof selectedMessage === 'number' && selectedMessage === -1) {
     return (
       <div className="flex h-screen flex-col items-center justify-center">
-        <img
-          src={messageBubbleIcon}
+        <MessageCircleCode
           alt="Bubble icon"
           className="mb-4 h-16 w-16 opacity-20"
         />
@@ -96,7 +95,7 @@ export const MessageContent = ({
         <div className="top-0 flex h-20 w-full items-center justify-between gap-2 border-b px-4 py-5 align-baseline">
           <div className="flex flex-grow items-center">
             <div className="relative h-10 w-10 rounded-full">
-              <Avatar>
+              <Avatar src={aaa}>
                 <AvatarImage src={userProfileImage} alt="@shadcn" />
                 <AvatarFallback>{userName.slice(0, 2)}</AvatarFallback>
               </Avatar>
