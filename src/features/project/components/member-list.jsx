@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import userDefaultProfile from '@/assets/images/user-profile-default.svg';
+import userDefaultProfile from '@/assets/images/defaults/user-profile.svg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import PropTypes from 'prop-types';
 import React from 'react';
