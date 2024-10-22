@@ -8,7 +8,7 @@ export const MissionGroup = () => {
       <div>
         <div className="relative w-full max-w-xs">
           <div className="absolute inset-0 h-full w-full scale-[0.80] transform rounded-full bg-red-500 bg-gradient-to-r from-blue-500 to-teal-500 blur-3xl" />
-          <div className="relative flex h-full flex-col items-start justify-end overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 px-4 py-8 shadow-xl">
+          <div className="relative flex h-full flex-col items-start justify-end overflow-hidden rounded-2xl border border-slate-200 bg-neutral-900 px-4 py-8 shadow-xl">
             <div className="mb-4 flex h-5 w-5 items-center justify-center rounded-full border border-gray-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -26,15 +26,15 @@ export const MissionGroup = () => {
               </svg>
             </div>
 
-            <h1 className="relative z-30 mb-4 text-xl font-bold text-black">
+            <h1 className="relative z-30 mb-4 text-xl font-bold text-white font-monument">
               {title}
             </h1>
 
-            <p className="relative z-30 mb-4 text-base font-normal text-slate-500">
+            <p className="relative z-30 mb-4 text-base font-normal text-neutral-100 italic">
               {des}
             </p>
 
-            <button className="rounded-lg border border-gray-500 px-4 py-1 text-black">
+            <button className="rounded-lg border border-gray-500 px-4 py-2 text-white hover:bg-black">
               Explore
             </button>
 
@@ -48,29 +48,15 @@ export const MissionGroup = () => {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <div className="self-center text-5xl font-bold text-black">
-        Our Missions
-      </div>
-      <div className="font max-w-xl text-center text-lg font-semibold text-black">
-        {
-          'Through collaboration and expertise, we provide the tools and resources you need to achieve your goals.'
-        }
-      </div>
-
       <div className="mt-4 flex gap-8">
         <FeaturedButton
-          title="For Project Managers"
+          title="For Managers"
           des="Seamless management for individuals and enterprises. Achieve peak productivity."
         />
 
         <FeaturedButton
           title="For Freelancers"
           des="Work smarter, not harder. Manage your projects efficiently and stay organized with our flexible tools."
-        />
-
-        <FeaturedButton
-          title="For Educators & Trainers"
-          des="Manage courses effectively and achieve learning goals with our easy-to-use tools."
         />
 
         <FeaturedButton
