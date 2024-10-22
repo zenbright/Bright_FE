@@ -36,7 +36,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<LandingAuthLayout />}>
       {/* Landing page and authentication routes */}
-      <Route path="/" element={<FileUpload />} />
+      <Route path="/" element={<ProjectManagementPage />} />
       <Route path="/auth" element={<AuthenticationPage />} />
 
       {/* <Route element={<RequireAuth />}> */}
