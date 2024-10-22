@@ -16,6 +16,9 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
     },
   },
+  optimizeDeps: {
+    exclude: ['js-big-decimal']
+  },
   server: {
     host: '0.0.0.0',
   },
