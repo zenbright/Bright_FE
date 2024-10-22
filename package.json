@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "start": "npm run dev",
     "build:css": "tailwind build public/tailwind.css -o public/style.css",
-    "format": "prettier --write \"**/*.{js,jsx,json,css,md}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
@@ -35,7 +35,7 @@
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
     "@reduxjs/toolkit": "^2.3.0",
-    "@tldraw/tldraw": "^2.4.6",
+    "@tldraw/tldraw": "^3.3.2",
     "@uiw/color-convert": "^2.3.2",
     "@uiw/react-color-alpha": "^2.3.2",
     "@uiw/react-color-hue": "^2.3.2",
@@ -47,7 +47,7 @@
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
-    "cmdk": "^0.2.1",
+    "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.13",
     "echarts": "^5.5.1",
@@ -62,7 +62,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
-    "react-day-picker": "^8.10.1",
+    "react-day-picker": "^9.1.4",
     "react-dom": "^18.3.1",
     "react-dropzone": "^14.2.10",
     "react-hook-form": "^7.53.1",
@@ -85,7 +85,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.4.1",
+    "@faker-js/faker": "^9.0.3",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20.16.13",
     "@types/react": "^18.3.11",
@@ -103,7 +103,7 @@
     "prettier-plugin-tailwindcss": "^0.6.8",
     "tailwind-scrollbar": "^3.1.0",
     "tailwindcss": "^3.4.14",
-    "vite": "^4.5.5",
+    "vite": "^5.4.9",
     "vite-plugin-svgr": "^4.2.0"
   }
 }

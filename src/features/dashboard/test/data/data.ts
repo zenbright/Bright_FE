@@ -21,7 +21,7 @@ export const options = {
     y: {
       beginAtZero: true,
       ticks: {
-        display: false
+        display: false,
       },
       border: {
         display: false,
@@ -29,8 +29,8 @@ export const options = {
       grid: {
         display: false,
         drawOnChartArea: false,
-      }
-    }
+      },
+    },
   },
 };
 
@@ -41,7 +41,20 @@ export const chart_dark_bg = '#2ecc71';
 let br = 7;
 
 // Project 1 data
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const labels = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
 
 export const data1 = {
   labels,
@@ -52,7 +65,6 @@ export const data1 = {
     },
   ],
 };
-
 
 // Project 2 data
 export const data2 = {

@@ -1,4 +1,10 @@
-import React, { createContext, useState, ReactNode, Dispatch, SetStateAction } from "react";
+import React, {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useState,
+} from 'react';
 
 // Define the types for the auth state and the context
 interface AuthState {
