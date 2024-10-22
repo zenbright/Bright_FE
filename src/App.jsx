@@ -9,7 +9,10 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import { AuthenticationPage } from './features/auth';
 import { RequireAuth } from './features/auth/components/RequireAuth';
 import Board from './features/board/Board';
@@ -75,6 +78,8 @@ const router = createBrowserRouter(
   )
 );
 
+const queryClient = new QueryClient()
+
 function App() {
   // Global States
   const currentTheme = useSelector(state => state.currentTheme.value);
@@ -83,7 +88,11 @@ function App() {
     document.documentElement.setAttribute('data-theme', currentTheme);
   }, [currentTheme]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />  
+    </QueryClientProvider>
+  );
 }
 
 export default App;
