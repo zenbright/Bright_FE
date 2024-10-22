@@ -5,30 +5,23 @@ import { Compare } from '@/components/ui/compare';
 import { Input } from '@/components/ui/input';
 import { TextHoverEffect } from '@/components/ui/text-hover-effect';
 import { TypewriterEffectSmooth } from '@/components/ui/typewriter-effect';
-import { BRIGHT_EMAIL } from '@/config/constants/strings.global';
 import { AuroraBackground } from '@components/ui/aurora-background';
 import { FlipWords } from '@components/ui/flip-words';
 import { LampContainer } from '@components/ui/lamp';
 import { PlaceholdersAndVanishInput } from '@components/ui/placeholders-and-vanish-input';
 import { DiscordLogoIcon } from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
-import { Copyright } from 'lucide-react';
 import { GithubIcon } from 'lucide-react';
 import { Fingerprint } from 'lucide-react';
 import { LockKeyhole } from 'lucide-react';
 import { Headset } from 'lucide-react';
 import { Siren } from 'lucide-react';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 
 import PMbad from '../assets/pm-bad.png';
-import {
-  INTRODUCTION,
-  PROMOTION_TEXT,
-  TRADEMARK,
-  WELCOME_TEXT,
-} from '../assets/strings';
+import PMgood from '../assets/pm-good.png';
+import { INTRODUCTION, WELCOME_TEXT } from '../assets/strings';
 import AICard from './ai-integration';
 import { Header } from './header';
 import { MissionGroup } from './mission';
@@ -189,7 +182,7 @@ export const Page = () => {
               >
                 <Compare
                   firstImage={PMbad}
-                  secondImage="https://assets.aceternity.com/linear-dark.png"
+                  secondImage={PMgood}
                   firstImageClassName="object-cover object-left-top w-full"
                   secondImageClassname="object-cover object-left-top w-full"
                   className="h-full w-full rounded-[22px] md:rounded-lg"
@@ -225,7 +218,7 @@ export const Page = () => {
                 }}
                 className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-center font-monument text-4xl font-medium tracking-tight text-transparent md:text-4xl"
               >
-                Your data is safe <br /> with multi-factor authentication.
+                Your data is safe <br /> with us.
                 <div className="mt-10 flex flex-col items-center gap-6 text-xl">
                   We are committed to protecting your data and privacy.
                   <div className="grid grid-cols-2 gap-12 text-neutral-300">
@@ -361,7 +354,7 @@ export const Page = () => {
         </div>
       </div>
 
-      <div className="w-full pb-8 pr-12 pt-2 text-end font-semibold text-neutral-200">
+      <div className="w-full pb-8 pr-12 pt-2 text-end font-semibold text-neutral-400">
         Zen Bright, Open Source. All rights reserved.{' '}
       </div>
     </div>
