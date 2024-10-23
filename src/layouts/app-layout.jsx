@@ -3,19 +3,20 @@ import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Sidebar from '../components/sidebar';
-
 export const AppLayout = () => {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <SidebarProvider
       style={{
         '--sidebar-width': '14rem',
         '--sidebar-width-mobile': '20rem',
       }}
+      open={open}
+      onOpenChange={setOpen}
     >
-      <AppSidebar />
-      <main>
-        <SidebarTrigger />
+      <AppSidebar setOpen={setOpen} />
+      <main className='overflow-hidden'>
         <Outlet />
       </main>
     </SidebarProvider>

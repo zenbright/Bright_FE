@@ -169,9 +169,11 @@ const CollapsibleSidebarGroup: React.FC<CollapsibleSidebarGroupProps> = ({ label
     </Collapsible>
 );
 
-export function AppSidebar() {
+export function AppSidebar({ setOpen }: { setOpen: (open: boolean) => void }) {
     return (
-        <Sidebar collapsible="icon">
+        <Sidebar collapsible="icon" onMouseEnter={() => setOpen(true)} onMouseLeave={() => {
+            setTimeout(() => setOpen(false), 100);
+        }}>
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
