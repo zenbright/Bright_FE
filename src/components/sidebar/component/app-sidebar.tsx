@@ -1,5 +1,6 @@
 import React from "react"
-import { Calendar, Home, Inbox, Search, Settings, ChevronDown, Layers2, User2, ChevronUp, CircleUser, HelpCircle, Cable, Quote, Gem, Newspaper, Plus, PanelsTopLeft, ArrowRight } from "lucide-react"
+import { Calendar, Home, Inbox, Search, Settings, ChevronDown, Layers2, User2, ChevronUp, CircleUser, HelpCircle, Cable, Quote, Gem, Newspaper, Plus, PanelsTopLeft, ArrowRight, PanelLeftOpen, PanelRightOpen, Bell } from "lucide-react"
+import { NavLink } from 'react-router-dom';
 
 import {
     Sidebar,
@@ -25,23 +26,23 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@components
 const items = [
     {
         title: "Dashboard",
-        url: "#",
+        url: "/user/dashboard",
         icon: Home,
     },
     {
         title: "Inbox",
-        url: "#",
+        url: "/user/inbox",
         icon: Inbox,
     },
     {
         title: "Projects",
-        url: "#",
+        url: "/user/project",
         icon: PanelsTopLeft,
     },
     {
-        title: "Settings",
-        url: "#",
-        icon: Settings,
+        title: "Notifications",
+        url: "/user/notification",
+        icon: Bell,
     },
 ]
 
@@ -105,9 +106,10 @@ interface CollapsibleSidebarGroupProps {
     label: string;
     items: MenuItem[];
     actionTitle?: string;
+    open?: boolean;
 }
 
-const CollapsibleSidebarGroup: React.FC<CollapsibleSidebarGroupProps> = ({ label, items, actionTitle }) => (
+const CollapsibleSidebarGroup: React.FC<CollapsibleSidebarGroupProps> = ({ label, items, open }) => (
     <Collapsible defaultOpen className="group/collapsible">
         <SidebarGroup>
             <SidebarGroupLabel asChild>
@@ -125,19 +127,27 @@ const CollapsibleSidebarGroup: React.FC<CollapsibleSidebarGroupProps> = ({ label
                                     <Collapsible defaultOpen className="group/collapsible">
                                         <SidebarMenuItem>
                                             <CollapsibleTrigger asChild>
-                                                <SidebarMenuButton asChild>
-                                                    <a href={item.url} className="flex gap-4 py-5 items-center">
-                                                        <item.icon />
-                                                        <span>{item.title}</span>
-                                                    </a>
-                                                </SidebarMenuButton>
+                                                <div className="flex">
+                                                    <SidebarMenuButton asChild>
+                                                        <NavLink to={item.url}>
+                                                            <item.icon />
+                                                            <span>{item.title}</span>
+                                                        </NavLink>
+                                                    </SidebarMenuButton>
+
+                                                    {item.title === "Projects" && open && (
+                                                        <button onClick={(e: any) => { e.stopPropagation(); console.log("ok") }} >
+                                                            <Plus className="ml-auto h-4 w-4" />
+                                                        </button>
+                                                    )}
+                                                </div>
                                             </CollapsibleTrigger>
                                             <CollapsibleContent>
                                                 <SidebarMenuSub asChild>
                                                     {listOfProjects.map(project => (
                                                         <SidebarMenuSubItem key={project.title}>
                                                             <SidebarMenuSubButton asChild>
-                                                                <a href={project.url} className="flex gap-4 py-2 items-center">
+                                                                <a href={project.url}>
                                                                     <span>{project.title}</span>
                                                                     <ArrowRight className="ml-auto" />
                                                                 </a>
@@ -153,10 +163,10 @@ const CollapsibleSidebarGroup: React.FC<CollapsibleSidebarGroupProps> = ({ label
                                 return (
                                     <SidebarMenuItem key={item.title}>
                                         <SidebarMenuButton asChild>
-                                            <a href={item.url} className="flex gap-4 py-3 items-center">
+                                            <NavLink to={item.url} className="flex gap-4 items-center">
                                                 <item.icon />
                                                 <span>{item.title}</span>
-                                            </a>
+                                            </NavLink>
                                         </SidebarMenuButton>
                                     </SidebarMenuItem>
                                 );
@@ -169,17 +179,15 @@ const CollapsibleSidebarGroup: React.FC<CollapsibleSidebarGroupProps> = ({ label
     </Collapsible>
 );
 
-export function AppSidebar({ setOpen }: { setOpen: (open: boolean) => void }) {
+export function AppSidebar({ setOpen, open }: { setOpen: any, open: boolean }) {
     return (
-        <Sidebar collapsible="icon" onMouseEnter={() => setOpen(true)} onMouseLeave={() => {
-            setTimeout(() => setOpen(false), 100);
-        }}>
+        <Sidebar collapsible="icon" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                                <SidebarMenuButton className="text-base py-6 flex">
+                                <SidebarMenuButton className="text-base py-6">
                                     <Layers2 />
                                     Workspace
                                     <ChevronDown className="ml-auto" />
@@ -198,7 +206,7 @@ export function AppSidebar({ setOpen }: { setOpen: (open: boolean) => void }) {
                 </SidebarMenu>
             </SidebarHeader>
             <SidebarContent>
-                <CollapsibleSidebarGroup label="Project Management" items={items} actionTitle="Add Project" />
+                <CollapsibleSidebarGroup label="Project Management" items={items} actionTitle="Add Project" open={open} />
                 <CollapsibleSidebarGroup label="Help" items={itemsHelp} />
                 <CollapsibleSidebarGroup label="About" items={itemsAbout} />
             </SidebarContent>
@@ -206,32 +214,14 @@ export function AppSidebar({ setOpen }: { setOpen: (open: boolean) => void }) {
             <SidebarFooter>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild className="py-6">
-                                <SidebarMenuButton>
-                                    <CircleUser className="h-6 w-6" />
-                                    <span className="text-base">
-                                        {"Mudoker"}
-                                    </span>
-
-                                    <ChevronUp className="ml-auto" />
-                                </SidebarMenuButton>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent
-                                side="top"
-                                className="w-[--radix-popper-anchor-width]"
-                            >
-                                <DropdownMenuItem>
-                                    <span>Account</span>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    <span>Billing</span>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    <span>Sign out</span>
-                                </DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+                        <SidebarMenuButton asChild>
+                            <NavLink to={`/user/settings`}>
+                                <CircleUser />
+                                <span className="text-base">
+                                    {"Mudoker"}
+                                </span>
+                            </NavLink>
+                        </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarFooter>

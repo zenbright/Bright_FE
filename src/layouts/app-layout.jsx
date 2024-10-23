@@ -15,10 +15,8 @@ export const AppLayout = () => {
       open={open}
       onOpenChange={setOpen}
     >
-      <AppSidebar setOpen={setOpen} />
-      <main className='overflow-hidden'>
-        <Outlet />
-      </main>
+      <AppSidebar open={open} setOpen={setOpen} />
+      <Outlet />
     </SidebarProvider>
   );
 };
