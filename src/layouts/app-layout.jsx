@@ -7,16 +7,18 @@ export const AppLayout = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <SidebarProvider
-      style={{
-        '--sidebar-width': '14rem',
-        '--sidebar-width-mobile': '20rem',
-      }}
-      open={open}
-      onOpenChange={setOpen}
-    >
-      <AppSidebar open={open} setOpen={setOpen} />
-      <Outlet />
-    </SidebarProvider>
+    <div className="flex h-dvh">
+      <SidebarProvider
+        style={{
+          '--sidebar-width': '14rem',
+          '--sidebar-width-mobile': '20rem',
+        }}
+        open={open}
+        onOpenChange={setOpen}
+      >
+        <AppSidebar open={open} setOpen={setOpen} />
+        <Outlet />
+      </SidebarProvider>
+    </div>
   );
 };
