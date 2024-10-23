@@ -7,7 +7,12 @@ import Sidebar from '../components/sidebar';
 
 export const AppLayout = () => {
   return (
-    <SidebarProvider>
+    <SidebarProvider
+      style={{
+        '--sidebar-width': '14rem',
+        '--sidebar-width-mobile': '20rem',
+      }}
+    >
       <AppSidebar />
       <main>
         <SidebarTrigger />
