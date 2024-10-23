@@ -151,7 +151,7 @@ export const Page = () => {
       <div className="bg-black">
         <div className="mt-5 flex flex-col items-center gap-5">
           <div className="mb-5 font-monument text-3xl font-bold text-neutral-200">
-            {'Why Zen Bright?'}
+            {'Why Bright?'}
           </div>
 
           <div>
