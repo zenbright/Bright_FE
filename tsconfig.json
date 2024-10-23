@@ -1,15 +1,19 @@
 {
   "compilerOptions": {
-    // ...
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@features/*": ["./src/features/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@test/*": ["./src/test/*"],
+      "@components/*": ["./src/components/*"]
     },
     "target": "es5",
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true
-    // ...
-  }
+  },
+  "include": ["src", "./declarations.d.ts"]
 }

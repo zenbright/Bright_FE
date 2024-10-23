@@ -29,10 +29,7 @@ export const TypewriterEffect = ({ words, className, cursorClassName }) => {
               variants={{
                 visible: { opacity: 1 },
               }}
-              className={cn(
-                `hidden text-black opacity-0 dark:text-white`,
-                word.className
-              )}
+              className={cn(`hidden text-white opacity-0`, word.className)}
             >
               {char}
             </motion.span>
@@ -46,7 +43,7 @@ export const TypewriterEffect = ({ words, className, cursorClassName }) => {
   return (
     <div
       className={cn(
-        'text-center text-base font-bold sm:text-xl md:text-3xl lg:text-5xl',
+        'text-center text-base font-bold sm:text-xl md:text-3xl lg:text-xl',
         className
       )}
     >
@@ -86,8 +83,8 @@ export const TypewriterEffectSmooth = ({
             {word.text.map((char, index) => (
               <span
                 key={`char-${index}`}
-                className={`text-black dark:text-white ${word.className}`}
-                style={{ color: word.className ? '#fbbf24' : 'black' }}
+                className={`text-white ${word.className} font-monument-bold text-6xl font-semibold`}
+                style={{ color: word.className ? '#fbbf24' : 'white' }}
               >
                 {char}
               </span>
@@ -119,7 +116,7 @@ export const TypewriterEffectSmooth = ({
         }}
       >
         <div
-          className="lg:text:3xl text-xs font-bold sm:text-base md:text-xl xl:text-7xl"
+          className="lg:text:2xl text-xs font-bold sm:text-base md:text-xl xl:text-7xl"
           style={{
             whiteSpace: 'nowrap',
           }}

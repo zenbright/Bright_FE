@@ -1,4 +1,4 @@
-// vite.config.js
+// vite.config.ts
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
@@ -15,9 +15,6 @@ export default defineConfig({
       '@test': path.resolve(__dirname, './src/test'),
       '@components': path.resolve(__dirname, './src/components'),
     },
-  },
-  optimizeDeps: {
-    exclude: ['js-big-decimal'],
   },
   server: {
     host: '0.0.0.0',
