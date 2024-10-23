@@ -133,10 +133,10 @@ export function FileUpload() {
             <div className="font-semibold text-sm overflow-auto max-h-[300px] text-foreground max-w-[375px]">
               {fileQueue.map((file, index) => (
                 <div key={index} className="pt-2">
-                  <div className='border rounded-xl px-2 py-3'>
+                  <div className='border rounded-xl px-2 py-2'>
                     {/* Show file name and status */}
                     <div className="flex justify-between items-center">
-                      <p className="text-ellipsis truncate w-[70%]">
+                      <p className="text-ellipsis truncate w-[80%]">
                         {file.name}
                       </p>
                       <div className="flex items-center gap-2">
@@ -148,8 +148,9 @@ export function FileUpload() {
                           </div>
                         )}
                         <Button
+                          className="rounded-full"
                           variant="ghost"
-                          size="icon"
+                          size="sm"
                           onClick={() => handleRemoveFile(file.name)}
                         >
                           <X className="w-4 h-4" />
