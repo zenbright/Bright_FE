@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dialog';
 import { Progress } from '@/components/ui/progress';
 import { Upload, X } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Check } from 'lucide-react';
 import { FailureAlert } from './alert-failure';
@@ -18,7 +18,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeFile, selectFileQueue, clearFiles } from '@/config/slice/file-slice';
 import { useFileSelection } from '@/hooks/file-upload/file-selection';
 import { useUploadStatuses } from '@/hooks/file-upload/upload-status';
-import { useState } from 'react';
 
 export function FileUpload() {
   const dispatch = useDispatch();
@@ -40,6 +39,7 @@ export function FileUpload() {
     clearStatuses,
   } = useUploadStatuses();
   const [isUploading, setIsUploading] = useState(false);
+  const [uploadStarted, setUploadStarted] = useState(false);
 
   const { mutateAsync } = useFileUpload(handleProgress); // Use the custom hook
 
@@ -54,11 +54,14 @@ export function FileUpload() {
     if (!fileQueue.length) return;
 
     setIsUploading(true);
+    setUploadStarted(true);
+
+    const filesToUpload = fileQueue.filter(file => uploadStatuses[file.name]?.status !== 'complete');
 
     try {
-      await mutateAsync(fileQueue.map(file => ({ file })));
+      await mutateAsync(filesToUpload.map(file => ({ file })));
 
-      fileQueue.forEach((file) => {
+      filesToUpload.forEach((file) => {
         markAsComplete(file.name);
       });
     } catch (uploadError) {
@@ -77,6 +80,7 @@ export function FileUpload() {
   const handleClose = () => {
     dispatch(clearFiles()); // Clear all files from Redux store
     clearStatuses(); // Clear all upload statuses
+    setUploadStarted(false); // Reset upload started state
   };
 
   const allFilesUploaded = fileQueue.length > 0 && fileQueue.every(file => uploadStatuses[file.name]?.status === 'complete');
@@ -131,16 +135,18 @@ export function FileUpload() {
                 <div key={index} className="pt-2">
                   <div className='border rounded-xl px-2 py-3'>
                     {/* Show file name and status */}
-                    <div className="flex justify-between items-center mb-2">
+                    <div className="flex justify-between items-center">
                       <p className="text-ellipsis truncate w-[70%]">
                         {file.name}
                       </p>
                       <div className="flex items-center gap-2">
-                        <div className="text-sm ">
-                          {uploadStatuses[file.name]?.status === 'complete'
-                            ? <Check className='w-4 h-4'/>
-                            : `${uploadStatuses[file.name]?.progress || 0}%`}
-                        </div>
+                        {uploadStarted && (
+                          <div className="text-sm ">
+                            {uploadStatuses[file.name]?.status === 'complete'
+                              ? <Check className='w-4 h-4'/>
+                              : `${uploadStatuses[file.name]?.progress || 0}%`}
+                          </div>
+                        )}
                         <Button
                           variant="ghost"
                           size="icon"
@@ -151,9 +157,11 @@ export function FileUpload() {
                       </div>
                     </div>
                     {/* Show progress bar */}
-                    <Progress
-                      value={uploadStatuses[file.name]?.progress || 0}
-                    />
+                    {uploadStarted && (
+                      <Progress
+                        value={uploadStatuses[file.name]?.progress || 0}
+                      />
+                    )}
                   </div>
                 </div>
               ))}
