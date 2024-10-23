@@ -1,5 +1,5 @@
 import React from "react"
-import { Calendar, Home, Inbox, Search, Settings, ChevronDown, Layers2, User2, ChevronUp, CircleUser, HelpCircle, Cable, Quote, Gem, Newspaper, Plus } from "lucide-react"
+import { Calendar, Home, Inbox, Search, Settings, ChevronDown, Layers2, User2, ChevronUp, CircleUser, HelpCircle, Cable, Quote, Gem, Newspaper, Plus, PanelsTopLeft, ArrowRight } from "lucide-react"
 
 import {
     Sidebar,
@@ -13,6 +13,9 @@ import {
     SidebarHeader,
     SidebarFooter,
     SidebarGroupAction,
+    SidebarMenuSub,
+    SidebarMenuSubItem,
+    SidebarMenuSubButton,
 } from "@components/ui/sidebar"
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@components/ui/dropdown-menu"
@@ -21,7 +24,7 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@components
 // Menu items.
 const items = [
     {
-        title: "Home",
+        title: "Dashboard",
         url: "#",
         icon: Home,
     },
@@ -33,7 +36,7 @@ const items = [
     {
         title: "Projects",
         url: "#",
-        icon: Calendar,
+        icon: PanelsTopLeft,
     },
     {
         title: "Settings",
@@ -73,6 +76,24 @@ const itemsAbout = [
     },
 ]
 
+const listOfProjects = [
+    {
+        title: "Bright",
+        url: "#",
+        icon: Plus,
+    },
+    {
+        title: "Eternal",
+        url: "#",
+        icon: Plus,
+    },
+    {
+        title: "Hive",
+        url: "#",
+        icon: Plus,
+    },
+]
+
 // Define the type for menu items
 interface MenuItem {
     title: string;
@@ -95,24 +116,52 @@ const CollapsibleSidebarGroup: React.FC<CollapsibleSidebarGroupProps> = ({ label
                     <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                 </CollapsibleTrigger>
             </SidebarGroupLabel>
-            {actionTitle && (
-                <SidebarGroupAction title={actionTitle}>
-                    <Plus /> <span className="sr-only">{actionTitle}</span>
-                </SidebarGroupAction>
-            )}
             <CollapsibleContent>
                 <SidebarGroupContent>
                     <SidebarMenu>
-                        {items.map(item => (
-                            <SidebarMenuItem key={item.title}>
-                                <SidebarMenuButton asChild>
-                                    <a href={item.url} className="flex gap-4 py-5">
-                                        <item.icon />
-                                        <span>{item.title}</span>
-                                    </a>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                        ))}
+                        {items.map(item => {
+                            if (item.title === "Projects") {
+                                return (
+                                    <Collapsible defaultOpen className="group/collapsible">
+                                        <SidebarMenuItem>
+                                            <CollapsibleTrigger asChild>
+                                                <SidebarMenuButton asChild>
+                                                    <a href={item.url} className="flex gap-4 py-5 items-center">
+                                                        <item.icon />
+                                                        <span>{item.title}</span>
+                                                    </a>
+                                                </SidebarMenuButton>
+                                            </CollapsibleTrigger>
+                                            <CollapsibleContent>
+                                                <SidebarMenuSub asChild>
+                                                    {listOfProjects.map(project => (
+                                                        <SidebarMenuSubItem key={project.title}>
+                                                            <SidebarMenuSubButton asChild>
+                                                                <a href={project.url} className="flex gap-4 py-2 items-center">
+                                                                    <span>{project.title}</span>
+                                                                    <ArrowRight className="ml-auto" />
+                                                                </a>
+                                                            </SidebarMenuSubButton>
+                                                        </SidebarMenuSubItem>
+                                                    ))}
+                                                </SidebarMenuSub>
+                                            </CollapsibleContent>
+                                        </SidebarMenuItem>
+                                    </Collapsible>
+                                )
+                            } else {
+                                return (
+                                    <SidebarMenuItem key={item.title}>
+                                        <SidebarMenuButton asChild>
+                                            <a href={item.url} className="flex gap-4 py-3 items-center">
+                                                <item.icon />
+                                                <span>{item.title}</span>
+                                            </a>
+                                        </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                );
+                            }
+                        })}
                     </SidebarMenu>
                 </SidebarGroupContent>
             </CollapsibleContent>
@@ -147,7 +196,7 @@ export function AppSidebar() {
                 </SidebarMenu>
             </SidebarHeader>
             <SidebarContent>
-                <CollapsibleSidebarGroup label="Main" items={items} actionTitle="Add Project" />
+                <CollapsibleSidebarGroup label="Project Management" items={items} actionTitle="Add Project" />
                 <CollapsibleSidebarGroup label="Help" items={itemsHelp} />
                 <CollapsibleSidebarGroup label="About" items={itemsAbout} />
             </SidebarContent>
