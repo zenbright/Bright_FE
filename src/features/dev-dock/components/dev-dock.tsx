@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { FloatingDock } from "@components/ui/floating-dock";
 import { Sun, Moon, MousePointer, MousePointerClick, Home, Info } from 'lucide-react';
 import { getCurrentSystemPerformance, getDimensionsInString, getZoomLevelInPercentage } from "../utils/utils.js"
+import { useSelector, useDispatch } from "react-redux";
+import { setTheme } from '@features/theme/utils/themeSlice';
 
 export function DeveloperDock() {
-    const [currentTheme, setCurrentTheme] = React.useState<string | null>(null);
+    const currentTheme = useSelector((state: any) => state.currentTheme.value);
     const [isSelectionMode, setIsSelectionMode] = React.useState<boolean>(false);
     const [language, setLanguage] = React.useState<string>("EN");
     const [systemPerformance, setSystemPerformance] = React.useState<{
@@ -14,6 +16,7 @@ export function DeveloperDock() {
     } | null>(null);
     const [dimensions, setDimensions] = React.useState<string>("");
     const [zoom, setZoom] = React.useState<number>(100);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const dimensions = getDimensionsInString(window);
@@ -50,15 +53,9 @@ export function DeveloperDock() {
 
     const highlighterRef = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
-        const theme = document.documentElement.getAttribute('data-theme') || 'light-default';
-        setCurrentTheme(theme);
-    }, []);
-
     const toggleTheme = () => {
         const newTheme = currentTheme === 'light-default' ? 'dark-default' : 'light-default';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        setCurrentTheme(newTheme);
+        dispatch(setTheme(newTheme));
     };
 
     const toggleSelectionMode = () => {

@@ -167,6 +167,11 @@
   }
 }
 
+/* Apply the dark class when the theme is dark-default */
+:root[data-theme='dark-default'] {
+  @apply dark;
+}
+
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari, and Opera */
   .no-scrollbar::-webkit-scrollbar {
