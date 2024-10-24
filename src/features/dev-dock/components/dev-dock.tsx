@@ -2,16 +2,13 @@ import React, { useEffect, useRef } from "react";
 import { FloatingDock } from "@components/ui/floating-dock";
 import {
     IconBrandGithub,
-    IconExchange,
-    IconHome,
-    IconNewSection,
-    IconTerminal2,
 } from "@tabler/icons-react";
-import { Sun, Moon, MousePointer, MousePointerClick, Home } from 'lucide-react';
+import { Sun, Moon, MousePointer, MousePointerClick, Home, Languages, RotateCw, Info } from 'lucide-react';
 
 export function DeveloperDock() {
     const [currentTheme, setCurrentTheme] = React.useState<string | null>(null);
     const [isSelectionMode, setIsSelectionMode] = React.useState<boolean>(false);
+    const [language, setLanguage] = React.useState<string>("EN"); // State for language
     const highlighterRef = useRef<HTMLDivElement | null>(null);
 
     React.useEffect(() => {
@@ -27,6 +24,10 @@ export function DeveloperDock() {
 
     const toggleSelectionMode = () => {
         setIsSelectionMode((prev) => !prev);
+    };
+
+    const toggleLanguage = () => {
+        setLanguage((prev) => (prev === "EN" ? "VI" : "EN"));
     };
 
     useEffect(() => {
@@ -75,24 +76,20 @@ export function DeveloperDock() {
             action: toggleSelectionMode,
         },
         {
-            title: "Products",
-            icon: <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+            title: `Language: ${language}`, // Dynamic language title
+            icon: <Languages className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
             href: "#",
+            action: toggleLanguage, // Action to toggle language
         },
         {
-            title: "Components",
-            icon: <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            href: "#",
+            title: "Reload",
+            icon: <RotateCw className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+            action: () => window.location.reload(),
         },
         {
             title: "Home",
             icon: <Home className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
             action: () => window.open("http://localhost:5173/", "_blank"),
-        },
-        {
-            title: "Changelog",
-            icon: <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            href: "#",
         },
         {
             title: "Theme",
@@ -108,7 +105,13 @@ export function DeveloperDock() {
             title: "GitHub",
             icon: <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
             action: () => window.open("https://github.com/zenbright/bright-fe", "_blank"),
-        }
+        },
+        {
+            title: `Info`,
+            icon: <Info className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+            // Get the current instance of the browser including engine, version, and platform
+            action: () => alert(`Browser: ${navigator.userAgent}`),
+        },
     ];
 
     return (
