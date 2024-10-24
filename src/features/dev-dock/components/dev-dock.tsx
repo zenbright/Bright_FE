@@ -1,17 +1,56 @@
 import React, { useEffect, useRef } from "react";
 import { FloatingDock } from "@components/ui/floating-dock";
-import {
-    IconBrandGithub,
-} from "@tabler/icons-react";
-import { Sun, Moon, MousePointer, MousePointerClick, Home, Languages, RotateCw, Info } from 'lucide-react';
+import { Sun, Moon, MousePointer, MousePointerClick, Home, Info } from 'lucide-react';
+import { getCurrentSystemPerformance, getDimensionsInString, getZoomLevelInPercentage } from "../utils/utils.js"
 
 export function DeveloperDock() {
     const [currentTheme, setCurrentTheme] = React.useState<string | null>(null);
     const [isSelectionMode, setIsSelectionMode] = React.useState<boolean>(false);
-    const [language, setLanguage] = React.useState<string>("EN"); // State for language
+    const [language, setLanguage] = React.useState<string>("EN");
+    const [systemPerformance, setSystemPerformance] = React.useState<{
+        cpuUsage: string;
+        ramUsage: string;
+        networkUsage: number;
+    } | null>(null);
+    const [dimensions, setDimensions] = React.useState<string>("");
+    const [zoom, setZoom] = React.useState<number>(100);
+
+    useEffect(() => {
+        const dimensions = getDimensionsInString(window);
+        setDimensions(dimensions);
+    }, [window.innerWidth]);
+
+    useEffect(() => {
+        const updatePerformance = () => {
+            const performance = getCurrentSystemPerformance(window);
+            setSystemPerformance(performance);
+        };
+
+        updatePerformance();
+        const interval = setInterval(updatePerformance, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        const updateZoom = () => {
+            const zoom = getZoomLevelInPercentage(window);
+            setZoom(zoom);
+        };
+
+        updateZoom();
+        window.addEventListener('resize', updateZoom);
+        window.addEventListener('devicePixelRatio', updateZoom);
+
+        return () => {
+            window.removeEventListener('resize', updateZoom);
+            window.removeEventListener('devicePixelRatio', updateZoom);
+        };
+    }, []);
+
     const highlighterRef = useRef<HTMLDivElement | null>(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const theme = document.documentElement.getAttribute('data-theme') || 'light-default';
         setCurrentTheme(theme);
     }, []);
@@ -39,12 +78,12 @@ export function DeveloperDock() {
                 const rect = target.getBoundingClientRect();
                 highlighterRef.current.style.width = `${rect.width}px`;
                 highlighterRef.current.style.height = `${rect.height}px`;
-                highlighterRef.current.style.left = `${rect.left + window.scrollX}px`; // Adjust for scrolling
-                highlighterRef.current.style.top = `${rect.top + window.scrollY}px`; // Adjust for scrolling
-                highlighterRef.current.style.pointerEvents = 'none'; // Disable pointer events to let mouse events pass through
-                highlighterRef.current.style.zIndex = '9999'; // Ensure highlighter is on top
-                highlighterRef.current.style.border = '2px dashed rgba(0, 123, 255, 0.8)'; // Dashed border for clarity
-                highlighterRef.current.style.backgroundColor = 'rgba(0, 123, 255, 0.2)'; // Light blue background
+                highlighterRef.current.style.left = `${rect.left + window.scrollX}px`;
+                highlighterRef.current.style.top = `${rect.top + window.scrollY}px`;
+                highlighterRef.current.style.pointerEvents = 'none';
+                highlighterRef.current.style.zIndex = '9999';
+                highlighterRef.current.style.border = '2px dashed rgba(0, 123, 255, 0.8)';
+                highlighterRef.current.style.backgroundColor = 'rgba(0, 123, 255, 0.2)';
             }
         };
 
@@ -56,17 +95,21 @@ export function DeveloperDock() {
         };
 
         if (isSelectionMode) {
-            // Use event delegation for specific elements or apply listeners to desired targets
             document.addEventListener('mouseenter', handleMouseEnter, true);
             document.addEventListener('mouseleave', handleMouseLeave, true);
         }
 
-        // Cleanup event listeners on unmount or when selection mode changes
         return () => {
             document.removeEventListener('mouseenter', handleMouseEnter, true);
             document.removeEventListener('mouseleave', handleMouseLeave, true);
         };
     }, [isSelectionMode]);
+
+    const resetZoom = () => {
+        document.body.style.transform = "scale(1)";
+        document.body.style.transformOrigin = "0 0";
+        setZoom(100);
+    };
 
     const links = [
         {
@@ -76,20 +119,34 @@ export function DeveloperDock() {
             action: toggleSelectionMode,
         },
         {
-            title: `Language: ${language}`, // Dynamic language title
-            icon: <Languages className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+            title: `Language: ${language}`,
+            icon: <div>
+                <span className="text-base text-neutral-500 dark:text-neutral-300">{language}</span>
+            </div>,
             href: "#",
-            action: toggleLanguage, // Action to toggle language
+            action: toggleLanguage,
         },
         {
-            title: "Reload",
-            icon: <RotateCw className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            action: () => window.location.reload(),
+            title: "Dimensions",
+            icon: <div>
+                <span className="text-base text-neutral-500 dark:text-neutral-300">{dimensions}</span>
+            </div>,
         },
         {
-            title: "Home",
+            title:
+                <div className="text-base text-neutral-500 dark:text-neutral-300 flex gap-2">
+                    {systemPerformance ? (
+                        <>
+                            <span className="font-bold">CPU:</span> {systemPerformance.cpuUsage}
+                            <span className="font-bold">RAM:</span> {systemPerformance.ramUsage}
+                            <span className="font-bold">Network:</span> {systemPerformance.networkUsage}
+                        </>
+                    ) : (
+                        "Loading..."
+                    )}
+                </div>,
             icon: <Home className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            action: () => window.open("http://localhost:5173/", "_blank"),
+            action: () => window.location.reload(),
         },
         {
             title: "Theme",
@@ -102,14 +159,14 @@ export function DeveloperDock() {
             action: toggleTheme,
         },
         {
-            title: "GitHub",
-            icon: <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            action: () => window.open("https://github.com/zenbright/bright-fe", "_blank"),
+            title: "Zoom",
+            icon: <div>
+                <span className="text-xs text-neutral-500 dark:text-neutral-300">{zoom}%</span>
+            </div>,
         },
         {
             title: `Info`,
             icon: <Info className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            // Get the current instance of the browser including engine, version, and platform
             action: () => alert(`Browser: ${navigator.userAgent}`),
         },
     ];
@@ -117,14 +174,14 @@ export function DeveloperDock() {
     return (
         <div className="flex items-center justify-center h-[35rem] w-full relative">
             <FloatingDock
-                mobileClassName="translate-y-20" // only for demo, remove for production
+                mobileClassName="translate-y-20"
                 items={links}
             />
             {isSelectionMode && (
                 <div
                     ref={highlighterRef}
                     className="fixed transition-all"
-                    style={{ width: 0, height: 0 }} // Initialize with zero size
+                    style={{ width: 0, height: 0 }}
                 />
             )}
         </div>
