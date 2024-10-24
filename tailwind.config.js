@@ -21,7 +21,7 @@ module.exports = {
     './app/**/*.{js,jsx}',
     './src/**/*.{js,jsx}',
   ],
-  darkMode: ['class', 'class'],
+  darkMode: ['class', '[data-theme="dark-default"]'],
   theme: {
     container: {
       center: 'true',

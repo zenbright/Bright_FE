@@ -1,3 +1,3 @@
-import { DeveloperDock } from "./components/dev-dock";
+import { DeveloperDock } from './components/dev-dock';
 
 export default DeveloperDock;
