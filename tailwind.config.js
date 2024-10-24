@@ -29,6 +29,10 @@ module.exports = {
       screens: {
         '2xl': '1400px',
       },
+      drag_box: {
+        DEFAULT: 'hsl(var(--drag_box))',
+        foreground: 'hsl(var(--drag_box-foreground))',
+      }
     },
     extend: {
       colors: {

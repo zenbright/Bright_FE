@@ -9,7 +9,10 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import { AuthenticationPage } from './features/auth';
 import { RequireAuth } from './features/auth/components/RequireAuth';
 import Board from './features/board/Board';
@@ -28,18 +31,22 @@ import { SettingLayout } from './layouts/setting-layout';
 import { Welcome } from './test/Welcome';
 // test
 import { UsersList } from './test/users/userList';
+import { FileUpload} from './components/general/file-upload';
 
 // Routing from landing page to its child and sign in paage
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<LandingAuthLayout />}>
       {/* Landing page and authentication routes */}
-      <Route path="/" element={<LandingPage />} />
+      <Route path="/" element={<ProjectManagementPage />} />
       <Route path="/auth" element={<AuthenticationPage />} />
 
       {/* <Route element={<RequireAuth />}> */}
       <Route path="/welcome" element={<Welcome />} />
       <Route path="/users" element={<UsersList />} />
+      {/* <Route element={<RequireAuth />}> */}
+        <Route path="/welcome" element={<Welcome />} />
+        <Route path="/users" element={<UsersList />} />
 
       <Route path="/user" element={<AppLayout />}>
         {/* Settings routes */}
@@ -66,6 +73,9 @@ const router = createBrowserRouter(
         <Route path="/user/inbox" element={<MessagePage />} />
         {/* 404 route */}
         <Route path="*" element={<Notfoundpage />} />
+          {/* 404 route */}
+          <Route path="*" element={<Notfoundpage />} />
+        {/* </Route> */}
       </Route>
       {/* </Route>j */}
 
@@ -75,6 +85,8 @@ const router = createBrowserRouter(
   )
 );
 
+const queryClient = new QueryClient()
+
 function App() {
   // Global States
   const currentTheme = useSelector(state => state.currentTheme.value);
@@ -83,7 +95,11 @@ function App() {
     document.documentElement.setAttribute('data-theme', currentTheme);
   }, [currentTheme]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />  
+    </QueryClientProvider>
+  );
 }
 
 export default App;
